@@ -1,0 +1,33 @@
+sofware:
+  name: ระบบตรวจสอบการพิมพ์
+  version: 1.0
+  debug: false
+
+template:
+  lme:
+    lot: LOT20230001
+    mfg: "20230115"
+    exp: "20240115"
+
+hardware:
+  camera:
+    zoom: 100
+    focus: 170
+    autoFocus: true
+    brightness: 184
+    contrast: 188
+    exposure: 188
+    sensorDelay: 500
+    saveImage: false
+  gpio:
+    sensorPin: 23
+    buzzerPin: 12
+  crop:
+    x1: 230
+    x2: 180
+    y1: 420
+    y2: 290
+
+counters:
+  ok: 0
+  ng: 0
