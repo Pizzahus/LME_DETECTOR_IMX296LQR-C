@@ -754,8 +754,8 @@ class Ui_MainWindow(object):
         self.start.setFont(font11)
         self.start.setStyleSheet(
             u"QPushButton {\n"
-            "	background-color: rgb(200, 0, 0);\n"
-            "	color: rgb(195, 195, 195);\n"
+            "	background-color: rgb(0, 170, 50);\n"
+            "	color: white;\n"
             "	text-align: center;\n"
             "	height: 30px;\n"
             "	border: none;\n"
@@ -764,7 +764,7 @@ class Ui_MainWindow(object):
             "}\n"
             "\n"
             "QPushButton:checked {\n"
-            "	background-color: rgb(0, 170, 50);\n"
+            "	background-color: rgb(200, 0, 0);\n"
             "	color: white;\n"
             "}"
         )

@@ -1,6 +1,5 @@
 import os
 import cv2
-import numpy
 from picamera2 import Picamera2
 
 from src.ui_DETECTOR_10inch import Ui_MainWindow
@@ -17,9 +16,10 @@ from time import sleep
 
 from resources.WiFi import WiFi
 from resources.Keyboard import Keyboard
-from resources.Camera import Detector, CameraView
+from resources.Camera import CameraView
 from resources.Datetime import ShowDateTime
 from resources.Alert import Alert, BUZZER
+# from resources.Animation import AnimatedWidgetHelper
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.dirname(BASE_DIR)
@@ -53,8 +53,10 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.addEventListener()
 
         picam2 = Picamera2()
-        self.cameraView = CameraView(monitor=self.webcam_monitor, camera=picam2, sensorPin=23)
+        self.cameraView = CameraView(monitor=self.webcam_monitor, camera=picam2, sensorPin=23, flashLightPin=24)
         self.cameraView.start()
+
+        # self.animator = AnimatedWidgetHelper(self)
 
     # เพิ่ม Event
     def addEventListener(self):
@@ -71,7 +73,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.shutdown_2.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.shutdown_page))
 
         self.start.clicked.connect(self.startDetection)
-        self.capture_test.clicked.connect(lambda: self.cameraView.captured())
+        self.capture_test.clicked.connect(self.testDetection)
         self.restart_program_1.clicked.connect(self.restart)
         self.restart_program_2.clicked.connect(self.restart)
         self.cancel_shutdown.clicked.connect(lambda: self.shutdownHandler(False))
@@ -124,6 +126,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         for i, w in enumerate(lme if lme else ['', '', '']):
             lmf_label[i].setText(w if w else "XXXXXX")
 
+    # เริ่มการตรวจจับ
     def startDetection(self):
         isRunning = self.start.isChecked()
         self.cameraView.liveView(not isRunning)
@@ -131,11 +134,20 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.setting_2.setHidden(isRunning)
         self.camera_setting_1.setHidden(isRunning)
         self.camera_setting_2.setHidden(isRunning)
+        self.capture_test.setHidden(isRunning)
 
+        if isRunning:
+            self.start.setText("STOP")
+            self.detection_status.setText("เริ่มการตรวจจับ")
+        else:
+            self.start.setText("START")
+            self.detection_status.setText("กดปุ่ม START เพื่อเริ่มทำงาน")
+
+    # ทดสอบการตรวจจับ
     def testDetection(self):
-        isRunning = self.start.isChecked()
-        self.cameraView.liveView(not isRunning)
+        self.cameraView.captured(True)
 
+    # รีเซ็ต counter
     def _countReset(self):
         self.countOK = 0
         self.countNG = 0
@@ -146,10 +158,14 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.settingsFile.update("countOK", 0)
         self.settingsFile.update("countNG", 0)
 
+        self.settingsFile.update("countTotal", 0)
+    
+    # รีสตาร์ทโปรแกรม
     def restart(self):
         """รีสตาร์ทโปรแกรม"""
         QApplication.quit()
 
+    # จัดการการปิดเครื่อง
     def shutdownHandler(self, shutdown=True):
         if shutdown and self.os_name == "Linux":
             print("*** Shutting down")
@@ -158,6 +174,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         elif not shutdown:
             self.switchToPage(self.currentPage)
 
+    # ปิดโปรแกรม
     def closeEvent(self, event):
         self.cameraView.close()
         self.showDateTime.stop()

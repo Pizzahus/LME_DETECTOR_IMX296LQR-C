@@ -120,6 +120,10 @@ pip install black
     "black-formatter.args": ["--config", "pyproject.toml"]
 ```
 
+## Raspberry pi 5 pinout
+
+![Raspberry Pi 5 Pinout](assets/raspberry_pi_5_pinout.png)
+
 ---
 
 ## 📝 หมายเหตุ

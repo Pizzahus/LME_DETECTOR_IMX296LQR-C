@@ -4,7 +4,7 @@ import numpy
 import pytesseract
 
 from picamera2 import Picamera2
-from gpiozero import Button
+from gpiozero import Button, LED
 from PySide6.QtWidgets import QLabel
 from PySide6.QtGui import QImage, QPixmap
 from PySide6.QtCore import QThread, Slot, Signal
@@ -23,13 +23,14 @@ pytesseract.pytesseract.tesseract_cmd = r"/usr/bin/tesseract"
 # แสดงภาพจากกล้อง
 class CameraView(QThread):
     updateImage = Signal(QPixmap)
-    updateSettingValue = Signal(QLabel, int, int, int, int)
+    updateDetectImage = Signal(QPixmap)
 
-    def __init__(self, monitor: QLabel, camera: Picamera2, sensorPin: int):
+    def __init__(self, monitor: QLabel, camera: Picamera2, sensorPin: int, flashLightPin: int):
         super().__init__()
         self.monitor = monitor
         self.camera = camera
         self.sensor = Button(sensorPin, pull_up=True, bounce_time=0.05)  # ตั้งค่า bounce_time = 0.1 วินาที
+        self.flashLight = LED(flashLightPin, active_high=True)  # ตั้งค่า LED ให้ทำงานแบบ active low
         self.isLiveView = True
         self.is_triggered = False
 
@@ -37,11 +38,13 @@ class CameraView(QThread):
         self.camera.configure(config)
         self.camera.start()
         # ตั้งค่า Exposure
-        self.camera.set_controls({"AeEnable": False, "ExposureTime": 5000, "AnalogueGain": 8.0})  # ปิด Auto Exposure
+        self.camera.set_controls({"AeEnable": False, "ExposureTime": 500, "AnalogueGain": 8.0})  # ปิด Auto Exposure
 
         # อัพเดท monitor
         self.updateImage.connect(self._update_pixmap)
+        self.updateDetectImage.connect(self._update_detect_pixmap)
 
+    # แปลงค่าเป็นเปอร์เซ็นต์
     def _mapValue(self, value, min=0, max=255):
         return f"{(((value-min) / (max-min)) * 100):.2f} %"
 
@@ -49,13 +52,19 @@ class CameraView(QThread):
     def _update_pixmap(self, pixmap):
         self.monitor.setPixmap(pixmap)
 
+    @Slot(QPixmap)  # อัพเดท detect monitor
+    def _update_detect_pixmap(self, pixmap):
+        self.monitor.setPixmap(pixmap)
+
+    # ตั้งค่าให้แสดงภาพสด
     def liveView(self, value: bool):
         self.isLiveView = value
 
+    # ตั้งค่าให้แสดงภาพที่จับได้
     def _detect_and_recognize_text(self, image):
         start_time = time()
 
-        # ใช้ EasyOCR อ่านข้อความ
+        # ใช้ ญytesseract อ่านข้อความ
         config = r"--oem 1 --psm 6 -c tessedit_char_whitelist=0123456789/"
         text = pytesseract.image_to_string(image, config=config)
         results = text.split("\n")
@@ -70,16 +79,14 @@ class CameraView(QThread):
         # พิมพ์ข้อความที่อ่านได้
         now = datetime.now()
         timestamp = now.strftime("%d/%m/%Y, %H:%M:%S")
-        print("(Camera detected a message with EasyOCR)=> ")
+        print("(Camera detected a message)=> ")
         print(f"Processing in: {processing_time:.2f}ms")
         print("Timestamp: ", timestamp)
         print("Results: ", text, "\n")
         return (timestamp, processing_time, text)
 
+    # ฟังก์ชันจับภาพ
     def captured(self, isDetect=False):
-        text = None
-        image = None
-
         frame = self.camera.capture_array()
         cv2.rectangle(frame, (X1, Y1), (X2, Y2), (255, 0, 0), 2)
         frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
@@ -104,6 +111,14 @@ class CameraView(QThread):
             timestamp, processing_time, text = self._detect_and_recognize_text(inverted_image)
             return timestamp, processing_time, text, inverted_image
 
+    # ฟังก์ชันจับภาพและบันทึกลงไฟล์
+    def saveCapturedImage(self, image, filename):
+        # บันทึกภาพที่จับได้ลงในโฟลเดอร์ที่กำหนด
+        filepath = os.path.join(capture_dir, filename)
+        cv2.imwrite(filepath, image)
+        print(f"Image saved: {filepath}")
+
+    # เริ่มการทำงานของกล้อง   
     def run(self):
         self.thead_running = True
         try:
