@@ -17,10 +17,10 @@ class ShowDateTime:
             curr_time = now.strftime("%H:%M:%S")
             self.date_bar.setText(curr_date)
             self.time_bar.setText(curr_time)
-        finally:
+        except Exception as err:
+            print("Error updating time/date:", err)
             self.timer.timeout.disconnect()
-            self.timer.stop()
-            print("Camera resources released.")
+            self.timer.stop
 
     def show(self):
         self.timer = QTimer()

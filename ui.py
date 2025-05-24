@@ -65,6 +65,8 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.camera_setting_1.clicked.connect(lambda: self.switchToPage(self.camera_setting_page, self.camera_setting_monitor))
         self.camera_setting_2.clicked.connect(lambda: self.switchToPage(self.camera_setting_page, self.camera_setting_monitor))
 
+        self.capture_set.clicked.connect(self.setTemplateLme)
+
         self.shutdown_1.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.shutdown_page))
         self.shutdown_2.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.shutdown_page))
 
@@ -83,6 +85,44 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         page_name = page.objectName()
         if monitor:
             self.cameraView.monitor = monitor
+
+    # ตั้งค่า lot, mfg, exp
+    def setTemplateLme(self):
+        timestamp, processing_time, lme, image = self.cameraView.captured(isDetect=True)
+        height, width, channel = image.shape
+        bytes_per_line = channel * width
+
+        # Add processing time text to the image
+        text = f"{timestamp:s} {processing_time:.2f}ms"
+        font = cv2.FONT_HERSHEY_TRIPLEX
+        font_scale = 0.5
+        font_color = (0, 0, 255)  # BGR
+        thickness = 1
+        text_size = cv2.getTextSize(text, font, font_scale, thickness)[0]
+        text_x = int((width - text_size[0]) / 2)  # center
+        text_y = height - 5  # 5 pixels from the bottom
+        cv2.putText(
+            image,
+            text,
+            (text_x, text_y),
+            font,
+            font_scale,
+            font_color,
+            thickness,
+        )
+
+        q_image = QImage(
+            image.data,
+            width,
+            height,
+            bytes_per_line,
+            QImage.Format.Format_BGR888,
+        )
+        self.webcam_setting_view.setPixmap(QPixmap.fromImage(q_image))
+
+        lmf_label: list[QLabel] = [self.lot_set, self.mfg_set, self.exp_set]
+        for i, w in enumerate(lme if lme else ['', '', '']):
+            lmf_label[i].setText(w if w else "XXXXXX")
 
     def startDetection(self):
         isRunning = self.start.isChecked()
@@ -119,6 +159,6 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
             self.switchToPage(self.currentPage)
 
     def closeEvent(self, event):
-        self.cameraView.stop_thead()
+        self.cameraView.close()
         self.showDateTime.stop()
         super().closeEvent(event)
