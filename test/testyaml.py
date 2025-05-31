@@ -1,4 +1,4 @@
-from src.ConfigManager import ConfigManager
+from resources.ConfigManager import ConfigManager
 
 # สร้าง instance ของ ConfigManager
 config = ConfigManager()

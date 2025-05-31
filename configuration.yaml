@@ -2,13 +2,10 @@ sofware:
   name: ระบบตรวจสอบการพิมพ์
   version: 1.0
   debug: false
-
 template:
-  lme:
-    lot: LOT20230001
-    mfg: "20230115"
-    exp: "20240115"
-
+  lot: '50756'
+  mfg: 19/05/25
+  exp: 19/05/27
 hardware:
   camera:
     zoom: 100
@@ -23,12 +20,11 @@ hardware:
     sensorPin: 23
     buzzerPin: 12
     flashLightPin: 24
-  crop:
-    x1: 230
-    x2: 180
-    y1: 420
-    y2: 290
-
+  rectangle:
+    x1: 330
+    x2: 725
+    y1: 298
+    y2: 524
 counters:
-  ok: 0
-  ng: 0
+  ok: 18
+  ng: 18

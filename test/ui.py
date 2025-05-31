@@ -1,7 +1,6 @@
 import os
 import cv2
 from picamera2 import Picamera2
-import numpy
 
 from src.ui_DETECTOR_10inch import Ui_MainWindow
 from PySide6.QtWidgets import (
@@ -56,29 +55,22 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.show_sidebar.setHidden(True)
         self.currentPage = self.process_page
         self.stackedWidget.setCurrentWidget(self.currentPage)
-        self._addEventListener()
+        self.addEventListener()
 
         self.config = ConfigManager()
-
-        # โหลด counter
         counter = self.config.get_count()
         self.countOK = counter.ok
         self.countNG = counter.ng
-        self.countTotal = counter.ok + counter.ng
-        self.count_ok.setText(f"{self.countOK:,}")
-        self.count_ng.setText(f"{self.countNG:,}")
-        self.count_total.setText(f"{(self.countTotal):,}")
 
-        # โหลด rectangle
-        _rectangle = self.config.get_rectangle()
         self.rectangle = Rectangle(self.webcam_setting_monitor)
-        self.rectangle.set_rectangle_from_image_coords(_rectangle)
+        self.rectangle.set_rectangle_from_image_coords(880, 385, 1200, 600)
         self.rectangle.show()  # ต้องเรียก show() เพื่อแสดงวิดเจ็ต
         self.webcam_setting_monitor.installEventFilter(self.rectangle)
         self.rectangle.rect_drawn.connect(self.setRectangle)
 
+        rectangle_settings = RectangleSettings(X1=880, Y1=385, X2=1200, Y2=600)
         picam2 = Picamera2()
-        self.cameraView = CameraView(monitor=self.webcam_monitor, camera=picam2, rectangle=_rectangle, sensorPin=23, flashLightPin=24)
+        self.cameraView = CameraView(monitor=self.webcam_monitor, camera=picam2, rectangle=rectangle_settings, sensorPin=23, flashLightPin=24)
         self.cameraView.start()
 
         self.cameraView.updateDetectImage.connect(self._isDetect)
@@ -91,22 +83,21 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         # self.animator = AnimatedWidgetHelper(self)
 
     # เพิ่ม Event
-    def _addEventListener(self):
-        self.home_1.clicked.connect(lambda: self._switchToPage(self.detection_page, self.webcam_monitor))
-        self.home_2.clicked.connect(lambda: self._switchToPage(self.detection_page, self.webcam_monitor))
-        self.setting_1.clicked.connect(lambda: self._switchToPage(self.lme_settings_page, self.webcam_setting_monitor))
-        self.setting_2.clicked.connect(lambda: self._switchToPage(self.lme_settings_page, self.webcam_setting_monitor))
-        self.camera_setting_1.clicked.connect(lambda: self._switchToPage(self.camera_setting_page, self.camera_setting_monitor))
-        self.camera_setting_2.clicked.connect(lambda: self._switchToPage(self.camera_setting_page, self.camera_setting_monitor))
+    def addEventListener(self):
+        self.home_1.clicked.connect(lambda: self.switchToPage(self.detection_page, self.webcam_monitor))
+        self.home_2.clicked.connect(lambda: self.switchToPage(self.detection_page, self.webcam_monitor))
+        self.setting_1.clicked.connect(lambda: self.switchToPage(self.lme_settings_page, self.webcam_setting_monitor))
+        self.setting_2.clicked.connect(lambda: self.switchToPage(self.lme_settings_page, self.webcam_setting_monitor))
+        self.camera_setting_1.clicked.connect(lambda: self.switchToPage(self.camera_setting_page, self.camera_setting_monitor))
+        self.camera_setting_2.clicked.connect(lambda: self.switchToPage(self.camera_setting_page, self.camera_setting_monitor))
 
-        self.capture_set.clicked.connect(self.capTemplateLme)
-        self.save_set.clicked.connect(self.setTemplateLme)
+        self.capture_set.clicked.connect(self.setTemplateLme)
 
         self.shutdown_1.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.shutdown_page))
         self.shutdown_2.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.shutdown_page))
 
         self.start.clicked.connect(self.startDetection)
-        self.capture_test.clicked.connect(lambda: self._isDetect(True))
+        self.capture_test.clicked.connect(self.testDetection)
         self.restart_program_1.clicked.connect(self.restart)
         self.restart_program_2.clicked.connect(self.restart)
         self.cancel_shutdown.clicked.connect(lambda: self.shutdownHandler(False))
@@ -114,29 +105,20 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.count_reset.clicked.connect(self._countReset)
 
     # เปลี่ยนหน้าต่างแสดงผล
-    def _switchToPage(self, page: QWidget, monitor: QLabel = None):
+    def switchToPage(self, page: QWidget, monitor: QLabel = None):
         self.stackedWidget.setCurrentWidget(page)
         self.currentPage = page
         page_name = page.objectName()
+        print(page_name)
         if monitor:
             self.cameraView.monitor = monitor
-
+        
         if page_name == "detection_page":
             self.cameraView.isShowRect = True
-        elif page_name == "lme_settings_page":
-            template = self.config.get_template()
-            _lot = template.lot
-            _mfg = template.mfg
-            _exp = template.exp
-
-            self.lot_set.setText(_lot)
-            self.mfg_set.setText(_mfg)
-            self.exp_set.setText(_exp)
-            self.cameraView.isShowRect = False
         else:
             self.cameraView.isShowRect = False
 
-    @Slot(int, int, int, int)  # ตั้งค่า rectangle x1, y1, x2, y2
+    @Slot(int, int, int, int) # ตั้งค่า rectangle x1, y1, x2, y2
     def setRectangle(self, x1, y1, x2, y2):
         # สร้างออบเจ็กต์ RectangleSettings
         rect = RectangleSettings(X1=x1, Y1=y1, X2=x2, Y2=y2)
@@ -150,34 +132,30 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
         if width > 150 and height > 50:
             self.cameraView.rectangle = rect
-            self.config.update_rectangle(rect)
         else:
-            _X1 = self.cameraView.rectangle.X1
-            _Y1 = self.cameraView.rectangle.Y1
-            _X2 = self.cameraView.rectangle.X2
-            _Y2 = self.cameraView.rectangle.Y2
-            rect = RectangleSettings(X1=_X1, Y1=_Y1, X2=_X2, Y2=_Y2)
-            self.rectangle.set_rectangle_from_image_coords(rect)
+            X1 = self.cameraView.rectangle.X1
+            Y1 = self.cameraView.rectangle.Y1
+            X2 = self.cameraView.rectangle.X2
+            Y2 = self.cameraView.rectangle.Y2
+            self.rectangle.set_rectangle_from_image_coords(X1, Y1, X2, Y2)
 
-    # อ่าน lot, mfg, exp จากฉลาก
-    def capTemplateLme(self):
+    # ตั้งค่า lot, mfg, exp
+    def setTemplateLme(self):
         timestamp, processing_time, lme, image = self.cameraView.captured(isDetect=True)
-        frame = numpy.ascontiguousarray(image)  # This ensures C-contiguous memory layout
-
-        height, width, channel = frame.shape
+        height, width, channel = image.shape
         bytes_per_line = channel * width
 
         # Add processing time text to the image
         text = f"{timestamp:s} {processing_time:.2f}ms"
         font = cv2.FONT_HERSHEY_TRIPLEX
-        font_scale = (width / 250) * 0.4
+        font_scale = 0.5
         font_color = (0, 0, 255)  # BGR
         thickness = 1
         text_size = cv2.getTextSize(text, font, font_scale, thickness)[0]
         text_x = int((width - text_size[0]) / 2)  # center
         text_y = height - 5  # 5 pixels from the bottom
         cv2.putText(
-            frame,
+            image,
             text,
             (text_x, text_y),
             font,
@@ -187,7 +165,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         )
 
         q_image = QImage(
-            frame.data,
+            image.data,
             width,
             height,
             bytes_per_line,
@@ -202,28 +180,14 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         except Exception as err:
             pass
 
-    # บันทึกการตั้งค่า lot, mfg, exp และ rectangle
-    def setTemplateLme(self):
-        lot = self.lot_set.text()
-        lot = None if lot == "XXXXXX" else lot
-
-        mfg = self.mfg_set.text()
-        mfg = None if mfg == "XXXXXX" else mfg
-
-        exp = self.exp_set.text()
-        exp = None if exp == "XXXXXX" else exp
-
-        if lot and mfg and exp:
-            self.config.update_template(lot, mfg, exp)
-
     # เริ่มการตรวจจับ
     def startDetection(self):
         isRunning = self.start.isChecked()
         self.cameraView.liveView(not isRunning)
         self.setting_1.setHidden(isRunning)
         self.setting_2.setHidden(isRunning)
-        # self.camera_setting_1.setHidden(isRunning)
-        # self.camera_setting_2.setHidden(isRunning)
+        self.camera_setting_1.setHidden(isRunning)
+        self.camera_setting_2.setHidden(isRunning)
         self.capture_test.setHidden(isRunning)
 
         if isRunning:
@@ -234,23 +198,22 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
             self.detection_status.setText("กดปุ่ม START เพื่อเริ่มทำงาน")
 
     @Slot()  # อัพเดท detect monitor
-    def _isDetect(self, isTesting=False):
+    def _isDetect(self):
         timestamp, processing_time, lme, image = self.cameraView.captured(isDetect=True)
-        frame = numpy.ascontiguousarray(image)  # This ensures C-contiguous memory layout
-        height, width, channel = frame.shape
+        height, width, channel = image.shape
         bytes_per_line = channel * width
 
         # Add processing time text to the image
         text = f"{timestamp:s} {processing_time:.2f}ms"
         font = cv2.FONT_HERSHEY_TRIPLEX
-        font_scale = (width / 250) * 0.4
+        font_scale = (width / 250) * 0.2
         font_color = (0, 0, 255)  # BGR
         thickness = 1
         text_size = cv2.getTextSize(text, font, font_scale, thickness)[0]
         text_x = (width - text_size[0]) // 2
         text_y = height - 5  # 5 pixels from the bottom
         cv2.putText(
-            frame,
+            image,
             text,
             (text_x, text_y),
             font,
@@ -260,7 +223,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         )
 
         q_image = QImage(
-            frame.data,
+            image.data,
             width,
             height,
             bytes_per_line,
@@ -279,26 +242,24 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
             initial_style = self.detection_alert.styleSheet()
             if statusCheck:
-                if not isTesting:
-                    self.countOK += 1
-                    self.config.update_counter(ok=1)
-
+                self.countOK += 1
                 self.count_ok.setText(f"{self.countOK}")
                 self.detection_alert.setText("OK")
                 self.detection_alert.setStyleSheet(f"{initial_style} background-color: rgb(0, 170, 127);")
-                
+                self.config.update_counter(ok=1)
             else:
-                if not isTesting:
-                    self.countNG += 1
-                    self.config.update_counter(ng=1)
-                    
+                self.countNG += 1
                 self.count_ng.setText(f"{self.countNG}")
                 self.detection_alert.setText("NG")
                 self.detection_alert.setStyleSheet(f"{initial_style} background-color: rgb(255, 17, 17);")
+                self.config.update_counter(ng=1)
                 self.flashLight.blink(0.1, 0.1, 5, True)
-
         except Exception as err:
             pass
+
+    # ทดสอบการตรวจจับ
+    def testDetection(self):
+        self.cameraView.captured(True)
 
     # รีเซ็ต counter
     def _countReset(self):
@@ -308,7 +269,10 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.count_ok.setText(str(self.countOK))
         self.count_ng.setText(str(self.countNG))
         self.count_total.setText(str(self.countTotal))
-        self.config.reset_counters()
+        self.settingsFile.update("countOK", 0)
+        self.settingsFile.update("countNG", 0)
+
+        self.settingsFile.update("countTotal", 0)
 
     # รีสตาร์ทโปรแกรม
     def restart(self):
@@ -322,7 +286,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
             sleep(1)
             os.system("sudo poweroff")
         elif not shutdown:
-            self._switchToPage(self.currentPage)
+            self.switchToPage(self.currentPage)
 
     # ปิดโปรแกรม
     def closeEvent(self, event):
