@@ -2,8 +2,9 @@ import os
 import cv2
 from picamera2 import Picamera2
 import numpy
+import numpy as np
 
-from src.ui_DETECTOR_10inch import Ui_MainWindow
+from src.ui_DETECTOR_7inch import Ui_MainWindow
 from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -18,7 +19,6 @@ from time import sleep
 
 from resources.ConfigManager import ConfigManager
 from resources.Rectangle import Rectangle
-from resources.WiFi import WiFi
 from resources.Keyboard import Keyboard
 from resources.Camera import CameraView, RectangleSettings
 from resources.Datetime import ShowDateTime
@@ -33,14 +33,20 @@ SAVE_IMAGES_DIR = os.path.join(BASE_DIR, "captured_images")  # โฟล์เ�
 os.makedirs(SAVE_IMAGES_DIR, exist_ok=True)
 GIF_FILE = os.path.join(BASE_DIR, "gui", "assets", "gif", "connecting.gif")
 
+def cvimg_to_qpixmap(cv_img: np.ndarray) -> QPixmap:
+    """แปลงภาพ OpenCV -> QPixmap"""
+    if cv_img.ndim == 2:
+        h, w = cv_img.shape
+        qimg = QImage(cv_img.data, w, h, w, QImage.Format.Format_Grayscale8)
+    else:
+        h, w, ch = cv_img.shape
+        rgb = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
+        qimg = QImage(rgb.data, w, h, ch * w, QImage.Format.Format_RGB888)
+    return QPixmap.fromImage(qimg)
 
 class LMEDetect(QMainWindow, Ui_MainWindow):
     def __init__(self, os_name="Windows"):
         """
-        token = google.auth.token
-        credentials = google.oauth2.credentials.Credentials
-        settings = ไฟล์ตั้งค่าโปรแกรม **/files/settings.json
-        balancePort = พอร์ต RS232 ** Windows("COM6"), Linux("/dev/ttyUSB0")
         """
         super().__init__()
         self.setupUi(self)
@@ -83,12 +89,10 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
         self.cameraView.updateDetectImage.connect(self._isDetect)
         self.detectionAlert = Alert(self.detection_alert)
-        self.flashLight = LED(24, active_high=True)  # ตั้งค่า LED ให้ทำงานแบบ active low
 
-        self.camera_setting_1.setHidden(True)
-        self.camera_setting_2.setHidden(True)
+        # self.camera_setting_1.setHidden(True)
+        # self.camera_setting_2.setHidden(True)
 
-        # self.animator = AnimatedWidgetHelper(self)
 
     # เพิ่ม Event
     def _addEventListener(self):
@@ -161,7 +165,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
     # อ่าน lot, mfg, exp จากฉลาก
     def capTemplateLme(self):
-        timestamp, processing_time, lme, image = self.cameraView.captured(isDetect=True)
+        timestamp, processing_time, lme, image, process_img = self.cameraView.captured(isDetect=True)
         frame = numpy.ascontiguousarray(image)  # This ensures C-contiguous memory layout
 
         height, width, channel = frame.shape
@@ -222,8 +226,8 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.cameraView.liveView(not isRunning)
         self.setting_1.setHidden(isRunning)
         self.setting_2.setHidden(isRunning)
-        # self.camera_setting_1.setHidden(isRunning)
-        # self.camera_setting_2.setHidden(isRunning)
+        self.camera_setting_1.setHidden(isRunning)
+        self.camera_setting_2.setHidden(isRunning)
         self.capture_test.setHidden(isRunning)
 
         if isRunning:
@@ -235,7 +239,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
     @Slot()  # อัพเดท detect monitor
     def _isDetect(self, isTesting=False):
-        timestamp, processing_time, lme, image = self.cameraView.captured(isDetect=True)
+        timestamp, processing_time, lme, image, process_img = self.cameraView.captured(isDetect=True)
         frame = numpy.ascontiguousarray(image)  # This ensures C-contiguous memory layout
         height, width, channel = frame.shape
         bytes_per_line = channel * width
@@ -259,17 +263,22 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
             thickness,
         )
 
-        q_image = QImage(
-            frame.data,
-            width,
-            height,
-            bytes_per_line,
-            QImage.Format.Format_BGR888,
-        )
-        self.detection_view.setPixmap(QPixmap.fromImage(q_image))
+        # q_image = QImage(
+        #     frame.data,
+        #     width,
+        #     height,
+        #     bytes_per_line,
+        #     QImage.Format.Format_BGR888,
+        # )
+        # ------------------------
+        # แสดงผล
+        # ------------------------
+        pix = cvimg_to_qpixmap(frame)
+        self.detection_view.setPixmap(pix)
         try:
             statusCheck = True
-            _lme = ("50756", "19/05/25", "19/05/27")
+            _temp = self.config.get_template()
+            _lme = [_temp.lot, _temp.mfg, _temp.exp]
             lmf_label: list[QLabel] = [self.lot_detected, self.mfg_detected, self.exp_detected]
             for i, w in enumerate(lme if lme else ['', '', '']):
                 lmf_label[i].setText(w if w else "XXXXXX")

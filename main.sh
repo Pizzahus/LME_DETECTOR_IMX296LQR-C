@@ -11,7 +11,7 @@ do
 
     echo -e "\n"
     
-    cd /home/polipharm/Desktop/LME_DETECT || exit
+    cd /home/polipharm/Desktop/LME_DETECTOR_IMX296LQR-C || exit
     source detection_venv/bin/activate
     python3 ./main.py
 done

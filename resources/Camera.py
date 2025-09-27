@@ -41,9 +41,9 @@ class CameraView(QThread):
         self.isShowRect = False
         self.showFps = showFps
 
-        # config = self.camera.create_still_configuration(main={"size": (1024, 768)}, buffer_count=4, queue=False)
-        config = self.camera.create_still_configuration(main={"size": (1024, 768)}, buffer_count=4, queue=False)
+        config = self.camera.create_still_configuration(main={"size": (1024, 768)}, buffer_count=2, queue=False)
         self.camera.configure(config)
+
         self.camera.start()
 
         # วัดแสงก่อนถ่ายภาพจริง (Optional)
@@ -53,11 +53,11 @@ class CameraView(QThread):
         # ปิด Auto Exposure และตั้งค่า ExposureTime, AnalogueGain คงที่
         controls = {
             # พารามิเตอร์พื้นฐาน
-            "AeEnable": False,
-            "ExposureTime": 500,
-            "AnalogueGain": 1.4,
+            "AeEnable": True,
+            "ExposureTime": 50000,
+            "AnalogueGain": 2,
             "AwbEnable": False,
-            "Brightness": 0.1,
+            "Brightness": 0.2,
             # "Contrast": 1.8,
             # "Saturation": 1.2,
             # พารามิเตอร์เพิ่มประสิทธิภาพ
@@ -93,21 +93,22 @@ class CameraView(QThread):
     def _detect_and_recognize_text(self, image):
         start_time = time()
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        gray = cv2.GaussianBlur(gray, (5, 5), 0)
         gray = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
 
         # ใช้ Pytesseract อ่านข้อความ OCR พร้อมตำแหน่ง
-        config = r"--oem 1 --psm 6 -c tessedit_char_whitelist=0123456789/ tessedit_char_blacklist=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        data = pytesseract.image_to_data(gray, lang="arial", config=config, output_type=pytesseract.Output.DICT)
+        config = (
+            r"--oem 1 --psm 6 "
+            r"-c tessedit_char_whitelist=0123456789/ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        )
+        data = pytesseract.image_to_data(gray, lang="label", config=config, output_type=pytesseract.Output.DICT)
+
+        results = []
+        for i, text in enumerate(data["text"]):
+            if int(data["conf"][i]) > 90:  # กรองความมั่นใจ > 70%
+                results.append(text)
 
         # วาดกรอบรอบข้อความ
-        # for i in range(len(data["text"])):
-        #     text = data["text"][i]
-        #     if text.strip():  # ข้ามข้อความว่าง
-        #         x, y, w, h = data["left"][i], data["top"][i], data["width"][i], data["height"][i]
-        #         cv2.rectangle(image, (x, y), (x + w, y + h), rectColor, 1)
-        #         cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.4, rectColor, 1)
-
-                # วาดกรอบรอบข้อความ
         for i in range(len(data["text"])):
             text = data["text"][i]
             if text.strip():  # ข้ามข้อความว่าง
@@ -155,11 +156,12 @@ class CameraView(QThread):
         print(f"Lot No.: {lot_no}")  # ผลลัพธ์: 50756
         print(f"Mfg. date: {mfg_date}")  # ผลลัพธ์: 19/05/25
         print(f"Exp. date: {exp_date}", "\n")  # ผลลัพธ์: 19/05/27
-        return (timestamp, processing_time, lme)
+        return (gray, timestamp, processing_time, lme)
 
     # ฟังก์ชันจับภาพ
     def captured(self, isDetect=False):
         X1 = self.rectangle.X1
+        
         Y1 = self.rectangle.Y1
         X2 = self.rectangle.X2
         Y2 = self.rectangle.Y2
@@ -191,10 +193,13 @@ class CameraView(QThread):
         # Detect and recognize text
         if isDetect:
             timestamp = datetime.now().strftime("%d%m%y_%H%M%S")
-            image_filename = f"captured_images/cap_.png"
-            cv2.imwrite(image_filename, cropped_frame)
-            timestamp, processing_time, text = self._detect_and_recognize_text(cropped_frame)
-            return timestamp, processing_time, text, cropped_frame
+            image_filenameOriginal = f"captured_images/original/cap_{timestamp}.png"
+            image_filenameProcess = f"captured_images/process/cap_{timestamp}.png"
+            gray, timestamp, processing_time, text = self._detect_and_recognize_text(cropped_frame)
+            # cv2.imwrite(image_filenameOriginal, gray)
+            # cv2.imwrite(image_filenameProcess, gray)
+            process_frame = gray
+            return timestamp, processing_time, text, cropped_frame, process_frame
         else:
             return cropped_frame
 
@@ -224,13 +229,11 @@ class CameraView(QThread):
                             print(f"FPS: {fps:.2f}")
                 elif self.sensor.is_pressed and not self.is_triggered:
                     self.is_triggered = True
-                    # QThread.msleep(100)
-                    # sleep(0.2)
                     self.updateDetectImage.emit()
                 elif not self.sensor.is_pressed:  # ตรวจสอบสถานะปุ่มแบบ polling
                     self.is_triggered = False
 
-                QThread.msleep(10)
+                QThread.msleep(0.05)
         except Exception as err:
             if hasattr(self, "picam2"):
                 self.camera.close()  # หากใช้ PiCamera ควรปิดการเชื่อมต่อด้วย

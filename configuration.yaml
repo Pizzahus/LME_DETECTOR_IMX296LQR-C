@@ -3,9 +3,9 @@ sofware:
   version: 1.0
   debug: false
 template:
-  lot: '50756'
-  mfg: 19/05/25
-  exp: 19/05/27
+  lot: '12356'
+  mfg: 01/05/25
+  exp: 01/05/27
 hardware:
   camera:
     zoom: 100
@@ -21,10 +21,10 @@ hardware:
     buzzerPin: 12
     flashLightPin: 24
   rectangle:
-    x1: 330
-    x2: 725
-    y1: 298
-    y2: 524
+    x1: 266
+    x2: 585
+    y1: 185
+    y2: 380
 counters:
-  ok: 18
-  ng: 18
+  ok: 0
+  ng: 0

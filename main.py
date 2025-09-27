@@ -24,15 +24,15 @@ def main():
 
     # สร้างหน้าต่างหลัก
     window = LMEDetect(OS_NAME)
-    # window.resize(1024, 600)
-    window.resize(1280, 800)
+    window.resize(1024, 600)
+    # window.resize(1280, 800)
     window.move(0, 0)
     window.setWindowTitle("ระบบตรวจสอบการพิมพ์ LOT,MFG,EXP")
-    # window.setWindowFlags(
-    #     Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowTitleHint | Qt.WindowType.WindowStaysOnTopHint
-    # )
-    # window.setGeometry(second_screen.availableGeometry())  # ให้หน้าต่างเต็มจอ
-    # window.showFullScreen()
+    window.setWindowFlags(
+        Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowTitleHint | Qt.WindowType.WindowStaysOnTopHint
+    )
+    window.setGeometry(second_screen.availableGeometry())  # ให้หน้าต่างเต็มจอ
+    window.showFullScreen()
     window.show()
     sys.exit(app.exec())
 
