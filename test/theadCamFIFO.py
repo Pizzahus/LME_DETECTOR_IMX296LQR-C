@@ -2,6 +2,7 @@ import sys
 import cv2
 import pytesseract
 import time
+import queue
 from PySide6.QtWidgets import (
     QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout,
     QTextEdit, QSizePolicy
@@ -11,31 +12,44 @@ from PySide6.QtGui import QImage, QPixmap
 from picamera2 import Picamera2
 
 
-# ===== Worker Thread OCR =====
+# ===== Worker OCR (Queue-based) =====
 class OcrWorker(QThread):
     finished = Signal(str, float)  # ส่งผลลัพธ์ + เวลา
 
-    def __init__(self, frame):
+    def __init__(self, task_queue):
         super().__init__()
-        self.frame = frame
+        self.task_queue = task_queue
+        self.running = True
 
     def run(self):
-        start = time.perf_counter()
-        gray = cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY)
-        text = pytesseract.image_to_string(gray, lang="label")
-        elapsed = time.perf_counter() - start
-        self.finished.emit(text, elapsed)
+        while self.running:
+            try:
+                # รอ frame จากคิว
+                frame = self.task_queue.get(timeout=0.1)
+            except queue.Empty:
+                continue
+
+            start = time.perf_counter()
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            text = pytesseract.image_to_string(gray, lang="label")
+            elapsed = time.perf_counter() - start
+
+            self.finished.emit(text, elapsed)
+            self.task_queue.task_done()
+
+    def stop(self):
+        self.running = False
+        self.wait()
 
 
 # ===== Main GUI =====
 class CameraApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("OCR Camera (PySide6 + Picamera2)")
+        self.setWindowTitle("OCR Camera (Queue + Worker)")
         self.resize(1200, 700)
 
         # ===== UI Components =====
-        # ซ้าย (กล้อง + ปุ่ม)
         self.label = QLabel("Camera preview")
         self.label.setAlignment(Qt.AlignCenter)
         self.label.setScaledContents(True)
@@ -47,16 +61,13 @@ class CameraApp(QWidget):
         left_layout.addWidget(self.label, stretch=3)
         left_layout.addWidget(self.btn_capture, stretch=0)
 
-        # ขวา (OCR Result)
         self.text_output = QTextEdit()
         self.text_output.setPlaceholderText("ผลลัพธ์ OCR จะแสดงที่นี่...")
         self.text_output.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
-        # Layout หลัก (แนวนอน)
         main_layout = QHBoxLayout()
         main_layout.addLayout(left_layout, stretch=3)
         main_layout.addWidget(self.text_output, stretch=2)
-
         self.setLayout(main_layout)
 
         # ===== Camera setup =====
@@ -74,8 +85,12 @@ class CameraApp(QWidget):
         # Button action
         self.btn_capture.clicked.connect(self.capture_image)
 
-        # เก็บ threads ป้องกันถูกเก็บทิ้ง
-        self.threads = []
+        # ===== Queue OCR =====
+        self.task_queue = queue.Queue()
+        self.worker = OcrWorker(self.task_queue)
+        self.worker.finished.connect(self.show_ocr_result)
+        self.worker.start()
+
         self.current_frame = None
         self.ocr_count = 0
 
@@ -101,16 +116,17 @@ class CameraApp(QWidget):
         if self.current_frame is None:
             return
         frame_bgr = cv2.cvtColor(self.current_frame, cv2.COLOR_RGB2BGR)
-        worker = OcrWorker(frame_bgr)
-        worker.finished.connect(self.show_ocr_result)
-        worker.start()
-        self.threads.append(worker)
+        self.task_queue.put(frame_bgr)  # ใส่งานเข้า Queue
 
     def show_ocr_result(self, text, elapsed):
         self.ocr_count += 1
         self.text_output.append(
             f"[{self.ocr_count}] ใช้เวลา {elapsed:.2f} วินาที\n{text.strip()}\n"
         )
+
+    def closeEvent(self, event):
+        self.worker.stop()
+        event.accept()
 
 
 if __name__ == "__main__":
