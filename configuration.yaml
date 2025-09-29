@@ -26,5 +26,5 @@ hardware:
     y1: 135
     y2: 330
 counters:
-  ok: 2
+  ok: 0
   ng: 0
