@@ -1,4 +1,6 @@
 import os
+import subprocess
+import sys
 import cv2
 from picamera2 import Picamera2
 import numpy
@@ -74,6 +76,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.count_ok.setText(f"{self.countOK:,}")
         self.count_ng.setText(f"{self.countNG:,}")
         self.count_total.setText(f"{(self.countTotal):,}")
+        self.buzzer = LED(19)
 
         # โหลด rectangle
         _rectangle = self.config.get_rectangle()
@@ -84,7 +87,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.rectangle.rect_drawn.connect(self.setRectangle)
 
         picam2 = Picamera2()
-        self.cameraView = CameraView(monitor=self.webcam_monitor, camera=picam2, rectangle=_rectangle, sensorPin=23, flashLightPin=24)
+        self.cameraView = CameraView(monitor=self.webcam_monitor, camera=picam2, rectangle=_rectangle, sensorPin=22, flashLightPin=24)
         self.cameraView.start()
 
         self.cameraView.updateDetectImage.connect(self._isDetect)
@@ -287,24 +290,28 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
                     # widget.setStyleSheet("color: rgb(255, 0, 0)")
 
             initial_style = self.detection_alert.styleSheet()
+
             if statusCheck:
                 if not isTesting:
                     self.countOK += 1
                     self.config.update_counter(ok=1)
 
-                self.count_ok.setText(f"{self.countOK}")
+                self.count_ok.setText(f"{self.countOK:,}")
                 self.detection_alert.setText("OK")
                 self.detection_alert.setStyleSheet(f"{initial_style} background-color: rgb(0, 170, 127);")
+                self.buzzer.blink(0.1, 0.1, 1, True)
                 
             else:
                 if not isTesting:
                     self.countNG += 1
                     self.config.update_counter(ng=1)
                     
-                self.count_ng.setText(f"{self.countNG}")
+                self.count_ng.setText(f"{self.countNG:,}")
                 self.detection_alert.setText("NG")
                 self.detection_alert.setStyleSheet(f"{initial_style} background-color: rgb(255, 17, 17);")
-                self.flashLight.blink(0.1, 0.1, 5, True)
+                self.buzzer.blink(0.1, 0.1, 5, True)
+
+            self.count_total.setText(f"{self.countOK + self.countNG:,}")
 
         except Exception as err:
             pass
@@ -323,7 +330,12 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
     def restart(self):
         """รีสตาร์ทโปรแกรม"""
         QApplication.quit()
-
+        python = sys.executable
+        script = sys.argv[0]  # main.py
+        # เปิดโปรแกรมใหม่เป็น process ใหม่
+        subprocess.Popen([python, script])
+        # ปิดโปรแกรมเก่า
+        
     # จัดการการปิดเครื่อง
     def shutdownHandler(self, shutdown=True):
         if shutdown and self.os_name == "Linux":

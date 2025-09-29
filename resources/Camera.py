@@ -227,10 +227,10 @@ class CameraView(QThread):
                             # คำนวณ FPS จากเฟรมล่าสุด
                             fps = len(frame_times) / (frame_times[-1] - frame_times[0])
                             print(f"FPS: {fps:.2f}")
-                elif self.sensor.is_pressed and not self.is_triggered:
+                elif not self.sensor.is_pressed and not self.is_triggered:
                     self.is_triggered = True
                     self.updateDetectImage.emit()
-                elif not self.sensor.is_pressed:  # ตรวจสอบสถานะปุ่มแบบ polling
+                elif self.sensor.is_pressed:  # ตรวจสอบสถานะปุ่มแบบ polling
                     self.is_triggered = False
 
                 QThread.msleep(0.05)

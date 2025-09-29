@@ -21,10 +21,10 @@ hardware:
     buzzerPin: 12
     flashLightPin: 24
   rectangle:
-    x1: 266
-    x2: 585
-    y1: 185
-    y2: 380
+    x1: 310
+    x2: 847
+    y1: 135
+    y2: 330
 counters:
-  ok: 0
+  ok: 2
   ng: 0

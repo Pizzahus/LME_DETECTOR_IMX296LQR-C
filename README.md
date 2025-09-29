@@ -46,11 +46,10 @@ detection_venv\Scripts\activate
 ### Linux
 ```bash
 cd polipharm
-python3 -m venv detection_venv
-source detection_venv/bin/activate
-pip3 install gpiozero
 # หรือใช้ venv พร้อม system-site-packages
 python3 -m venv --system-site-packages detection_venv
+source detection_venv/bin/activate
+pip3 install gpiozero
 ```
 
 ### ติดตั้งฟอนต์ Kanit (สำหรับ Linux)

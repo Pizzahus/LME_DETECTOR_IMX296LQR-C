@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=LME Detector
+Comment=LOT, MFG, EXP Detection
+Exec=sh -c '/home/polipharm/LME_DETECTOR_IMX296LQR-C/main.sh; sleep infinity'
+Icon=/home/polipharm/LME_DETECTOR_IMX296LQR-C/sys/polipharm.ico
+Terminal=false
+Type=Application
+Categories=Utility;
