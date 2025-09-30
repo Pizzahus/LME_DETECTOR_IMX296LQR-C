@@ -3,7 +3,6 @@ import subprocess
 import sys
 import cv2
 from picamera2 import Picamera2
-import numpy
 import numpy as np
 
 from src.ui_DETECTOR_7inch import Ui_MainWindow
@@ -90,12 +89,10 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.cameraView = CameraView(monitor=self.webcam_monitor, camera=picam2, rectangle=_rectangle, sensorPin=22, flashLightPin=24)
         self.cameraView.start()
 
-        self.cameraView.updateDetectImage.connect(self._isDetect)
         self.detectionAlert = Alert(self.detection_alert)
 
         # self.camera_setting_1.setHidden(True)
         # self.camera_setting_2.setHidden(True)
-
 
     # เพิ่ม Event
     def _addEventListener(self):
@@ -113,7 +110,6 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.shutdown_2.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.shutdown_page))
 
         self.start.clicked.connect(self.startDetection)
-        self.capture_test.clicked.connect(lambda: self._isDetect(True))
         self.restart_program_1.clicked.connect(self.restart)
         self.restart_program_2.clicked.connect(self.restart)
         self.cancel_shutdown.clicked.connect(lambda: self.shutdownHandler(False))
@@ -169,7 +165,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
     # อ่าน lot, mfg, exp จากฉลาก
     def capTemplateLme(self):
         timestamp, processing_time, lme, image, process_img = self.cameraView.captured(isDetect=True)
-        frame = numpy.ascontiguousarray(image)  # This ensures C-contiguous memory layout
+        frame = np.ascontiguousarray(image)  # This ensures C-contiguous memory layout
 
         height, width, channel = frame.shape
         bytes_per_line = channel * width
@@ -239,82 +235,6 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         else:
             self.start.setText("START")
             self.detection_status.setText("กดปุ่ม START เพื่อเริ่มทำงาน")
-
-    @Slot()  # อัพเดท detect monitor
-    def _isDetect(self, isTesting=False):
-        timestamp, processing_time, lme, image, process_img = self.cameraView.captured(isDetect=True)
-        frame = numpy.ascontiguousarray(image)  # This ensures C-contiguous memory layout
-        height, width, channel = frame.shape
-        bytes_per_line = channel * width
-
-        # Add processing time text to the image
-        text = f"{timestamp:s} {processing_time:.2f}ms"
-        font = cv2.FONT_HERSHEY_TRIPLEX
-        font_scale = (width / 250) * 0.4
-        font_color = (0, 0, 255)  # BGR
-        thickness = 1
-        text_size = cv2.getTextSize(text, font, font_scale, thickness)[0]
-        text_x = (width - text_size[0]) // 2
-        text_y = height - 5  # 5 pixels from the bottom
-        cv2.putText(
-            frame,
-            text,
-            (text_x, text_y),
-            font,
-            font_scale,
-            font_color,
-            thickness,
-        )
-
-        # q_image = QImage(
-        #     frame.data,
-        #     width,
-        #     height,
-        #     bytes_per_line,
-        #     QImage.Format.Format_BGR888,
-        # )
-        # ------------------------
-        # แสดงผล
-        # ------------------------
-        pix = cvimg_to_qpixmap(frame)
-        self.detection_view.setPixmap(pix)
-        try:
-            statusCheck = True
-            _temp = self.config.get_template()
-            _lme = [_temp.lot, _temp.mfg, _temp.exp]
-            lmf_label: list[QLabel] = [self.lot_detected, self.mfg_detected, self.exp_detected]
-            for i, w in enumerate(lme if lme else ['', '', '']):
-                lmf_label[i].setText(w if w else "XXXXXX")
-                if _lme[i] != w:
-                    statusCheck = False
-                    # widget.setStyleSheet("color: rgb(255, 0, 0)")
-
-            initial_style = self.detection_alert.styleSheet()
-
-            if statusCheck:
-                if not isTesting:
-                    self.countOK += 1
-                    self.config.update_counter(ok=1)
-
-                self.count_ok.setText(f"{self.countOK:,}")
-                self.detection_alert.setText("OK")
-                self.detection_alert.setStyleSheet(f"{initial_style} background-color: rgb(0, 170, 127);")
-                self.buzzer.blink(0.1, 0.1, 1, True)
-                
-            else:
-                if not isTesting:
-                    self.countNG += 1
-                    self.config.update_counter(ng=1)
-                    
-                self.count_ng.setText(f"{self.countNG:,}")
-                self.detection_alert.setText("NG")
-                self.detection_alert.setStyleSheet(f"{initial_style} background-color: rgb(255, 17, 17);")
-                self.buzzer.blink(0.1, 0.1, 5, True)
-
-            self.count_total.setText(f"{self.countOK + self.countNG:,}")
-
-        except Exception as err:
-            pass
 
     # รีเซ็ต counter
     def _countReset(self):

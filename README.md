@@ -48,7 +48,7 @@ detection_venv\Scripts\activate
 cd polipharm
 # หรือใช้ venv พร้อม system-site-packages
 python3 -m venv --system-site-packages detection_venv
-source detection_venv/bin/activate
+detection_venv/Scripts/activate
 pip3 install gpiozero
 ```
 
@@ -77,7 +77,7 @@ pip install requests
 pip install pyserial
 pip install numpy
 pip install opencv-python
-pip install opencv-contrib-python
+# pip install opencv-contrib-python
 ```
 
 ## 📦 การติดตั้ง Libraries เพิ่มเติม
