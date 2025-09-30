@@ -3,24 +3,32 @@ import numpy as np
 
 from picamera2 import Picamera2
 from PySide6.QtCore import QThread, Signal
+from PySide6.QtGui import QImage, QPixmap, QMovie
+from PySide6.QtWidgets import QLabel
 from time import time
 import collections
 from resources.ConfigManager import RectangleSettings
 
+def cvimg_to_qpixmap(cv_img: np.ndarray) -> QPixmap:
+    """แปลงภาพ OpenCV -> QPixmap"""
+    if cv_img.ndim == 2:
+        h, w = cv_img.shape
+        qimg = QImage(cv_img.data, w, h, w, QImage.Format.Format_Grayscale8)
+    else:
+        h, w, ch = cv_img.shape
+        rgb = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
+        qimg = QImage(rgb.data, w, h, ch * w, QImage.Format.Format_RGB888)
+    return QPixmap.fromImage(qimg)
+
 # แสดงภาพจากกล้อง
 class CameraView(QThread):
-    updateImage = Signal(np.ndarray)
-
-    def __init__(self, camera: Picamera2, rectangle: RectangleSettings, flashLightPin: int, showFps: bool = False):
+    def __init__(self, monitor: QLabel, camera: Picamera2, rectangle: RectangleSettings, flashLightPin: int, showFps: bool = False):
         super().__init__()
-        self.monitor = monitor
         self.camera = camera
-        self.sensor = Button(sensorPin, pull_up=True, bounce_time=0.05)  # ตั้งค่า bounce_time = 0.1 วินาที
         self.rectangle = rectangle
+        self.monitor = monitor
         # self.flashLight = LED(flashLightPin, active_high=True)  # ตั้งค่า LED ให้ทำงานแบบ active low
-        self.currentFrame = None
         self.isLiveView = True
-        self.is_triggered = False
         self.isShowRect = False
         self.showFps = showFps
 
@@ -37,10 +45,10 @@ class CameraView(QThread):
         controls = {
             # พารามิเตอร์พื้นฐาน
             "AeEnable": True,
-            "ExposureTime": 50000,
+            "ExposureTime": 10000,
             "AnalogueGain": 2,
             "AwbEnable": False,
-            "Brightness": 0.2,
+            "Brightness": 0,
             # "Contrast": 1.8,
             # "Saturation": 1.2,
             # พารามิเตอร์เพิ่มประสิทธิภาพ
@@ -52,15 +60,6 @@ class CameraView(QThread):
             # "AeMeteringMode": "CentreWeighted"
         }
         self.camera.set_controls(controls)
-
-        # อัพเดท monitor
-        self.updateImage.connect(self._update_pixmap)
-
-        # ===== Queue OCR =====
-        self.task_queue = queue.Queue()
-        self.worker = OcrWorker(self.task_queue)
-        self.worker.finished.connect(self.show_ocr_result)
-        self.worker.start()
 
     # ตั้งค่าให้แสดงภาพสด
     def liveView(self, value: bool):
@@ -80,7 +79,7 @@ class CameraView(QThread):
         # Convert color space and ensure the array is contiguous
         frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
         frame = np.ascontiguousarray(frame)  # This ensures C-contiguous memory layout
-        self.updateImage.emit(frame)
+        return frame
 
     # เริ่มการทำงานของกล้อง
     def run(self):
@@ -89,7 +88,9 @@ class CameraView(QThread):
         try:
             while self.thead_running:
                 if self.isLiveView:
-                    self.captured()
+                    frame = self.captured()
+                    q_img = cvimg_to_qpixmap(frame)
+                    self.monitor.setPixmap(q_img)
 
                     if self.showFps:
                         # โค้ดประมวลผลเฟรมของคุณที่นี่

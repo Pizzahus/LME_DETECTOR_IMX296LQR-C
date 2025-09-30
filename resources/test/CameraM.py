@@ -161,7 +161,6 @@ class CameraView(QThread):
     # ฟังก์ชันจับภาพ
     def captured(self, isDetect=False):
         X1 = self.rectangle.X1
-        
         Y1 = self.rectangle.Y1
         X2 = self.rectangle.X2
         Y2 = self.rectangle.Y2

@@ -18,7 +18,8 @@ class OcrWorker(QThread):
         self.running = True
 
     # ตั้งค่าให้แสดงภาพที่จับได้
-    def _detect_and_recognize_text(self, image):
+    def detect_and_recognize_text(self, image):
+        start = time.perf_counter()
         preprocessed_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         preprocessed_image = cv2.GaussianBlur(preprocessed_image, (5, 5), 0)
         preprocessed_image = cv2.threshold(preprocessed_image, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
@@ -28,7 +29,7 @@ class OcrWorker(QThread):
             r"--oem 1 --psm 6 "
             r"-c tessedit_char_whitelist=0123456789/ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         )
-        data = pytesseract.image_to_data(preprocessed_image, lang="label", config=config, output_type=pytesseract.Output.DICT)
+        data = pytesseract.image_to_data(preprocessed_image, lang="label", output_type=pytesseract.Output.DICT)
 
 
         # วาดกรอบรอบข้อความและกรองผลลัพธ์ในลูปเดียวกัน
@@ -38,7 +39,7 @@ class OcrWorker(QThread):
             confidence = int(data["conf"][i])
             
             # ใช้เงื่อนไขกรองเดียวกันทั้งการวาดกรอบและการเก็บผลลัพธ์
-            if confidence > 90 and text.strip():
+            if text.strip():
                 filtered_results.append(text)
                 
                 # วาดกรอบรอบข้อความที่ผ่านการกรอง
@@ -61,22 +62,18 @@ class OcrWorker(QThread):
         # รวมข้อความที่กรองแล้วเป็น string เดียว
         recognized_text = " ".join(filtered_results)
         processed_image = image
+        processing_time = time.perf_counter() - start
 
-        return (processed_image, preprocessed_image, recognized_text)
+        return (processed_image, preprocessed_image, recognized_text, processing_time)
 
     def run(self):
         while self.running:
             try:
-                # รอ frame จากคิว
                 frame = self.task_queue.get(timeout=0.1)
             except queue.Empty:
                 continue
 
-            start = time.perf_counter()
-            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            processed_image, preprocessed_image, recognized_text = self._detect_and_recognize_text(gray)
-            processing_time = time.perf_counter() - start
-
+            processed_image, preprocessed_image, recognized_text, processing_time = self.detect_and_recognize_text(frame)
             self.finished.emit(processed_image, preprocessed_image, recognized_text, processing_time)
             self.task_queue.task_done()
 
