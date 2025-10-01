@@ -2,7 +2,6 @@ import os
 import subprocess
 import sys
 import re
-import cv2
 from picamera2 import Picamera2
 import queue
 import numpy as np
@@ -14,21 +13,22 @@ from PySide6.QtWidgets import (
     QWidget,
     QLabel,
 )
-from PySide6.QtCore import QTimer, Signal, Slot, Qt
-from PySide6.QtGui import QImage, QPixmap, QMovie
-from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout
+from PySide6.QtCore import Slot
+from PySide6.QtGui import  QMovie
+from PySide6.QtWidgets import QApplication, QWidget
 from datetime import datetime
 from time import sleep
 
 from resources.ConfigManager import ConfigManager
 from resources.Rectangle import Rectangle
-from resources.Keyboard import Keyboard
+# from resources.Keyboard import Keyboard
 from resources.Camera import CameraView, RectangleSettings
 from resources.Datetime import ShowDateTime
-from resources.Alert import Alert, BUZZER
-from gpiozero import LED
+from resources.Alert import Alert
+from gpiozero import Button, LED
 from resources.Ocr import OcrWorker
-
+from resources.QPixmapUtil import QPixmapUtil
+from resources.Rejection import RejectionWorker
 # from resources.Animation import AnimatedWidgetHelper
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -37,21 +37,8 @@ SAVE_IMAGES_DIR = os.path.join(BASE_DIR, "captured_images")  # โฟล์เ�
 os.makedirs(SAVE_IMAGES_DIR, exist_ok=True)
 GIF_FILE = os.path.join(BASE_DIR, "gui", "assets", "gif", "connecting.gif")
 
-def cvimg_to_qpixmap(cv_img: np.ndarray) -> QPixmap:
-    """แปลงภาพ OpenCV -> QPixmap"""
-    if cv_img.ndim == 2:
-        h, w = cv_img.shape
-        qimg = QImage(cv_img.data, w, h, w, QImage.Format.Format_Grayscale8)
-    else:
-        h, w, ch = cv_img.shape
-        rgb = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
-        qimg = QImage(rgb.data, w, h, ch * w, QImage.Format.Format_RGB888)
-    return QPixmap.fromImage(qimg)
-
 class LMEDetect(QMainWindow, Ui_MainWindow):
     def __init__(self, os_name="Windows"):
-        """
-        """
         super().__init__()
         self.setupUi(self)
         self.os_name = os_name
@@ -70,6 +57,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
         # อ่านข้อมูลการตั้งค่าจากไฟล์ yml
         self.config = ConfigManager()
+        pins = self.config.get_gpio_settings()
 
         # =====  lot,mfg,exp template ===== 
         template = self.config.get_template()
@@ -85,7 +73,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.count_ok.setText(f"{self.countOK:,}")
         self.count_ng.setText(f"{self.countNG:,}")
         self.count_total.setText(f"{(self.countTotal):,}")
-        self.buzzer = LED(19)
+        self.buzzer = LED(pins.BUZZER)
 
         # =====  rectangle ===== 
         _rectangle = self.config.get_rectangle()
@@ -100,7 +88,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
         picam2 = Picamera2()
         self.monitor = self.webcam_monitor # หน้าจอแสดง frame
-        self.cameraView = CameraView(monitor=self.monitor, camera=picam2, rectangle=_rectangle, flashLightPin=24)
+        self.cameraView = CameraView(monitor=self.monitor, camera=picam2, rectangle=_rectangle, flashLightPin=pins.L0)
         self.cameraView.start()
 
         # ===== Queue OCR V1 =====
@@ -112,6 +100,15 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         # ===== Queue OCR V2 =====
         # self.ocr = OcrWorker()
         # self.ocr.finished.connect(self.detection_ocr_result)
+
+        # ===== Sensor =====
+        self.sensor = Button(pin=pins.DI0, pull_up=False, bounce_time=0.02)
+        self.sensor.when_pressed = self._detection
+
+        # ===== Rejection =====
+        self.rejection = RejectionWorker(sensorPin=pins.DI1, inputPullUp=False, rejectPin=pins.LED0, startReject=3, rejectDelay=0.5)
+        self.rejection.rejected_signal.connect(lambda tag: print(f"GUI: {tag} ถูก reject!"))
+        self.rejection.start()
 
         # ===== Alert ===== 
         self.detectionAlert = Alert(self.detection_alert)
@@ -131,7 +128,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         # ทดสอบการตรวจจับ
         self.capture_test.clicked.connect(self._test_detection)
 
-        # self.capture_set.clicked.connect(self.capTemplateLme)
+        self.capture_set.clicked.connect(self._capTemplateLme)
         self.save_set.clicked.connect(self.setTemplateLme)
 
         self.shutdown_1.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.shutdown_page))
@@ -190,6 +187,24 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
             rect = RectangleSettings(X1=_X1, Y1=_Y1, X2=_X2, Y2=_Y2)
             self.rectangle.set_rectangle_from_image_coords(rect)
 
+    # ===== อ่าน lot, mfg, exp จากฉลาก =====
+    def _capTemplateLme(self):
+        X1 = self.cameraView.rectangle.X1
+        Y1 = self.cameraView.rectangle.Y1
+        X2 = self.cameraView.rectangle.X2
+        Y2 = self.cameraView.rectangle.Y2
+
+        frame = self.cameraView.captured()
+        self.cropped_frame = frame[Y1:Y2, X1:X2]
+        processed_image, preprocessed_image, text, processing_time = self.ocr_worker.detect_and_recognize_text(self.cropped_frame)
+        print("(Camera detected a message)=> ")
+        print(f"Processing in: {processing_time:.4f}s")
+        q_img = QPixmapUtil.from_cvimg(processed_image)
+        self.webcam_setting_view.setPixmap(q_img)
+
+        lmf_label: list[QLabel] = [self.lot_set, self.mfg_set, self.exp_set]
+        self._parse_lme(text, lmf_label)
+    
     # ===== บันทึกการตั้งค่า lot, mfg, exp และ rectangle ===== 
     def setTemplateLme(self):
         lot = self.lot_set.text()
@@ -202,17 +217,21 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         exp = None if exp == "XXXXXX" else exp
 
         if lot and mfg and exp:
+            print("(Set template lme)=> ", "Lot", lot, "Mfg", mfg, "Exp", exp)
+            self.lot = lot
+            self.mfg = mfg
+            self.exp = exp
             self.config.update_template(lot, mfg, exp)
 
     # ===== เริ่มการตรวจจับ ===== 
     def startDetection(self):
         isRunning = self.start.isChecked()
         self.cameraView.liveView(not isRunning)
-        # self.setting_1.setHidden(isRunning)
-        # self.setting_2.setHidden(isRunning)
-        # self.camera_setting_1.setHidden(isRunning)
-        # self.camera_setting_2.setHidden(isRunning)
-        # self.capture_test.setHidden(isRunning)
+        self.setting_1.setHidden(isRunning)
+        self.setting_2.setHidden(isRunning)
+        self.camera_setting_1.setHidden(isRunning)
+        self.camera_setting_2.setHidden(isRunning)
+        self.capture_test.setHidden(isRunning)
 
         if isRunning:
             self.start.setText("STOP")
@@ -233,30 +252,32 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         processed_image, preprocessed_image, text, processing_time = self.ocr_worker.detect_and_recognize_text(self.cropped_frame)
         print("(Camera detected a message)=> ")
         print(f"Processing in: {processing_time:.4f}s")
-        q_img = cvimg_to_qpixmap(processed_image)
+        q_img = QPixmapUtil.from_cvimg(processed_image)
         self.detection_view.setPixmap(q_img)
 
         lmf_label: list[QLabel] = [self.lot_detected, self.mfg_detected, self.exp_detected]
         statusCheck = self._parse_lme(text, lmf_label)
-        self._update_ui_detection(statusCheck, isTesting=False)
+        self._update_ui_detection(statusCheck, isTesting=True)
 
     # ===== ตรวจจับการพิมพ์ ===== 
-    def _detection(self):
-        # self.buzzer.blink(0.1, 0.1, 1, True)
-        X1 = self.cameraView.rectangle.X1
-        Y1 = self.cameraView.rectangle.Y1
-        X2 = self.cameraView.rectangle.X2
-        Y2 = self.cameraView.rectangle.Y2
-            
-        frame = self.cameraView.captured()
-        q_img = cvimg_to_qpixmap(frame)
-        self.monitor.setPixmap(q_img)
+    def _detection(self, sensor):
+        isRunning = self.start.isChecked()
+        if sensor and isRunning:
+            # self.buzzer.blink(0.1, 0.1, 1, True)
+            X1 = self.cameraView.rectangle.X1
+            Y1 = self.cameraView.rectangle.Y1
+            X2 = self.cameraView.rectangle.X2
+            Y2 = self.cameraView.rectangle.Y2
+                
+            frame = self.cameraView.captured()
+            q_img = QPixmapUtil.from_cvimg(frame)
+            self.monitor.setPixmap(q_img)
 
-        self.cropped_frame = frame[Y1:Y2, X1:X2]
-        self.task_queue.put(self.cropped_frame) # version 1 แบบ Queue + QThread
-        # self.ocr.run_ocr(cropped_frame) # version 2 แบบ ThreadPoolExecutor
+            self.cropped_frame = frame[Y1:Y2, X1:X2]
+            self.task_queue.put(self.cropped_frame) # version 1 แบบ Queue + QThread
+            # self.ocr.run_ocr(cropped_frame) # version 2 แบบ ThreadPoolExecutor
 
-    # ===== ตรวจสอบ Lot / MFG / EXP =====
+    # ===== ตรวจสอบความถูกต้อง Lot / MFG / EXP =====
     def _parse_lme(self, text: str, lmf_label: list[QLabel]):
         statusCheck = True
 
@@ -294,7 +315,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
     # ===== ผลลัพธ์การตรวจสอบ =====
     @Slot(np.ndarray, np.ndarray, str, float)
     def detection_ocr_result(self, processed_image, preprocessed_image, text, processing_time):
-        q_img = cvimg_to_qpixmap(processed_image)
+        q_img = QPixmapUtil.from_cvimg(preprocessed_image)
         self.detection_view.setPixmap(q_img)
 
         print("(Camera detected a message)=> ")
@@ -308,7 +329,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         except Exception as err:
             pass
 
-    # ===== อัพเดทหน้าจอการตรวจสอบ =====
+    # ===== อัพเดทหน้าจอการตรวจสอบ และ Reject =====
     def _update_ui_detection(self, statusCheck: bool, isTesting=False):
         initial_style = self.detection_alert.styleSheet()
         if not isTesting:
@@ -319,7 +340,10 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
                 self.countNG += 1
                 self.config.update_counter(ng=1)
 
-            self.count_total.setText(f"{self.countOK + self.countNG:,}")
+            # เพิ่ม queue ใน rejection
+            totalCount = self.countOK + self.countNG
+            self.rejection.put_task(f"Item {totalCount:,}", "OK" if statusCheck else "NG")
+            self.count_total.setText(f"{totalCount:,}")
         
         if statusCheck:
             self.count_ok.setText(f"{self.countOK:,}")
@@ -364,6 +388,9 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
     # ปิดโปรแกรม
     def closeEvent(self, event):
+        self.buzzer.off()
         self.cameraView.close()
         self.showDateTime.stop()
+        self.ocr_worker.stop()
+        self.rejection.stop()
         super().closeEvent(event)

@@ -37,9 +37,10 @@ class OcrWorker(QThread):
         for i in range(len(data["text"])):
             text = data["text"][i]
             confidence = int(data["conf"][i])
+            # print("confidence: ", text, confidence)
             
             # ใช้เงื่อนไขกรองเดียวกันทั้งการวาดกรอบและการเก็บผลลัพธ์
-            if text.strip():
+            if confidence > 30 and text.strip():
                 filtered_results.append(text)
                 
                 # วาดกรอบรอบข้อความที่ผ่านการกรอง
@@ -57,7 +58,7 @@ class OcrWorker(QThread):
                     cv2.rectangle(image, (char_x, y), (char_x + char_w, y + h), self.rectColor, 1)
                     
                     # วาดตัวอักษร (optional)
-                    cv2.putText(image, char, (char_x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.4, self.rectColor, 1)
+                    cv2.putText(image, char, (char_x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.6, self.rectColor, 1)
 
         # รวมข้อความที่กรองแล้วเป็น string เดียว
         recognized_text = " ".join(filtered_results)

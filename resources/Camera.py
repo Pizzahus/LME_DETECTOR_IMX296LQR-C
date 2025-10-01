@@ -2,23 +2,12 @@ import cv2
 import numpy as np
 
 from picamera2 import Picamera2
-from PySide6.QtCore import QThread, Signal
-from PySide6.QtGui import QImage, QPixmap, QMovie
+from PySide6.QtCore import QThread
 from PySide6.QtWidgets import QLabel
 from time import time
 import collections
 from resources.ConfigManager import RectangleSettings
-
-def cvimg_to_qpixmap(cv_img: np.ndarray) -> QPixmap:
-    """แปลงภาพ OpenCV -> QPixmap"""
-    if cv_img.ndim == 2:
-        h, w = cv_img.shape
-        qimg = QImage(cv_img.data, w, h, w, QImage.Format.Format_Grayscale8)
-    else:
-        h, w, ch = cv_img.shape
-        rgb = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
-        qimg = QImage(rgb.data, w, h, ch * w, QImage.Format.Format_RGB888)
-    return QPixmap.fromImage(qimg)
+from resources.QPixmapUtil import QPixmapUtil
 
 # แสดงภาพจากกล้อง
 class CameraView(QThread):
@@ -89,7 +78,7 @@ class CameraView(QThread):
             while self.thead_running:
                 if self.isLiveView:
                     frame = self.captured()
-                    q_img = cvimg_to_qpixmap(frame)
+                    q_img = QPixmapUtil.from_cvimg(frame)
                     self.monitor.setPixmap(q_img)
 
                     if self.showFps:
@@ -110,3 +99,4 @@ class CameraView(QThread):
     def close(self):
         self.thead_running = False
         self.camera.close()
+        self.wait()

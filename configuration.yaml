@@ -3,7 +3,7 @@ sofware:
   version: 1.0
   debug: false
 template:
-  lot: '12356'
+  lot: '12358'
   mfg: 01/05/25
   exp: 01/05/27
 hardware:
@@ -17,14 +17,20 @@ hardware:
     sensorDelay: 500
     saveImage: false
   gpio:
-    sensorPin: 23
-    buzzerPin: 12
-    flashLightPin: 24
+    LED0: 20
+    LED1: 21
+    BUZZER: 19
+    DI0: 22
+    DI1: 27
+    DO0: 23
+    DO1: 24
+    L0: 12
+    L1: 23
   rectangle:
-    x1: 497
-    x2: 770
-    y1: 100
-    y2: 335
+    x1: 440
+    x2: 781
+    y1: 163
+    y2: 350
 counters:
-  ok: 142
-  ng: 16
+  ok: 60
+  ng: 5
