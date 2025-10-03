@@ -809,7 +809,7 @@ QGroupBox {
 }</string>
          </property>
          <property name="currentIndex">
-          <number>5</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="detection_page">
           <layout class="QVBoxLayout" name="verticalLayout_14" stretch="0,0">
@@ -2940,13 +2940,13 @@ border-radius: 15px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>120</width>
-                        <height>150</height>
+                        <height>120</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>16777215</height>
+                        <height>1500</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -2975,7 +2975,7 @@ border-radius: 15px;</string>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>120</height>
+                        <height>150</height>
                        </size>
                       </property>
                       <layout class="QFormLayout" name="formLayout">
@@ -3229,13 +3229,13 @@ QPushButton:pressed {
                          <property name="minimumSize">
                           <size>
                            <width>0</width>
-                           <height>45</height>
+                           <height>50</height>
                           </size>
                          </property>
                          <property name="maximumSize">
                           <size>
                            <width>16777215</width>
-                           <height>45</height>
+                           <height>50</height>
                           </size>
                          </property>
                          <property name="font">
@@ -3269,13 +3269,13 @@ QPushButton:pressed {
                          <property name="minimumSize">
                           <size>
                            <width>0</width>
-                           <height>45</height>
+                           <height>50</height>
                           </size>
                          </property>
                          <property name="maximumSize">
                           <size>
                            <width>16777215</width>
-                           <height>45</height>
+                           <height>50</height>
                           </size>
                          </property>
                          <property name="font">
@@ -3869,6 +3869,79 @@ background-color: rgb(85, 170, 127);</string>
                 </layout>
                </widget>
               </item>
+              <item>
+               <widget class="QWidget" name="sensorDelayWidget" native="true">
+                <property name="styleSheet">
+                 <string notr="true">border: solid;
+border-width: 1px;
+border-color: rgb(80, 80, 80);
+border-radius: 15px;</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_16">
+                 <item>
+                  <widget class="QWidget" name="sensorDelayWidget2" native="true">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_12">
+                    <item>
+                     <widget class="QLabel" name="sensorDelayWidgetLabel">
+                      <property name="font">
+                       <font>
+                        <family>Kanit</family>
+                        <pointsize>12</pointsize>
+                        <bold>false</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">background-color: rgb(122, 122, 122);
+border-radius: 10px;</string>
+                      </property>
+                      <property name="text">
+                       <string>DELAY</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="sensorDelayValue">
+                      <property name="font">
+                       <font>
+                        <family>Kanit</family>
+                        <pointsize>12</pointsize>
+                        <bold>false</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border-radius: 10px;
+background-color: rgb(85, 170, 127);</string>
+                      </property>
+                      <property name="text">
+                       <string>0ms</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDial" name="sensorDelay">
+                   <property name="maximum">
+                    <number>500</number>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
              </layout>
             </widget>
            </item>
@@ -3950,21 +4023,6 @@ border-radius: 15px;</string>
                   </widget>
                  </item>
                 </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="lineEdit">
-                <property name="font">
-                 <font>
-                  <pointsize>20</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: black;</string>
-                </property>
-                <property name="placeholderText">
-                 <string>ทดสอบ keyboard</string>
-                </property>
                </widget>
               </item>
               <item>

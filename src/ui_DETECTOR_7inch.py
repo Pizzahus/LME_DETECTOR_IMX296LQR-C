@@ -17,8 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QDial, QFormLayout, QFrame,
     QGridLayout, QGroupBox, QHBoxLayout, QLabel,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QStackedWidget, QVBoxLayout, QWidget)
+    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
+    QSpacerItem, QStackedWidget, QVBoxLayout, QWidget)
 import src.resource_rc as resource_rc
 
 class Ui_MainWindow(object):
@@ -1279,8 +1279,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setContentsMargins(12, 12, 12, 12)
         self.webcam_setting_view = QLabel(self.set_widget)
         self.webcam_setting_view.setObjectName(u"webcam_setting_view")
-        self.webcam_setting_view.setMinimumSize(QSize(120, 120))
-        self.webcam_setting_view.setMaximumSize(QSize(16777215, 1500))
+        self.webcam_setting_view.setMinimumSize(QSize(120, 150))
+        self.webcam_setting_view.setMaximumSize(QSize(16777215, 16777215))
         self.webcam_setting_view.setStyleSheet(u"QLabel {\n"
 "	border: solid;\n"
 "	border-width: 2px;\n"
@@ -1296,7 +1296,7 @@ class Ui_MainWindow(object):
 
         self.widget_7 = QWidget(self.set_widget)
         self.widget_7.setObjectName(u"widget_7")
-        self.widget_7.setMaximumSize(QSize(16777215, 150))
+        self.widget_7.setMaximumSize(QSize(16777215, 120))
         self.formLayout = QFormLayout(self.widget_7)
         self.formLayout.setObjectName(u"formLayout")
         self.formLayout.setHorizontalSpacing(10)
@@ -1413,8 +1413,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.capture_set = QPushButton(self.widget_3)
         self.capture_set.setObjectName(u"capture_set")
-        self.capture_set.setMinimumSize(QSize(0, 50))
-        self.capture_set.setMaximumSize(QSize(16777215, 50))
+        self.capture_set.setMinimumSize(QSize(0, 45))
+        self.capture_set.setMaximumSize(QSize(16777215, 45))
         self.capture_set.setFont(font15)
         self.capture_set.setStyleSheet(u"")
         self.capture_set.setIcon(icon2)
@@ -1424,8 +1424,8 @@ class Ui_MainWindow(object):
 
         self.save_set = QPushButton(self.widget_3)
         self.save_set.setObjectName(u"save_set")
-        self.save_set.setMinimumSize(QSize(0, 50))
-        self.save_set.setMaximumSize(QSize(16777215, 50))
+        self.save_set.setMinimumSize(QSize(0, 45))
+        self.save_set.setMaximumSize(QSize(16777215, 45))
         self.save_set.setFont(font15)
         self.save_set.setStyleSheet(u"")
         icon12 = QIcon()
@@ -1764,49 +1764,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_16.addWidget(self.cameraExposureWidget)
 
-        self.sensorDelayWidget = QWidget(self.widget_19)
-        self.sensorDelayWidget.setObjectName(u"sensorDelayWidget")
-        self.sensorDelayWidget.setStyleSheet(u"border: solid;\n"
-"border-width: 1px;\n"
-"border-color: rgb(80, 80, 80);\n"
-"border-radius: 15px;")
-        self.verticalLayout_16 = QVBoxLayout(self.sensorDelayWidget)
-        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
-        self.sensorDelayWidget2 = QWidget(self.sensorDelayWidget)
-        self.sensorDelayWidget2.setObjectName(u"sensorDelayWidget2")
-        self.sensorDelayWidget2.setMaximumSize(QSize(16777215, 50))
-        self.horizontalLayout_12 = QHBoxLayout(self.sensorDelayWidget2)
-        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.sensorDelayWidgetLabel = QLabel(self.sensorDelayWidget2)
-        self.sensorDelayWidgetLabel.setObjectName(u"sensorDelayWidgetLabel")
-        self.sensorDelayWidgetLabel.setFont(font26)
-        self.sensorDelayWidgetLabel.setStyleSheet(u"background-color: rgb(122, 122, 122);\n"
-"border-radius: 10px;")
-        self.sensorDelayWidgetLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.horizontalLayout_12.addWidget(self.sensorDelayWidgetLabel)
-
-        self.sensorDelayValue = QLabel(self.sensorDelayWidget2)
-        self.sensorDelayValue.setObjectName(u"sensorDelayValue")
-        self.sensorDelayValue.setFont(font26)
-        self.sensorDelayValue.setStyleSheet(u"border-radius: 10px;\n"
-"background-color: rgb(85, 170, 127);")
-        self.sensorDelayValue.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.horizontalLayout_12.addWidget(self.sensorDelayValue)
-
-
-        self.verticalLayout_16.addWidget(self.sensorDelayWidget2)
-
-        self.sensorDelay = QDial(self.sensorDelayWidget)
-        self.sensorDelay.setObjectName(u"sensorDelay")
-        self.sensorDelay.setMaximum(500)
-
-        self.verticalLayout_16.addWidget(self.sensorDelay)
-
-
-        self.horizontalLayout_16.addWidget(self.sensorDelayWidget)
-
 
         self.verticalLayout_18.addWidget(self.widget_19)
 
@@ -1857,6 +1814,15 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_68.addWidget(self.widget_17)
+
+        self.lineEdit = QLineEdit(self.shutdown_widget)
+        self.lineEdit.setObjectName(u"lineEdit")
+        font29 = QFont()
+        font29.setPointSize(20)
+        self.lineEdit.setFont(font29)
+        self.lineEdit.setStyleSheet(u"color: black;")
+
+        self.verticalLayout_68.addWidget(self.lineEdit)
 
         self.widget_18 = QWidget(self.shutdown_widget)
         self.widget_18.setObjectName(u"widget_18")
@@ -1935,7 +1901,7 @@ class Ui_MainWindow(object):
         self.home_2.toggled.connect(self.home_1.setChecked)
         self.home_1.toggled.connect(self.home_2.setChecked)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(5)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2026,10 +1992,9 @@ class Ui_MainWindow(object):
         self.cameraContrastValue.setText(QCoreApplication.translate("MainWindow", u"0%", None))
         self.cameraExposureLabel.setText(QCoreApplication.translate("MainWindow", u"EXPOSURE", None))
         self.cameraExposureValue.setText(QCoreApplication.translate("MainWindow", u"0%", None))
-        self.sensorDelayWidgetLabel.setText(QCoreApplication.translate("MainWindow", u"DELAY", None))
-        self.sensorDelayValue.setText(QCoreApplication.translate("MainWindow", u"0ms", None))
         self.shutdown_title.setText(QCoreApplication.translate("MainWindow", u"\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e01\u0e32\u0e23\u0e1b\u0e34\u0e14\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07", None))
         self.shutdown_warning_label.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e25\u0e31\u0e07\u0e08\u0e32\u0e01\u0e01\u0e14\u0e1b\u0e38\u0e48\u0e21 \u0e22\u0e37\u0e19\u0e22\u0e31\u0e19 \u0e43\u0e2b\u0e49\u0e23\u0e2d\u0e1b\u0e23\u0e30\u0e21\u0e32\u0e13 1 \u0e19\u0e32\u0e17\u0e35\u0e01\u0e48\u0e2d\u0e19\u0e16\u0e2d\u0e14\u0e1b\u0e25\u0e31\u0e4a\u0e01", None))
+        self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u0e17\u0e14\u0e2a\u0e2d\u0e1a keyboard", None))
         self.confirm_shutdown.setText(QCoreApplication.translate("MainWindow", u"  \u0e22\u0e37\u0e19\u0e22\u0e31\u0e19", None))
         self.cancel_shutdown.setText(QCoreApplication.translate("MainWindow", u"  \u0e22\u0e01\u0e40\u0e25\u0e34\u0e01", None))
         self.credit.setText(QCoreApplication.translate("MainWindow", u"Created by Nattapon pondonko Engineering Department", None))

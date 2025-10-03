@@ -70,6 +70,7 @@ xset fp rehash
 
 ### ติดตั้ง PySide6
 ```bash
+pip install PySide6-Addons # keyboard
 pip install pyside6
 pip install pytesseract
 pip install comtypes

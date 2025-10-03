@@ -12,15 +12,16 @@ class ShowDateTime:
 
     def print_datetime(self):
         try:
-            now = datetime.now()  # current date and time
+            now = datetime.now()
             curr_date = now.strftime("%d/%m/%Y")
             curr_time = now.strftime("%H:%M:%S")
             self.date_bar.setText(curr_date)
             self.time_bar.setText(curr_time)
         except Exception as err:
             print("Error updating time/date:", err)
-            self.timer.timeout.disconnect()
-            self.timer.stop
+            if hasattr(self, 'timer'):
+                self.timer.timeout.disconnect()
+                self.timer.stop()
 
     def show(self):
         self.timer = QTimer()
@@ -29,4 +30,6 @@ class ShowDateTime:
         self.timer.start()
 
     def stop(self):
-        self.timer.stop()
+        if hasattr(self, 'timer'):
+            self.timer.stop()
+            self.timer.timeout.disconnect(self.print_datetime)

@@ -29,6 +29,13 @@ from gpiozero import Button, LED
 from resources.Ocr import OcrWorker
 from resources.QPixmapUtil import QPixmapUtil
 from resources.Rejection import RejectionWorker
+from PySide6.QtCore import QUrl
+from PySide6.QtQuickWidgets import QQuickWidget
+
+# keyboard
+os.environ["QT_IM_MODULE"] = "qtvirtualkeyboard"
+os.environ["QT_QPA_PLATFORM"] = "xcb"   # ถ้าใช้ Wayland แล้ว error
+qml_path = os.path.join(os.path.dirname(__file__), "keyboard.qml")
 # from resources.Animation import AnimatedWidgetHelper
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -106,15 +113,17 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.sensor.when_pressed = self._detection
 
         # ===== Rejection =====
-        self.rejection = RejectionWorker(sensorPin=pins.DI1, inputPullUp=False, rejectPin=pins.LED0, startReject=3, rejectDelay=0.5)
+        self.rejection = RejectionWorker(sensorPin=pins.DI1, inputPullUp=False, rejectPin=pins.DO0, startReject=3, rejectDelay=0.5)
         self.rejection.rejected_signal.connect(lambda tag: print(f"GUI: {tag} ถูก reject!"))
         self.rejection.start()
 
         # ===== Alert ===== 
         self.detectionAlert = Alert(self.detection_alert)
-
         # self.camera_setting_1.setHidden(True)
         # self.camera_setting_2.setHidden(True)
+
+        # ===== สร้างและตั้งค่า Virtual Keyboard =====
+        # self.setupVirtualKeyboard()
 
     # ===== เพิ่ม Event ===== 
     def _addEventListener(self):
@@ -252,7 +261,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         processed_image, preprocessed_image, text, processing_time = self.ocr_worker.detect_and_recognize_text(self.cropped_frame)
         print("(Camera detected a message)=> ")
         print(f"Processing in: {processing_time:.4f}s")
-        q_img = QPixmapUtil.from_cvimg(processed_image)
+        q_img = QPixmapUtil.from_cvimg(preprocessed_image)
         self.detection_view.setPixmap(q_img)
 
         lmf_label: list[QLabel] = [self.lot_detected, self.mfg_detected, self.exp_detected]
@@ -263,6 +272,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
     def _detection(self, sensor):
         isRunning = self.start.isChecked()
         if sensor and isRunning:
+            sleep(0.1)
             # self.buzzer.blink(0.1, 0.1, 1, True)
             X1 = self.cameraView.rectangle.X1
             Y1 = self.cameraView.rectangle.Y1
@@ -370,12 +380,12 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
     # รีสตาร์ทโปรแกรม
     def restart(self):
         """รีสตาร์ทโปรแกรม"""
-        QApplication.quit()
+        QApplication.quit() # ปิดโปรแกรมเก่า
+        # เปิดโปรแกรมใหม่เป็น process ใหม่
         python = sys.executable
         script = sys.argv[0]  # main.py
-        # เปิดโปรแกรมใหม่เป็น process ใหม่
         subprocess.Popen([python, script])
-        # ปิดโปรแกรมเก่า
+        
         
     # จัดการการปิดเครื่อง
     def shutdownHandler(self, shutdown=True):

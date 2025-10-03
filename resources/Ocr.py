@@ -18,8 +18,21 @@ class OcrWorker(QThread):
         self.running = True
 
     # ตั้งค่าให้แสดงภาพที่จับได้
-    def detect_and_recognize_text(self, image):
+    def detect_and_recognize_text(self, image, angle=90):
+        """
+        image: ภาพ BGR
+        angle: หมุนภาพก่อน OCR (องศา, +ve = หมุนตามเข็มนาฬิกา)
+        """
         start = time.perf_counter()
+
+        # หมุนภาพถ้ามีการระบุ angle
+        if angle != 0:
+            (h, w) = image.shape[:2]
+            center = (w // 2, h // 2)
+            M = cv2.getRotationMatrix2D(center, angle, 1.0)
+            image = cv2.warpAffine(image, M, (w, h), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
+
+        # แปลงเป็น grayscale และทำ preprocessing
         preprocessed_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         preprocessed_image = cv2.GaussianBlur(preprocessed_image, (5, 5), 0)
         preprocessed_image = cv2.threshold(preprocessed_image, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
@@ -31,36 +44,21 @@ class OcrWorker(QThread):
         )
         data = pytesseract.image_to_data(preprocessed_image, lang="label", output_type=pytesseract.Output.DICT)
 
-
-        # วาดกรอบรอบข้อความและกรองผลลัพธ์ในลูปเดียวกัน
+        # วาดกรอบรอบข้อความและกรองผลลัพธ์
         filtered_results = []
         for i in range(len(data["text"])):
             text = data["text"][i]
             confidence = int(data["conf"][i])
-            # print("confidence: ", text, confidence)
-            
-            # ใช้เงื่อนไขกรองเดียวกันทั้งการวาดกรอบและการเก็บผลลัพธ์
             if confidence > 30 and text.strip():
                 filtered_results.append(text)
-                
-                # วาดกรอบรอบข้อความที่ผ่านการกรอง
                 x, y, w, h = data["left"][i], data["top"][i], data["width"][i], data["height"][i]
-                
-                # คำนวณความกว้างของแต่ละตัวอักษรโดยประมาณ
                 char_width = w / len(text)
-                
-                # ตีกรอบแต่ละตัวอักษร
                 for j, char in enumerate(text):
                     char_x = int(x + j * char_width)
                     char_w = int(char_width)
-                    
-                    # วาดกรอบรอบตัวอักษร
-                    cv2.rectangle(image, (char_x, y), (char_x + char_w, y + h), self.rectColor, 1)
-                    
-                    # วาดตัวอักษร (optional)
-                    cv2.putText(image, char, (char_x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.6, self.rectColor, 1)
+                    cv2.rectangle(preprocessed_image, (char_x, y), (char_x + char_w, y + h), self.rectColor, 1)
+                    cv2.putText(preprocessed_image, char, (char_x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.6, self.rectColor, 1)
 
-        # รวมข้อความที่กรองแล้วเป็น string เดียว
         recognized_text = " ".join(filtered_results)
         processed_image = image
         processing_time = time.perf_counter() - start

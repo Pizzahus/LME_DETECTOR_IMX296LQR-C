@@ -27,10 +27,10 @@ hardware:
     L0: 12
     L1: 23
   rectangle:
-    x1: 440
-    x2: 781
-    y1: 163
-    y2: 350
+    x1: 562
+    x2: 936
+    y1: 250
+    y2: 608
 counters:
-  ok: 60
-  ng: 5
+  ok: 0
+  ng: 6

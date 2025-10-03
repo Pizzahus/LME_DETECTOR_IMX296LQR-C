@@ -34,7 +34,7 @@ class CameraView(QThread):
         controls = {
             # พารามิเตอร์พื้นฐาน
             "AeEnable": True,
-            "ExposureTime": 10000,
+            "ExposureTime": 100000,
             "AnalogueGain": 2,
             "AwbEnable": False,
             "Brightness": 0,
@@ -78,17 +78,18 @@ class CameraView(QThread):
             while self.thead_running:
                 if self.isLiveView:
                     frame = self.captured()
-                    q_img = QPixmapUtil.from_cvimg(frame)
-                    self.monitor.setPixmap(q_img)
+                    if frame is not None:
+                        q_img = QPixmapUtil.from_cvimg(frame)
+                        self.monitor.setPixmap(q_img)
 
-                    if self.showFps:
-                        # โค้ดประมวลผลเฟรมของคุณที่นี่
-                        frame_times.append(time.perf_counter())
-                        
-                        if len(frame_times) > 1:
-                            # คำนวณ FPS จากเฟรมล่าสุด
-                            fps = len(frame_times) / (frame_times[-1] - frame_times[0])
-                            print(f"FPS: {fps:.2f}")
+                        if self.showFps:
+                            # โค้ดประมวลผลเฟรมของคุณที่นี่
+                            frame_times.append(time.perf_counter())
+                            
+                            if len(frame_times) > 1:
+                                # คำนวณ FPS จากเฟรมล่าสุด
+                                fps = len(frame_times) / (frame_times[-1] - frame_times[0])
+                                print(f"FPS: {fps:.2f}")
 
                 QThread.msleep(0.05)
         except Exception as err:
