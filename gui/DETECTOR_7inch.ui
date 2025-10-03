@@ -929,6 +929,7 @@ border-radius: 15px;</string>
 	border-width: 2px;
 	border-color: rgb(111, 105, 37);
 	border-radius: 15px;
+	padding: 10px;
 	background-color: rgb(0, 0, 0);
 }
 </string>
@@ -947,11 +948,8 @@ border-radius: 15px;</string>
                  <item>
                   <widget class="QWidget" name="widget_10" native="true">
                    <layout class="QHBoxLayout" name="horizontalLayout_21">
-                    <property name="topMargin">
-                     <number>5</number>
-                    </property>
                     <property name="bottomMargin">
-                     <number>5</number>
+                     <number>3</number>
                     </property>
                     <item>
                      <widget class="QWidget" name="widget_8" native="true">
@@ -1020,7 +1018,7 @@ border-radius: 15px;</string>
                          <property name="font">
                           <font>
                            <family>Kanit</family>
-                           <pointsize>25</pointsize>
+                           <pointsize>30</pointsize>
                            <bold>true</bold>
                           </font>
                          </property>
@@ -1105,7 +1103,7 @@ border-radius: 15px;</string>
                          <property name="font">
                           <font>
                            <family>Kanit</family>
-                           <pointsize>25</pointsize>
+                           <pointsize>30</pointsize>
                            <bold>true</bold>
                           </font>
                          </property>
@@ -1190,7 +1188,7 @@ border-radius: 15px;</string>
                          <property name="font">
                           <font>
                            <family>Kanit</family>
-                           <pointsize>25</pointsize>
+                           <pointsize>30</pointsize>
                            <bold>true</bold>
                           </font>
                          </property>
@@ -1218,8 +1216,8 @@ border-radius: 15px;</string>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>45</width>
-                        <height>45</height>
+                        <width>80</width>
+                        <height>60</height>
                        </size>
                       </property>
                       <property name="font">
@@ -1249,8 +1247,8 @@ QPushButton:pressed {
                       </property>
                       <property name="iconSize">
                        <size>
-                        <width>30</width>
-                        <height>30</height>
+                        <width>40</width>
+                        <height>40</height>
                        </size>
                       </property>
                      </widget>
@@ -1265,13 +1263,13 @@ QPushButton:pressed {
                <widget class="QWidget" name="detection_widget" native="true">
                 <property name="minimumSize">
                  <size>
-                  <width>250</width>
+                  <width>300</width>
                   <height>0</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>300</width>
+                  <width>350</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1284,12 +1282,6 @@ QPushButton:pressed {
                 <layout class="QVBoxLayout" name="verticalLayout_6">
                  <property name="spacing">
                   <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>12</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>12</number>
                  </property>
                  <property name="bottomMargin">
                   <number>0</number>
@@ -1315,6 +1307,7 @@ QPushButton:pressed {
 	border-color: rgb(111, 105, 37);
 	border-radius: 15px;
 	background-color: rgb(255, 255, 255);
+	padding: 10px;
 }
 </string>
                    </property>
@@ -1373,19 +1366,19 @@ margin-top: 10px;</string>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_4">
                     <property name="leftMargin">
-                     <number>0</number>
+                     <number>20</number>
                     </property>
                     <property name="topMargin">
                      <number>10</number>
                     </property>
                     <property name="rightMargin">
-                     <number>0</number>
+                     <number>20</number>
                     </property>
                     <property name="bottomMargin">
                      <number>10</number>
                     </property>
                     <property name="horizontalSpacing">
-                     <number>8</number>
+                     <number>12</number>
                     </property>
                     <item row="0" column="1">
                      <widget class="QLabel" name="lot_detected">
@@ -1533,7 +1526,7 @@ margin-top: 10px;</string>
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>50</height>
+                     <height>60</height>
                     </size>
                    </property>
                    <property name="styleSheet">
@@ -1541,32 +1534,26 @@ margin-top: 10px;</string>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_7">
                     <property name="spacing">
-                     <number>10</number>
+                     <number>15</number>
                     </property>
                     <property name="leftMargin">
                      <number>0</number>
                     </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
                     <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
                      <number>0</number>
                     </property>
                     <item>
                      <widget class="QPushButton" name="capture_test">
                       <property name="minimumSize">
                        <size>
-                        <width>110</width>
-                        <height>45</height>
+                        <width>0</width>
+                        <height>50</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>45</height>
+                        <height>50</height>
                        </size>
                       </property>
                       <property name="font">
@@ -1588,7 +1575,7 @@ QPushButton:pressed {
 }</string>
                       </property>
                       <property name="text">
-                       <string>ทดสอบ</string>
+                       <string> ถ่ายภาพ</string>
                       </property>
                       <property name="icon">
                        <iconset resource="resource.qrc">
@@ -1596,8 +1583,8 @@ QPushButton:pressed {
                       </property>
                       <property name="iconSize">
                        <size>
-                        <width>30</width>
-                        <height>30</height>
+                        <width>40</width>
+                        <height>40</height>
                        </size>
                       </property>
                      </widget>
@@ -1607,19 +1594,19 @@ QPushButton:pressed {
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
-                        <height>45</height>
+                        <height>50</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>45</height>
+                        <height>50</height>
                        </size>
                       </property>
                       <property name="font">
                        <font>
                         <family>Kanit</family>
-                        <pointsize>12</pointsize>
+                        <pointsize>14</pointsize>
                         <italic>false</italic>
                         <fontweight>Medium</fontweight>
                        </font>
@@ -1629,6 +1616,7 @@ QPushButton:pressed {
 	background-color: rgb(0, 170, 50);
 	color: white;
 	text-align: center;
+	height: 30px;
 	border: none;
 	border-radius: 10px;
 	padding: 15px;
@@ -1648,8 +1636,8 @@ QPushButton:checked {
                       </property>
                       <property name="iconSize">
                        <size>
-                        <width>25</width>
-                        <height>25</height>
+                        <width>30</width>
+                        <height>30</height>
                        </size>
                       </property>
                       <property name="checkable">
@@ -2884,6 +2872,7 @@ border-radius: 15px;</string>
 	border-width: 2px;
 	border-color: rgb(111, 105, 37);
 	border-radius: 15px;
+	padding: 10px;
 	background-color: rgb(0, 0, 0);
 }
 </string>
@@ -2923,17 +2912,11 @@ border-radius: 15px;</string>
                     <property name="spacing">
                      <number>6</number>
                     </property>
-                    <property name="leftMargin">
-                     <number>12</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>12</number>
-                    </property>
                     <property name="rightMargin">
-                     <number>12</number>
+                     <number>9</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>12</number>
+                     <number>0</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="webcam_setting_view">
@@ -2956,6 +2939,7 @@ border-radius: 15px;</string>
 	border-color: rgb(111, 105, 37);
 	border-radius: 15px;
 	background-color: rgb(255, 255, 255);
+	padding: 10px;
 }
 </string>
                       </property>
@@ -3325,17 +3309,6 @@ QPushButton:pressed {
              <layout class="QHBoxLayout" name="horizontalLayout_17">
               <item>
                <widget class="QWidget" name="cameraFocusWidget" native="true">
-                <property name="minimumSize">
-                 <size>
-                  <width>150</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>12</pointsize>
-                 </font>
-                </property>
                 <property name="styleSheet">
                  <string notr="true">border: solid;
 border-width: 1px;
@@ -3360,7 +3333,7 @@ border-radius: 15px;</string>
                    <property name="font">
                     <font>
                      <family>Kanit</family>
-                     <pointsize>12</pointsize>
+                     <pointsize>14</pointsize>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -3482,8 +3455,8 @@ background-color: rgb(85, 170, 127);</string>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>375</width>
-                     <height>250</height>
+                     <width>450</width>
+                     <height>350</height>
                     </size>
                    </property>
                    <property name="styleSheet">
@@ -3492,6 +3465,7 @@ background-color: rgb(85, 170, 127);</string>
 	border-width: 2px;
 	border-color: rgb(111, 105, 37);
 	border-radius: 15px;
+	padding: 10px;
 	background-color: rgb(0, 0, 0);
 }
 </string>
@@ -3512,12 +3486,6 @@ background-color: rgb(85, 170, 127);</string>
               </item>
               <item>
                <widget class="QWidget" name="cameraZoomWidget" native="true">
-                <property name="minimumSize">
-                 <size>
-                  <width>150</width>
-                  <height>0</height>
-                 </size>
-                </property>
                 <property name="styleSheet">
                  <string notr="true">border: solid;
 border-width: 1px;
@@ -3542,7 +3510,7 @@ border-radius: 15px;</string>
                    <property name="font">
                     <font>
                      <family>Kanit</family>
-                     <pointsize>18</pointsize>
+                     <pointsize>20</pointsize>
                      <italic>false</italic>
                      <fontweight>Medium</fontweight>
                     </font>
@@ -3568,8 +3536,8 @@ QPushButton:pressed {
                    </property>
                    <property name="iconSize">
                     <size>
-                     <width>25</width>
-                     <height>25</height>
+                     <width>30</width>
+                     <height>30</height>
                     </size>
                    </property>
                   </widget>

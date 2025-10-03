@@ -23,8 +23,8 @@ scp main.py polipharm@192.168.10.7:/home/polipharm/Desktop
 ## 🛠️ การ Build และ Deploy Qt for Python (PySide6)
 ```bash
 # แปลงไฟล์ .ui เป็น .py
-pyside6-uic gui/DETECTOR_7inch.ui > src/ui_DETECTOR_7inch.py
-pyside6-uic gui/DETECTOR_10inch.ui > src/ui_DETECTOR_10inch.py
+pyside6-uic gui/DETECTOR_7inch.ui > ui_DETECTOR_7inch.py
+pyside6-uic gui/DETECTOR_10inch.ui > ui_DETECTOR_10inch.py
 
 # สร้าง resource_rc.py จาก resource.qrc
 pyside6-rcc gui/resource.qrc -o resource_rc.py
@@ -48,7 +48,7 @@ detection_venv\Scripts\activate
 cd polipharm
 # หรือใช้ venv พร้อม system-site-packages
 python3 -m venv --system-site-packages detection_venv
-source detection_venv/bin/activate
+detection_venv/Scripts/activate
 pip3 install gpiozero
 ```
 

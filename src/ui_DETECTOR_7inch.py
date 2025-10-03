@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'DETECTOR_7inch.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.0
+## Created by: Qt User Interface Compiler version 6.9.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -474,6 +474,7 @@ class Ui_MainWindow(object):
 "	border-width: 2px;\n"
 "	border-color: rgb(111, 105, 37);\n"
 "	border-radius: 15px;\n"
+"	padding: 10px;\n"
 "	background-color: rgb(0, 0, 0);\n"
 "}\n"
 "")
@@ -486,7 +487,7 @@ class Ui_MainWindow(object):
         self.widget_10.setObjectName(u"widget_10")
         self.horizontalLayout_21 = QHBoxLayout(self.widget_10)
         self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
-        self.horizontalLayout_21.setContentsMargins(-1, 5, -1, 5)
+        self.horizontalLayout_21.setContentsMargins(-1, -1, -1, 3)
         self.widget_8 = QWidget(self.widget_10)
         self.widget_8.setObjectName(u"widget_8")
         self.horizontalLayout_4 = QHBoxLayout(self.widget_8)
@@ -514,7 +515,7 @@ class Ui_MainWindow(object):
         self.count_ok.setMaximumSize(QSize(16777215, 16777215))
         font11 = QFont()
         font11.setFamilies([u"Kanit"])
-        font11.setPointSize(25)
+        font11.setPointSize(30)
         font11.setBold(True)
         self.count_ok.setFont(font11)
         self.count_ok.setStyleSheet(u"color: rgb(0, 170, 0);")
@@ -588,7 +589,7 @@ class Ui_MainWindow(object):
         self.count_reset = QPushButton(self.widget_10)
         self.count_reset.setObjectName(u"count_reset")
         self.count_reset.setMinimumSize(QSize(0, 0))
-        self.count_reset.setMaximumSize(QSize(45, 45))
+        self.count_reset.setMaximumSize(QSize(80, 60))
         font12 = QFont()
         font12.setFamilies([u"Kanit"])
         font12.setPointSize(14)
@@ -606,7 +607,7 @@ class Ui_MainWindow(object):
         icon6 = QIcon()
         icon6.addFile(u":/assets/icon/reset.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.count_reset.setIcon(icon6)
-        self.count_reset.setIconSize(QSize(30, 30))
+        self.count_reset.setIconSize(QSize(40, 40))
 
         self.horizontalLayout_21.addWidget(self.count_reset)
 
@@ -618,8 +619,8 @@ class Ui_MainWindow(object):
 
         self.detection_widget = QWidget(self.detection_frame)
         self.detection_widget.setObjectName(u"detection_widget")
-        self.detection_widget.setMinimumSize(QSize(250, 0))
-        self.detection_widget.setMaximumSize(QSize(300, 16777215))
+        self.detection_widget.setMinimumSize(QSize(300, 0))
+        self.detection_widget.setMaximumSize(QSize(350, 16777215))
         self.detection_widget.setStyleSheet(u"QWidget {\n"
 "	background-color: rgb(220, 220, 220);\n"
 "	border-radius: 15px;\n"
@@ -627,7 +628,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_6 = QVBoxLayout(self.detection_widget)
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setContentsMargins(12, -1, 12, 0)
+        self.verticalLayout_6.setContentsMargins(-1, -1, -1, 0)
         self.detection_view = QLabel(self.detection_widget)
         self.detection_view.setObjectName(u"detection_view")
         self.detection_view.setMinimumSize(QSize(120, 150))
@@ -638,6 +639,7 @@ class Ui_MainWindow(object):
 "	border-color: rgb(111, 105, 37);\n"
 "	border-radius: 15px;\n"
 "	background-color: rgb(255, 255, 255);\n"
+"	padding: 10px;\n"
 "}\n"
 "")
         self.detection_view.setPixmap(QPixmap(u":/assets/icon/picture_default.png"))
@@ -666,8 +668,8 @@ class Ui_MainWindow(object):
         self.widget_6.setMaximumSize(QSize(16777215, 100))
         self.gridLayout_4 = QGridLayout(self.widget_6)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.gridLayout_4.setHorizontalSpacing(8)
-        self.gridLayout_4.setContentsMargins(0, 10, 0, 10)
+        self.gridLayout_4.setHorizontalSpacing(12)
+        self.gridLayout_4.setContentsMargins(20, 10, 20, 10)
         self.lot_detected = QLabel(self.widget_6)
         self.lot_detected.setObjectName(u"lot_detected")
         font14 = QFont()
@@ -728,16 +730,16 @@ class Ui_MainWindow(object):
 
         self.widget_4 = QWidget(self.detection_widget)
         self.widget_4.setObjectName(u"widget_4")
-        self.widget_4.setMaximumSize(QSize(16777215, 50))
+        self.widget_4.setMaximumSize(QSize(16777215, 60))
         self.widget_4.setStyleSheet(u"")
         self.horizontalLayout_7 = QHBoxLayout(self.widget_4)
-        self.horizontalLayout_7.setSpacing(10)
+        self.horizontalLayout_7.setSpacing(15)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_7.setContentsMargins(0, -1, 0, -1)
         self.capture_test = QPushButton(self.widget_4)
         self.capture_test.setObjectName(u"capture_test")
-        self.capture_test.setMinimumSize(QSize(110, 45))
-        self.capture_test.setMaximumSize(QSize(16777215, 45))
+        self.capture_test.setMinimumSize(QSize(0, 50))
+        self.capture_test.setMaximumSize(QSize(16777215, 50))
         self.capture_test.setFont(font12)
         self.capture_test.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgb(50, 50, 50);\n"
@@ -748,24 +750,20 @@ class Ui_MainWindow(object):
 "	background-color: rgb(100, 100, 100);\n"
 "}")
         self.capture_test.setIcon(icon2)
-        self.capture_test.setIconSize(QSize(30, 30))
+        self.capture_test.setIconSize(QSize(40, 40))
 
         self.horizontalLayout_7.addWidget(self.capture_test)
 
         self.start = QPushButton(self.widget_4)
         self.start.setObjectName(u"start")
-        self.start.setMinimumSize(QSize(0, 45))
-        self.start.setMaximumSize(QSize(16777215, 45))
-        font15 = QFont()
-        font15.setFamilies([u"Kanit"])
-        font15.setPointSize(12)
-        font15.setWeight(QFont.Medium)
-        font15.setItalic(False)
-        self.start.setFont(font15)
+        self.start.setMinimumSize(QSize(0, 50))
+        self.start.setMaximumSize(QSize(16777215, 50))
+        self.start.setFont(font12)
         self.start.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgb(0, 170, 50);\n"
 "	color: white;\n"
 "	text-align: center;\n"
+"	height: 30px;\n"
 "	border: none;\n"
 "	border-radius: 10px;\n"
 "	padding: 15px;\n"
@@ -778,7 +776,7 @@ class Ui_MainWindow(object):
         icon7 = QIcon()
         icon7.addFile(u":/assets/keyboard/record.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.start.setIcon(icon7)
-        self.start.setIconSize(QSize(25, 25))
+        self.start.setIconSize(QSize(30, 30))
         self.start.setCheckable(True)
         self.start.setChecked(False)
 
@@ -847,10 +845,10 @@ class Ui_MainWindow(object):
         self.process_label_line_1.setObjectName(u"process_label_line_1")
         self.process_label_line_1.setMinimumSize(QSize(0, 35))
         self.process_label_line_1.setMaximumSize(QSize(16777215, 35))
-        font16 = QFont()
-        font16.setFamilies([u"Kanit"])
-        font16.setPointSize(27)
-        self.process_label_line_1.setFont(font16)
+        font15 = QFont()
+        font15.setFamilies([u"Kanit"])
+        font15.setPointSize(27)
+        self.process_label_line_1.setFont(font15)
         self.process_label_line_1.setStyleSheet(u"color: rgb(128, 128, 128);")
         self.process_label_line_1.setFrameShape(QFrame.Shape.NoFrame)
         self.process_label_line_1.setFrameShadow(QFrame.Shadow.Plain)
@@ -863,10 +861,10 @@ class Ui_MainWindow(object):
         self.process_label_line_2.setObjectName(u"process_label_line_2")
         self.process_label_line_2.setMinimumSize(QSize(0, 35))
         self.process_label_line_2.setMaximumSize(QSize(16777215, 35))
-        font17 = QFont()
-        font17.setFamilies([u"Kanit"])
-        font17.setPointSize(20)
-        self.process_label_line_2.setFont(font17)
+        font16 = QFont()
+        font16.setFamilies([u"Kanit"])
+        font16.setPointSize(20)
+        self.process_label_line_2.setFont(font16)
         self.process_label_line_2.setStyleSheet(u"color: rgb(128, 128, 128);")
         self.process_label_line_2.setFrameShape(QFrame.Shape.NoFrame)
         self.process_label_line_2.setFrameShadow(QFrame.Shadow.Plain)
@@ -879,7 +877,7 @@ class Ui_MainWindow(object):
         self.process_label_line_3.setObjectName(u"process_label_line_3")
         self.process_label_line_3.setMinimumSize(QSize(0, 35))
         self.process_label_line_3.setMaximumSize(QSize(16777215, 35))
-        self.process_label_line_3.setFont(font17)
+        self.process_label_line_3.setFont(font16)
         self.process_label_line_3.setStyleSheet(u"color: rgb(128, 128, 128);")
         self.process_label_line_3.setFrameShape(QFrame.Shape.NoFrame)
         self.process_label_line_3.setFrameShadow(QFrame.Shadow.Plain)
@@ -892,10 +890,10 @@ class Ui_MainWindow(object):
         self.process_label_line_4.setObjectName(u"process_label_line_4")
         self.process_label_line_4.setMinimumSize(QSize(0, 30))
         self.process_label_line_4.setMaximumSize(QSize(16777215, 30))
-        font18 = QFont()
-        font18.setFamilies([u"Kanit"])
-        font18.setPointSize(14)
-        self.process_label_line_4.setFont(font18)
+        font17 = QFont()
+        font17.setFamilies([u"Kanit"])
+        font17.setPointSize(14)
+        self.process_label_line_4.setFont(font17)
         self.process_label_line_4.setStyleSheet(u"color: rgb(128, 128, 128);")
         self.process_label_line_4.setFrameShape(QFrame.Shape.NoFrame)
         self.process_label_line_4.setFrameShadow(QFrame.Shadow.Plain)
@@ -942,10 +940,10 @@ class Ui_MainWindow(object):
         self.keyboard_title.setObjectName(u"keyboard_title")
         self.keyboard_title.setMinimumSize(QSize(0, 50))
         self.keyboard_title.setMaximumSize(QSize(16777215, 65))
-        font19 = QFont()
-        font19.setFamilies([u"Kanit"])
-        font19.setPointSize(30)
-        self.keyboard_title.setFont(font19)
+        font18 = QFont()
+        font18.setFamilies([u"Kanit"])
+        font18.setPointSize(30)
+        self.keyboard_title.setFont(font18)
         self.keyboard_title.setStyleSheet(u"background-color: rgb(52, 157, 77);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius: 15px;")
@@ -966,11 +964,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_38.setContentsMargins(-1, -1, -1, 20)
         self.val_input = QLabel(self.frame_9)
         self.val_input.setObjectName(u"val_input")
-        font20 = QFont()
-        font20.setFamilies([u"Kanit"])
-        font20.setPointSize(80)
-        font20.setBold(True)
-        self.val_input.setFont(font20)
+        font19 = QFont()
+        font19.setFamilies([u"Kanit"])
+        font19.setPointSize(80)
+        font19.setBold(True)
+        self.val_input.setFont(font19)
         self.val_input.setStyleSheet(u"color: rgb(100, 100, 100);\n"
 "border: none;")
         self.val_input.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -995,35 +993,35 @@ class Ui_MainWindow(object):
         self.frame_6.setObjectName(u"frame_6")
         palette = QPalette()
         brush = QBrush(QColor(255, 255, 255, 255))
-        brush.setStyle(Qt.SolidPattern)
-        palette.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        palette.setBrush(QPalette.Active, QPalette.Button, brush)
-        palette.setBrush(QPalette.Active, QPalette.Text, brush)
-        palette.setBrush(QPalette.Active, QPalette.ButtonText, brush)
-        palette.setBrush(QPalette.Active, QPalette.Base, brush)
-        palette.setBrush(QPalette.Active, QPalette.Window, brush)
+        brush.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, brush)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, brush)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Window, brush)
         brush1 = QBrush(QColor(255, 255, 255, 128))
-        brush1.setStyle(Qt.SolidPattern)
+        brush1.setStyle(Qt.BrushStyle.SolidPattern)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Active, QPalette.PlaceholderText, brush1)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.PlaceholderText, brush1)
 #endif
-        palette.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
-        palette.setBrush(QPalette.Inactive, QPalette.Button, brush)
-        palette.setBrush(QPalette.Inactive, QPalette.Text, brush)
-        palette.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
-        palette.setBrush(QPalette.Inactive, QPalette.Base, brush)
-        palette.setBrush(QPalette.Inactive, QPalette.Window, brush)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.WindowText, brush)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Button, brush)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Text, brush)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Base, brush)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush1)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.PlaceholderText, brush1)
 #endif
-        palette.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
-        palette.setBrush(QPalette.Disabled, QPalette.Button, brush)
-        palette.setBrush(QPalette.Disabled, QPalette.Text, brush)
-        palette.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
-        palette.setBrush(QPalette.Disabled, QPalette.Base, brush)
-        palette.setBrush(QPalette.Disabled, QPalette.Window, brush)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.WindowText, brush)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Button, brush)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Text, brush)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Base, brush)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush1)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.PlaceholderText, brush1)
 #endif
         self.frame_6.setPalette(palette)
         self.frame_6.setStyleSheet(u"QPushButton {\n"
@@ -1045,11 +1043,11 @@ class Ui_MainWindow(object):
         self.gridLayout.setObjectName(u"gridLayout")
         self.key_7 = QPushButton(self.frame_6)
         self.key_7.setObjectName(u"key_7")
-        font21 = QFont()
-        font21.setFamilies([u"Kanit"])
-        font21.setPointSize(30)
-        font21.setWeight(QFont.Medium)
-        self.key_7.setFont(font21)
+        font20 = QFont()
+        font20.setFamilies([u"Kanit"])
+        font20.setPointSize(30)
+        font20.setWeight(QFont.Medium)
+        self.key_7.setFont(font20)
 
         self.gridLayout.addWidget(self.key_7, 2, 0, 1, 1)
 
@@ -1057,49 +1055,49 @@ class Ui_MainWindow(object):
         self.key_0.setObjectName(u"key_0")
         self.key_0.setMinimumSize(QSize(0, 0))
         self.key_0.setMaximumSize(QSize(16777215, 150))
-        self.key_0.setFont(font21)
+        self.key_0.setFont(font20)
 
         self.gridLayout.addWidget(self.key_0, 3, 1, 1, 1)
 
         self.key_2 = QPushButton(self.frame_6)
         self.key_2.setObjectName(u"key_2")
-        self.key_2.setFont(font21)
+        self.key_2.setFont(font20)
 
         self.gridLayout.addWidget(self.key_2, 0, 1, 1, 1)
 
         self.key_5 = QPushButton(self.frame_6)
         self.key_5.setObjectName(u"key_5")
-        self.key_5.setFont(font21)
+        self.key_5.setFont(font20)
 
         self.gridLayout.addWidget(self.key_5, 1, 1, 1, 1)
 
         self.key_4 = QPushButton(self.frame_6)
         self.key_4.setObjectName(u"key_4")
-        self.key_4.setFont(font21)
+        self.key_4.setFont(font20)
 
         self.gridLayout.addWidget(self.key_4, 1, 0, 1, 1)
 
         self.key_3 = QPushButton(self.frame_6)
         self.key_3.setObjectName(u"key_3")
-        self.key_3.setFont(font21)
+        self.key_3.setFont(font20)
 
         self.gridLayout.addWidget(self.key_3, 0, 2, 1, 1)
 
         self.key_9 = QPushButton(self.frame_6)
         self.key_9.setObjectName(u"key_9")
-        self.key_9.setFont(font21)
+        self.key_9.setFont(font20)
 
         self.gridLayout.addWidget(self.key_9, 2, 2, 1, 1)
 
         self.key_1 = QPushButton(self.frame_6)
         self.key_1.setObjectName(u"key_1")
-        self.key_1.setFont(font21)
+        self.key_1.setFont(font20)
 
         self.gridLayout.addWidget(self.key_1, 0, 0, 1, 1)
 
         self.key_8 = QPushButton(self.frame_6)
         self.key_8.setObjectName(u"key_8")
-        self.key_8.setFont(font21)
+        self.key_8.setFont(font20)
 
         self.gridLayout.addWidget(self.key_8, 2, 1, 1, 1)
 
@@ -1107,9 +1105,9 @@ class Ui_MainWindow(object):
         self.key_backspace.setObjectName(u"key_backspace")
         self.key_backspace.setMinimumSize(QSize(0, 0))
         self.key_backspace.setMaximumSize(QSize(16777215, 150))
-        font22 = QFont()
-        font22.setPointSize(30)
-        self.key_backspace.setFont(font22)
+        font21 = QFont()
+        font21.setPointSize(30)
+        self.key_backspace.setFont(font21)
         icon8 = QIcon()
         icon8.addFile(u":/assets/keyboard/backspace.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.key_backspace.setIcon(icon8)
@@ -1121,13 +1119,13 @@ class Ui_MainWindow(object):
         self.key_backslash.setObjectName(u"key_backslash")
         self.key_backslash.setMinimumSize(QSize(0, 0))
         self.key_backslash.setMaximumSize(QSize(16777215, 150))
-        self.key_backslash.setFont(font21)
+        self.key_backslash.setFont(font20)
 
         self.gridLayout.addWidget(self.key_backslash, 3, 0, 1, 1)
 
         self.key_6 = QPushButton(self.frame_6)
         self.key_6.setObjectName(u"key_6")
-        self.key_6.setFont(font21)
+        self.key_6.setFont(font20)
 
         self.gridLayout.addWidget(self.key_6, 1, 2, 1, 1)
 
@@ -1160,12 +1158,12 @@ class Ui_MainWindow(object):
         self.key_enter.setObjectName(u"key_enter")
         self.key_enter.setMinimumSize(QSize(0, 40))
         self.key_enter.setMaximumSize(QSize(16777215, 55))
-        font23 = QFont()
-        font23.setFamilies([u"Kanit"])
-        font23.setPointSize(30)
-        font23.setWeight(QFont.Medium)
-        font23.setItalic(False)
-        self.key_enter.setFont(font23)
+        font22 = QFont()
+        font22.setFamilies([u"Kanit"])
+        font22.setPointSize(30)
+        font22.setWeight(QFont.Medium)
+        font22.setItalic(False)
+        self.key_enter.setFont(font22)
         self.key_enter.setStyleSheet(u"")
         icon9 = QIcon()
         icon9.addFile(u":/assets/keyboard/enter.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -1178,7 +1176,7 @@ class Ui_MainWindow(object):
         self.key_cancel.setObjectName(u"key_cancel")
         self.key_cancel.setMinimumSize(QSize(0, 40))
         self.key_cancel.setMaximumSize(QSize(16777215, 55))
-        self.key_cancel.setFont(font23)
+        self.key_cancel.setFont(font22)
         icon10 = QIcon()
         icon10.addFile(u":/assets/keyboard/cancel.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.key_cancel.setIcon(icon10)
@@ -1257,6 +1255,7 @@ class Ui_MainWindow(object):
 "	border-width: 2px;\n"
 "	border-color: rgb(111, 105, 37);\n"
 "	border-radius: 15px;\n"
+"	padding: 10px;\n"
 "	background-color: rgb(0, 0, 0);\n"
 "}\n"
 "")
@@ -1276,7 +1275,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_8 = QVBoxLayout(self.set_widget)
         self.verticalLayout_8.setSpacing(6)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.verticalLayout_8.setContentsMargins(12, 12, 12, 12)
+        self.verticalLayout_8.setContentsMargins(-1, -1, 9, 0)
         self.webcam_setting_view = QLabel(self.set_widget)
         self.webcam_setting_view.setObjectName(u"webcam_setting_view")
         self.webcam_setting_view.setMinimumSize(QSize(120, 150))
@@ -1287,6 +1286,7 @@ class Ui_MainWindow(object):
 "	border-color: rgb(111, 105, 37);\n"
 "	border-radius: 15px;\n"
 "	background-color: rgb(255, 255, 255);\n"
+"	padding: 10px;\n"
 "}\n"
 "")
         self.webcam_setting_view.setPixmap(QPixmap(u":/assets/icon/picture_default.png"))
@@ -1309,7 +1309,7 @@ class Ui_MainWindow(object):
         self.lot_set_label.setStyleSheet(u"color: rgb(61, 61, 61);")
         self.lot_set_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.lot_set_label)
+        self.formLayout.setWidget(0, QFormLayout.ItemRole.LabelRole, self.lot_set_label)
 
         self.lot_set = QPushButton(self.widget_7)
         self.lot_set.setObjectName(u"lot_set")
@@ -1320,7 +1320,7 @@ class Ui_MainWindow(object):
 "border-color: rgb(111, 105, 37);\n"
 "border-radius: 10px;")
 
-        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.lot_set)
+        self.formLayout.setWidget(0, QFormLayout.ItemRole.FieldRole, self.lot_set)
 
         self.mfg_set_label = QLabel(self.widget_7)
         self.mfg_set_label.setObjectName(u"mfg_set_label")
@@ -1330,7 +1330,7 @@ class Ui_MainWindow(object):
         self.mfg_set_label.setStyleSheet(u"color: rgb(61, 61, 61);")
         self.mfg_set_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.mfg_set_label)
+        self.formLayout.setWidget(1, QFormLayout.ItemRole.LabelRole, self.mfg_set_label)
 
         self.mfg_set = QPushButton(self.widget_7)
         self.mfg_set.setObjectName(u"mfg_set")
@@ -1341,7 +1341,7 @@ class Ui_MainWindow(object):
 "border-color: rgb(111, 105, 37);\n"
 "border-radius: 10px;")
 
-        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.mfg_set)
+        self.formLayout.setWidget(1, QFormLayout.ItemRole.FieldRole, self.mfg_set)
 
         self.exp_set_label = QLabel(self.widget_7)
         self.exp_set_label.setObjectName(u"exp_set_label")
@@ -1350,7 +1350,7 @@ class Ui_MainWindow(object):
         self.exp_set_label.setStyleSheet(u"color: rgb(61, 61, 61);")
         self.exp_set_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.exp_set_label)
+        self.formLayout.setWidget(2, QFormLayout.ItemRole.LabelRole, self.exp_set_label)
 
         self.exp_set = QPushButton(self.widget_7)
         self.exp_set.setObjectName(u"exp_set")
@@ -1361,7 +1361,7 @@ class Ui_MainWindow(object):
 "border-color: rgb(111, 105, 37);\n"
 "border-radius: 10px;")
 
-        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.exp_set)
+        self.formLayout.setWidget(2, QFormLayout.ItemRole.FieldRole, self.exp_set)
 
 
         self.verticalLayout_8.addWidget(self.widget_7)
@@ -1369,10 +1369,10 @@ class Ui_MainWindow(object):
         self.save_images_detection = QPushButton(self.set_widget)
         self.save_images_detection.setObjectName(u"save_images_detection")
         self.save_images_detection.setMaximumSize(QSize(16777215, 50))
-        font24 = QFont()
-        font24.setFamilies([u"Kanit"])
-        font24.setPointSize(12)
-        self.save_images_detection.setFont(font24)
+        font23 = QFont()
+        font23.setFamilies([u"Kanit"])
+        font23.setPointSize(12)
+        self.save_images_detection.setFont(font23)
         self.save_images_detection.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgb(100, 100, 100);\n"
 "	color: rgb(161, 161, 161);\n"
@@ -1413,8 +1413,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.capture_set = QPushButton(self.widget_3)
         self.capture_set.setObjectName(u"capture_set")
-        self.capture_set.setMinimumSize(QSize(0, 45))
-        self.capture_set.setMaximumSize(QSize(16777215, 45))
+        self.capture_set.setMinimumSize(QSize(0, 50))
+        self.capture_set.setMaximumSize(QSize(16777215, 50))
         self.capture_set.setFont(font15)
         self.capture_set.setStyleSheet(u"")
         self.capture_set.setIcon(icon2)
@@ -1424,8 +1424,8 @@ class Ui_MainWindow(object):
 
         self.save_set = QPushButton(self.widget_3)
         self.save_set.setObjectName(u"save_set")
-        self.save_set.setMinimumSize(QSize(0, 45))
-        self.save_set.setMaximumSize(QSize(16777215, 45))
+        self.save_set.setMinimumSize(QSize(0, 50))
+        self.save_set.setMaximumSize(QSize(16777215, 50))
         self.save_set.setFont(font15)
         self.save_set.setStyleSheet(u"")
         icon12 = QIcon()
@@ -1458,10 +1458,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
         self.cameraFocusWidget = QWidget(self.widget_20)
         self.cameraFocusWidget.setObjectName(u"cameraFocusWidget")
-        self.cameraFocusWidget.setMinimumSize(QSize(150, 0))
-        font25 = QFont()
-        font25.setPointSize(12)
-        self.cameraFocusWidget.setFont(font25)
         self.cameraFocusWidget.setStyleSheet(u"border: solid;\n"
 "border-width: 1px;\n"
 "border-color: rgb(80, 80, 80);\n"
@@ -1472,7 +1468,7 @@ class Ui_MainWindow(object):
         self.cameraAutoFocus.setObjectName(u"cameraAutoFocus")
         self.cameraAutoFocus.setMinimumSize(QSize(0, 50))
         self.cameraAutoFocus.setMaximumSize(QSize(16777215, 50))
-        self.cameraAutoFocus.setFont(font24)
+        self.cameraAutoFocus.setFont(font17)
         self.cameraAutoFocus.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgb(100, 100, 100);\n"
 "	color: rgb(161, 161, 161);\n"
@@ -1499,11 +1495,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
         self.cameraFocusLabel = QLabel(self.cameraFocusWidget2)
         self.cameraFocusLabel.setObjectName(u"cameraFocusLabel")
-        font26 = QFont()
-        font26.setFamilies([u"Kanit"])
-        font26.setPointSize(12)
-        font26.setBold(False)
-        self.cameraFocusLabel.setFont(font26)
+        font25 = QFont()
+        font25.setFamilies([u"Kanit"])
+        font25.setPointSize(12)
+        font25.setBold(False)
+        self.cameraFocusLabel.setFont(font25)
         self.cameraFocusLabel.setStyleSheet(u"background-color: rgb(122, 122, 122);\n"
 "border-radius: 10px;")
         self.cameraFocusLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -1512,7 +1508,7 @@ class Ui_MainWindow(object):
 
         self.cameraFocusValue = QLabel(self.cameraFocusWidget2)
         self.cameraFocusValue.setObjectName(u"cameraFocusValue")
-        self.cameraFocusValue.setFont(font26)
+        self.cameraFocusValue.setFont(font25)
         self.cameraFocusValue.setStyleSheet(u"border-radius: 10px;\n"
 "background-color: rgb(85, 170, 127);")
         self.cameraFocusValue.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -1540,12 +1536,13 @@ class Ui_MainWindow(object):
         self.camera_setting_monitor = QLabel(self.camera_monitor_widget)
         self.camera_setting_monitor.setObjectName(u"camera_setting_monitor")
         self.camera_setting_monitor.setMinimumSize(QSize(250, 0))
-        self.camera_setting_monitor.setMaximumSize(QSize(375, 250))
+        self.camera_setting_monitor.setMaximumSize(QSize(450, 350))
         self.camera_setting_monitor.setStyleSheet(u"QLabel {\n"
 "	border: solid;\n"
 "	border-width: 2px;\n"
 "	border-color: rgb(111, 105, 37);\n"
 "	border-radius: 15px;\n"
+"	padding: 10px;\n"
 "	background-color: rgb(0, 0, 0);\n"
 "}\n"
 "")
@@ -1559,7 +1556,6 @@ class Ui_MainWindow(object):
 
         self.cameraZoomWidget = QWidget(self.widget_20)
         self.cameraZoomWidget.setObjectName(u"cameraZoomWidget")
-        self.cameraZoomWidget.setMinimumSize(QSize(150, 0))
         self.cameraZoomWidget.setStyleSheet(u"border: solid;\n"
 "border-width: 1px;\n"
 "border-color: rgb(80, 80, 80);\n"
@@ -1570,12 +1566,12 @@ class Ui_MainWindow(object):
         self.save_camera_setting.setObjectName(u"save_camera_setting")
         self.save_camera_setting.setMinimumSize(QSize(0, 50))
         self.save_camera_setting.setMaximumSize(QSize(16777215, 50))
-        font27 = QFont()
-        font27.setFamilies([u"Kanit"])
-        font27.setPointSize(18)
-        font27.setWeight(QFont.Medium)
-        font27.setItalic(False)
-        self.save_camera_setting.setFont(font27)
+        font26 = QFont()
+        font26.setFamilies([u"Kanit"])
+        font26.setPointSize(20)
+        font26.setWeight(QFont.Medium)
+        font26.setItalic(False)
+        self.save_camera_setting.setFont(font26)
         self.save_camera_setting.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgb(50, 50, 50);\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1587,7 +1583,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.save_camera_setting.setIcon(icon12)
-        self.save_camera_setting.setIconSize(QSize(25, 25))
+        self.save_camera_setting.setIconSize(QSize(30, 30))
 
         self.verticalLayout_17.addWidget(self.save_camera_setting)
 
@@ -1598,7 +1594,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
         self.cameraZoomLabel = QLabel(self.cameraZoomWidget2)
         self.cameraZoomLabel.setObjectName(u"cameraZoomLabel")
-        self.cameraZoomLabel.setFont(font26)
+        self.cameraZoomLabel.setFont(font25)
         self.cameraZoomLabel.setStyleSheet(u"background-color: rgb(122, 122, 122);\n"
 "border-radius: 10px;")
         self.cameraZoomLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -1607,7 +1603,7 @@ class Ui_MainWindow(object):
 
         self.cameraZoomValue = QLabel(self.cameraZoomWidget2)
         self.cameraZoomValue.setObjectName(u"cameraZoomValue")
-        self.cameraZoomValue.setFont(font26)
+        self.cameraZoomValue.setFont(font25)
         self.cameraZoomValue.setStyleSheet(u"border-radius: 10px;\n"
 "background-color: rgb(85, 170, 127);")
         self.cameraZoomValue.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -1650,7 +1646,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.cameraBrightnessLabel = QLabel(self.cameraBrightnessWidget2)
         self.cameraBrightnessLabel.setObjectName(u"cameraBrightnessLabel")
-        self.cameraBrightnessLabel.setFont(font26)
+        self.cameraBrightnessLabel.setFont(font25)
         self.cameraBrightnessLabel.setStyleSheet(u"background-color: rgb(122, 122, 122);\n"
 "border-radius: 10px;")
         self.cameraBrightnessLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -1659,7 +1655,7 @@ class Ui_MainWindow(object):
 
         self.cameraBrightnessValue = QLabel(self.cameraBrightnessWidget2)
         self.cameraBrightnessValue.setObjectName(u"cameraBrightnessValue")
-        self.cameraBrightnessValue.setFont(font26)
+        self.cameraBrightnessValue.setFont(font25)
         self.cameraBrightnessValue.setStyleSheet(u"border-radius: 10px;\n"
 "background-color: rgb(85, 170, 127);")
         self.cameraBrightnessValue.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -1693,7 +1689,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.cameraContrastLabel = QLabel(self.cameraContrastWidget2)
         self.cameraContrastLabel.setObjectName(u"cameraContrastLabel")
-        self.cameraContrastLabel.setFont(font26)
+        self.cameraContrastLabel.setFont(font25)
         self.cameraContrastLabel.setStyleSheet(u"background-color: rgb(122, 122, 122);\n"
 "border-radius: 10px;")
         self.cameraContrastLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -1702,7 +1698,7 @@ class Ui_MainWindow(object):
 
         self.cameraContrastValue = QLabel(self.cameraContrastWidget2)
         self.cameraContrastValue.setObjectName(u"cameraContrastValue")
-        self.cameraContrastValue.setFont(font26)
+        self.cameraContrastValue.setFont(font25)
         self.cameraContrastValue.setStyleSheet(u"border-radius: 10px;\n"
 "background-color: rgb(85, 170, 127);")
         self.cameraContrastValue.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -1736,7 +1732,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
         self.cameraExposureLabel = QLabel(self.cameraExposureWidget2)
         self.cameraExposureLabel.setObjectName(u"cameraExposureLabel")
-        self.cameraExposureLabel.setFont(font26)
+        self.cameraExposureLabel.setFont(font25)
         self.cameraExposureLabel.setStyleSheet(u"background-color: rgb(122, 122, 122);\n"
 "border-radius: 10px;")
         self.cameraExposureLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -1745,7 +1741,7 @@ class Ui_MainWindow(object):
 
         self.cameraExposureValue = QLabel(self.cameraExposureWidget2)
         self.cameraExposureValue.setObjectName(u"cameraExposureValue")
-        self.cameraExposureValue.setFont(font26)
+        self.cameraExposureValue.setFont(font25)
         self.cameraExposureValue.setStyleSheet(u"border-radius: 10px;\n"
 "background-color: rgb(85, 170, 127);")
         self.cameraExposureValue.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -1764,6 +1760,49 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_16.addWidget(self.cameraExposureWidget)
 
+        self.sensorDelayWidget = QWidget(self.widget_19)
+        self.sensorDelayWidget.setObjectName(u"sensorDelayWidget")
+        self.sensorDelayWidget.setStyleSheet(u"border: solid;\n"
+"border-width: 1px;\n"
+"border-color: rgb(80, 80, 80);\n"
+"border-radius: 15px;")
+        self.verticalLayout_16 = QVBoxLayout(self.sensorDelayWidget)
+        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
+        self.sensorDelayWidget2 = QWidget(self.sensorDelayWidget)
+        self.sensorDelayWidget2.setObjectName(u"sensorDelayWidget2")
+        self.sensorDelayWidget2.setMaximumSize(QSize(16777215, 50))
+        self.horizontalLayout_12 = QHBoxLayout(self.sensorDelayWidget2)
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.sensorDelayWidgetLabel = QLabel(self.sensorDelayWidget2)
+        self.sensorDelayWidgetLabel.setObjectName(u"sensorDelayWidgetLabel")
+        self.sensorDelayWidgetLabel.setFont(font26)
+        self.sensorDelayWidgetLabel.setStyleSheet(u"background-color: rgb(122, 122, 122);\n"
+"border-radius: 10px;")
+        self.sensorDelayWidgetLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.horizontalLayout_12.addWidget(self.sensorDelayWidgetLabel)
+
+        self.sensorDelayValue = QLabel(self.sensorDelayWidget2)
+        self.sensorDelayValue.setObjectName(u"sensorDelayValue")
+        self.sensorDelayValue.setFont(font26)
+        self.sensorDelayValue.setStyleSheet(u"border-radius: 10px;\n"
+"background-color: rgb(85, 170, 127);")
+        self.sensorDelayValue.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.horizontalLayout_12.addWidget(self.sensorDelayValue)
+
+
+        self.verticalLayout_16.addWidget(self.sensorDelayWidget2)
+
+        self.sensorDelay = QDial(self.sensorDelayWidget)
+        self.sensorDelay.setObjectName(u"sensorDelay")
+        self.sensorDelay.setMaximum(500)
+
+        self.verticalLayout_16.addWidget(self.sensorDelay)
+
+
+        self.horizontalLayout_16.addWidget(self.sensorDelayWidget)
+
 
         self.verticalLayout_18.addWidget(self.widget_19)
 
@@ -1775,7 +1814,7 @@ class Ui_MainWindow(object):
         self.shutdown_title = QLabel(self.shutdown_page)
         self.shutdown_title.setObjectName(u"shutdown_title")
         self.shutdown_title.setMaximumSize(QSize(16777215, 65))
-        self.shutdown_title.setFont(font19)
+        self.shutdown_title.setFont(font18)
         self.shutdown_title.setStyleSheet(u"background-color: rgb(52, 157, 77);\n"
 "border-radius: 15px;")
         self.shutdown_title.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -1800,12 +1839,12 @@ class Ui_MainWindow(object):
         self.shutdown_warning_label = QLabel(self.widget_17)
         self.shutdown_warning_label.setObjectName(u"shutdown_warning_label")
         self.shutdown_warning_label.setMaximumSize(QSize(16777215, 16777215))
-        font28 = QFont()
-        font28.setFamilies([u"Kanit"])
-        font28.setPointSize(22)
-        font28.setBold(True)
-        font28.setStrikeOut(False)
-        self.shutdown_warning_label.setFont(font28)
+        font27 = QFont()
+        font27.setFamilies([u"Kanit"])
+        font27.setPointSize(22)
+        font27.setBold(True)
+        font27.setStrikeOut(False)
+        self.shutdown_warning_label.setFont(font27)
         self.shutdown_warning_label.setStyleSheet(u"color: rgb(91, 91, 91);")
         self.shutdown_warning_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.shutdown_warning_label.setWordWrap(True)
@@ -1834,7 +1873,7 @@ class Ui_MainWindow(object):
         self.confirm_shutdown = QPushButton(self.widget_18)
         self.confirm_shutdown.setObjectName(u"confirm_shutdown")
         self.confirm_shutdown.setMinimumSize(QSize(0, 52))
-        self.confirm_shutdown.setFont(font23)
+        self.confirm_shutdown.setFont(font22)
         self.confirm_shutdown.setStyleSheet(u"")
         self.confirm_shutdown.setIcon(icon9)
         self.confirm_shutdown.setIconSize(QSize(50, 50))
@@ -1844,7 +1883,7 @@ class Ui_MainWindow(object):
         self.cancel_shutdown = QPushButton(self.widget_18)
         self.cancel_shutdown.setObjectName(u"cancel_shutdown")
         self.cancel_shutdown.setMinimumSize(QSize(0, 52))
-        self.cancel_shutdown.setFont(font23)
+        self.cancel_shutdown.setFont(font22)
         self.cancel_shutdown.setIcon(icon10)
         self.cancel_shutdown.setIconSize(QSize(50, 50))
 
@@ -1943,7 +1982,7 @@ class Ui_MainWindow(object):
         self.mfg_label.setText(QCoreApplication.translate("MainWindow", u"MFG.", None))
         self.mfg_detected.setText(QCoreApplication.translate("MainWindow", u"XXXXXX", None))
         self.exp_detected.setText(QCoreApplication.translate("MainWindow", u"XXXXXX", None))
-        self.capture_test.setText(QCoreApplication.translate("MainWindow", u"\u0e17\u0e14\u0e2a\u0e2d\u0e1a", None))
+        self.capture_test.setText(QCoreApplication.translate("MainWindow", u" \u0e16\u0e48\u0e32\u0e22\u0e20\u0e32\u0e1e", None))
         self.start.setText(QCoreApplication.translate("MainWindow", u"START", None))
         self.process_img.setText("")
         self.process_label_line_1.setText(QCoreApplication.translate("MainWindow", u"PRINTING  INSPECTION SYSTEM", None))
