@@ -11,14 +11,15 @@ pytesseract.pytesseract.tesseract_cmd = r"/usr/bin/tesseract"
 class OcrWorker(QThread):
     finished = Signal(np.ndarray, np.ndarray, str, float)  # ถ้า import numpy as np แล้ว
 
-    def __init__(self, task_queue):
+    def __init__(self, task_queue, angle=0):
         super().__init__()
         self.task_queue = task_queue
         self.rectColor = (255, 17, 0)
         self.running = True
+        self.angle=angle
 
     # ตั้งค่าให้แสดงภาพที่จับได้
-    def detect_and_recognize_text(self, image, angle=90):
+    def detect_and_recognize_text(self, image):
         """
         image: ภาพ BGR
         angle: หมุนภาพก่อน OCR (องศา, +ve = หมุนตามเข็มนาฬิกา)
@@ -26,10 +27,10 @@ class OcrWorker(QThread):
         start = time.perf_counter()
 
         # หมุนภาพถ้ามีการระบุ angle
-        if angle != 0:
+        if self.angle != 0:
             (h, w) = image.shape[:2]
             center = (w // 2, h // 2)
-            M = cv2.getRotationMatrix2D(center, angle, 1.0)
+            M = cv2.getRotationMatrix2D(center, self.angle, 1.0)
             image = cv2.warpAffine(image, M, (w, h), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
 
         # แปลงเป็น grayscale และทำ preprocessing

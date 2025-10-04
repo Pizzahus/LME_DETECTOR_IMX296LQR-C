@@ -39,8 +39,15 @@ class CameraSettings:
 
 @dataclass
 class GPIOSettings:
-    sensorPin: int
-    buzzerPin: int
+    DI0: int
+    BUZZER: int
+    LED0: int
+    LED1: int
+    DI1: int
+    DO0: int
+    DO1: int
+    L0: int
+    L1: int
 
 
 class ConfigManager:
@@ -57,10 +64,20 @@ class ConfigManager:
 
     def _create_default_config(self) -> None:
         default_config = {
-            'template': {'lme': {'lot': 'DEFAULT_LOT', 'mfg': 'YYYYMMDD', 'exp': 'YYYYMMDD'}},
+            'template': {'lot': 'DEFAULT_LOT', 'mfg': 'YYYYMMDD', 'exp': 'YYYYMMDD'},
             'hardware': {
                 'camera': {'zoom': 100, 'focus': 170, 'autoFocus': True, 'brightness': 180, 'contrast': 180, 'exposure': 180, 'sensorDelay': 500, 'saveImage': False},
-                'gpio': {'sensorPin': 23, 'buzzerPin': 12},
+                'gpio': {
+                    'LED0': 20, 
+                    'LED1': 21, 
+                    'BUZZER': 19, 
+                    'DI0': 22, 
+                    'DI1': 27, 
+                    'DO0': 22, 
+                    'DO1': 24, 
+                    'L0': 12, 
+                    'L1': 13
+                },
             },
             'counters': {'ok': 0, 'ng': 0},
         }
@@ -110,8 +127,15 @@ class ConfigManager:
     def get_gpio_settings(self) -> GPIOSettings:
         data = self.config.get('hardware', {}).get('gpio', {})
         return GPIOSettings(
-            sensorPin=data.get('sensorPin', 0),
-            buzzerPin=data.get('buzzerPin', 0),
+            LED0=data.get('LED0', 0),
+            LED1=data.get('LED1', 0),
+            BUZZER=data.get('BUZZER', 0),
+            DI0=data.get('DI0', 0),
+            DI1=data.get('DI1', 0),
+            DO0=data.get('DO0', 0),
+            DO1=data.get('DO1', 0),
+            L0=data.get('L0', 0),
+            L1=data.get('L1', 0),
         )
 
     def update_counter(self, ok: int = 0, ng: int = 0) -> None:

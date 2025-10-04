@@ -32,8 +32,281 @@
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <layout class="QGridLayout" name="gridLayout_3">
-    <item row="0" column="1">
+   <layout class="QHBoxLayout" name="horizontalLayout_12">
+    <item>
+     <widget class="QWidget" name="hide_sidebar" native="true">
+      <property name="styleSheet">
+       <string notr="true">QWidget {
+	background-color: rgb(0, 150, 255);
+	border-radius: 10px;
+}
+
+QPushButton {
+	background-color: rgb(0, 150, 255);
+	font-size: 20px;
+	color: white;
+	text-align: left;
+	height: 30px;
+	border: none;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	padding: 15px;
+}
+
+QPushButton:checked {
+	background-color: #f5fafe;
+	color: rgb(0, 150, 255);
+	font-weight: bold;
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_15">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="profile_img2">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="resource.qrc">:/assets/images/polipharm.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QPushButton" name="home_2">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>-1</pointsize>
+             <kerning>true</kerning>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/assets/icon/home.png</normaloff>:/assets/icon/home.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="setting_2">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/assets/icon/testing.png</normaloff>:/assets/icon/testing.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="setting_4">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/assets/icon/settings.png</normaloff>:/assets/icon/settings.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="camera_setting_2">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/assets/icon/camera.png</normaloff>:/assets/icon/camera.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>297</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_40">
+         <item>
+          <widget class="QPushButton" name="restart_program_2">
+           <property name="font">
+            <font>
+             <family>Kanit</family>
+             <pointsize>-1</pointsize>
+             <strikeout>false</strikeout>
+             <kerning>true</kerning>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/assets/icon/restart.png</normaloff>:/assets/icon/restart.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="shortcut">
+            <string notr="true">Ctrl+S</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="shutdown_2">
+           <property name="font">
+            <font>
+             <family>Kanit</family>
+             <pointsize>-1</pointsize>
+             <strikeout>false</strikeout>
+             <kerning>true</kerning>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/assets/icon/shutdown1.png</normaloff>:/assets/icon/shutdown1.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="shortcut">
+            <string notr="true">Ctrl+S</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
      <widget class="QWidget" name="show_sidebar" native="true">
       <property name="enabled">
        <bool>true</bool>
@@ -62,7 +335,7 @@ QPushButton:checked {
 	font-weight: bold;
 }</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_20">
+      <layout class="QVBoxLayout" name="verticalLayout_13">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <property name="topMargin">
@@ -116,13 +389,7 @@ QPushButton:checked {
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <property name="spacing">
-          <number>5</number>
-         </property>
-         <property name="topMargin">
-          <number>25</number>
-         </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
          <item>
           <widget class="QPushButton" name="home_1">
            <property name="font">
@@ -158,6 +425,38 @@ QPushButton:checked {
          </item>
          <item>
           <widget class="QPushButton" name="setting_1">
+           <property name="font">
+            <font>
+             <family>Kanit</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string> ตั้งค่า</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/assets/icon/testing.png</normaloff>:/assets/icon/testing.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="setting_3">
            <property name="font">
             <font>
              <family>Kanit</family>
@@ -304,260 +603,7 @@ QPushButton:checked {
       </layout>
      </widget>
     </item>
-    <item row="0" column="0">
-     <widget class="QWidget" name="hide_sidebar" native="true">
-      <property name="styleSheet">
-       <string notr="true">QWidget {
-	background-color: rgb(0, 150, 255);
-	border-radius: 10px;
-}
-
-QPushButton {
-	background-color: rgb(0, 150, 255);
-	font-size: 20px;
-	color: white;
-	text-align: left;
-	height: 30px;
-	border: none;
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
-	padding: 15px;
-}
-
-QPushButton:checked {
-	background-color: #f5fafe;
-	color: rgb(0, 150, 255);
-	font-weight: bold;
-}</string>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_13">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="profile_img2">
-           <property name="minimumSize">
-            <size>
-             <width>60</width>
-             <height>60</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>60</width>
-             <height>60</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="pixmap">
-            <pixmap resource="resource.qrc">:/assets/images/polipharm.png</pixmap>
-           </property>
-           <property name="scaledContents">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <property name="spacing">
-          <number>5</number>
-         </property>
-         <property name="topMargin">
-          <number>25</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="home_2">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>-1</pointsize>
-             <kerning>true</kerning>
-            </font>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/assets/icon/home.png</normaloff>:/assets/icon/home.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="setting_2">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/assets/icon/settings.png</normaloff>:/assets/icon/settings.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="camera_setting_2">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/assets/icon/camera.png</normaloff>:/assets/icon/camera.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>297</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_40">
-         <item>
-          <widget class="QPushButton" name="restart_program_2">
-           <property name="font">
-            <font>
-             <family>Kanit</family>
-             <pointsize>-1</pointsize>
-             <strikeout>false</strikeout>
-             <kerning>true</kerning>
-            </font>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/assets/icon/restart.png</normaloff>:/assets/icon/restart.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="shortcut">
-            <string notr="true">Ctrl+S</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="shutdown_2">
-           <property name="font">
-            <font>
-             <family>Kanit</family>
-             <pointsize>-1</pointsize>
-             <strikeout>false</strikeout>
-             <kerning>true</kerning>
-            </font>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/assets/icon/shutdown1.png</normaloff>:/assets/icon/shutdown1.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="shortcut">
-            <string notr="true">Ctrl+S</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="2">
+    <item>
      <widget class="QWidget" name="screen_page" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <property name="spacing">
@@ -809,7 +855,7 @@ QGroupBox {
 }</string>
          </property>
          <property name="currentIndex">
-          <number>5</number>
+          <number>4</number>
          </property>
          <widget class="QWidget" name="detection_page">
           <layout class="QVBoxLayout" name="verticalLayout_14" stretch="0,0">
@@ -929,7 +975,6 @@ border-radius: 15px;</string>
 	border-width: 2px;
 	border-color: rgb(111, 105, 37);
 	border-radius: 15px;
-	padding: 10px;
 	background-color: rgb(0, 0, 0);
 }
 </string>
@@ -948,8 +993,11 @@ border-radius: 15px;</string>
                  <item>
                   <widget class="QWidget" name="widget_10" native="true">
                    <layout class="QHBoxLayout" name="horizontalLayout_21">
+                    <property name="topMargin">
+                     <number>5</number>
+                    </property>
                     <property name="bottomMargin">
-                     <number>3</number>
+                     <number>5</number>
                     </property>
                     <item>
                      <widget class="QWidget" name="widget_8" native="true">
@@ -1018,7 +1066,7 @@ border-radius: 15px;</string>
                          <property name="font">
                           <font>
                            <family>Kanit</family>
-                           <pointsize>30</pointsize>
+                           <pointsize>25</pointsize>
                            <bold>true</bold>
                           </font>
                          </property>
@@ -1103,7 +1151,7 @@ border-radius: 15px;</string>
                          <property name="font">
                           <font>
                            <family>Kanit</family>
-                           <pointsize>30</pointsize>
+                           <pointsize>25</pointsize>
                            <bold>true</bold>
                           </font>
                          </property>
@@ -1188,7 +1236,7 @@ border-radius: 15px;</string>
                          <property name="font">
                           <font>
                            <family>Kanit</family>
-                           <pointsize>30</pointsize>
+                           <pointsize>25</pointsize>
                            <bold>true</bold>
                           </font>
                          </property>
@@ -1216,8 +1264,8 @@ border-radius: 15px;</string>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>80</width>
-                        <height>60</height>
+                        <width>45</width>
+                        <height>45</height>
                        </size>
                       </property>
                       <property name="font">
@@ -1247,8 +1295,8 @@ QPushButton:pressed {
                       </property>
                       <property name="iconSize">
                        <size>
-                        <width>40</width>
-                        <height>40</height>
+                        <width>30</width>
+                        <height>30</height>
                        </size>
                       </property>
                      </widget>
@@ -1263,13 +1311,13 @@ QPushButton:pressed {
                <widget class="QWidget" name="detection_widget" native="true">
                 <property name="minimumSize">
                  <size>
-                  <width>300</width>
+                  <width>250</width>
                   <height>0</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>350</width>
+                  <width>300</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1282,6 +1330,12 @@ QPushButton:pressed {
                 <layout class="QVBoxLayout" name="verticalLayout_6">
                  <property name="spacing">
                   <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>12</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>12</number>
                  </property>
                  <property name="bottomMargin">
                   <number>0</number>
@@ -1307,7 +1361,6 @@ QPushButton:pressed {
 	border-color: rgb(111, 105, 37);
 	border-radius: 15px;
 	background-color: rgb(255, 255, 255);
-	padding: 10px;
 }
 </string>
                    </property>
@@ -1366,19 +1419,19 @@ margin-top: 10px;</string>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_4">
                     <property name="leftMargin">
-                     <number>20</number>
+                     <number>0</number>
                     </property>
                     <property name="topMargin">
                      <number>10</number>
                     </property>
                     <property name="rightMargin">
-                     <number>20</number>
+                     <number>0</number>
                     </property>
                     <property name="bottomMargin">
                      <number>10</number>
                     </property>
                     <property name="horizontalSpacing">
-                     <number>12</number>
+                     <number>8</number>
                     </property>
                     <item row="0" column="1">
                      <widget class="QLabel" name="lot_detected">
@@ -1526,7 +1579,7 @@ margin-top: 10px;</string>
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>60</height>
+                     <height>50</height>
                     </size>
                    </property>
                    <property name="styleSheet">
@@ -1534,26 +1587,32 @@ margin-top: 10px;</string>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_7">
                     <property name="spacing">
-                     <number>15</number>
+                     <number>10</number>
                     </property>
                     <property name="leftMargin">
                      <number>0</number>
                     </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
                     <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
                      <number>0</number>
                     </property>
                     <item>
                      <widget class="QPushButton" name="capture_test">
                       <property name="minimumSize">
                        <size>
-                        <width>0</width>
-                        <height>50</height>
+                        <width>110</width>
+                        <height>45</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>50</height>
+                        <height>45</height>
                        </size>
                       </property>
                       <property name="font">
@@ -1575,7 +1634,7 @@ QPushButton:pressed {
 }</string>
                       </property>
                       <property name="text">
-                       <string> ถ่ายภาพ</string>
+                       <string>ทดสอบ</string>
                       </property>
                       <property name="icon">
                        <iconset resource="resource.qrc">
@@ -1583,8 +1642,8 @@ QPushButton:pressed {
                       </property>
                       <property name="iconSize">
                        <size>
-                        <width>40</width>
-                        <height>40</height>
+                        <width>30</width>
+                        <height>30</height>
                        </size>
                       </property>
                      </widget>
@@ -1594,19 +1653,19 @@ QPushButton:pressed {
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
-                        <height>50</height>
+                        <height>45</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>50</height>
+                        <height>45</height>
                        </size>
                       </property>
                       <property name="font">
                        <font>
                         <family>Kanit</family>
-                        <pointsize>14</pointsize>
+                        <pointsize>12</pointsize>
                         <italic>false</italic>
                         <fontweight>Medium</fontweight>
                        </font>
@@ -1616,7 +1675,6 @@ QPushButton:pressed {
 	background-color: rgb(0, 170, 50);
 	color: white;
 	text-align: center;
-	height: 30px;
 	border: none;
 	border-radius: 10px;
 	padding: 15px;
@@ -1636,8 +1694,8 @@ QPushButton:checked {
                       </property>
                       <property name="iconSize">
                        <size>
-                        <width>30</width>
-                        <height>30</height>
+                        <width>25</width>
+                        <height>25</height>
                        </size>
                       </property>
                       <property name="checkable">
@@ -2872,7 +2930,6 @@ border-radius: 15px;</string>
 	border-width: 2px;
 	border-color: rgb(111, 105, 37);
 	border-radius: 15px;
-	padding: 10px;
 	background-color: rgb(0, 0, 0);
 }
 </string>
@@ -2912,11 +2969,17 @@ border-radius: 15px;</string>
                     <property name="spacing">
                      <number>6</number>
                     </property>
+                    <property name="leftMargin">
+                     <number>12</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>12</number>
+                    </property>
                     <property name="rightMargin">
-                     <number>9</number>
+                     <number>12</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>0</number>
+                     <number>12</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="webcam_setting_view">
@@ -2939,7 +3002,6 @@ border-radius: 15px;</string>
 	border-color: rgb(111, 105, 37);
 	border-radius: 15px;
 	background-color: rgb(255, 255, 255);
-	padding: 10px;
 }
 </string>
                       </property>
@@ -2959,21 +3021,15 @@ border-radius: 15px;</string>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>120</height>
+                        <height>130</height>
                        </size>
                       </property>
                       <layout class="QFormLayout" name="formLayout">
-                       <property name="horizontalSpacing">
-                        <number>10</number>
-                       </property>
-                       <property name="verticalSpacing">
-                        <number>4</number>
-                       </property>
                        <property name="topMargin">
-                        <number>10</number>
+                        <number>5</number>
                        </property>
                        <property name="bottomMargin">
-                        <number>10</number>
+                        <number>5</number>
                        </property>
                        <item row="0" column="0">
                         <widget class="QLabel" name="lot_set_label">
@@ -3002,23 +3058,32 @@ border-radius: 15px;</string>
                         </widget>
                        </item>
                        <item row="0" column="1">
-                        <widget class="QPushButton" name="lot_set">
+                        <widget class="QLineEdit" name="lot_set">
                          <property name="font">
                           <font>
-                           <family>Kanit</family>
                            <pointsize>22</pointsize>
-                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">color: rgb(61, 61, 61);
-border: solid;
-border-width: 1px;
-border-color: rgb(111, 105, 37);
-border-radius: 10px;</string>
+                          <string notr="true">background-color: white;
+color: #868686;
+border-radius: 8px;
+text-align: center;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::InputMethodHint::ImhNone</set>
                          </property>
                          <property name="text">
+                          <string/>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignmentFlag::AlignCenter</set>
+                         </property>
+                         <property name="placeholderText">
                           <string>XXXXXX</string>
+                         </property>
+                         <property name="clearButtonEnabled">
+                          <bool>false</bool>
                          </property>
                         </widget>
                        </item>
@@ -3055,23 +3120,32 @@ border-radius: 10px;</string>
                         </widget>
                        </item>
                        <item row="1" column="1">
-                        <widget class="QPushButton" name="mfg_set">
+                        <widget class="QLineEdit" name="mfg_set">
                          <property name="font">
                           <font>
-                           <family>Kanit</family>
                            <pointsize>22</pointsize>
-                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">color: rgb(61, 61, 61);
-border: solid;
-border-width: 1px;
-border-color: rgb(111, 105, 37);
-border-radius: 10px;</string>
+                          <string notr="true">background-color: white;
+color: #868686;
+border-radius: 8px;
+text-align: center;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::InputMethodHint::ImhNone</set>
                          </property>
                          <property name="text">
+                          <string/>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignmentFlag::AlignCenter</set>
+                         </property>
+                         <property name="placeholderText">
                           <string>XXXXXX</string>
+                         </property>
+                         <property name="clearButtonEnabled">
+                          <bool>false</bool>
                          </property>
                         </widget>
                        </item>
@@ -3102,23 +3176,32 @@ border-radius: 10px;</string>
                         </widget>
                        </item>
                        <item row="2" column="1">
-                        <widget class="QPushButton" name="exp_set">
+                        <widget class="QLineEdit" name="exp_set">
                          <property name="font">
                           <font>
-                           <family>Kanit</family>
                            <pointsize>22</pointsize>
-                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">color: rgb(61, 61, 61);
-border: solid;
-border-width: 1px;
-border-color: rgb(111, 105, 37);
-border-radius: 10px;</string>
+                          <string notr="true">background-color: white;
+color: #868686;
+border-radius: 8px;
+text-align: center;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::InputMethodHint::ImhNone</set>
                          </property>
                          <property name="text">
+                          <string/>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignmentFlag::AlignCenter</set>
+                         </property>
+                         <property name="placeholderText">
                           <string>XXXXXX</string>
+                         </property>
+                         <property name="clearButtonEnabled">
+                          <bool>false</bool>
                          </property>
                         </widget>
                        </item>
@@ -3130,7 +3213,7 @@ border-radius: 10px;</string>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>50</height>
+                        <height>45</height>
                        </size>
                       </property>
                       <property name="font">
@@ -3164,8 +3247,8 @@ QPushButton:checked {
                       </property>
                       <property name="iconSize">
                        <size>
-                        <width>40</width>
-                        <height>40</height>
+                        <width>35</width>
+                        <height>35</height>
                        </size>
                       </property>
                       <property name="checkable">
@@ -3303,114 +3386,191 @@ QPushButton:pressed {
           </layout>
          </widget>
          <widget class="QWidget" name="camera_setting_page">
-          <layout class="QVBoxLayout" name="verticalLayout_18">
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item>
-            <widget class="QWidget" name="widget_20" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_17">
+            <widget class="QFrame" name="frame">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_12">
               <item>
-               <widget class="QWidget" name="cameraFocusWidget" native="true">
+               <widget class="QLabel" name="camera_setting_title">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Kanit</family>
+                  <pointsize>25</pointsize>
+                 </font>
+                </property>
                 <property name="styleSheet">
-                 <string notr="true">border: solid;
-border-width: 1px;
-border-color: rgb(80, 80, 80);
+                 <string notr="true">background-color: rgb(52, 157, 77);
 border-radius: 15px;</string>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_9">
-                 <item>
-                  <widget class="QPushButton" name="cameraAutoFocus">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Kanit</family>
-                     <pointsize>14</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
-	background-color: rgb(100, 100, 100);
-	color: rgb(161, 161, 161);
-	color: white;
-	text-align: center;
-	height: 30px;
-	border: none;
-	border-radius: 10px;
-	padding: 15px;
+                <property name="text">
+                 <string>ตั้งค่ากล้อง</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="frame_2">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_9">
+              <item>
+               <widget class="QLabel" name="camera_setting_monitor">
+                <property name="minimumSize">
+                 <size>
+                  <width>250</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+	border: solid;
+	border-width: 2px;
+	border-color: rgb(111, 105, 37);
+	border-radius: 15px;
+	background-color: rgb(0, 0, 0);
+}
+</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="pixmap">
+                 <pixmap resource="resource.qrc">:/assets/icon/picture_default.png</pixmap>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="camera_setting_widget" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>300</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>350</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QWidget {
+	background-color: rgb(220, 220, 220);
+	border-radius: 15px;
 }
 
-QPushButton:checked {
-	background-color: rgb(50, 50, 50);
+QLabel {
+	color: #868686
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>AUTO FOCUS</string>
-                   </property>
-                   <property name="checkable">
-                    <bool>true</bool>
-                   </property>
-                   <property name="checked">
-                    <bool>false</bool>
-                   </property>
-                  </widget>
-                 </item>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_10">
+                 <property name="spacing">
+                  <number>8</number>
+                 </property>
                  <item>
-                  <widget class="QWidget" name="cameraFocusWidget2" native="true">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>50</height>
-                    </size>
-                   </property>
+                  <widget class="QWidget" name="brightnessWidget_2" native="true">
                    <layout class="QHBoxLayout" name="horizontalLayout_8">
                     <item>
-                     <widget class="QLabel" name="cameraFocusLabel">
+                     <widget class="QLabel" name="cameraBrightnessLabel_3">
                       <property name="font">
                        <font>
                         <family>Kanit</family>
-                        <pointsize>12</pointsize>
-                        <bold>false</bold>
+                        <pointsize>14</pointsize>
                        </font>
                       </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color: rgb(122, 122, 122);
-border-radius: 10px;</string>
-                      </property>
                       <property name="text">
-                       <string>FOCUS</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                       <string>เวลาชัตเตอร์</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLabel" name="cameraFocusValue">
+                     <widget class="QLineEdit" name="exposureTime">
                       <property name="font">
                        <font>
-                        <family>Kanit</family>
-                        <pointsize>12</pointsize>
-                        <bold>false</bold>
+                        <pointsize>14</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">border-radius: 10px;
-background-color: rgb(85, 170, 127);</string>
+                       <string notr="true">background-color: white;
+color: #868686;
+border-radius: 8px;
+text-align: center;</string>
+                      </property>
+                      <property name="inputMethodHints">
+                       <set>Qt::InputMethodHint::ImhDigitsOnly</set>
                       </property>
                       <property name="text">
-                       <string>0%</string>
+                       <string>100000</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="cameraBrightnessLabel_4">
+                      <property name="font">
+                       <font>
+                        <family>Kanit</family>
+                        <pointsize>14</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>us</string>
                       </property>
                      </widget>
                     </item>
@@ -3418,121 +3578,245 @@ background-color: rgb(85, 170, 127);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QDial" name="cameraFocus">
-                   <property name="maximum">
-                    <number>255</number>
-                   </property>
+                  <widget class="QWidget" name="brightnessWidget_3" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_10">
+                    <item>
+                     <widget class="QLabel" name="cameraBrightnessLabel_5">
+                      <property name="font">
+                       <font>
+                        <family>Kanit</family>
+                        <pointsize>14</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>หน่วงเวลาก่อนถ่ายภาพ</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="delayShutter">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">background-color: white;
+color: #868686;
+border-radius: 8px;
+text-align: center;</string>
+                      </property>
+                      <property name="inputMethodHints">
+                       <set>Qt::InputMethodHint::ImhDigitsOnly</set>
+                      </property>
+                      <property name="text">
+                       <string>500</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="cameraBrightnessLabel_6">
+                      <property name="font">
+                       <font>
+                        <family>Kanit</family>
+                        <pointsize>14</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>ms</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="camera_monitor_widget" native="true">
-                <layout class="QVBoxLayout" name="verticalLayout_19">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>10</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>10</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
                  <item>
-                  <widget class="QLabel" name="camera_setting_monitor">
-                   <property name="minimumSize">
-                    <size>
-                     <width>250</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>450</width>
-                     <height>350</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLabel {
-	border: solid;
-	border-width: 2px;
-	border-color: rgb(111, 105, 37);
-	border-radius: 15px;
-	padding: 10px;
-	background-color: rgb(0, 0, 0);
-}
-</string>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap resource="resource.qrc">:/assets/icon/picture_default.png</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
+                  <widget class="QWidget" name="brightnessWidget" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_33">
+                    <item>
+                     <widget class="QLabel" name="cameraBrightnessLabel">
+                      <property name="font">
+                       <font>
+                        <family>Kanit</family>
+                        <pointsize>14</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>ความสว่าง</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QSlider" name="cameraBrightness">
+                      <property name="maximum">
+                       <number>255</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Orientation::Horizontal</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="cameraZoomWidget" native="true">
-                <property name="styleSheet">
-                 <string notr="true">border: solid;
-border-width: 1px;
-border-color: rgb(80, 80, 80);
-border-radius: 15px;</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_17">
                  <item>
-                  <widget class="QPushButton" name="save_camera_setting">
+                  <widget class="QWidget" name="contrastWidget" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_34">
+                    <item>
+                     <widget class="QLabel" name="cameraContrastLabel">
+                      <property name="font">
+                       <font>
+                        <family>Kanit</family>
+                        <pointsize>14</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Contrast</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QSlider" name="cameraContrast">
+                      <property name="maximum">
+                       <number>255</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Orientation::Horizontal</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="saturationWidget" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_38">
+                    <item>
+                     <widget class="QLabel" name="cameraSaturationLabel">
+                      <property name="font">
+                       <font>
+                        <family>Kanit</family>
+                        <pointsize>14</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>ความอิ่มสี</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QSlider" name="cameraSaturation">
+                      <property name="maximum">
+                       <number>255</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Orientation::Horizontal</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="analogueGainWidget" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_35">
+                    <item>
+                     <widget class="QLabel" name="cameraAnalogueGainLabel">
+                      <property name="font">
+                       <font>
+                        <family>Kanit</family>
+                        <pointsize>14</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Gain</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QSlider" name="cameraAnalogueGain">
+                      <property name="maximum">
+                       <number>255</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Orientation::Horizontal</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="SharpnessWidget" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_40">
+                    <item>
+                     <widget class="QLabel" name="cameraSharpnessLabel">
+                      <property name="font">
+                       <font>
+                        <family>Kanit</family>
+                        <pointsize>14</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>ความคม</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QSlider" name="cameraSharpness">
+                      <property name="maximum">
+                       <number>255</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Orientation::Horizontal</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="cameraFilter">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>50</height>
+                     <height>45</height>
                     </size>
                    </property>
                    <property name="font">
                     <font>
                      <family>Kanit</family>
-                     <pointsize>20</pointsize>
+                     <pointsize>16</pointsize>
                      <italic>false</italic>
                      <fontweight>Medium</fontweight>
                     </font>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
-	background-color: rgb(50, 50, 50);
-	color: rgb(255, 255, 255);
+	background-color: rgb(120, 120, 120);
+	color: white;
+	text-align: center;
+	border: none;
 	border-radius: 10px;
 }
 
-QPushButton:pressed {
-	background-color: rgb(100, 100, 100);
-}
-</string>
+QPushButton:checked {
+	background-color: rgb(60, 60, 60);
+	color: white;
+}</string>
                    </property>
                    <property name="text">
-                    <string> บันทึก</string>
+                    <string>ดูแบบ filter ก่อน detect</string>
                    </property>
                    <property name="icon">
                     <iconset resource="resource.qrc">
-                     <normaloff>:/assets/icon/save.png</normaloff>:/assets/icon/save.png</iconset>
+                     <normaloff>:/assets/icon/effect.png</normaloff>:/assets/icon/effect.png</iconset>
                    </property>
                    <property name="iconSize">
                     <size>
@@ -3540,297 +3824,8 @@ QPushButton:pressed {
                      <height>30</height>
                     </size>
                    </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="cameraZoomWidget2" native="true">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_13">
-                    <item>
-                     <widget class="QLabel" name="cameraZoomLabel">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>12</pointsize>
-                        <bold>false</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color: rgb(122, 122, 122);
-border-radius: 10px;</string>
-                      </property>
-                      <property name="text">
-                       <string>ZOOM</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="cameraZoomValue">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>12</pointsize>
-                        <bold>false</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">border-radius: 10px;
-background-color: rgb(85, 170, 127);</string>
-                      </property>
-                      <property name="text">
-                       <string>0%</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDial" name="cameraZoom">
-                   <property name="minimum">
-                    <number>100</number>
-                   </property>
-                   <property name="maximum">
-                    <number>500</number>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="widget_19" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_16">
-              <property name="spacing">
-               <number>15</number>
-              </property>
-              <item>
-               <widget class="QWidget" name="cameraBrightnessWidget" native="true">
-                <property name="styleSheet">
-                 <string notr="true">border: solid;
-border-width: 1px;
-border-color: rgb(80, 80, 80);
-border-radius: 15px;</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_10">
-                 <item>
-                  <widget class="QWidget" name="cameraBrightnessWidget2" native="true">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_9">
-                    <item>
-                     <widget class="QLabel" name="cameraBrightnessLabel">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>12</pointsize>
-                        <bold>false</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color: rgb(122, 122, 122);
-border-radius: 10px;</string>
-                      </property>
-                      <property name="text">
-                       <string>BRIGHTNESS</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="cameraBrightnessValue">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>12</pointsize>
-                        <bold>false</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">border-radius: 10px;
-background-color: rgb(85, 170, 127);</string>
-                      </property>
-                      <property name="text">
-                       <string>0%</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDial" name="cameraBrightness">
-                   <property name="maximum">
-                    <number>255</number>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="cameraContrastWidget" native="true">
-                <property name="styleSheet">
-                 <string notr="true">border: solid;
-border-width: 1px;
-border-color: rgb(80, 80, 80);
-border-radius: 15px;</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_12">
-                 <item>
-                  <widget class="QWidget" name="cameraContrastWidget2" native="true">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_10">
-                    <item>
-                     <widget class="QLabel" name="cameraContrastLabel">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>12</pointsize>
-                        <bold>false</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color: rgb(122, 122, 122);
-border-radius: 10px;</string>
-                      </property>
-                      <property name="text">
-                       <string>CONTRAST</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="cameraContrastValue">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>12</pointsize>
-                        <bold>false</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">border-radius: 10px;
-background-color: rgb(85, 170, 127);</string>
-                      </property>
-                      <property name="text">
-                       <string>0%</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDial" name="cameraContrast">
-                   <property name="maximum">
-                    <number>255</number>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="cameraExposureWidget" native="true">
-                <property name="styleSheet">
-                 <string notr="true">border: solid;
-border-width: 1px;
-border-color: rgb(80, 80, 80);
-border-radius: 15px;</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_15">
-                 <item>
-                  <widget class="QWidget" name="cameraExposureWidget2" native="true">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_11">
-                    <item>
-                     <widget class="QLabel" name="cameraExposureLabel">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>12</pointsize>
-                        <bold>false</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color: rgb(122, 122, 122);
-border-radius: 10px;</string>
-                      </property>
-                      <property name="text">
-                       <string>EXPOSURE</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="cameraExposureValue">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>12</pointsize>
-                        <bold>false</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">border-radius: 10px;
-background-color: rgb(85, 170, 127);</string>
-                      </property>
-                      <property name="text">
-                       <string>0%</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDial" name="cameraExposure">
-                   <property name="maximum">
-                    <number>255</number>
+                   <property name="checkable">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -3918,21 +3913,6 @@ border-radius: 15px;</string>
                   </widget>
                  </item>
                 </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="lineEdit">
-                <property name="font">
-                 <font>
-                  <pointsize>20</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: black;</string>
-                </property>
-                <property name="placeholderText">
-                 <string>ทดสอบ keyboard</string>
-                </property>
                </widget>
               </item>
               <item>
@@ -4109,12 +4089,12 @@ border-radius: 15px;</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>426</x>
-     <y>55</y>
+     <x>385</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>321</x>
-     <y>381</y>
+     <x>307</x>
+     <y>390</y>
     </hint>
    </hints>
   </connection>
@@ -4125,8 +4105,8 @@ border-radius: 15px;</string>
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>426</x>
-     <y>55</y>
+     <x>385</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
      <x>74</x>
@@ -4142,11 +4122,11 @@ border-radius: 15px;</string>
    <hints>
     <hint type="sourcelabel">
      <x>92</x>
-     <y>340</y>
+     <y>300</y>
     </hint>
     <hint type="destinationlabel">
-     <x>255</x>
-     <y>340</y>
+     <x>297</x>
+     <y>300</y>
     </hint>
    </hints>
   </connection>
@@ -4157,12 +4137,12 @@ border-radius: 15px;</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>250</x>
-     <y>340</y>
+     <x>297</x>
+     <y>300</y>
     </hint>
     <hint type="destinationlabel">
-     <x>78</x>
-     <y>329</y>
+     <x>92</x>
+     <y>300</y>
     </hint>
    </hints>
   </connection>
@@ -4173,8 +4153,8 @@ border-radius: 15px;</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>245</x>
-     <y>260</y>
+     <x>297</x>
+     <y>235</y>
     </hint>
     <hint type="destinationlabel">
      <x>60</x>
@@ -4189,12 +4169,12 @@ border-radius: 15px;</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>98</x>
-     <y>260</y>
+     <x>92</x>
+     <y>235</y>
     </hint>
     <hint type="destinationlabel">
-     <x>241</x>
-     <y>260</y>
+     <x>297</x>
+     <y>235</y>
     </hint>
    </hints>
   </connection>
@@ -4209,8 +4189,8 @@ border-radius: 15px;</string>
      <y>136</y>
     </hint>
     <hint type="destinationlabel">
-     <x>241</x>
-     <y>180</y>
+     <x>297</x>
+     <y>170</y>
     </hint>
    </hints>
   </connection>
@@ -4221,8 +4201,8 @@ border-radius: 15px;</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>239</x>
-     <y>180</y>
+     <x>297</x>
+     <y>170</y>
     </hint>
     <hint type="destinationlabel">
      <x>49</x>

@@ -1,5 +1,7 @@
 <RCC>
   <qresource>
+    <file>assets/icon/effect.png</file>
+    <file>assets/icon/testing.png</file>
     <file>assets/icon/save-images.png</file>
     <file>assets/icon/reset.png</file>
     <file>assets/icon/all.png</file>
