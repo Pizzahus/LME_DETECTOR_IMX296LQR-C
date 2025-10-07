@@ -6,16 +6,23 @@ template:
   lot: '51621'
   mfg: 06/09/25
   exp: 06/09/27
+system:
+  delayShutter: 100
+  delayBeforeReject: 1000
+  rejectionPeriod: 100
+  numberStickerBeforeDetection: 4
+  rotateImage: 90
+  detectionPercentage: 20
+  saveImage: false
 hardware:
   camera:
-    zoom: 100
-    focus: 170
-    autoFocus: true
-    brightness: 184
-    contrast: 188
-    exposure: 188
-    sensorDelay: 500
-    saveImage: false
+    ExposureTime: 30000
+    AnalogueGain: 1.68
+    Brightness: -0.22
+    Contrast: 2.3000000000000003
+    Saturation: 1.0
+    Sharpness: 9.0
+    FrameRate: 25
   gpio:
     LED0: 20
     LED1: 21
@@ -27,10 +34,10 @@ hardware:
     L0: 12
     L1: 23
   rectangle:
-    x1: 320
-    x2: 725
-    y1: 270
-    y2: 597
+    x1: 520
+    x2: 789
+    y1: 257
+    y2: 654
 counters:
   ok: 0
   ng: 0

@@ -16,11 +16,12 @@ class CameraView(QThread):
         self.monitor = monitor
         self.isLiveView = True
         self.isShowRect = False
+        self.filtered = False
 
         config = self.camera.create_still_configuration(
             main={"size": (1024, 768)},
-            buffer_count=2,
-            queue=True
+            buffer_count=4,
+            queue=False
         )
         self.camera.configure(config)
         self.camera.start()
@@ -38,48 +39,54 @@ class CameraView(QThread):
             Contrast=1.8,
             Saturation=1.2,
             Sharpness=1.5,
-            FrameRate=60,
+            FrameRate=25,
             ColourGains=(0, 0),
         )
 
     # ---------- Method ปรับค่า Controls ----------
-    def setCameraControls(self,
-                          AeEnable=False,          # เปิด/ปิด Auto Exposure (True=เปิด, False=ปิด)
-                          ExposureTime=10000,      # เวลาชัตเตอร์ (microseconds) ใช้เมื่อ AeEnable=False
-                          AnalogueGain=2.0,        # ค่า gain แบบ manual (ใช้เมื่อ AeEnable=False)
-                          AwbEnable=False,         # เปิด/ปิด Auto White Balance
-                          Brightness=0.0,          # ความสว่าง (-1.0 ถึง +1.0 ประมาณ)
-                          Contrast=1.8,            # ความต่างของภาพ (1.0=default, >1=ชัดขึ้น)
-                          Saturation=1.2,          # ความอิ่มสี (1.0=ปกติ, >1=สดขึ้น)
-                          Sharpness=1.5,           # ความคม (1.0=default)
-                          FrameRate=60,            # เฟรมเรต (fps) ต้องสอดคล้องกับ ExposureTime
-                          ColourGains=(0, 0),  # (Red, Blue) gain สำหรับ white balance แบบ manual
-                          NoiseReductionMode=0,    # โหมดลด noise 0-4
-                          ):
+    def setCameraControls(self, **kwargs):
         """
-        อัปเดตค่า controls ของกล้อง
-        เช่น setCameraControls(ExposureTime=20000, AnalogueGain=3)
-        """
-        controls = {}
+        อัปเดตค่าการควบคุมของกล้องตามพารามิเตอร์ที่ส่งเข้ามา
 
-        if AeEnable is not None: controls["AeEnable"] = AeEnable
-        if ExposureTime is not None: controls["ExposureTime"] = ExposureTime
-        if AnalogueGain is not None: controls["AnalogueGain"] = AnalogueGain
-        if AwbEnable is not None: controls["AwbEnable"] = AwbEnable
-        if Brightness is not None: controls["Brightness"] = Brightness
-        if Contrast is not None: controls["Contrast"] = Contrast
-        if Saturation is not None: controls["Saturation"] = Saturation
-        if Sharpness is not None: controls["Sharpness"] = Sharpness
-        if FrameRate is not None: controls["FrameRate"] = FrameRate
-        if ColourGains is not None: controls["ColourGains"] = ColourGains
-        if NoiseReductionMode is not None: controls["NoiseReductionMode"] = NoiseReductionMode
+        สามารถเรียกใช้โดยระบุเฉพาะค่าที่ต้องการปรับ เช่น:
+            setCameraControls(ExposureTime=20000, AnalogueGain=3.0)
+
+        ฟังก์ชันนี้จะกรองเฉพาะพารามิเตอร์ที่กล้องรองรับ และตรวจสอบช่วงค่าที่เหมาะสมก่อนส่งไปยังกล้อง
+        หากมีค่าที่อยู่นอกช่วงหรือไม่รองรับ จะถูกละเว้นโดยอัตโนมัติ
+
+        รองรับการปรับค่าต่อไปนี้:
+            - AeEnable: เปิด/ปิด Auto Exposure (True/False)
+            - ExposureTime: เวลาชัตเตอร์ (100–1,000,000 µs)
+            - AnalogueGain: ค่า gain แบบ manual (1.0–16.0)
+            - AwbEnable: เปิด/ปิด Auto White Balance (True/False)
+            - Brightness: ความสว่างของภาพ (-1.0 ถึง +1.0)
+            - Contrast: ความต่างของภาพ (0.0–16.0)
+            - Saturation: ความอิ่มสี (0.0–32.0)
+            - Sharpness: ความคมของภาพ (0.0–16.0)
+            - FrameRate: เฟรมเรต (1–120 fps)
+            - ColourGains: ค่า gain สำหรับ Red และ Blue (0.0–32.0)
+            - NoiseReductionMode: โหมดลด noise (0–4)
+
+        หากไม่มีพารามิเตอร์ที่ถูกต้องหรืออยู่ในช่วงที่กำหนด ฟังก์ชันจะไม่ส่งคำสั่งไปยังกล้อง
+        """
+        valid_keys = {
+            "AeEnable", "ExposureTime", "AnalogueGain", "AwbEnable",
+            "Brightness", "Contrast", "Saturation", "Sharpness",
+            "FrameRate", "ColourGains", "NoiseReductionMode"
+        }
+
+        # กรองเฉพาะ key ที่ถูกต้อง
+        controls = {k: v for k, v in kwargs.items() if k in valid_keys}
+
+        if not controls:
+            print("ไม่มีพารามิเตอร์ที่ถูกต้องสำหรับการอัปเดตกล้อง")
+            return
 
         try:
             self.camera.set_controls(controls)
             print("Camera controls updated:", controls)
         except Exception as e:
             print("Failed to update camera controls:", e)
-
 
     # ---------- Toggle live view ----------
     def liveView(self, value: bool):
@@ -104,9 +111,15 @@ class CameraView(QThread):
             while self.thead_running:
                 if self.isLiveView:
                     frame = self.captured()
+                    # แปลงเป็น grayscale และทำ preprocessing
+                    if self.filtered:
+                        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                        # frame = cv2.GaussianBlur(frame, (5, 5), 0)
+                        frame = cv2.threshold(frame, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
+
                     q_img = QPixmapUtil.from_cvimg(frame)
                     self.monitor.setPixmap(q_img)
-                QThread.msleep(10)
+                QThread.msleep(50)
         except Exception as err:
             self.camera.close()
             print("Camera resources released.")

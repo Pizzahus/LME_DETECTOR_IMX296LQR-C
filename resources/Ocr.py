@@ -11,12 +11,13 @@ pytesseract.pytesseract.tesseract_cmd = r"/usr/bin/tesseract"
 class OcrWorker(QThread):
     finished = Signal(np.ndarray, np.ndarray, str, float)  # ถ้า import numpy as np แล้ว
 
-    def __init__(self, task_queue, angle=0):
+    def __init__(self, task_queue, angle=0, confidence=0):
         super().__init__()
         self.task_queue = task_queue
         self.rectColor = (255, 17, 0)
         self.running = True
         self.angle=angle
+        self.confidence=confidence
 
     # ตั้งค่าให้แสดงภาพที่จับได้
     def detect_and_recognize_text(self, image):
@@ -35,7 +36,7 @@ class OcrWorker(QThread):
 
         # แปลงเป็น grayscale และทำ preprocessing
         preprocessed_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        preprocessed_image = cv2.GaussianBlur(preprocessed_image, (5, 5), 0)
+        # preprocessed_image = cv2.GaussianBlur(preprocessed_image, (5, 5), 0)
         preprocessed_image = cv2.threshold(preprocessed_image, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
 
         # ใช้ Pytesseract อ่านข้อความ OCR พร้อมตำแหน่ง

@@ -1,5 +1,8 @@
 <RCC>
   <qresource>
+    <file>assets/icon/info.png</file>
+    <file>assets/images/flaticon.png</file>
+    <file>assets/images/Tesseract_OCR_logo_(Google).png</file>
     <file>assets/icon/effect.png</file>
     <file>assets/icon/testing.png</file>
     <file>assets/icon/save-images.png</file>

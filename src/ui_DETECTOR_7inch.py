@@ -18,14 +18,15 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFormLayout, QFrame, QGridLayout,
     QGroupBox, QHBoxLayout, QLabel, QLineEdit,
     QMainWindow, QPushButton, QSizePolicy, QSlider,
-    QSpacerItem, QStackedWidget, QVBoxLayout, QWidget)
+    QSpacerItem, QStackedWidget, QTabWidget, QVBoxLayout,
+    QWidget)
 import src.resource_rc as resource_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1024, 600)
+        MainWindow.resize(1024, 609)
         MainWindow.setMinimumSize(QSize(250, 0))
         MainWindow.setStyleSheet(u"background-color: rgb(38, 38, 38);")
         self.centralwidget = QWidget(MainWindow)
@@ -77,6 +78,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(-1, 20, -1, -1)
         self.home_2 = QPushButton(self.hide_sidebar)
         self.home_2.setObjectName(u"home_2")
         self.home_2.setEnabled(True)
@@ -100,41 +102,29 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.home_2)
 
-        self.setting_2 = QPushButton(self.hide_sidebar)
-        self.setting_2.setObjectName(u"setting_2")
-        self.setting_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.lme_setting_2 = QPushButton(self.hide_sidebar)
+        self.lme_setting_2.setObjectName(u"lme_setting_2")
+        self.lme_setting_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         icon1 = QIcon()
         icon1.addFile(u":/assets/icon/testing.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.setting_2.setIcon(icon1)
-        self.setting_2.setIconSize(QSize(40, 40))
-        self.setting_2.setCheckable(True)
-        self.setting_2.setAutoExclusive(True)
+        self.lme_setting_2.setIcon(icon1)
+        self.lme_setting_2.setIconSize(QSize(40, 40))
+        self.lme_setting_2.setCheckable(True)
+        self.lme_setting_2.setAutoExclusive(True)
 
-        self.verticalLayout_2.addWidget(self.setting_2)
+        self.verticalLayout_2.addWidget(self.lme_setting_2)
 
-        self.setting_4 = QPushButton(self.hide_sidebar)
-        self.setting_4.setObjectName(u"setting_4")
-        self.setting_4.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.sys_setting_1 = QPushButton(self.hide_sidebar)
+        self.sys_setting_1.setObjectName(u"sys_setting_1")
+        self.sys_setting_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         icon2 = QIcon()
         icon2.addFile(u":/assets/icon/settings.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.setting_4.setIcon(icon2)
-        self.setting_4.setIconSize(QSize(40, 40))
-        self.setting_4.setCheckable(True)
-        self.setting_4.setAutoExclusive(True)
+        self.sys_setting_1.setIcon(icon2)
+        self.sys_setting_1.setIconSize(QSize(40, 40))
+        self.sys_setting_1.setCheckable(True)
+        self.sys_setting_1.setAutoExclusive(True)
 
-        self.verticalLayout_2.addWidget(self.setting_4)
-
-        self.camera_setting_2 = QPushButton(self.hide_sidebar)
-        self.camera_setting_2.setObjectName(u"camera_setting_2")
-        self.camera_setting_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        icon3 = QIcon()
-        icon3.addFile(u":/assets/icon/camera.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.camera_setting_2.setIcon(icon3)
-        self.camera_setting_2.setIconSize(QSize(40, 40))
-        self.camera_setting_2.setCheckable(True)
-        self.camera_setting_2.setAutoExclusive(True)
-
-        self.verticalLayout_2.addWidget(self.camera_setting_2)
+        self.verticalLayout_2.addWidget(self.sys_setting_1)
 
 
         self.verticalLayout_15.addLayout(self.verticalLayout_2)
@@ -153,9 +143,9 @@ class Ui_MainWindow(object):
         font1.setKerning(True)
         self.restart_program_2.setFont(font1)
         self.restart_program_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        icon4 = QIcon()
-        icon4.addFile(u":/assets/icon/restart.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.restart_program_2.setIcon(icon4)
+        icon3 = QIcon()
+        icon3.addFile(u":/assets/icon/restart.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.restart_program_2.setIcon(icon3)
         self.restart_program_2.setIconSize(QSize(40, 40))
 #if QT_CONFIG(shortcut)
         self.restart_program_2.setShortcut(u"Ctrl+S")
@@ -167,9 +157,9 @@ class Ui_MainWindow(object):
         self.shutdown_2.setObjectName(u"shutdown_2")
         self.shutdown_2.setFont(font1)
         self.shutdown_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        icon5 = QIcon()
-        icon5.addFile(u":/assets/icon/shutdown1.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.shutdown_2.setIcon(icon5)
+        icon4 = QIcon()
+        icon4.addFile(u":/assets/icon/shutdown1.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.shutdown_2.setIcon(icon4)
         self.shutdown_2.setIconSize(QSize(40, 40))
 #if QT_CONFIG(shortcut)
         self.shutdown_2.setShortcut(u"Ctrl+S")
@@ -186,6 +176,10 @@ class Ui_MainWindow(object):
         self.show_sidebar = QWidget(self.centralwidget)
         self.show_sidebar.setObjectName(u"show_sidebar")
         self.show_sidebar.setEnabled(True)
+        font2 = QFont()
+        font2.setBold(False)
+        self.show_sidebar.setFont(font2)
+        self.show_sidebar.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.show_sidebar.setStyleSheet(u"QWidget {\n"
 "	background-color: rgb(0, 150, 255);\n"
 "	border-radius: 10px;\n"
@@ -210,6 +204,7 @@ class Ui_MainWindow(object):
 "}")
         self.verticalLayout_13 = QVBoxLayout(self.show_sidebar)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.verticalLayout_13.setContentsMargins(8, 9, -1, -1)
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.horizontalLayout_2.setContentsMargins(-1, 0, 0, -1)
@@ -224,11 +219,11 @@ class Ui_MainWindow(object):
 
         self.label_3 = QLabel(self.show_sidebar)
         self.label_3.setObjectName(u"label_3")
-        font2 = QFont()
-        font2.setFamilies([u"Kanit"])
-        font2.setPointSize(16)
-        font2.setBold(True)
-        self.label_3.setFont(font2)
+        font3 = QFont()
+        font3.setFamilies([u"Kanit"])
+        font3.setPointSize(16)
+        font3.setBold(True)
+        self.label_3.setFont(font3)
         self.label_3.setStyleSheet(u"color: rgb(255, 255, 255);")
 
         self.horizontalLayout_2.addWidget(self.label_3)
@@ -238,54 +233,45 @@ class Ui_MainWindow(object):
 
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(-1, 20, -1, -1)
         self.home_1 = QPushButton(self.show_sidebar)
         self.home_1.setObjectName(u"home_1")
-        font3 = QFont()
-        font3.setFamilies([u"Kanit"])
-        font3.setBold(False)
-        self.home_1.setFont(font3)
+        font4 = QFont()
+        font4.setFamilies([u"Kanit"])
+        font4.setBold(False)
+        self.home_1.setFont(font4)
         self.home_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.home_1.setIcon(icon)
         self.home_1.setIconSize(QSize(40, 40))
         self.home_1.setCheckable(True)
+        self.home_1.setChecked(True)
         self.home_1.setAutoExclusive(True)
 
         self.verticalLayout.addWidget(self.home_1)
 
-        self.setting_1 = QPushButton(self.show_sidebar)
-        self.setting_1.setObjectName(u"setting_1")
-        font4 = QFont()
-        font4.setFamilies([u"Kanit"])
-        self.setting_1.setFont(font4)
-        self.setting_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.setting_1.setIcon(icon1)
-        self.setting_1.setIconSize(QSize(40, 40))
-        self.setting_1.setCheckable(True)
-        self.setting_1.setAutoExclusive(True)
+        self.lme_setting_1 = QPushButton(self.show_sidebar)
+        self.lme_setting_1.setObjectName(u"lme_setting_1")
+        font5 = QFont()
+        font5.setFamilies([u"Kanit"])
+        self.lme_setting_1.setFont(font5)
+        self.lme_setting_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.lme_setting_1.setIcon(icon1)
+        self.lme_setting_1.setIconSize(QSize(40, 40))
+        self.lme_setting_1.setCheckable(True)
+        self.lme_setting_1.setAutoExclusive(True)
 
-        self.verticalLayout.addWidget(self.setting_1)
+        self.verticalLayout.addWidget(self.lme_setting_1)
 
-        self.setting_3 = QPushButton(self.show_sidebar)
-        self.setting_3.setObjectName(u"setting_3")
-        self.setting_3.setFont(font4)
-        self.setting_3.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.setting_3.setIcon(icon2)
-        self.setting_3.setIconSize(QSize(40, 40))
-        self.setting_3.setCheckable(True)
-        self.setting_3.setAutoExclusive(True)
+        self.sys_setting_2 = QPushButton(self.show_sidebar)
+        self.sys_setting_2.setObjectName(u"sys_setting_2")
+        self.sys_setting_2.setFont(font5)
+        self.sys_setting_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.sys_setting_2.setIcon(icon2)
+        self.sys_setting_2.setIconSize(QSize(40, 40))
+        self.sys_setting_2.setCheckable(True)
+        self.sys_setting_2.setAutoExclusive(True)
 
-        self.verticalLayout.addWidget(self.setting_3)
-
-        self.camera_setting_1 = QPushButton(self.show_sidebar)
-        self.camera_setting_1.setObjectName(u"camera_setting_1")
-        self.camera_setting_1.setFont(font4)
-        self.camera_setting_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.camera_setting_1.setIcon(icon3)
-        self.camera_setting_1.setIconSize(QSize(40, 40))
-        self.camera_setting_1.setCheckable(True)
-        self.camera_setting_1.setAutoExclusive(True)
-
-        self.verticalLayout.addWidget(self.camera_setting_1)
+        self.verticalLayout.addWidget(self.sys_setting_2)
 
 
         self.verticalLayout_13.addLayout(self.verticalLayout)
@@ -300,7 +286,7 @@ class Ui_MainWindow(object):
         self.restart_program_1.setObjectName(u"restart_program_1")
         self.restart_program_1.setFont(font1)
         self.restart_program_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.restart_program_1.setIcon(icon4)
+        self.restart_program_1.setIcon(icon3)
         self.restart_program_1.setIconSize(QSize(40, 40))
 #if QT_CONFIG(shortcut)
         self.restart_program_1.setShortcut(u"Ctrl+S")
@@ -312,7 +298,7 @@ class Ui_MainWindow(object):
         self.shutdown_1.setObjectName(u"shutdown_1")
         self.shutdown_1.setFont(font1)
         self.shutdown_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.shutdown_1.setIcon(icon5)
+        self.shutdown_1.setIcon(icon4)
         self.shutdown_1.setIconSize(QSize(40, 40))
 #if QT_CONFIG(shortcut)
         self.shutdown_1.setShortcut(u"Ctrl+S")
@@ -352,14 +338,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setContentsMargins(0, 0, 10, 0)
         self.menu = QPushButton(self.frame_28)
         self.menu.setObjectName(u"menu")
-        font5 = QFont()
-        font5.setPointSize(9)
-        self.menu.setFont(font5)
+        font6 = QFont()
+        font6.setPointSize(9)
+        self.menu.setFont(font6)
         self.menu.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        icon6 = QIcon()
-        icon6.addFile(u":/assets/icon/menu.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        icon6.addFile(u":/assets/icon/menu_open.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
-        self.menu.setIcon(icon6)
+        icon5 = QIcon()
+        icon5.addFile(u":/assets/icon/menu.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon5.addFile(u":/assets/icon/menu_open.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
+        self.menu.setIcon(icon5)
         self.menu.setIconSize(QSize(50, 50))
         self.menu.setCheckable(True)
         self.menu.setChecked(False)
@@ -377,11 +363,11 @@ class Ui_MainWindow(object):
 
         self.title = QLabel(self.widget)
         self.title.setObjectName(u"title")
-        font6 = QFont()
-        font6.setFamilies([u"Kanit"])
-        font6.setPointSize(24)
-        font6.setBold(True)
-        self.title.setFont(font6)
+        font7 = QFont()
+        font7.setFamilies([u"Kanit"])
+        font7.setPointSize(24)
+        font7.setBold(True)
+        self.title.setFont(font7)
         self.title.setStyleSheet(u"")
         self.title.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -393,9 +379,9 @@ class Ui_MainWindow(object):
 
         self.datetime_group_2 = QGroupBox(self.widget)
         self.datetime_group_2.setObjectName(u"datetime_group_2")
-        font7 = QFont()
-        font7.setPointSize(11)
-        self.datetime_group_2.setFont(font7)
+        font8 = QFont()
+        font8.setPointSize(11)
+        self.datetime_group_2.setFont(font8)
         self.datetime_group_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.datetime_group = QVBoxLayout(self.datetime_group_2)
         self.datetime_group.setSpacing(0)
@@ -404,11 +390,11 @@ class Ui_MainWindow(object):
         self.time_bar = QLabel(self.datetime_group_2)
         self.time_bar.setObjectName(u"time_bar")
         self.time_bar.setMaximumSize(QSize(140, 16))
-        font8 = QFont()
-        font8.setFamilies([u"Kanit"])
-        font8.setPointSize(14)
-        font8.setBold(False)
-        self.time_bar.setFont(font8)
+        font9 = QFont()
+        font9.setFamilies([u"Kanit"])
+        font9.setPointSize(14)
+        font9.setBold(False)
+        self.time_bar.setFont(font9)
         self.time_bar.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.datetime_group.addWidget(self.time_bar)
@@ -416,7 +402,7 @@ class Ui_MainWindow(object):
         self.date_bar = QLabel(self.datetime_group_2)
         self.date_bar.setObjectName(u"date_bar")
         self.date_bar.setMaximumSize(QSize(140, 16))
-        self.date_bar.setFont(font8)
+        self.date_bar.setFont(font9)
         self.date_bar.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.datetime_group.addWidget(self.date_bar)
@@ -438,381 +424,35 @@ class Ui_MainWindow(object):
 "\n"
 "QGroupBox {\n"
 "	border: none;\n"
-"}")
-        self.detection_page = QWidget()
-        self.detection_page.setObjectName(u"detection_page")
-        self.verticalLayout_14 = QVBoxLayout(self.detection_page)
-        self.verticalLayout_14.setSpacing(0)
-        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
-        self.detection_frame_2 = QFrame(self.detection_page)
-        self.detection_frame_2.setObjectName(u"detection_frame_2")
-        self.detection_frame_2.setMinimumSize(QSize(0, 70))
-        self.detection_frame_2.setMaximumSize(QSize(16777215, 70))
-        self.detection_frame_2.setStyleSheet(u"")
-        self.detection_frame_2.setFrameShape(QFrame.Shape.StyledPanel)
-        self.detection_frame_2.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_15 = QHBoxLayout(self.detection_frame_2)
-        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
-        self.detection_status = QLabel(self.detection_frame_2)
-        self.detection_status.setObjectName(u"detection_status")
-        self.detection_status.setMinimumSize(QSize(0, 50))
-        self.detection_status.setMaximumSize(QSize(16777215, 50))
-        font9 = QFont()
-        font9.setFamilies([u"Kanit"])
-        font9.setPointSize(24)
-        self.detection_status.setFont(font9)
-        self.detection_status.setStyleSheet(u"background-color: rgb(0, 150, 255);\n"
-"color: rgb(255, 255, 255);\n"
-"border-radius: 15px;")
-        self.detection_status.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.horizontalLayout_15.addWidget(self.detection_status)
-
-
-        self.verticalLayout_14.addWidget(self.detection_frame_2)
-
-        self.detection_frame = QFrame(self.detection_page)
-        self.detection_frame.setObjectName(u"detection_frame")
-        self.detection_frame.setStyleSheet(u"")
-        self.detection_frame.setFrameShape(QFrame.Shape.StyledPanel)
-        self.detection_frame.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_22 = QHBoxLayout(self.detection_frame)
-        self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
-        self.widget_5 = QWidget(self.detection_frame)
-        self.widget_5.setObjectName(u"widget_5")
-        self.verticalLayout_7 = QVBoxLayout(self.widget_5)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(-1, 0, -1, 0)
-        self.webcam_monitor = QLabel(self.widget_5)
-        self.webcam_monitor.setObjectName(u"webcam_monitor")
-        self.webcam_monitor.setMinimumSize(QSize(250, 250))
-        self.webcam_monitor.setMaximumSize(QSize(16777215, 16777215))
-        self.webcam_monitor.setStyleSheet(u"QLabel {\n"
-"	border: solid;\n"
-"	border-width: 2px;\n"
-"	border-color: rgb(111, 105, 37);\n"
-"	border-radius: 15px;\n"
-"	background-color: rgb(0, 0, 0);\n"
-"}\n"
-"")
-        self.webcam_monitor.setPixmap(QPixmap(u":/assets/icon/picture_default.png"))
-        self.webcam_monitor.setScaledContents(True)
-
-        self.verticalLayout_7.addWidget(self.webcam_monitor)
-
-        self.widget_10 = QWidget(self.widget_5)
-        self.widget_10.setObjectName(u"widget_10")
-        self.horizontalLayout_21 = QHBoxLayout(self.widget_10)
-        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
-        self.horizontalLayout_21.setContentsMargins(-1, 5, -1, 5)
-        self.widget_8 = QWidget(self.widget_10)
-        self.widget_8.setObjectName(u"widget_8")
-        self.horizontalLayout_4 = QHBoxLayout(self.widget_8)
-        self.horizontalLayout_4.setSpacing(6)
-        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.lot_label_2 = QLabel(self.widget_8)
-        self.lot_label_2.setObjectName(u"lot_label_2")
-        self.lot_label_2.setMinimumSize(QSize(45, 45))
-        self.lot_label_2.setMaximumSize(QSize(45, 45))
-        font10 = QFont()
-        font10.setFamilies([u"Kanit"])
-        font10.setPointSize(18)
-        font10.setBold(True)
-        self.lot_label_2.setFont(font10)
-        self.lot_label_2.setStyleSheet(u"color: rgb(61, 61, 61);")
-        self.lot_label_2.setPixmap(QPixmap(u":/assets/icon/ok.png"))
-        self.lot_label_2.setScaledContents(True)
-        self.lot_label_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.horizontalLayout_4.addWidget(self.lot_label_2)
-
-        self.count_ok = QLabel(self.widget_8)
-        self.count_ok.setObjectName(u"count_ok")
-        self.count_ok.setMaximumSize(QSize(16777215, 16777215))
-        font11 = QFont()
-        font11.setFamilies([u"Kanit"])
-        font11.setPointSize(25)
-        font11.setBold(True)
-        self.count_ok.setFont(font11)
-        self.count_ok.setStyleSheet(u"color: rgb(0, 170, 0);")
-        self.count_ok.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.horizontalLayout_4.addWidget(self.count_ok)
-
-
-        self.horizontalLayout_21.addWidget(self.widget_8)
-
-        self.widget_11 = QWidget(self.widget_10)
-        self.widget_11.setObjectName(u"widget_11")
-        self.horizontalLayout_20 = QHBoxLayout(self.widget_11)
-        self.horizontalLayout_20.setSpacing(10)
-        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
-        self.horizontalLayout_20.setContentsMargins(0, 0, 0, 0)
-        self.lot_label_6 = QLabel(self.widget_11)
-        self.lot_label_6.setObjectName(u"lot_label_6")
-        self.lot_label_6.setMinimumSize(QSize(35, 35))
-        self.lot_label_6.setMaximumSize(QSize(35, 35))
-        self.lot_label_6.setFont(font10)
-        self.lot_label_6.setStyleSheet(u"color: rgb(61, 61, 61);")
-        self.lot_label_6.setPixmap(QPixmap(u":/assets/icon/ng.png"))
-        self.lot_label_6.setScaledContents(True)
-        self.lot_label_6.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.horizontalLayout_20.addWidget(self.lot_label_6)
-
-        self.count_ng = QLabel(self.widget_11)
-        self.count_ng.setObjectName(u"count_ng")
-        self.count_ng.setMaximumSize(QSize(16777215, 16777215))
-        self.count_ng.setFont(font11)
-        self.count_ng.setStyleSheet(u"color: rgb(255, 0, 0);")
-        self.count_ng.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.horizontalLayout_20.addWidget(self.count_ng)
-
-
-        self.horizontalLayout_21.addWidget(self.widget_11)
-
-        self.widget_9 = QWidget(self.widget_10)
-        self.widget_9.setObjectName(u"widget_9")
-        self.horizontalLayout_19 = QHBoxLayout(self.widget_9)
-        self.horizontalLayout_19.setSpacing(10)
-        self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
-        self.horizontalLayout_19.setContentsMargins(0, 0, 0, 0)
-        self.lot_label_4 = QLabel(self.widget_9)
-        self.lot_label_4.setObjectName(u"lot_label_4")
-        self.lot_label_4.setMinimumSize(QSize(35, 35))
-        self.lot_label_4.setMaximumSize(QSize(35, 35))
-        self.lot_label_4.setFont(font10)
-        self.lot_label_4.setStyleSheet(u"")
-        self.lot_label_4.setPixmap(QPixmap(u":/assets/icon/all.png"))
-        self.lot_label_4.setScaledContents(True)
-        self.lot_label_4.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.horizontalLayout_19.addWidget(self.lot_label_4)
-
-        self.count_total = QLabel(self.widget_9)
-        self.count_total.setObjectName(u"count_total")
-        self.count_total.setMaximumSize(QSize(16777215, 16777215))
-        self.count_total.setFont(font11)
-        self.count_total.setStyleSheet(u"color: rgb(61, 61, 61);")
-        self.count_total.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.horizontalLayout_19.addWidget(self.count_total)
-
-
-        self.horizontalLayout_21.addWidget(self.widget_9)
-
-        self.count_reset = QPushButton(self.widget_10)
-        self.count_reset.setObjectName(u"count_reset")
-        self.count_reset.setMinimumSize(QSize(0, 0))
-        self.count_reset.setMaximumSize(QSize(45, 45))
-        font12 = QFont()
-        font12.setFamilies([u"Kanit"])
-        font12.setPointSize(14)
-        font12.setWeight(QFont.Medium)
-        font12.setItalic(False)
-        self.count_reset.setFont(font12)
-        self.count_reset.setStyleSheet(u"QPushButton {\n"
-"	background-color: rgb(50, 50, 50);\n"
-"	color: rgb(255, 255, 255);\n"
-"	border-radius: 10px;\n"
-"}\n"
-"QPushButton:pressed {\n"
-"	background-color: rgb(100, 100, 100);\n"
-"}")
-        icon7 = QIcon()
-        icon7.addFile(u":/assets/icon/reset.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.count_reset.setIcon(icon7)
-        self.count_reset.setIconSize(QSize(30, 30))
-
-        self.horizontalLayout_21.addWidget(self.count_reset)
-
-
-        self.verticalLayout_7.addWidget(self.widget_10)
-
-
-        self.horizontalLayout_22.addWidget(self.widget_5)
-
-        self.detection_widget = QWidget(self.detection_frame)
-        self.detection_widget.setObjectName(u"detection_widget")
-        self.detection_widget.setMinimumSize(QSize(250, 0))
-        self.detection_widget.setMaximumSize(QSize(300, 16777215))
-        self.detection_widget.setStyleSheet(u"QWidget {\n"
-"	background-color: rgb(220, 220, 220);\n"
-"	border-radius: 15px;\n"
-"}")
-        self.verticalLayout_6 = QVBoxLayout(self.detection_widget)
-        self.verticalLayout_6.setSpacing(0)
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setContentsMargins(12, -1, 12, 0)
-        self.detection_view = QLabel(self.detection_widget)
-        self.detection_view.setObjectName(u"detection_view")
-        self.detection_view.setMinimumSize(QSize(120, 150))
-        self.detection_view.setMaximumSize(QSize(16777215, 150))
-        self.detection_view.setStyleSheet(u"QLabel {\n"
-"	border: solid;\n"
-"	border-width: 2px;\n"
-"	border-color: rgb(111, 105, 37);\n"
-"	border-radius: 15px;\n"
-"	background-color: rgb(255, 255, 255);\n"
-"}\n"
-"")
-        self.detection_view.setPixmap(QPixmap(u":/assets/icon/picture_default.png"))
-        self.detection_view.setScaledContents(True)
-
-        self.verticalLayout_6.addWidget(self.detection_view)
-
-        self.detection_alert = QLabel(self.detection_widget)
-        self.detection_alert.setObjectName(u"detection_alert")
-        self.detection_alert.setMinimumSize(QSize(0, 80))
-        self.detection_alert.setMaximumSize(QSize(16777215, 80))
-        font13 = QFont()
-        font13.setFamilies([u"Kanit"])
-        font13.setPointSize(50)
-        font13.setBold(True)
-        self.detection_alert.setFont(font13)
-        self.detection_alert.setStyleSheet(u"background-color: rgb(148, 148, 148);\n"
-"color: rgb(255, 255, 255);\n"
-"margin-top: 10px;")
-        self.detection_alert.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.verticalLayout_6.addWidget(self.detection_alert)
-
-        self.widget_6 = QWidget(self.detection_widget)
-        self.widget_6.setObjectName(u"widget_6")
-        self.widget_6.setMaximumSize(QSize(16777215, 100))
-        self.gridLayout_4 = QGridLayout(self.widget_6)
-        self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.gridLayout_4.setHorizontalSpacing(8)
-        self.gridLayout_4.setContentsMargins(0, 10, 0, 10)
-        self.lot_detected = QLabel(self.widget_6)
-        self.lot_detected.setObjectName(u"lot_detected")
-        font14 = QFont()
-        font14.setFamilies([u"Kanit"])
-        font14.setPointSize(22)
-        font14.setBold(True)
-        self.lot_detected.setFont(font14)
-        self.lot_detected.setStyleSheet(u"color: rgb(61, 61, 61);")
-        self.lot_detected.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.gridLayout_4.addWidget(self.lot_detected, 0, 1, 1, 1)
-
-        self.exp_label = QLabel(self.widget_6)
-        self.exp_label.setObjectName(u"exp_label")
-        self.exp_label.setMaximumSize(QSize(85, 16777215))
-        self.exp_label.setFont(font14)
-        self.exp_label.setStyleSheet(u"color: rgb(61, 61, 61);")
-        self.exp_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.gridLayout_4.addWidget(self.exp_label, 2, 0, 1, 1)
-
-        self.lot_label = QLabel(self.widget_6)
-        self.lot_label.setObjectName(u"lot_label")
-        self.lot_label.setMaximumSize(QSize(85, 16777215))
-        self.lot_label.setFont(font14)
-        self.lot_label.setStyleSheet(u"color: rgb(61, 61, 61);")
-        self.lot_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.gridLayout_4.addWidget(self.lot_label, 0, 0, 1, 1)
-
-        self.mfg_label = QLabel(self.widget_6)
-        self.mfg_label.setObjectName(u"mfg_label")
-        self.mfg_label.setMaximumSize(QSize(85, 16777215))
-        self.mfg_label.setFont(font14)
-        self.mfg_label.setStyleSheet(u"color: rgb(61, 61, 61);")
-        self.mfg_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.gridLayout_4.addWidget(self.mfg_label, 1, 0, 1, 1)
-
-        self.mfg_detected = QLabel(self.widget_6)
-        self.mfg_detected.setObjectName(u"mfg_detected")
-        self.mfg_detected.setFont(font14)
-        self.mfg_detected.setStyleSheet(u"color: rgb(61, 61, 61);")
-        self.mfg_detected.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.gridLayout_4.addWidget(self.mfg_detected, 1, 1, 1, 1)
-
-        self.exp_detected = QLabel(self.widget_6)
-        self.exp_detected.setObjectName(u"exp_detected")
-        self.exp_detected.setFont(font14)
-        self.exp_detected.setStyleSheet(u"color: rgb(61, 61, 61);")
-        self.exp_detected.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.gridLayout_4.addWidget(self.exp_detected, 2, 1, 1, 1)
-
-
-        self.verticalLayout_6.addWidget(self.widget_6)
-
-        self.widget_4 = QWidget(self.detection_widget)
-        self.widget_4.setObjectName(u"widget_4")
-        self.widget_4.setMaximumSize(QSize(16777215, 50))
-        self.widget_4.setStyleSheet(u"")
-        self.horizontalLayout_7 = QHBoxLayout(self.widget_4)
-        self.horizontalLayout_7.setSpacing(10)
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.capture_test = QPushButton(self.widget_4)
-        self.capture_test.setObjectName(u"capture_test")
-        self.capture_test.setMinimumSize(QSize(110, 45))
-        self.capture_test.setMaximumSize(QSize(16777215, 45))
-        self.capture_test.setFont(font12)
-        self.capture_test.setStyleSheet(u"QPushButton {\n"
-"	background-color: rgb(50, 50, 50);\n"
-"	color: rgb(255, 255, 255);\n"
-"	border-radius: 10px;\n"
-"}\n"
-"QPushButton:pressed {\n"
-"	background-color: rgb(100, 100, 100);\n"
-"}")
-        self.capture_test.setIcon(icon3)
-        self.capture_test.setIconSize(QSize(30, 30))
-
-        self.horizontalLayout_7.addWidget(self.capture_test)
-
-        self.start = QPushButton(self.widget_4)
-        self.start.setObjectName(u"start")
-        self.start.setMinimumSize(QSize(0, 45))
-        self.start.setMaximumSize(QSize(16777215, 45))
-        font15 = QFont()
-        font15.setFamilies([u"Kanit"])
-        font15.setPointSize(12)
-        font15.setWeight(QFont.Medium)
-        font15.setItalic(False)
-        self.start.setFont(font15)
-        self.start.setStyleSheet(u"QPushButton {\n"
-"	background-color: rgb(0, 170, 50);\n"
-"	color: white;\n"
-"	text-align: center;\n"
-"	border: none;\n"
-"	border-radius: 10px;\n"
-"	padding: 15px;\n"
 "}\n"
 "\n"
-"QPushButton:checked {\n"
-"	background-color: rgb(200, 0, 0);\n"
-"	color: white;\n"
-"}")
-        icon8 = QIcon()
-        icon8.addFile(u":/assets/keyboard/record.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.start.setIcon(icon8)
-        self.start.setIconSize(QSize(25, 25))
-        self.start.setCheckable(True)
-        self.start.setChecked(False)
-
-        self.horizontalLayout_7.addWidget(self.start)
-
-
-        self.verticalLayout_6.addWidget(self.widget_4)
-
-
-        self.horizontalLayout_22.addWidget(self.detection_widget)
-
-
-        self.verticalLayout_14.addWidget(self.detection_frame)
-
-        self.stackedWidget.addWidget(self.detection_page)
+"QTabWidget::pane {\n"
+"    border: none;\n"
+"}\n"
+"\n"
+"QTabBar::tab {\n"
+"	background: #E3F2FD;\n"
+"	color: #1565C0;\n"
+"	font-size: 16px;\n"
+"	width: 150px;\n"
+"	height: 40px;\n"
+"}\n"
+"\n"
+"QTabBar::tab:selected {\n"
+"    background: #42A5F5;\n"
+"    color: white;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QTabBar::tab:hover {\n"
+"    background-color: #90CAF9;\n"
+"    color: #0D47A1;\n"
+"}\n"
+"\n"
+"QTabWidget::tab-bar {\n"
+"    alignment: left;\n"
+"}\n"
+"")
         self.process_page = QWidget()
         self.process_page.setObjectName(u"process_page")
         self.horizontalLayout_61 = QHBoxLayout(self.process_page)
@@ -866,10 +506,10 @@ class Ui_MainWindow(object):
         self.process_label_line_1.setObjectName(u"process_label_line_1")
         self.process_label_line_1.setMinimumSize(QSize(0, 35))
         self.process_label_line_1.setMaximumSize(QSize(16777215, 35))
-        font16 = QFont()
-        font16.setFamilies([u"Kanit"])
-        font16.setPointSize(27)
-        self.process_label_line_1.setFont(font16)
+        font10 = QFont()
+        font10.setFamilies([u"Kanit"])
+        font10.setPointSize(27)
+        self.process_label_line_1.setFont(font10)
         self.process_label_line_1.setStyleSheet(u"color: rgb(128, 128, 128);")
         self.process_label_line_1.setFrameShape(QFrame.Shape.NoFrame)
         self.process_label_line_1.setFrameShadow(QFrame.Shadow.Plain)
@@ -882,10 +522,10 @@ class Ui_MainWindow(object):
         self.process_label_line_2.setObjectName(u"process_label_line_2")
         self.process_label_line_2.setMinimumSize(QSize(0, 35))
         self.process_label_line_2.setMaximumSize(QSize(16777215, 35))
-        font17 = QFont()
-        font17.setFamilies([u"Kanit"])
-        font17.setPointSize(20)
-        self.process_label_line_2.setFont(font17)
+        font11 = QFont()
+        font11.setFamilies([u"Kanit"])
+        font11.setPointSize(20)
+        self.process_label_line_2.setFont(font11)
         self.process_label_line_2.setStyleSheet(u"color: rgb(128, 128, 128);")
         self.process_label_line_2.setFrameShape(QFrame.Shape.NoFrame)
         self.process_label_line_2.setFrameShadow(QFrame.Shadow.Plain)
@@ -898,7 +538,7 @@ class Ui_MainWindow(object):
         self.process_label_line_3.setObjectName(u"process_label_line_3")
         self.process_label_line_3.setMinimumSize(QSize(0, 35))
         self.process_label_line_3.setMaximumSize(QSize(16777215, 35))
-        self.process_label_line_3.setFont(font17)
+        self.process_label_line_3.setFont(font11)
         self.process_label_line_3.setStyleSheet(u"color: rgb(128, 128, 128);")
         self.process_label_line_3.setFrameShape(QFrame.Shape.NoFrame)
         self.process_label_line_3.setFrameShadow(QFrame.Shadow.Plain)
@@ -911,10 +551,10 @@ class Ui_MainWindow(object):
         self.process_label_line_4.setObjectName(u"process_label_line_4")
         self.process_label_line_4.setMinimumSize(QSize(0, 30))
         self.process_label_line_4.setMaximumSize(QSize(16777215, 30))
-        font18 = QFont()
-        font18.setFamilies([u"Kanit"])
-        font18.setPointSize(14)
-        self.process_label_line_4.setFont(font18)
+        font12 = QFont()
+        font12.setFamilies([u"Kanit"])
+        font12.setPointSize(14)
+        self.process_label_line_4.setFont(font12)
         self.process_label_line_4.setStyleSheet(u"color: rgb(128, 128, 128);")
         self.process_label_line_4.setFrameShape(QFrame.Shape.NoFrame)
         self.process_label_line_4.setFrameShadow(QFrame.Shadow.Plain)
@@ -930,294 +570,382 @@ class Ui_MainWindow(object):
         self.horizontalLayout_61.addWidget(self.process_main_frame)
 
         self.stackedWidget.addWidget(self.process_page)
-        self.keyboard = QWidget()
-        self.keyboard.setObjectName(u"keyboard")
-        self.verticalLayout_34 = QVBoxLayout(self.keyboard)
-        self.verticalLayout_34.setSpacing(0)
-        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
-        self.verticalLayout_34.setContentsMargins(0, 0, 0, 0)
-        self.widget_2 = QWidget(self.keyboard)
-        self.widget_2.setObjectName(u"widget_2")
-        self.verticalLayout_35 = QVBoxLayout(self.widget_2)
-        self.verticalLayout_35.setObjectName(u"verticalLayout_35")
-        self.verticalLayout_35.setContentsMargins(0, 0, 0, 0)
-        self.frame_4 = QFrame(self.widget_2)
-        self.frame_4.setObjectName(u"frame_4")
-        self.frame_4.setMinimumSize(QSize(0, 300))
-        self.frame_4.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_3 = QVBoxLayout(self.frame_4)
-        self.verticalLayout_3.setSpacing(0)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.keyboard_title_groupBox = QGroupBox(self.frame_4)
-        self.keyboard_title_groupBox.setObjectName(u"keyboard_title_groupBox")
-        self.keyboard_title_groupBox.setMinimumSize(QSize(0, 70))
-        self.keyboard_title_groupBox.setMaximumSize(QSize(16777215, 80))
-        self.horizontalLayout_60 = QHBoxLayout(self.keyboard_title_groupBox)
-        self.horizontalLayout_60.setObjectName(u"horizontalLayout_60")
-        self.horizontalLayout_60.setContentsMargins(9, 0, 9, 0)
-        self.keyboard_title = QLabel(self.keyboard_title_groupBox)
-        self.keyboard_title.setObjectName(u"keyboard_title")
-        self.keyboard_title.setMinimumSize(QSize(0, 50))
-        self.keyboard_title.setMaximumSize(QSize(16777215, 65))
-        font19 = QFont()
-        font19.setFamilies([u"Kanit"])
-        font19.setPointSize(30)
-        self.keyboard_title.setFont(font19)
-        self.keyboard_title.setStyleSheet(u"background-color: rgb(52, 157, 77);\n"
+        self.detection_page = QWidget()
+        self.detection_page.setObjectName(u"detection_page")
+        self.verticalLayout_14 = QVBoxLayout(self.detection_page)
+        self.verticalLayout_14.setSpacing(0)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.detection_frame_2 = QFrame(self.detection_page)
+        self.detection_frame_2.setObjectName(u"detection_frame_2")
+        self.detection_frame_2.setMinimumSize(QSize(0, 70))
+        self.detection_frame_2.setMaximumSize(QSize(16777215, 70))
+        self.detection_frame_2.setStyleSheet(u"")
+        self.detection_frame_2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.detection_frame_2.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_15 = QHBoxLayout(self.detection_frame_2)
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.detection_status = QLabel(self.detection_frame_2)
+        self.detection_status.setObjectName(u"detection_status")
+        self.detection_status.setMinimumSize(QSize(0, 50))
+        self.detection_status.setMaximumSize(QSize(16777215, 50))
+        font13 = QFont()
+        font13.setFamilies([u"Kanit"])
+        font13.setPointSize(24)
+        self.detection_status.setFont(font13)
+        self.detection_status.setStyleSheet(u"background-color: rgb(0, 150, 255);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius: 15px;")
-        self.keyboard_title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.detection_status.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.horizontalLayout_60.addWidget(self.keyboard_title)
-
-
-        self.verticalLayout_3.addWidget(self.keyboard_title_groupBox)
-
-        self.frame_9 = QFrame(self.frame_4)
-        self.frame_9.setObjectName(u"frame_9")
-        self.frame_9.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_9.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_38 = QVBoxLayout(self.frame_9)
-        self.verticalLayout_38.setSpacing(0)
-        self.verticalLayout_38.setObjectName(u"verticalLayout_38")
-        self.verticalLayout_38.setContentsMargins(-1, -1, -1, 20)
-        self.val_input = QLabel(self.frame_9)
-        self.val_input.setObjectName(u"val_input")
-        font20 = QFont()
-        font20.setFamilies([u"Kanit"])
-        font20.setPointSize(80)
-        font20.setBold(True)
-        self.val_input.setFont(font20)
-        self.val_input.setStyleSheet(u"color: rgb(100, 100, 100);\n"
-"border: none;")
-        self.val_input.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.verticalLayout_38.addWidget(self.val_input)
+        self.horizontalLayout_15.addWidget(self.detection_status)
 
 
-        self.verticalLayout_3.addWidget(self.frame_9)
+        self.verticalLayout_14.addWidget(self.detection_frame_2)
 
-        self.frame_5 = QFrame(self.frame_4)
-        self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setMinimumSize(QSize(0, 270))
-        self.frame_5.setMaximumSize(QSize(16777215, 270))
-        self.frame_5.setStyleSheet(u"")
-        self.frame_5.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_5.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_63 = QHBoxLayout(self.frame_5)
-        self.horizontalLayout_63.setSpacing(0)
-        self.horizontalLayout_63.setObjectName(u"horizontalLayout_63")
-        self.horizontalLayout_63.setContentsMargins(0, 0, 0, 0)
-        self.frame_6 = QFrame(self.frame_5)
-        self.frame_6.setObjectName(u"frame_6")
-        palette = QPalette()
-        brush = QBrush(QColor(255, 255, 255, 255))
-        brush.setStyle(Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, brush)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.ButtonText, brush)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, brush)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Window, brush)
-        brush1 = QBrush(QColor(255, 255, 255, 128))
-        brush1.setStyle(Qt.BrushStyle.SolidPattern)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.PlaceholderText, brush1)
-#endif
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.WindowText, brush)
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Button, brush)
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Text, brush)
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.ButtonText, brush)
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Base, brush)
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Window, brush)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.PlaceholderText, brush1)
-#endif
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.WindowText, brush)
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Button, brush)
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Text, brush)
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ButtonText, brush)
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Base, brush)
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Window, brush)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.PlaceholderText, brush1)
-#endif
-        self.frame_6.setPalette(palette)
-        self.frame_6.setStyleSheet(u"QPushButton {\n"
-"	width: 90px;\n"
-"	height: 70px;\n"
+        self.detection_frame = QFrame(self.detection_page)
+        self.detection_frame.setObjectName(u"detection_frame")
+        self.detection_frame.setStyleSheet(u"")
+        self.detection_frame.setFrameShape(QFrame.Shape.StyledPanel)
+        self.detection_frame.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_22 = QHBoxLayout(self.detection_frame)
+        self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
+        self.widget_5 = QWidget(self.detection_frame)
+        self.widget_5.setObjectName(u"widget_5")
+        self.verticalLayout_7 = QVBoxLayout(self.widget_5)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(-1, 0, -1, 0)
+        self.detection_monitor = QLabel(self.widget_5)
+        self.detection_monitor.setObjectName(u"detection_monitor")
+        self.detection_monitor.setMinimumSize(QSize(250, 250))
+        self.detection_monitor.setMaximumSize(QSize(16777215, 16777215))
+        self.detection_monitor.setStyleSheet(u"QLabel {\n"
+"	border: solid;\n"
+"	border-width: 2px;\n"
+"	border-color: rgb(111, 105, 37);\n"
+"	border-radius: 15px;\n"
+"	background-color: rgb(0, 0, 0);\n"
+"}\n"
+"")
+        self.detection_monitor.setPixmap(QPixmap(u":/assets/icon/picture_default.png"))
+        self.detection_monitor.setScaledContents(True)
+
+        self.verticalLayout_7.addWidget(self.detection_monitor)
+
+        self.widget_10 = QWidget(self.widget_5)
+        self.widget_10.setObjectName(u"widget_10")
+        self.horizontalLayout_21 = QHBoxLayout(self.widget_10)
+        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
+        self.horizontalLayout_21.setContentsMargins(-1, 5, -1, 5)
+        self.widget_8 = QWidget(self.widget_10)
+        self.widget_8.setObjectName(u"widget_8")
+        self.horizontalLayout_4 = QHBoxLayout(self.widget_8)
+        self.horizontalLayout_4.setSpacing(6)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.lot_label_2 = QLabel(self.widget_8)
+        self.lot_label_2.setObjectName(u"lot_label_2")
+        self.lot_label_2.setMinimumSize(QSize(45, 45))
+        self.lot_label_2.setMaximumSize(QSize(45, 45))
+        font14 = QFont()
+        font14.setFamilies([u"Kanit"])
+        font14.setPointSize(18)
+        font14.setBold(True)
+        self.lot_label_2.setFont(font14)
+        self.lot_label_2.setStyleSheet(u"color: rgb(61, 61, 61);")
+        self.lot_label_2.setPixmap(QPixmap(u":/assets/icon/ok.png"))
+        self.lot_label_2.setScaledContents(True)
+        self.lot_label_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.horizontalLayout_4.addWidget(self.lot_label_2)
+
+        self.count_ok = QLabel(self.widget_8)
+        self.count_ok.setObjectName(u"count_ok")
+        self.count_ok.setMaximumSize(QSize(16777215, 16777215))
+        font15 = QFont()
+        font15.setFamilies([u"Kanit"])
+        font15.setPointSize(25)
+        font15.setBold(True)
+        self.count_ok.setFont(font15)
+        self.count_ok.setStyleSheet(u"color: rgb(0, 170, 0);")
+        self.count_ok.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.horizontalLayout_4.addWidget(self.count_ok)
+
+
+        self.horizontalLayout_21.addWidget(self.widget_8)
+
+        self.widget_11 = QWidget(self.widget_10)
+        self.widget_11.setObjectName(u"widget_11")
+        self.horizontalLayout_20 = QHBoxLayout(self.widget_11)
+        self.horizontalLayout_20.setSpacing(10)
+        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
+        self.horizontalLayout_20.setContentsMargins(0, 0, 0, 0)
+        self.lot_label_6 = QLabel(self.widget_11)
+        self.lot_label_6.setObjectName(u"lot_label_6")
+        self.lot_label_6.setMinimumSize(QSize(35, 35))
+        self.lot_label_6.setMaximumSize(QSize(35, 35))
+        self.lot_label_6.setFont(font14)
+        self.lot_label_6.setStyleSheet(u"color: rgb(61, 61, 61);")
+        self.lot_label_6.setPixmap(QPixmap(u":/assets/icon/ng.png"))
+        self.lot_label_6.setScaledContents(True)
+        self.lot_label_6.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.horizontalLayout_20.addWidget(self.lot_label_6)
+
+        self.count_ng = QLabel(self.widget_11)
+        self.count_ng.setObjectName(u"count_ng")
+        self.count_ng.setMaximumSize(QSize(16777215, 16777215))
+        self.count_ng.setFont(font15)
+        self.count_ng.setStyleSheet(u"color: rgb(255, 0, 0);")
+        self.count_ng.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.horizontalLayout_20.addWidget(self.count_ng)
+
+
+        self.horizontalLayout_21.addWidget(self.widget_11)
+
+        self.widget_9 = QWidget(self.widget_10)
+        self.widget_9.setObjectName(u"widget_9")
+        self.horizontalLayout_19 = QHBoxLayout(self.widget_9)
+        self.horizontalLayout_19.setSpacing(10)
+        self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
+        self.horizontalLayout_19.setContentsMargins(0, 0, 0, 0)
+        self.lot_label_4 = QLabel(self.widget_9)
+        self.lot_label_4.setObjectName(u"lot_label_4")
+        self.lot_label_4.setMinimumSize(QSize(35, 35))
+        self.lot_label_4.setMaximumSize(QSize(35, 35))
+        self.lot_label_4.setFont(font14)
+        self.lot_label_4.setStyleSheet(u"")
+        self.lot_label_4.setPixmap(QPixmap(u":/assets/icon/all.png"))
+        self.lot_label_4.setScaledContents(True)
+        self.lot_label_4.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.horizontalLayout_19.addWidget(self.lot_label_4)
+
+        self.count_total = QLabel(self.widget_9)
+        self.count_total.setObjectName(u"count_total")
+        self.count_total.setMaximumSize(QSize(16777215, 16777215))
+        self.count_total.setFont(font15)
+        self.count_total.setStyleSheet(u"color: rgb(61, 61, 61);")
+        self.count_total.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.horizontalLayout_19.addWidget(self.count_total)
+
+
+        self.horizontalLayout_21.addWidget(self.widget_9)
+
+        self.count_reset = QPushButton(self.widget_10)
+        self.count_reset.setObjectName(u"count_reset")
+        self.count_reset.setMinimumSize(QSize(0, 0))
+        self.count_reset.setMaximumSize(QSize(45, 45))
+        font16 = QFont()
+        font16.setFamilies([u"Kanit"])
+        font16.setPointSize(14)
+        font16.setWeight(QFont.Medium)
+        font16.setItalic(False)
+        self.count_reset.setFont(font16)
+        self.count_reset.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgb(50, 50, 50);\n"
 "	color: rgb(255, 255, 255);\n"
 "	border-radius: 10px;\n"
 "}\n"
-"\n"
 "QPushButton:pressed {\n"
-"    font-size: 40px;\n"
 "	background-color: rgb(100, 100, 100);\n"
 "}")
-        self.frame_6.setFrameShadow(QFrame.Shadow.Plain)
-        self.frame_6.setLineWidth(3)
-        self.gridLayout = QGridLayout(self.frame_6)
-        self.gridLayout.setSpacing(10)
-        self.gridLayout.setObjectName(u"gridLayout")
-        self.key_7 = QPushButton(self.frame_6)
-        self.key_7.setObjectName(u"key_7")
-        font21 = QFont()
-        font21.setFamilies([u"Kanit"])
-        font21.setPointSize(30)
-        font21.setWeight(QFont.Medium)
-        self.key_7.setFont(font21)
+        icon6 = QIcon()
+        icon6.addFile(u":/assets/icon/reset.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.count_reset.setIcon(icon6)
+        self.count_reset.setIconSize(QSize(30, 30))
 
-        self.gridLayout.addWidget(self.key_7, 2, 0, 1, 1)
-
-        self.key_0 = QPushButton(self.frame_6)
-        self.key_0.setObjectName(u"key_0")
-        self.key_0.setMinimumSize(QSize(0, 0))
-        self.key_0.setMaximumSize(QSize(16777215, 150))
-        self.key_0.setFont(font21)
-
-        self.gridLayout.addWidget(self.key_0, 3, 1, 1, 1)
-
-        self.key_2 = QPushButton(self.frame_6)
-        self.key_2.setObjectName(u"key_2")
-        self.key_2.setFont(font21)
-
-        self.gridLayout.addWidget(self.key_2, 0, 1, 1, 1)
-
-        self.key_5 = QPushButton(self.frame_6)
-        self.key_5.setObjectName(u"key_5")
-        self.key_5.setFont(font21)
-
-        self.gridLayout.addWidget(self.key_5, 1, 1, 1, 1)
-
-        self.key_4 = QPushButton(self.frame_6)
-        self.key_4.setObjectName(u"key_4")
-        self.key_4.setFont(font21)
-
-        self.gridLayout.addWidget(self.key_4, 1, 0, 1, 1)
-
-        self.key_3 = QPushButton(self.frame_6)
-        self.key_3.setObjectName(u"key_3")
-        self.key_3.setFont(font21)
-
-        self.gridLayout.addWidget(self.key_3, 0, 2, 1, 1)
-
-        self.key_9 = QPushButton(self.frame_6)
-        self.key_9.setObjectName(u"key_9")
-        self.key_9.setFont(font21)
-
-        self.gridLayout.addWidget(self.key_9, 2, 2, 1, 1)
-
-        self.key_1 = QPushButton(self.frame_6)
-        self.key_1.setObjectName(u"key_1")
-        self.key_1.setFont(font21)
-
-        self.gridLayout.addWidget(self.key_1, 0, 0, 1, 1)
-
-        self.key_8 = QPushButton(self.frame_6)
-        self.key_8.setObjectName(u"key_8")
-        self.key_8.setFont(font21)
-
-        self.gridLayout.addWidget(self.key_8, 2, 1, 1, 1)
-
-        self.key_backspace = QPushButton(self.frame_6)
-        self.key_backspace.setObjectName(u"key_backspace")
-        self.key_backspace.setMinimumSize(QSize(0, 0))
-        self.key_backspace.setMaximumSize(QSize(16777215, 150))
-        font22 = QFont()
-        font22.setPointSize(30)
-        self.key_backspace.setFont(font22)
-        icon9 = QIcon()
-        icon9.addFile(u":/assets/keyboard/backspace.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.key_backspace.setIcon(icon9)
-        self.key_backspace.setIconSize(QSize(40, 40))
-
-        self.gridLayout.addWidget(self.key_backspace, 3, 2, 1, 1)
-
-        self.key_backslash = QPushButton(self.frame_6)
-        self.key_backslash.setObjectName(u"key_backslash")
-        self.key_backslash.setMinimumSize(QSize(0, 0))
-        self.key_backslash.setMaximumSize(QSize(16777215, 150))
-        self.key_backslash.setFont(font21)
-
-        self.gridLayout.addWidget(self.key_backslash, 3, 0, 1, 1)
-
-        self.key_6 = QPushButton(self.frame_6)
-        self.key_6.setObjectName(u"key_6")
-        self.key_6.setFont(font21)
-
-        self.gridLayout.addWidget(self.key_6, 1, 2, 1, 1)
+        self.horizontalLayout_21.addWidget(self.count_reset)
 
 
-        self.horizontalLayout_63.addWidget(self.frame_6)
+        self.verticalLayout_7.addWidget(self.widget_10)
 
-        self.frame_8 = QFrame(self.frame_5)
-        self.frame_8.setObjectName(u"frame_8")
-        self.frame_8.setStyleSheet(u"QPushButton {\n"
+
+        self.horizontalLayout_22.addWidget(self.widget_5)
+
+        self.detection_widget = QWidget(self.detection_frame)
+        self.detection_widget.setObjectName(u"detection_widget")
+        self.detection_widget.setMinimumSize(QSize(250, 0))
+        self.detection_widget.setMaximumSize(QSize(300, 16777215))
+        self.detection_widget.setStyleSheet(u"QWidget {\n"
+"	background-color: rgb(220, 220, 220);\n"
+"	border-radius: 15px;\n"
+"}")
+        self.verticalLayout_6 = QVBoxLayout(self.detection_widget)
+        self.verticalLayout_6.setSpacing(0)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(12, -1, 12, 0)
+        self.detection_view = QLabel(self.detection_widget)
+        self.detection_view.setObjectName(u"detection_view")
+        self.detection_view.setMinimumSize(QSize(120, 150))
+        self.detection_view.setMaximumSize(QSize(16777215, 150))
+        self.detection_view.setStyleSheet(u"QLabel {\n"
+"	border: solid;\n"
+"	border-width: 2px;\n"
+"	border-color: rgb(111, 105, 37);\n"
+"	border-radius: 15px;\n"
+"	background-color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.detection_view.setPixmap(QPixmap(u":/assets/icon/picture_default.png"))
+        self.detection_view.setScaledContents(True)
+
+        self.verticalLayout_6.addWidget(self.detection_view)
+
+        self.detection_alert = QLabel(self.detection_widget)
+        self.detection_alert.setObjectName(u"detection_alert")
+        self.detection_alert.setMinimumSize(QSize(0, 80))
+        self.detection_alert.setMaximumSize(QSize(16777215, 80))
+        font17 = QFont()
+        font17.setFamilies([u"Kanit"])
+        font17.setPointSize(50)
+        font17.setBold(True)
+        self.detection_alert.setFont(font17)
+        self.detection_alert.setStyleSheet(u"background-color: rgb(148, 148, 148);\n"
+"color: rgb(255, 255, 255);\n"
+"margin-top: 10px;")
+        self.detection_alert.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.verticalLayout_6.addWidget(self.detection_alert)
+
+        self.widget_6 = QWidget(self.detection_widget)
+        self.widget_6.setObjectName(u"widget_6")
+        self.widget_6.setMaximumSize(QSize(16777215, 100))
+        self.gridLayout_4 = QGridLayout(self.widget_6)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.gridLayout_4.setHorizontalSpacing(8)
+        self.gridLayout_4.setContentsMargins(0, 10, 0, 10)
+        self.lot_detected = QLabel(self.widget_6)
+        self.lot_detected.setObjectName(u"lot_detected")
+        font18 = QFont()
+        font18.setFamilies([u"Kanit"])
+        font18.setPointSize(22)
+        font18.setBold(True)
+        self.lot_detected.setFont(font18)
+        self.lot_detected.setStyleSheet(u"color: rgb(61, 61, 61);")
+        self.lot_detected.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.lot_detected, 0, 1, 1, 1)
+
+        self.label_29 = QLabel(self.widget_6)
+        self.label_29.setObjectName(u"label_29")
+        self.label_29.setMaximumSize(QSize(85, 16777215))
+        self.label_29.setFont(font18)
+        self.label_29.setStyleSheet(u"color: rgb(61, 61, 61);")
+        self.label_29.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_29, 2, 0, 1, 1)
+
+        self.label_27 = QLabel(self.widget_6)
+        self.label_27.setObjectName(u"label_27")
+        self.label_27.setMaximumSize(QSize(85, 16777215))
+        self.label_27.setFont(font18)
+        self.label_27.setStyleSheet(u"color: rgb(61, 61, 61);")
+        self.label_27.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_27, 0, 0, 1, 1)
+
+        self.label_28 = QLabel(self.widget_6)
+        self.label_28.setObjectName(u"label_28")
+        self.label_28.setMaximumSize(QSize(85, 16777215))
+        self.label_28.setFont(font18)
+        self.label_28.setStyleSheet(u"color: rgb(61, 61, 61);")
+        self.label_28.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_28, 1, 0, 1, 1)
+
+        self.mfg_detected = QLabel(self.widget_6)
+        self.mfg_detected.setObjectName(u"mfg_detected")
+        self.mfg_detected.setFont(font18)
+        self.mfg_detected.setStyleSheet(u"color: rgb(61, 61, 61);")
+        self.mfg_detected.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.mfg_detected, 1, 1, 1, 1)
+
+        self.exp_detected = QLabel(self.widget_6)
+        self.exp_detected.setObjectName(u"exp_detected")
+        self.exp_detected.setFont(font18)
+        self.exp_detected.setStyleSheet(u"color: rgb(61, 61, 61);")
+        self.exp_detected.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.exp_detected, 2, 1, 1, 1)
+
+
+        self.verticalLayout_6.addWidget(self.widget_6)
+
+        self.widget_4 = QWidget(self.detection_widget)
+        self.widget_4.setObjectName(u"widget_4")
+        self.widget_4.setMaximumSize(QSize(16777215, 50))
+        self.widget_4.setStyleSheet(u"")
+        self.horizontalLayout_7 = QHBoxLayout(self.widget_4)
+        self.horizontalLayout_7.setSpacing(10)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.capture_test = QPushButton(self.widget_4)
+        self.capture_test.setObjectName(u"capture_test")
+        self.capture_test.setMinimumSize(QSize(110, 45))
+        self.capture_test.setMaximumSize(QSize(16777215, 45))
+        self.capture_test.setFont(font16)
+        self.capture_test.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgb(50, 50, 50);\n"
+"	color: rgb(255, 255, 255);\n"
 "	border-radius: 10px;\n"
 "}\n"
 "QPushButton:pressed {\n"
 "	background-color: rgb(100, 100, 100);\n"
 "}")
-        self.frame_8.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_8.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_36 = QVBoxLayout(self.frame_8)
-        self.verticalLayout_36.setSpacing(9)
-        self.verticalLayout_36.setObjectName(u"verticalLayout_36")
-        self.verticalLayout_36.setContentsMargins(5, 0, -1, 8)
-        self.numberTablets_img = QLabel(self.frame_8)
-        self.numberTablets_img.setObjectName(u"numberTablets_img")
-        self.numberTablets_img.setPixmap(QPixmap(u":/assets/icon/characteristics.png"))
-        self.numberTablets_img.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        icon7 = QIcon()
+        icon7.addFile(u":/assets/icon/camera.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.capture_test.setIcon(icon7)
+        self.capture_test.setIconSize(QSize(30, 30))
 
-        self.verticalLayout_36.addWidget(self.numberTablets_img)
+        self.horizontalLayout_7.addWidget(self.capture_test)
 
-        self.key_enter = QPushButton(self.frame_8)
-        self.key_enter.setObjectName(u"key_enter")
-        self.key_enter.setMinimumSize(QSize(0, 40))
-        self.key_enter.setMaximumSize(QSize(16777215, 55))
-        font23 = QFont()
-        font23.setFamilies([u"Kanit"])
-        font23.setPointSize(30)
-        font23.setWeight(QFont.Medium)
-        font23.setItalic(False)
-        self.key_enter.setFont(font23)
-        self.key_enter.setStyleSheet(u"")
-        icon10 = QIcon()
-        icon10.addFile(u":/assets/keyboard/enter.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.key_enter.setIcon(icon10)
-        self.key_enter.setIconSize(QSize(40, 40))
+        self.start = QPushButton(self.widget_4)
+        self.start.setObjectName(u"start")
+        self.start.setMinimumSize(QSize(0, 45))
+        self.start.setMaximumSize(QSize(16777215, 45))
+        font19 = QFont()
+        font19.setFamilies([u"Kanit"])
+        font19.setPointSize(12)
+        font19.setWeight(QFont.Medium)
+        font19.setItalic(False)
+        self.start.setFont(font19)
+        self.start.setStyleSheet(u"QPushButton {\n"
+"	background-color: rgb(0, 170, 50);\n"
+"	color: white;\n"
+"	text-align: center;\n"
+"	border: none;\n"
+"	border-radius: 10px;\n"
+"	padding: 15px;\n"
+"}\n"
+"\n"
+"QPushButton:checked {\n"
+"	background-color: rgb(200, 0, 0);\n"
+"	color: white;\n"
+"}")
+        icon8 = QIcon()
+        icon8.addFile(u":/assets/keyboard/record.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.start.setIcon(icon8)
+        self.start.setIconSize(QSize(25, 25))
+        self.start.setCheckable(True)
+        self.start.setChecked(False)
 
-        self.verticalLayout_36.addWidget(self.key_enter)
-
-        self.key_cancel = QPushButton(self.frame_8)
-        self.key_cancel.setObjectName(u"key_cancel")
-        self.key_cancel.setMinimumSize(QSize(0, 40))
-        self.key_cancel.setMaximumSize(QSize(16777215, 55))
-        self.key_cancel.setFont(font23)
-        icon11 = QIcon()
-        icon11.addFile(u":/assets/keyboard/cancel.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.key_cancel.setIcon(icon11)
-        self.key_cancel.setIconSize(QSize(40, 40))
-
-        self.verticalLayout_36.addWidget(self.key_cancel)
+        self.horizontalLayout_7.addWidget(self.start)
 
 
-        self.horizontalLayout_63.addWidget(self.frame_8)
+        self.verticalLayout_6.addWidget(self.widget_4)
 
 
-        self.verticalLayout_3.addWidget(self.frame_5)
+        self.horizontalLayout_22.addWidget(self.detection_widget)
 
 
-        self.verticalLayout_35.addWidget(self.frame_4)
+        self.verticalLayout_14.addWidget(self.detection_frame)
 
-
-        self.verticalLayout_34.addWidget(self.widget_2)
-
-        self.stackedWidget.addWidget(self.keyboard)
+        self.stackedWidget.addWidget(self.detection_page)
         self.lme_settings_page = QWidget()
         self.lme_settings_page.setObjectName(u"lme_settings_page")
         self.verticalLayout_11 = QVBoxLayout(self.lme_settings_page)
@@ -1244,7 +972,7 @@ class Ui_MainWindow(object):
         self.setting_title.setObjectName(u"setting_title")
         self.setting_title.setMinimumSize(QSize(0, 50))
         self.setting_title.setMaximumSize(QSize(16777215, 50))
-        self.setting_title.setFont(font9)
+        self.setting_title.setFont(font13)
         self.setting_title.setStyleSheet(u"background-color: rgb(52, 157, 77);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius: 15px;")
@@ -1267,11 +995,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_14 = QHBoxLayout(self.weighingSettings_Frame)
         self.horizontalLayout_14.setSpacing(10)
         self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
-        self.webcam_setting_monitor = QLabel(self.weighingSettings_Frame)
-        self.webcam_setting_monitor.setObjectName(u"webcam_setting_monitor")
-        self.webcam_setting_monitor.setMinimumSize(QSize(250, 0))
-        self.webcam_setting_monitor.setMaximumSize(QSize(16777215, 16777215))
-        self.webcam_setting_monitor.setStyleSheet(u"QLabel {\n"
+        self.lme_settings_monitor = QLabel(self.weighingSettings_Frame)
+        self.lme_settings_monitor.setObjectName(u"lme_settings_monitor")
+        self.lme_settings_monitor.setMinimumSize(QSize(250, 0))
+        self.lme_settings_monitor.setMaximumSize(QSize(16777215, 16777215))
+        self.lme_settings_monitor.setStyleSheet(u"QLabel {\n"
 "	border: solid;\n"
 "	border-width: 2px;\n"
 "	border-color: rgb(111, 105, 37);\n"
@@ -1279,10 +1007,10 @@ class Ui_MainWindow(object):
 "	background-color: rgb(0, 0, 0);\n"
 "}\n"
 "")
-        self.webcam_setting_monitor.setPixmap(QPixmap(u":/assets/icon/picture_default.png"))
-        self.webcam_setting_monitor.setScaledContents(True)
+        self.lme_settings_monitor.setPixmap(QPixmap(u":/assets/icon/picture_default.png"))
+        self.lme_settings_monitor.setScaledContents(True)
 
-        self.horizontalLayout_14.addWidget(self.webcam_setting_monitor)
+        self.horizontalLayout_14.addWidget(self.lme_settings_monitor)
 
         self.set_widget = QWidget(self.weighingSettings_Frame)
         self.set_widget.setObjectName(u"set_widget")
@@ -1319,20 +1047,20 @@ class Ui_MainWindow(object):
         self.formLayout = QFormLayout(self.widget_7)
         self.formLayout.setObjectName(u"formLayout")
         self.formLayout.setContentsMargins(-1, 5, -1, 5)
-        self.lot_set_label = QLabel(self.widget_7)
-        self.lot_set_label.setObjectName(u"lot_set_label")
-        self.lot_set_label.setMaximumSize(QSize(85, 16777215))
-        self.lot_set_label.setFont(font14)
-        self.lot_set_label.setStyleSheet(u"color: rgb(61, 61, 61);")
-        self.lot_set_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.label_24 = QLabel(self.widget_7)
+        self.label_24.setObjectName(u"label_24")
+        self.label_24.setMaximumSize(QSize(85, 16777215))
+        self.label_24.setFont(font18)
+        self.label_24.setStyleSheet(u"color: rgb(61, 61, 61);")
+        self.label_24.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.formLayout.setWidget(0, QFormLayout.ItemRole.LabelRole, self.lot_set_label)
+        self.formLayout.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_24)
 
         self.lot_set = QLineEdit(self.widget_7)
         self.lot_set.setObjectName(u"lot_set")
-        font24 = QFont()
-        font24.setPointSize(22)
-        self.lot_set.setFont(font24)
+        font20 = QFont()
+        font20.setPointSize(22)
+        self.lot_set.setFont(font20)
         self.lot_set.setStyleSheet(u"background-color: white;\n"
 "color: #868686;\n"
 "border-radius: 8px;\n"
@@ -1343,19 +1071,19 @@ class Ui_MainWindow(object):
 
         self.formLayout.setWidget(0, QFormLayout.ItemRole.FieldRole, self.lot_set)
 
-        self.mfg_set_label = QLabel(self.widget_7)
-        self.mfg_set_label.setObjectName(u"mfg_set_label")
-        self.mfg_set_label.setMinimumSize(QSize(50, 0))
-        self.mfg_set_label.setMaximumSize(QSize(85, 16777215))
-        self.mfg_set_label.setFont(font14)
-        self.mfg_set_label.setStyleSheet(u"color: rgb(61, 61, 61);")
-        self.mfg_set_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.label_25 = QLabel(self.widget_7)
+        self.label_25.setObjectName(u"label_25")
+        self.label_25.setMinimumSize(QSize(50, 0))
+        self.label_25.setMaximumSize(QSize(85, 16777215))
+        self.label_25.setFont(font18)
+        self.label_25.setStyleSheet(u"color: rgb(61, 61, 61);")
+        self.label_25.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.formLayout.setWidget(1, QFormLayout.ItemRole.LabelRole, self.mfg_set_label)
+        self.formLayout.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_25)
 
         self.mfg_set = QLineEdit(self.widget_7)
         self.mfg_set.setObjectName(u"mfg_set")
-        self.mfg_set.setFont(font24)
+        self.mfg_set.setFont(font20)
         self.mfg_set.setStyleSheet(u"background-color: white;\n"
 "color: #868686;\n"
 "border-radius: 8px;\n"
@@ -1366,18 +1094,18 @@ class Ui_MainWindow(object):
 
         self.formLayout.setWidget(1, QFormLayout.ItemRole.FieldRole, self.mfg_set)
 
-        self.exp_set_label = QLabel(self.widget_7)
-        self.exp_set_label.setObjectName(u"exp_set_label")
-        self.exp_set_label.setMaximumSize(QSize(85, 16777215))
-        self.exp_set_label.setFont(font14)
-        self.exp_set_label.setStyleSheet(u"color: rgb(61, 61, 61);")
-        self.exp_set_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.label_26 = QLabel(self.widget_7)
+        self.label_26.setObjectName(u"label_26")
+        self.label_26.setMaximumSize(QSize(85, 16777215))
+        self.label_26.setFont(font18)
+        self.label_26.setStyleSheet(u"color: rgb(61, 61, 61);")
+        self.label_26.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.formLayout.setWidget(2, QFormLayout.ItemRole.LabelRole, self.exp_set_label)
+        self.formLayout.setWidget(2, QFormLayout.ItemRole.LabelRole, self.label_26)
 
         self.exp_set = QLineEdit(self.widget_7)
         self.exp_set.setObjectName(u"exp_set")
-        self.exp_set.setFont(font24)
+        self.exp_set.setFont(font20)
         self.exp_set.setStyleSheet(u"background-color: white;\n"
 "color: #868686;\n"
 "border-radius: 8px;\n"
@@ -1394,10 +1122,10 @@ class Ui_MainWindow(object):
         self.save_images_detection = QPushButton(self.set_widget)
         self.save_images_detection.setObjectName(u"save_images_detection")
         self.save_images_detection.setMaximumSize(QSize(16777215, 45))
-        font25 = QFont()
-        font25.setFamilies([u"Kanit"])
-        font25.setPointSize(12)
-        self.save_images_detection.setFont(font25)
+        font21 = QFont()
+        font21.setFamilies([u"Kanit"])
+        font21.setPointSize(12)
+        self.save_images_detection.setFont(font21)
         self.save_images_detection.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgb(100, 100, 100);\n"
 "	color: rgb(161, 161, 161);\n"
@@ -1412,9 +1140,9 @@ class Ui_MainWindow(object):
 "QPushButton:checked {\n"
 "	background-color: rgb(50, 50, 50);\n"
 "}")
-        icon12 = QIcon()
-        icon12.addFile(u":/assets/icon/save-images.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.save_images_detection.setIcon(icon12)
+        icon9 = QIcon()
+        icon9.addFile(u":/assets/icon/save-images.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.save_images_detection.setIcon(icon9)
         self.save_images_detection.setIconSize(QSize(35, 35))
         self.save_images_detection.setCheckable(True)
 
@@ -1440,9 +1168,9 @@ class Ui_MainWindow(object):
         self.capture_set.setObjectName(u"capture_set")
         self.capture_set.setMinimumSize(QSize(0, 45))
         self.capture_set.setMaximumSize(QSize(16777215, 45))
-        self.capture_set.setFont(font15)
+        self.capture_set.setFont(font19)
         self.capture_set.setStyleSheet(u"")
-        self.capture_set.setIcon(icon3)
+        self.capture_set.setIcon(icon7)
         self.capture_set.setIconSize(QSize(40, 40))
 
         self.horizontalLayout_5.addWidget(self.capture_set)
@@ -1451,11 +1179,11 @@ class Ui_MainWindow(object):
         self.save_set.setObjectName(u"save_set")
         self.save_set.setMinimumSize(QSize(0, 45))
         self.save_set.setMaximumSize(QSize(16777215, 45))
-        self.save_set.setFont(font15)
+        self.save_set.setFont(font19)
         self.save_set.setStyleSheet(u"")
-        icon13 = QIcon()
-        icon13.addFile(u":/assets/icon/save.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.save_set.setIcon(icon13)
+        icon10 = QIcon()
+        icon10.addFile(u":/assets/icon/save.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.save_set.setIcon(icon10)
         self.save_set.setIconSize(QSize(30, 30))
 
         self.horizontalLayout_5.addWidget(self.save_set)
@@ -1473,46 +1201,43 @@ class Ui_MainWindow(object):
         self.verticalLayout_11.addWidget(self.setting_frame)
 
         self.stackedWidget.addWidget(self.lme_settings_page)
-        self.camera_setting_page = QWidget()
-        self.camera_setting_page.setObjectName(u"camera_setting_page")
-        self.verticalLayout_9 = QVBoxLayout(self.camera_setting_page)
-        self.verticalLayout_9.setSpacing(0)
-        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.frame = QFrame(self.camera_setting_page)
-        self.frame.setObjectName(u"frame")
-        self.frame.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_12 = QVBoxLayout(self.frame)
-        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
-        self.camera_setting_title = QLabel(self.frame)
-        self.camera_setting_title.setObjectName(u"camera_setting_title")
-        self.camera_setting_title.setMinimumSize(QSize(0, 50))
-        self.camera_setting_title.setMaximumSize(QSize(16777215, 50))
-        font26 = QFont()
-        font26.setFamilies([u"Kanit"])
-        font26.setPointSize(25)
-        self.camera_setting_title.setFont(font26)
-        self.camera_setting_title.setStyleSheet(u"background-color: rgb(52, 157, 77);\n"
-"border-radius: 15px;")
-        self.camera_setting_title.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.verticalLayout_12.addWidget(self.camera_setting_title)
-
-
-        self.verticalLayout_9.addWidget(self.frame)
-
-        self.frame_2 = QFrame(self.camera_setting_page)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_9 = QHBoxLayout(self.frame_2)
-        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.camera_setting_monitor = QLabel(self.frame_2)
-        self.camera_setting_monitor.setObjectName(u"camera_setting_monitor")
-        self.camera_setting_monitor.setMinimumSize(QSize(250, 0))
-        self.camera_setting_monitor.setMaximumSize(QSize(16777215, 16777215))
-        self.camera_setting_monitor.setStyleSheet(u"QLabel {\n"
+        self.settings_page = QWidget()
+        self.settings_page.setObjectName(u"settings_page")
+        self.horizontalLayout_24 = QHBoxLayout(self.settings_page)
+        self.horizontalLayout_24.setObjectName(u"horizontalLayout_24")
+        self.tabWidget = QTabWidget(self.settings_page)
+        self.tabWidget.setObjectName(u"tabWidget")
+        font22 = QFont()
+        font22.setPointSize(14)
+        font22.setKerning(True)
+        self.tabWidget.setFont(font22)
+        self.tabWidget.setStyleSheet(u"")
+        self.tabWidget.setTabShape(QTabWidget.TabShape.Triangular)
+        self.tabWidget.setIconSize(QSize(30, 30))
+        self.tabWidget.setElideMode(Qt.TextElideMode.ElideLeft)
+        self.tabWidget.setUsesScrollButtons(True)
+        self.tabWidget.setDocumentMode(False)
+        self.tabWidget.setTabsClosable(False)
+        self.tabWidget.setMovable(False)
+        self.tabWidget.setTabBarAutoHide(False)
+        self.camera_settings_tab = QWidget()
+        self.camera_settings_tab.setObjectName(u"camera_settings_tab")
+        self.verticalLayout_24 = QVBoxLayout(self.camera_settings_tab)
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.frame_15 = QFrame(self.camera_settings_tab)
+        self.frame_15.setObjectName(u"frame_15")
+        self.frame_15.setStyleSheet(u"border: none")
+        self.frame_15.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_15.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_37 = QHBoxLayout(self.frame_15)
+        self.horizontalLayout_37.setSpacing(10)
+        self.horizontalLayout_37.setObjectName(u"horizontalLayout_37")
+        self.horizontalLayout_37.setContentsMargins(0, 0, 0, 0)
+        self.camera_settings_monitor = QLabel(self.frame_15)
+        self.camera_settings_monitor.setObjectName(u"camera_settings_monitor")
+        self.camera_settings_monitor.setMinimumSize(QSize(250, 0))
+        self.camera_settings_monitor.setMaximumSize(QSize(16777215, 16777215))
+        self.camera_settings_monitor.setStyleSheet(u"QLabel {\n"
 "	border: solid;\n"
 "	border-width: 2px;\n"
 "	border-color: rgb(111, 105, 37);\n"
@@ -1520,202 +1245,267 @@ class Ui_MainWindow(object):
 "	background-color: rgb(0, 0, 0);\n"
 "}\n"
 "")
-        self.camera_setting_monitor.setPixmap(QPixmap(u":/assets/icon/picture_default.png"))
-        self.camera_setting_monitor.setScaledContents(True)
+        self.camera_settings_monitor.setPixmap(QPixmap(u":/assets/icon/picture_default.png"))
+        self.camera_settings_monitor.setScaledContents(True)
 
-        self.horizontalLayout_9.addWidget(self.camera_setting_monitor)
+        self.horizontalLayout_37.addWidget(self.camera_settings_monitor)
 
-        self.camera_setting_widget = QWidget(self.frame_2)
-        self.camera_setting_widget.setObjectName(u"camera_setting_widget")
-        self.camera_setting_widget.setMinimumSize(QSize(300, 0))
-        self.camera_setting_widget.setMaximumSize(QSize(350, 16777215))
-        self.camera_setting_widget.setStyleSheet(u"QWidget {\n"
+        self.camera_setting_widget_2 = QWidget(self.frame_15)
+        self.camera_setting_widget_2.setObjectName(u"camera_setting_widget_2")
+        self.camera_setting_widget_2.setMinimumSize(QSize(350, 0))
+        self.camera_setting_widget_2.setMaximumSize(QSize(450, 16777215))
+        self.camera_setting_widget_2.setStyleSheet(u"QWidget {\n"
 "	background-color: rgb(220, 220, 220);\n"
 "	border-radius: 15px;\n"
 "}\n"
 "\n"
 "QLabel {\n"
 "	color: #868686\n"
-"}")
-        self.verticalLayout_10 = QVBoxLayout(self.camera_setting_widget)
-        self.verticalLayout_10.setSpacing(8)
-        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
-        self.brightnessWidget_2 = QWidget(self.camera_setting_widget)
-        self.brightnessWidget_2.setObjectName(u"brightnessWidget_2")
-        self.horizontalLayout_8 = QHBoxLayout(self.brightnessWidget_2)
-        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.cameraBrightnessLabel_3 = QLabel(self.brightnessWidget_2)
-        self.cameraBrightnessLabel_3.setObjectName(u"cameraBrightnessLabel_3")
-        self.cameraBrightnessLabel_3.setFont(font18)
+"}\n"
+"\n"
+"QSlider::groove:horizontal {\n"
+"    border: none;\n"
+"    height: 12px;\n"
+"    background: #A4D3FF;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"    background: #2979FF;\n"
+"    border: 2px solid #1565C0; /* \u0e02\u0e2d\u0e1a\u0e19\u0e49\u0e33\u0e40\u0e07\u0e34\u0e19\u0e40\u0e02\u0e49\u0e21 */\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"    margin: -4px 0;\n"
+"    border-radius: 10px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:hover {\n"
+"    background: #5393FF; /* \u0e2a\u0e35\u0e2d\u0e48\u0e2d\u0e19\u0e02\u0e36\u0e49\u0e19\u0e40\u0e21\u0e37\u0e48\u0e2d hover */\n"
+"    border: 2px solid #1E88E5;\n"
+"}\n"
+"\n"
+"\n"
+"QSlider::sub-page:horizontal {\n"
+"    background: #77AAFF;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::add-page:horizontal {\n"
+"    background: #BDDFFF;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.verticalLayout_22 = QVBoxLayout(self.camera_setting_widget_2)
+        self.verticalLayout_22.setSpacing(0)
+        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
+        self.brightnessWidget_16 = QWidget(self.camera_setting_widget_2)
+        self.brightnessWidget_16.setObjectName(u"brightnessWidget_16")
+        self.horizontalLayout_39 = QHBoxLayout(self.brightnessWidget_16)
+        self.horizontalLayout_39.setObjectName(u"horizontalLayout_39")
+        self.horizontalLayout_39.setContentsMargins(-1, 0, -1, 0)
+        self.label_2 = QLabel(self.brightnessWidget_16)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setFont(font12)
 
-        self.horizontalLayout_8.addWidget(self.cameraBrightnessLabel_3)
+        self.horizontalLayout_39.addWidget(self.label_2)
 
-        self.exposureTime = QLineEdit(self.brightnessWidget_2)
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_39.addItem(self.horizontalSpacer_5)
+
+        self.exposureTime = QLineEdit(self.brightnessWidget_16)
         self.exposureTime.setObjectName(u"exposureTime")
-        font27 = QFont()
-        font27.setPointSize(14)
-        self.exposureTime.setFont(font27)
+        self.exposureTime.setMaximumSize(QSize(100, 16777215))
+        font23 = QFont()
+        font23.setPointSize(14)
+        self.exposureTime.setFont(font23)
         self.exposureTime.setStyleSheet(u"background-color: white;\n"
 "color: #868686;\n"
 "border-radius: 8px;\n"
 "text-align: center;")
         self.exposureTime.setInputMethodHints(Qt.InputMethodHint.ImhDigitsOnly)
+        self.exposureTime.setMaxLength(100000)
         self.exposureTime.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.exposureTime.setClearButtonEnabled(False)
 
-        self.horizontalLayout_8.addWidget(self.exposureTime)
+        self.horizontalLayout_39.addWidget(self.exposureTime)
 
-        self.cameraBrightnessLabel_4 = QLabel(self.brightnessWidget_2)
-        self.cameraBrightnessLabel_4.setObjectName(u"cameraBrightnessLabel_4")
-        self.cameraBrightnessLabel_4.setFont(font18)
+        self.label_5 = QLabel(self.brightnessWidget_16)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setFont(font12)
 
-        self.horizontalLayout_8.addWidget(self.cameraBrightnessLabel_4)
+        self.horizontalLayout_39.addWidget(self.label_5)
 
 
-        self.verticalLayout_10.addWidget(self.brightnessWidget_2)
+        self.verticalLayout_22.addWidget(self.brightnessWidget_16)
 
-        self.brightnessWidget_3 = QWidget(self.camera_setting_widget)
-        self.brightnessWidget_3.setObjectName(u"brightnessWidget_3")
-        self.horizontalLayout_10 = QHBoxLayout(self.brightnessWidget_3)
-        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.cameraBrightnessLabel_5 = QLabel(self.brightnessWidget_3)
-        self.cameraBrightnessLabel_5.setObjectName(u"cameraBrightnessLabel_5")
-        self.cameraBrightnessLabel_5.setFont(font18)
+        self.brightnessWidget_17 = QWidget(self.camera_setting_widget_2)
+        self.brightnessWidget_17.setObjectName(u"brightnessWidget_17")
+        self.horizontalLayout_41 = QHBoxLayout(self.brightnessWidget_17)
+        self.horizontalLayout_41.setObjectName(u"horizontalLayout_41")
+        self.horizontalLayout_41.setContentsMargins(-1, 0, -1, 0)
+        self.label_7 = QLabel(self.brightnessWidget_17)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setFont(font12)
 
-        self.horizontalLayout_10.addWidget(self.cameraBrightnessLabel_5)
+        self.horizontalLayout_41.addWidget(self.label_7)
 
-        self.delayShutter = QLineEdit(self.brightnessWidget_3)
+        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_41.addItem(self.horizontalSpacer_6)
+
+        self.delayShutter = QLineEdit(self.brightnessWidget_17)
         self.delayShutter.setObjectName(u"delayShutter")
-        self.delayShutter.setFont(font27)
+        self.delayShutter.setMaximumSize(QSize(100, 16777215))
+        self.delayShutter.setFont(font23)
         self.delayShutter.setStyleSheet(u"background-color: white;\n"
 "color: #868686;\n"
 "border-radius: 8px;\n"
 "text-align: center;")
         self.delayShutter.setInputMethodHints(Qt.InputMethodHint.ImhDigitsOnly)
+        self.delayShutter.setMaxLength(1000)
         self.delayShutter.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.delayShutter.setClearButtonEnabled(False)
 
-        self.horizontalLayout_10.addWidget(self.delayShutter)
+        self.horizontalLayout_41.addWidget(self.delayShutter)
 
-        self.cameraBrightnessLabel_6 = QLabel(self.brightnessWidget_3)
-        self.cameraBrightnessLabel_6.setObjectName(u"cameraBrightnessLabel_6")
-        self.cameraBrightnessLabel_6.setFont(font18)
+        self.label_8 = QLabel(self.brightnessWidget_17)
+        self.label_8.setObjectName(u"label_8")
+        self.label_8.setFont(font12)
 
-        self.horizontalLayout_10.addWidget(self.cameraBrightnessLabel_6)
+        self.horizontalLayout_41.addWidget(self.label_8)
 
 
-        self.verticalLayout_10.addWidget(self.brightnessWidget_3)
+        self.verticalLayout_22.addWidget(self.brightnessWidget_17)
 
-        self.brightnessWidget = QWidget(self.camera_setting_widget)
-        self.brightnessWidget.setObjectName(u"brightnessWidget")
-        self.horizontalLayout_33 = QHBoxLayout(self.brightnessWidget)
-        self.horizontalLayout_33.setObjectName(u"horizontalLayout_33")
-        self.cameraBrightnessLabel = QLabel(self.brightnessWidget)
-        self.cameraBrightnessLabel.setObjectName(u"cameraBrightnessLabel")
-        self.cameraBrightnessLabel.setFont(font18)
+        self.brightnessWidget_18 = QWidget(self.camera_setting_widget_2)
+        self.brightnessWidget_18.setObjectName(u"brightnessWidget_18")
+        self.horizontalLayout_42 = QHBoxLayout(self.brightnessWidget_18)
+        self.horizontalLayout_42.setObjectName(u"horizontalLayout_42")
+        self.horizontalLayout_42.setContentsMargins(-1, 0, -1, 0)
+        self.label_9 = QLabel(self.brightnessWidget_18)
+        self.label_9.setObjectName(u"label_9")
+        self.label_9.setFont(font12)
 
-        self.horizontalLayout_33.addWidget(self.cameraBrightnessLabel)
+        self.horizontalLayout_42.addWidget(self.label_9)
 
-        self.cameraBrightness = QSlider(self.brightnessWidget)
+        self.cameraBrightness = QSlider(self.brightnessWidget_18)
         self.cameraBrightness.setObjectName(u"cameraBrightness")
+        self.cameraBrightness.setMinimumSize(QSize(0, 50))
+        self.cameraBrightness.setSizeIncrement(QSize(0, 0))
+        self.cameraBrightness.setBaseSize(QSize(50, 50))
+        self.cameraBrightness.setFont(font)
+        self.cameraBrightness.setAcceptDrops(False)
+        self.cameraBrightness.setStyleSheet(u"")
         self.cameraBrightness.setMaximum(255)
+        self.cameraBrightness.setValue(0)
         self.cameraBrightness.setOrientation(Qt.Orientation.Horizontal)
 
-        self.horizontalLayout_33.addWidget(self.cameraBrightness)
+        self.horizontalLayout_42.addWidget(self.cameraBrightness)
 
 
-        self.verticalLayout_10.addWidget(self.brightnessWidget)
+        self.verticalLayout_22.addWidget(self.brightnessWidget_18)
 
-        self.contrastWidget = QWidget(self.camera_setting_widget)
-        self.contrastWidget.setObjectName(u"contrastWidget")
-        self.horizontalLayout_34 = QHBoxLayout(self.contrastWidget)
-        self.horizontalLayout_34.setObjectName(u"horizontalLayout_34")
-        self.cameraContrastLabel = QLabel(self.contrastWidget)
-        self.cameraContrastLabel.setObjectName(u"cameraContrastLabel")
-        self.cameraContrastLabel.setFont(font18)
+        self.contrastWidget_2 = QWidget(self.camera_setting_widget_2)
+        self.contrastWidget_2.setObjectName(u"contrastWidget_2")
+        self.horizontalLayout_43 = QHBoxLayout(self.contrastWidget_2)
+        self.horizontalLayout_43.setObjectName(u"horizontalLayout_43")
+        self.horizontalLayout_43.setContentsMargins(-1, 0, -1, 0)
+        self.label_10 = QLabel(self.contrastWidget_2)
+        self.label_10.setObjectName(u"label_10")
+        self.label_10.setFont(font12)
 
-        self.horizontalLayout_34.addWidget(self.cameraContrastLabel)
+        self.horizontalLayout_43.addWidget(self.label_10)
 
-        self.cameraContrast = QSlider(self.contrastWidget)
+        self.cameraContrast = QSlider(self.contrastWidget_2)
         self.cameraContrast.setObjectName(u"cameraContrast")
+        self.cameraContrast.setMinimumSize(QSize(0, 50))
         self.cameraContrast.setMaximum(255)
         self.cameraContrast.setOrientation(Qt.Orientation.Horizontal)
 
-        self.horizontalLayout_34.addWidget(self.cameraContrast)
+        self.horizontalLayout_43.addWidget(self.cameraContrast)
 
 
-        self.verticalLayout_10.addWidget(self.contrastWidget)
+        self.verticalLayout_22.addWidget(self.contrastWidget_2)
 
-        self.saturationWidget = QWidget(self.camera_setting_widget)
-        self.saturationWidget.setObjectName(u"saturationWidget")
-        self.horizontalLayout_38 = QHBoxLayout(self.saturationWidget)
-        self.horizontalLayout_38.setObjectName(u"horizontalLayout_38")
-        self.cameraSaturationLabel = QLabel(self.saturationWidget)
-        self.cameraSaturationLabel.setObjectName(u"cameraSaturationLabel")
-        self.cameraSaturationLabel.setFont(font18)
+        self.saturationWidget_2 = QWidget(self.camera_setting_widget_2)
+        self.saturationWidget_2.setObjectName(u"saturationWidget_2")
+        self.horizontalLayout_44 = QHBoxLayout(self.saturationWidget_2)
+        self.horizontalLayout_44.setObjectName(u"horizontalLayout_44")
+        self.horizontalLayout_44.setContentsMargins(-1, 0, -1, 0)
+        self.label_11 = QLabel(self.saturationWidget_2)
+        self.label_11.setObjectName(u"label_11")
+        self.label_11.setFont(font12)
 
-        self.horizontalLayout_38.addWidget(self.cameraSaturationLabel)
+        self.horizontalLayout_44.addWidget(self.label_11)
 
-        self.cameraSaturation = QSlider(self.saturationWidget)
+        self.cameraSaturation = QSlider(self.saturationWidget_2)
         self.cameraSaturation.setObjectName(u"cameraSaturation")
+        self.cameraSaturation.setMinimumSize(QSize(0, 50))
         self.cameraSaturation.setMaximum(255)
         self.cameraSaturation.setOrientation(Qt.Orientation.Horizontal)
 
-        self.horizontalLayout_38.addWidget(self.cameraSaturation)
+        self.horizontalLayout_44.addWidget(self.cameraSaturation)
 
 
-        self.verticalLayout_10.addWidget(self.saturationWidget)
+        self.verticalLayout_22.addWidget(self.saturationWidget_2)
 
-        self.analogueGainWidget = QWidget(self.camera_setting_widget)
-        self.analogueGainWidget.setObjectName(u"analogueGainWidget")
-        self.horizontalLayout_35 = QHBoxLayout(self.analogueGainWidget)
-        self.horizontalLayout_35.setObjectName(u"horizontalLayout_35")
-        self.cameraAnalogueGainLabel = QLabel(self.analogueGainWidget)
-        self.cameraAnalogueGainLabel.setObjectName(u"cameraAnalogueGainLabel")
-        self.cameraAnalogueGainLabel.setFont(font18)
+        self.analogueGainWidget_2 = QWidget(self.camera_setting_widget_2)
+        self.analogueGainWidget_2.setObjectName(u"analogueGainWidget_2")
+        self.horizontalLayout_45 = QHBoxLayout(self.analogueGainWidget_2)
+        self.horizontalLayout_45.setObjectName(u"horizontalLayout_45")
+        self.horizontalLayout_45.setContentsMargins(-1, 0, -1, 0)
+        self.label_12 = QLabel(self.analogueGainWidget_2)
+        self.label_12.setObjectName(u"label_12")
+        self.label_12.setFont(font12)
 
-        self.horizontalLayout_35.addWidget(self.cameraAnalogueGainLabel)
+        self.horizontalLayout_45.addWidget(self.label_12)
 
-        self.cameraAnalogueGain = QSlider(self.analogueGainWidget)
+        self.cameraAnalogueGain = QSlider(self.analogueGainWidget_2)
         self.cameraAnalogueGain.setObjectName(u"cameraAnalogueGain")
+        self.cameraAnalogueGain.setMinimumSize(QSize(0, 50))
         self.cameraAnalogueGain.setMaximum(255)
         self.cameraAnalogueGain.setOrientation(Qt.Orientation.Horizontal)
 
-        self.horizontalLayout_35.addWidget(self.cameraAnalogueGain)
+        self.horizontalLayout_45.addWidget(self.cameraAnalogueGain)
 
 
-        self.verticalLayout_10.addWidget(self.analogueGainWidget)
+        self.verticalLayout_22.addWidget(self.analogueGainWidget_2)
 
-        self.SharpnessWidget = QWidget(self.camera_setting_widget)
-        self.SharpnessWidget.setObjectName(u"SharpnessWidget")
-        self.horizontalLayout_40 = QHBoxLayout(self.SharpnessWidget)
-        self.horizontalLayout_40.setObjectName(u"horizontalLayout_40")
-        self.cameraSharpnessLabel = QLabel(self.SharpnessWidget)
-        self.cameraSharpnessLabel.setObjectName(u"cameraSharpnessLabel")
-        self.cameraSharpnessLabel.setFont(font18)
+        self.SharpnessWidget_2 = QWidget(self.camera_setting_widget_2)
+        self.SharpnessWidget_2.setObjectName(u"SharpnessWidget_2")
+        self.horizontalLayout_46 = QHBoxLayout(self.SharpnessWidget_2)
+        self.horizontalLayout_46.setObjectName(u"horizontalLayout_46")
+        self.horizontalLayout_46.setContentsMargins(-1, 0, -1, 0)
+        self.label_13 = QLabel(self.SharpnessWidget_2)
+        self.label_13.setObjectName(u"label_13")
+        self.label_13.setFont(font12)
 
-        self.horizontalLayout_40.addWidget(self.cameraSharpnessLabel)
+        self.horizontalLayout_46.addWidget(self.label_13)
 
-        self.cameraSharpness = QSlider(self.SharpnessWidget)
+        self.cameraSharpness = QSlider(self.SharpnessWidget_2)
         self.cameraSharpness.setObjectName(u"cameraSharpness")
+        self.cameraSharpness.setMinimumSize(QSize(0, 50))
         self.cameraSharpness.setMaximum(255)
         self.cameraSharpness.setOrientation(Qt.Orientation.Horizontal)
 
-        self.horizontalLayout_40.addWidget(self.cameraSharpness)
+        self.horizontalLayout_46.addWidget(self.cameraSharpness)
 
 
-        self.verticalLayout_10.addWidget(self.SharpnessWidget)
+        self.verticalLayout_22.addWidget(self.SharpnessWidget_2)
 
-        self.cameraFilter = QPushButton(self.camera_setting_widget)
-        self.cameraFilter.setObjectName(u"cameraFilter")
-        self.cameraFilter.setMinimumSize(QSize(0, 45))
-        font28 = QFont()
-        font28.setFamilies([u"Kanit"])
-        font28.setPointSize(16)
-        font28.setWeight(QFont.Medium)
-        font28.setItalic(False)
-        self.cameraFilter.setFont(font28)
-        self.cameraFilter.setStyleSheet(u"QPushButton {\n"
+        self.camera_filter_1 = QPushButton(self.camera_setting_widget_2)
+        self.camera_filter_1.setObjectName(u"camera_filter_1")
+        self.camera_filter_1.setMinimumSize(QSize(0, 45))
+        font24 = QFont()
+        font24.setFamilies([u"Kanit"])
+        font24.setPointSize(16)
+        font24.setWeight(QFont.Medium)
+        font24.setItalic(False)
+        self.camera_filter_1.setFont(font24)
+        self.camera_filter_1.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgb(120, 120, 120);\n"
 "	color: white;\n"
 "	text-align: center;\n"
@@ -1727,21 +1517,727 @@ class Ui_MainWindow(object):
 "	background-color: rgb(60, 60, 60);\n"
 "	color: white;\n"
 "}")
+        icon11 = QIcon()
+        icon11.addFile(u":/assets/icon/effect.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.camera_filter_1.setIcon(icon11)
+        self.camera_filter_1.setIconSize(QSize(30, 30))
+        self.camera_filter_1.setCheckable(True)
+
+        self.verticalLayout_22.addWidget(self.camera_filter_1)
+
+
+        self.horizontalLayout_37.addWidget(self.camera_setting_widget_2)
+
+
+        self.verticalLayout_24.addWidget(self.frame_15)
+
+        icon12 = QIcon()
+        icon12.addFile(u":/assets/icon/camera.png", QSize(), QIcon.Mode.Active, QIcon.State.On)
+        self.tabWidget.addTab(self.camera_settings_tab, icon12, "")
+        self.sys_settings_tab = QWidget()
+        self.sys_settings_tab.setObjectName(u"sys_settings_tab")
+        self.horizontalLayout_27 = QHBoxLayout(self.sys_settings_tab)
+        self.horizontalLayout_27.setObjectName(u"horizontalLayout_27")
+        self.frame_16 = QFrame(self.sys_settings_tab)
+        self.frame_16.setObjectName(u"frame_16")
+        self.frame_16.setStyleSheet(u"border: none")
+        self.frame_16.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_16.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_59 = QHBoxLayout(self.frame_16)
+        self.horizontalLayout_59.setSpacing(10)
+        self.horizontalLayout_59.setObjectName(u"horizontalLayout_59")
+        self.horizontalLayout_59.setContentsMargins(0, 0, 0, 0)
+        self.sys_settings_monitor = QLabel(self.frame_16)
+        self.sys_settings_monitor.setObjectName(u"sys_settings_monitor")
+        self.sys_settings_monitor.setMinimumSize(QSize(250, 0))
+        self.sys_settings_monitor.setMaximumSize(QSize(16777215, 16777215))
+        self.sys_settings_monitor.setStyleSheet(u"QLabel {\n"
+"	border: solid;\n"
+"	border-width: 2px;\n"
+"	border-color: rgb(111, 105, 37);\n"
+"	border-radius: 15px;\n"
+"	background-color: rgb(0, 0, 0);\n"
+"}\n"
+"")
+        self.sys_settings_monitor.setPixmap(QPixmap(u":/assets/icon/picture_default.png"))
+        self.sys_settings_monitor.setScaledContents(True)
+
+        self.horizontalLayout_59.addWidget(self.sys_settings_monitor)
+
+        self.camera_setting_widget_4 = QWidget(self.frame_16)
+        self.camera_setting_widget_4.setObjectName(u"camera_setting_widget_4")
+        self.camera_setting_widget_4.setMinimumSize(QSize(350, 0))
+        self.camera_setting_widget_4.setMaximumSize(QSize(450, 16777215))
+        self.camera_setting_widget_4.setStyleSheet(u"QWidget {\n"
+"	background-color: rgb(220, 220, 220);\n"
+"	border-radius: 15px;\n"
+"}\n"
+"\n"
+"QLabel {\n"
+"	color: #868686\n"
+"}\n"
+"\n"
+"QSlider::groove:horizontal {\n"
+"    border: none;\n"
+"    height: 12px;\n"
+"    background: #A4D3FF;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"    background: #2979FF;\n"
+"    border: 2px solid #1565C0; /* \u0e02\u0e2d\u0e1a\u0e19\u0e49\u0e33\u0e40\u0e07\u0e34\u0e19\u0e40\u0e02\u0e49\u0e21 */\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"    margin: -4px 0;\n"
+"    border-radius: 10px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:hover {\n"
+"    background: #5393FF; /* \u0e2a\u0e35\u0e2d\u0e48\u0e2d\u0e19\u0e02\u0e36\u0e49\u0e19\u0e40\u0e21\u0e37\u0e48\u0e2d hover */\n"
+"    border: 2px solid #1E88E5;\n"
+"}\n"
+"\n"
+"\n"
+"QSlider::sub-page:horizontal {\n"
+"    background: #77AAFF;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::add-page:horizontal {\n"
+"    background: #BDDFFF;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.verticalLayout_10 = QVBoxLayout(self.camera_setting_widget_4)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.frame_14 = QFrame(self.camera_setting_widget_4)
+        self.frame_14.setObjectName(u"frame_14")
+        self.frame_14.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_14.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_9 = QVBoxLayout(self.frame_14)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.brightnessWidget_23 = QWidget(self.frame_14)
+        self.brightnessWidget_23.setObjectName(u"brightnessWidget_23")
+        self.brightnessWidget_23.setMaximumSize(QSize(16777215, 80))
+        self.brightnessWidget_23.setStyleSheet(u"")
+        self.horizontalLayout_55 = QHBoxLayout(self.brightnessWidget_23)
+        self.horizontalLayout_55.setObjectName(u"horizontalLayout_55")
+        self.label_16 = QLabel(self.brightnessWidget_23)
+        self.label_16.setObjectName(u"label_16")
+        self.label_16.setFont(font12)
+
+        self.horizontalLayout_55.addWidget(self.label_16)
+
+        self.horizontalSpacer_17 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_55.addItem(self.horizontalSpacer_17)
+
+        self.numberStickerBeforeDetection = QLineEdit(self.brightnessWidget_23)
+        self.numberStickerBeforeDetection.setObjectName(u"numberStickerBeforeDetection")
+        self.numberStickerBeforeDetection.setMaximumSize(QSize(60, 16777215))
+        self.numberStickerBeforeDetection.setFont(font23)
+        self.numberStickerBeforeDetection.setStyleSheet(u"background-color: white;\n"
+"color: #868686;\n"
+"border-radius: 6px;\n"
+"border: 1px solid #808080;\n"
+"text-align: center;")
+        self.numberStickerBeforeDetection.setInputMethodHints(Qt.InputMethodHint.ImhDigitsOnly)
+        self.numberStickerBeforeDetection.setMaxLength(10)
+        self.numberStickerBeforeDetection.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.numberStickerBeforeDetection.setClearButtonEnabled(False)
+
+        self.horizontalLayout_55.addWidget(self.numberStickerBeforeDetection)
+
+        self.label_17 = QLabel(self.brightnessWidget_23)
+        self.label_17.setObjectName(u"label_17")
+        self.label_17.setMinimumSize(QSize(50, 0))
+        self.label_17.setMaximumSize(QSize(50, 16777215))
+        self.label_17.setFont(font12)
+
+        self.horizontalLayout_55.addWidget(self.label_17)
+
+
+        self.verticalLayout_9.addWidget(self.brightnessWidget_23)
+
+        self.brightnessWidget_22 = QWidget(self.frame_14)
+        self.brightnessWidget_22.setObjectName(u"brightnessWidget_22")
+        self.brightnessWidget_22.setMaximumSize(QSize(16777215, 80))
+        self.horizontalLayout_36 = QHBoxLayout(self.brightnessWidget_22)
+        self.horizontalLayout_36.setObjectName(u"horizontalLayout_36")
+        self.label_14 = QLabel(self.brightnessWidget_22)
+        self.label_14.setObjectName(u"label_14")
+        self.label_14.setFont(font12)
+
+        self.horizontalLayout_36.addWidget(self.label_14)
+
+        self.horizontalSpacer_16 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_36.addItem(self.horizontalSpacer_16)
+
+        self.delayBeforeReject = QLineEdit(self.brightnessWidget_22)
+        self.delayBeforeReject.setObjectName(u"delayBeforeReject")
+        self.delayBeforeReject.setMaximumSize(QSize(60, 16777215))
+        self.delayBeforeReject.setFont(font23)
+        self.delayBeforeReject.setStyleSheet(u"background-color: white;\n"
+"color: #868686;\n"
+"border-radius: 6px;\n"
+"border: 1px solid #808080;\n"
+"text-align: center;")
+        self.delayBeforeReject.setInputMethodHints(Qt.InputMethodHint.ImhDigitsOnly)
+        self.delayBeforeReject.setMaxLength(5000)
+        self.delayBeforeReject.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.delayBeforeReject.setClearButtonEnabled(False)
+
+        self.horizontalLayout_36.addWidget(self.delayBeforeReject)
+
+        self.label_15 = QLabel(self.brightnessWidget_22)
+        self.label_15.setObjectName(u"label_15")
+        self.label_15.setMinimumSize(QSize(50, 0))
+        self.label_15.setMaximumSize(QSize(50, 16777215))
+        self.label_15.setFont(font12)
+
+        self.horizontalLayout_36.addWidget(self.label_15)
+
+
+        self.verticalLayout_9.addWidget(self.brightnessWidget_22)
+
+        self.brightnessWidget_24 = QWidget(self.frame_14)
+        self.brightnessWidget_24.setObjectName(u"brightnessWidget_24")
+        self.brightnessWidget_24.setMaximumSize(QSize(16777215, 80))
+        self.horizontalLayout_56 = QHBoxLayout(self.brightnessWidget_24)
+        self.horizontalLayout_56.setObjectName(u"horizontalLayout_56")
+        self.label_18 = QLabel(self.brightnessWidget_24)
+        self.label_18.setObjectName(u"label_18")
+        self.label_18.setFont(font12)
+
+        self.horizontalLayout_56.addWidget(self.label_18)
+
+        self.horizontalSpacer_18 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_56.addItem(self.horizontalSpacer_18)
+
+        self.rejectionPeriod = QLineEdit(self.brightnessWidget_24)
+        self.rejectionPeriod.setObjectName(u"rejectionPeriod")
+        self.rejectionPeriod.setMaximumSize(QSize(60, 16777215))
+        self.rejectionPeriod.setFont(font23)
+        self.rejectionPeriod.setStyleSheet(u"background-color: white;\n"
+"color: #868686;\n"
+"border-radius: 6px;\n"
+"border: 1px solid #808080;\n"
+"text-align: center;")
+        self.rejectionPeriod.setInputMethodHints(Qt.InputMethodHint.ImhDigitsOnly)
+        self.rejectionPeriod.setMaxLength(1000)
+        self.rejectionPeriod.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.rejectionPeriod.setClearButtonEnabled(False)
+
+        self.horizontalLayout_56.addWidget(self.rejectionPeriod)
+
+        self.label_19 = QLabel(self.brightnessWidget_24)
+        self.label_19.setObjectName(u"label_19")
+        self.label_19.setMinimumSize(QSize(50, 0))
+        self.label_19.setMaximumSize(QSize(50, 16777215))
+        self.label_19.setFont(font12)
+
+        self.horizontalLayout_56.addWidget(self.label_19)
+
+
+        self.verticalLayout_9.addWidget(self.brightnessWidget_24)
+
+        self.brightnessWidget_27 = QWidget(self.frame_14)
+        self.brightnessWidget_27.setObjectName(u"brightnessWidget_27")
+        self.horizontalLayout_60 = QHBoxLayout(self.brightnessWidget_27)
+        self.horizontalLayout_60.setObjectName(u"horizontalLayout_60")
+        self.label_30 = QLabel(self.brightnessWidget_27)
+        self.label_30.setObjectName(u"label_30")
+        self.label_30.setFont(font12)
+
+        self.horizontalLayout_60.addWidget(self.label_30)
+
+        self.horizontalSpacer_21 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_60.addItem(self.horizontalSpacer_21)
+
+        self.frameRate = QLineEdit(self.brightnessWidget_27)
+        self.frameRate.setObjectName(u"frameRate")
+        self.frameRate.setMaximumSize(QSize(60, 16777215))
+        self.frameRate.setFont(font23)
+        self.frameRate.setStyleSheet(u"background-color: white;\n"
+"color: #868686;\n"
+"border-radius: 6px;\n"
+"border: 1px solid #808080;\n"
+"text-align: center;")
+        self.frameRate.setInputMethodHints(Qt.InputMethodHint.ImhDigitsOnly)
+        self.frameRate.setMaxLength(100)
+        self.frameRate.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.frameRate.setClearButtonEnabled(False)
+
+        self.horizontalLayout_60.addWidget(self.frameRate)
+
+        self.label_33 = QLabel(self.brightnessWidget_27)
+        self.label_33.setObjectName(u"label_33")
+        self.label_33.setMinimumSize(QSize(50, 0))
+        self.label_33.setMaximumSize(QSize(50, 16777215))
+        self.label_33.setFont(font12)
+
+        self.horizontalLayout_60.addWidget(self.label_33)
+
+
+        self.verticalLayout_9.addWidget(self.brightnessWidget_27)
+
+        self.brightnessWidget_25 = QWidget(self.frame_14)
+        self.brightnessWidget_25.setObjectName(u"brightnessWidget_25")
+        self.brightnessWidget_25.setMaximumSize(QSize(16777215, 80))
+        self.brightnessWidget_25.setStyleSheet(u"")
+        self.horizontalLayout_57 = QHBoxLayout(self.brightnessWidget_25)
+        self.horizontalLayout_57.setObjectName(u"horizontalLayout_57")
+        self.label_22 = QLabel(self.brightnessWidget_25)
+        self.label_22.setObjectName(u"label_22")
+        self.label_22.setFont(font12)
+
+        self.horizontalLayout_57.addWidget(self.label_22)
+
+        self.horizontalSpacer_19 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_57.addItem(self.horizontalSpacer_19)
+
+        self.rotateImage = QLineEdit(self.brightnessWidget_25)
+        self.rotateImage.setObjectName(u"rotateImage")
+        self.rotateImage.setMaximumSize(QSize(60, 16777215))
+        self.rotateImage.setFont(font23)
+        self.rotateImage.setStyleSheet(u"background-color: white;\n"
+"color: #868686;\n"
+"border-radius: 6px;\n"
+"border: 1px solid #808080;\n"
+"text-align: center;")
+        self.rotateImage.setInputMethodHints(Qt.InputMethodHint.ImhDigitsOnly)
+        self.rotateImage.setMaxLength(380)
+        self.rotateImage.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.rotateImage.setClearButtonEnabled(False)
+
+        self.horizontalLayout_57.addWidget(self.rotateImage)
+
+        self.label_23 = QLabel(self.brightnessWidget_25)
+        self.label_23.setObjectName(u"label_23")
+        self.label_23.setMinimumSize(QSize(50, 0))
+        self.label_23.setMaximumSize(QSize(50, 16777215))
+        self.label_23.setFont(font12)
+
+        self.horizontalLayout_57.addWidget(self.label_23)
+
+
+        self.verticalLayout_9.addWidget(self.brightnessWidget_25)
+
+        self.brightnessWidget_26 = QWidget(self.frame_14)
+        self.brightnessWidget_26.setObjectName(u"brightnessWidget_26")
+        self.horizontalLayout_58 = QHBoxLayout(self.brightnessWidget_26)
+        self.horizontalLayout_58.setObjectName(u"horizontalLayout_58")
+        self.label_20 = QLabel(self.brightnessWidget_26)
+        self.label_20.setObjectName(u"label_20")
+        self.label_20.setFont(font12)
+
+        self.horizontalLayout_58.addWidget(self.label_20)
+
+        self.horizontalSpacer_20 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_58.addItem(self.horizontalSpacer_20)
+
+        self.detectionPercentage = QLineEdit(self.brightnessWidget_26)
+        self.detectionPercentage.setObjectName(u"detectionPercentage")
+        self.detectionPercentage.setMaximumSize(QSize(60, 16777215))
+        self.detectionPercentage.setFont(font23)
+        self.detectionPercentage.setStyleSheet(u"background-color: white;\n"
+"color: #868686;\n"
+"border-radius: 6px;\n"
+"border: 1px solid #808080;\n"
+"text-align: center;")
+        self.detectionPercentage.setInputMethodHints(Qt.InputMethodHint.ImhDigitsOnly)
+        self.detectionPercentage.setMaxLength(100)
+        self.detectionPercentage.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.detectionPercentage.setClearButtonEnabled(False)
+
+        self.horizontalLayout_58.addWidget(self.detectionPercentage)
+
+        self.label_21 = QLabel(self.brightnessWidget_26)
+        self.label_21.setObjectName(u"label_21")
+        self.label_21.setMinimumSize(QSize(50, 0))
+        self.label_21.setMaximumSize(QSize(50, 16777215))
+        self.label_21.setFont(font12)
+
+        self.horizontalLayout_58.addWidget(self.label_21)
+
+
+        self.verticalLayout_9.addWidget(self.brightnessWidget_26)
+
+
+        self.verticalLayout_10.addWidget(self.frame_14)
+
+        self.camera_filter_2 = QPushButton(self.camera_setting_widget_4)
+        self.camera_filter_2.setObjectName(u"camera_filter_2")
+        self.camera_filter_2.setMinimumSize(QSize(0, 45))
+        self.camera_filter_2.setFont(font24)
+        self.camera_filter_2.setStyleSheet(u"QPushButton {\n"
+"	background-color: rgb(120, 120, 120);\n"
+"	color: white;\n"
+"	text-align: center;\n"
+"	border: none;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton:checked {\n"
+"	background-color: rgb(60, 60, 60);\n"
+"	color: white;\n"
+"}")
+        self.camera_filter_2.setIcon(icon11)
+        self.camera_filter_2.setIconSize(QSize(30, 30))
+        self.camera_filter_2.setCheckable(True)
+
+        self.verticalLayout_10.addWidget(self.camera_filter_2)
+
+
+        self.horizontalLayout_59.addWidget(self.camera_setting_widget_4)
+
+
+        self.horizontalLayout_27.addWidget(self.frame_16)
+
+        icon13 = QIcon()
+        icon13.addFile(u":/assets/icon/settings.png", QSize(), QIcon.Mode.Active, QIcon.State.On)
+        self.tabWidget.addTab(self.sys_settings_tab, icon13, "")
+        self.io_test = QWidget()
+        self.io_test.setObjectName(u"io_test")
+        self.verticalLayout_28 = QVBoxLayout(self.io_test)
+        self.verticalLayout_28.setSpacing(15)
+        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
+        self.frame_18 = QFrame(self.io_test)
+        self.frame_18.setObjectName(u"frame_18")
+        self.frame_18.setStyleSheet(u"border: none")
+        self.frame_18.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_18.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_10 = QHBoxLayout(self.frame_18)
+        self.horizontalLayout_10.setSpacing(10)
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.widget_12 = QWidget(self.frame_18)
+        self.widget_12.setObjectName(u"widget_12")
+        self.widget_12.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
+        self.widget_12.setAutoFillBackground(False)
+        self.widget_12.setStyleSheet(u"background-color: #E8E8E8;\n"
+"border-radius: 12px;")
+        self.verticalLayout_21 = QVBoxLayout(self.widget_12)
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.label = QLabel(self.widget_12)
+        self.label.setObjectName(u"label")
+        self.label.setMinimumSize(QSize(0, 30))
+        self.label.setMaximumSize(QSize(16777215, 30))
+        font25 = QFont()
+        font25.setPointSize(15)
+        font25.setBold(True)
+        self.label.setFont(font25)
+        self.label.setStyleSheet(u"color: #868686;")
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.verticalLayout_21.addWidget(self.label)
+
+        self.frame_12 = QFrame(self.widget_12)
+        self.frame_12.setObjectName(u"frame_12")
+        self.frame_12.setStyleSheet(u"QLabel {\n"
+"	border: none;\n"
+"	border-radius:  45px;\n"
+"}")
+        self.frame_12.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_12.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_28 = QHBoxLayout(self.frame_12)
+        self.horizontalLayout_28.setObjectName(u"horizontalLayout_28")
+        self.cameraTriggerSignal = QLabel(self.frame_12)
+        self.cameraTriggerSignal.setObjectName(u"cameraTriggerSignal")
+        self.cameraTriggerSignal.setMinimumSize(QSize(90, 90))
+        self.cameraTriggerSignal.setMaximumSize(QSize(90, 90))
+        self.cameraTriggerSignal.setStyleSheet(u"background-color: red;")
+        self.cameraTriggerSignal.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.horizontalLayout_28.addWidget(self.cameraTriggerSignal)
+
+
+        self.verticalLayout_21.addWidget(self.frame_12)
+
+
+        self.horizontalLayout_10.addWidget(self.widget_12)
+
+        self.widget_13 = QWidget(self.frame_18)
+        self.widget_13.setObjectName(u"widget_13")
+        self.widget_13.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
+        self.widget_13.setAutoFillBackground(False)
+        self.widget_13.setStyleSheet(u"background-color: #E8E8E8;\n"
+"border-radius: 12px;")
+        self.verticalLayout_26 = QVBoxLayout(self.widget_13)
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
+        self.label_4 = QLabel(self.widget_13)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setMinimumSize(QSize(0, 30))
+        self.label_4.setMaximumSize(QSize(16777215, 30))
+        self.label_4.setFont(font25)
+        self.label_4.setStyleSheet(u"color: #868686;")
+        self.label_4.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.verticalLayout_26.addWidget(self.label_4)
+
+        self.frame_13 = QFrame(self.widget_13)
+        self.frame_13.setObjectName(u"frame_13")
+        self.frame_13.setStyleSheet(u"QLabel {\n"
+"	border: none;\n"
+"	border-radius:  45px;\n"
+"}")
+        self.frame_13.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_13.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_29 = QHBoxLayout(self.frame_13)
+        self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
+        self.rejectTriggerSignal = QLabel(self.frame_13)
+        self.rejectTriggerSignal.setObjectName(u"rejectTriggerSignal")
+        self.rejectTriggerSignal.setMinimumSize(QSize(90, 90))
+        self.rejectTriggerSignal.setMaximumSize(QSize(90, 90))
+        self.rejectTriggerSignal.setStyleSheet(u"background-color: red;\n"
+"")
+        self.rejectTriggerSignal.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.horizontalLayout_29.addWidget(self.rejectTriggerSignal)
+
+
+        self.verticalLayout_26.addWidget(self.frame_13)
+
+
+        self.horizontalLayout_10.addWidget(self.widget_13)
+
+        self.widget_14 = QWidget(self.frame_18)
+        self.widget_14.setObjectName(u"widget_14")
+        self.widget_14.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
+        self.widget_14.setAutoFillBackground(False)
+        self.widget_14.setStyleSheet(u"background-color: #E8E8E8;\n"
+"border-radius: 12px;")
+        self.verticalLayout_27 = QVBoxLayout(self.widget_14)
+        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
+        self.label_6 = QLabel(self.widget_14)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setMinimumSize(QSize(0, 30))
+        self.label_6.setMaximumSize(QSize(16777215, 30))
+        self.label_6.setFont(font25)
+        self.label_6.setStyleSheet(u"color: #868686;")
+        self.label_6.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.verticalLayout_27.addWidget(self.label_6)
+
+        self.frame_17 = QFrame(self.widget_14)
+        self.frame_17.setObjectName(u"frame_17")
+        self.frame_17.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_17.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_30 = QHBoxLayout(self.frame_17)
+        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
+        self.testReject = QPushButton(self.frame_17)
+        self.testReject.setObjectName(u"testReject")
+        self.testReject.setMinimumSize(QSize(0, 90))
+        self.testReject.setFont(font24)
+        self.testReject.setStyleSheet(u"QPushButton {\n"
+"	background-color: rgb(120, 120, 120);\n"
+"	color: white;\n"
+"	text-align: center;\n"
+"	border: none;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton:checked {\n"
+"	background-color: rgb(60, 60, 60);\n"
+"	color: white;\n"
+"}")
+        self.testReject.setIcon(icon11)
+        self.testReject.setIconSize(QSize(30, 30))
+        self.testReject.setCheckable(True)
+
+        self.horizontalLayout_30.addWidget(self.testReject)
+
+
+        self.verticalLayout_27.addWidget(self.frame_17)
+
+
+        self.horizontalLayout_10.addWidget(self.widget_14)
+
+
+        self.verticalLayout_28.addWidget(self.frame_18)
+
+        self.frame_3 = QFrame(self.io_test)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setStyleSheet(u"color: #808080;\n"
+"border: none;")
+        self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.frame_3)
+        self.horizontalLayout_11.setSpacing(10)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.frame_4 = QFrame(self.frame_3)
+        self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setStyleSheet(u"QFrame {\n"
+"	border: 1px solid #808080;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QLabel {\n"
+" border: none;\n"
+"}")
+        self.frame_4.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_12 = QVBoxLayout(self.frame_4)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.label_35 = QLabel(self.frame_4)
+        self.label_35.setObjectName(u"label_35")
+        font26 = QFont()
+        font26.setPointSize(16)
+        font26.setBold(True)
+        self.label_35.setFont(font26)
+        self.label_35.setStyleSheet(u"background-color: #808080;\n"
+"border-radius: 12px;\n"
+"color: white;\n"
+"padding: 8px;")
+        self.label_35.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.verticalLayout_12.addWidget(self.label_35)
+
+        self.cpu_usage = QLabel(self.frame_4)
+        self.cpu_usage.setObjectName(u"cpu_usage")
+        self.cpu_usage.setFont(font23)
+
+        self.verticalLayout_12.addWidget(self.cpu_usage)
+
+        self.ram_usage = QLabel(self.frame_4)
+        self.ram_usage.setObjectName(u"ram_usage")
+        self.ram_usage.setFont(font23)
+
+        self.verticalLayout_12.addWidget(self.ram_usage)
+
+        self.disk_usage = QLabel(self.frame_4)
+        self.disk_usage.setObjectName(u"disk_usage")
+        self.disk_usage.setFont(font23)
+
+        self.verticalLayout_12.addWidget(self.disk_usage)
+
+        self.cpu_temp = QLabel(self.frame_4)
+        self.cpu_temp.setObjectName(u"cpu_temp")
+        self.cpu_temp.setFont(font23)
+
+        self.verticalLayout_12.addWidget(self.cpu_temp)
+
+
+        self.horizontalLayout_11.addWidget(self.frame_4)
+
+        self.frame_5 = QFrame(self.frame_3)
+        self.frame_5.setObjectName(u"frame_5")
+        self.frame_5.setStyleSheet(u"QFrame {\n"
+"	border: 1px solid #808080;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QLabel {\n"
+" border: none;\n"
+"}")
+        self.frame_5.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_5.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_16 = QVBoxLayout(self.frame_5)
+        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
+        self.label_39 = QLabel(self.frame_5)
+        self.label_39.setObjectName(u"label_39")
+        self.label_39.setFont(font26)
+        self.label_39.setStyleSheet(u"background-color: #808080;\n"
+"border-radius: 12px;\n"
+"color: white;\n"
+"padding: 8px;")
+        self.label_39.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.verticalLayout_16.addWidget(self.label_39)
+
+        self.eth0 = QLabel(self.frame_5)
+        self.eth0.setObjectName(u"eth0")
+        self.eth0.setFont(font23)
+
+        self.verticalLayout_16.addWidget(self.eth0)
+
+        self.eth1 = QLabel(self.frame_5)
+        self.eth1.setObjectName(u"eth1")
+        self.eth1.setFont(font23)
+
+        self.verticalLayout_16.addWidget(self.eth1)
+
+        self.wlan0 = QLabel(self.frame_5)
+        self.wlan0.setObjectName(u"wlan0")
+        self.wlan0.setFont(font23)
+
+        self.verticalLayout_16.addWidget(self.wlan0)
+
+        self.label_43 = QLabel(self.frame_5)
+        self.label_43.setObjectName(u"label_43")
+        self.label_43.setFont(font23)
+
+        self.verticalLayout_16.addWidget(self.label_43)
+
+
+        self.horizontalLayout_11.addWidget(self.frame_5)
+
+
+        self.verticalLayout_28.addWidget(self.frame_3)
+
         icon14 = QIcon()
-        icon14.addFile(u":/assets/icon/effect.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.cameraFilter.setIcon(icon14)
-        self.cameraFilter.setIconSize(QSize(30, 30))
-        self.cameraFilter.setCheckable(True)
+        icon14.addFile(u":/assets/icon/characteristics.png", QSize(), QIcon.Mode.Active, QIcon.State.On)
+        self.tabWidget.addTab(self.io_test, icon14, "")
+        self.credit_tab = QWidget()
+        self.credit_tab.setObjectName(u"credit_tab")
+        self.credit_tab.setStyleSheet(u"QFrame {\n"
+" 	border: none;\n"
+"}")
+        self.verticalLayout_3 = QVBoxLayout(self.credit_tab)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.frame = QFrame(self.credit_tab)
+        self.frame.setObjectName(u"frame")
+        self.frame.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_8 = QHBoxLayout(self.frame)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalLayout_8.setContentsMargins(-1, 26, -1, -1)
+        self.label_32 = QLabel(self.frame)
+        self.label_32.setObjectName(u"label_32")
+        self.label_32.setMaximumSize(QSize(400, 200))
+        self.label_32.setPixmap(QPixmap(u":/assets/images/Tesseract_OCR_logo_(Google).png"))
+        self.label_32.setScaledContents(True)
 
-        self.verticalLayout_10.addWidget(self.cameraFilter)
+        self.horizontalLayout_8.addWidget(self.label_32)
 
 
-        self.horizontalLayout_9.addWidget(self.camera_setting_widget)
+        self.verticalLayout_3.addWidget(self.frame)
+
+        self.frame_2 = QFrame(self.credit_tab)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_9 = QHBoxLayout(self.frame_2)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalLayout_9.setContentsMargins(-1, 0, -1, 0)
+        self.label_31 = QLabel(self.frame_2)
+        self.label_31.setObjectName(u"label_31")
+        self.label_31.setMaximumSize(QSize(230, 16777215))
+        self.label_31.setPixmap(QPixmap(u":/assets/images/flaticon.png"))
+        self.label_31.setScaledContents(True)
+
+        self.horizontalLayout_9.addWidget(self.label_31)
 
 
-        self.verticalLayout_9.addWidget(self.frame_2)
+        self.verticalLayout_3.addWidget(self.frame_2)
 
-        self.stackedWidget.addWidget(self.camera_setting_page)
+        icon15 = QIcon()
+        icon15.addFile(u":/assets/icon/info.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.tabWidget.addTab(self.credit_tab, icon15, "")
+
+        self.horizontalLayout_24.addWidget(self.tabWidget)
+
+        self.stackedWidget.addWidget(self.settings_page)
         self.shutdown_page = QWidget()
         self.shutdown_page.setObjectName(u"shutdown_page")
         self.verticalLayout_70 = QVBoxLayout(self.shutdown_page)
@@ -1749,7 +2245,10 @@ class Ui_MainWindow(object):
         self.shutdown_title = QLabel(self.shutdown_page)
         self.shutdown_title.setObjectName(u"shutdown_title")
         self.shutdown_title.setMaximumSize(QSize(16777215, 65))
-        self.shutdown_title.setFont(font19)
+        font27 = QFont()
+        font27.setFamilies([u"Kanit"])
+        font27.setPointSize(30)
+        self.shutdown_title.setFont(font27)
         self.shutdown_title.setStyleSheet(u"background-color: rgb(52, 157, 77);\n"
 "border-radius: 15px;")
         self.shutdown_title.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -1774,12 +2273,12 @@ class Ui_MainWindow(object):
         self.shutdown_warning_label = QLabel(self.widget_17)
         self.shutdown_warning_label.setObjectName(u"shutdown_warning_label")
         self.shutdown_warning_label.setMaximumSize(QSize(16777215, 16777215))
-        font29 = QFont()
-        font29.setFamilies([u"Kanit"])
-        font29.setPointSize(22)
-        font29.setBold(True)
-        font29.setStrikeOut(False)
-        self.shutdown_warning_label.setFont(font29)
+        font28 = QFont()
+        font28.setFamilies([u"Kanit"])
+        font28.setPointSize(22)
+        font28.setBold(True)
+        font28.setStrikeOut(False)
+        self.shutdown_warning_label.setFont(font28)
         self.shutdown_warning_label.setStyleSheet(u"color: rgb(91, 91, 91);")
         self.shutdown_warning_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.shutdown_warning_label.setWordWrap(True)
@@ -1799,9 +2298,16 @@ class Ui_MainWindow(object):
         self.confirm_shutdown = QPushButton(self.widget_18)
         self.confirm_shutdown.setObjectName(u"confirm_shutdown")
         self.confirm_shutdown.setMinimumSize(QSize(0, 52))
-        self.confirm_shutdown.setFont(font23)
+        font29 = QFont()
+        font29.setFamilies([u"Kanit"])
+        font29.setPointSize(30)
+        font29.setWeight(QFont.Medium)
+        font29.setItalic(False)
+        self.confirm_shutdown.setFont(font29)
         self.confirm_shutdown.setStyleSheet(u"")
-        self.confirm_shutdown.setIcon(icon10)
+        icon16 = QIcon()
+        icon16.addFile(u":/assets/keyboard/enter.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.confirm_shutdown.setIcon(icon16)
         self.confirm_shutdown.setIconSize(QSize(50, 50))
 
         self.horizontalLayout_92.addWidget(self.confirm_shutdown)
@@ -1809,8 +2315,10 @@ class Ui_MainWindow(object):
         self.cancel_shutdown = QPushButton(self.widget_18)
         self.cancel_shutdown.setObjectName(u"cancel_shutdown")
         self.cancel_shutdown.setMinimumSize(QSize(0, 52))
-        self.cancel_shutdown.setFont(font23)
-        self.cancel_shutdown.setIcon(icon11)
+        self.cancel_shutdown.setFont(font29)
+        icon17 = QIcon()
+        icon17.addFile(u":/assets/keyboard/cancel.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.cancel_shutdown.setIcon(icon17)
         self.cancel_shutdown.setIconSize(QSize(50, 50))
 
         self.horizontalLayout_92.addWidget(self.cancel_shutdown)
@@ -1821,7 +2329,7 @@ class Ui_MainWindow(object):
         self.credit = QLabel(self.shutdown_widget)
         self.credit.setObjectName(u"credit")
         self.credit.setMaximumSize(QSize(16777215, 45))
-        self.credit.setFont(font2)
+        self.credit.setFont(font3)
         self.credit.setStyleSheet(u"color: rgb(91, 91, 91);")
         self.credit.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -1835,7 +2343,7 @@ class Ui_MainWindow(object):
         self.version = QLabel(self.widget_21)
         self.version.setObjectName(u"version")
         self.version.setMaximumSize(QSize(16777215, 50))
-        self.version.setFont(font2)
+        self.version.setFont(font3)
         self.version.setStyleSheet(u"color: rgb(91, 91, 91);")
         self.version.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -1859,14 +2367,17 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.menu.toggled.connect(self.show_sidebar.setVisible)
         self.menu.toggled.connect(self.hide_sidebar.setHidden)
-        self.camera_setting_2.toggled.connect(self.camera_setting_1.setChecked)
-        self.camera_setting_1.toggled.connect(self.camera_setting_2.setChecked)
-        self.setting_1.toggled.connect(self.setting_2.setChecked)
-        self.setting_2.toggled.connect(self.setting_1.setChecked)
+        self.lme_setting_1.toggled.connect(self.lme_setting_2.setChecked)
+        self.lme_setting_2.toggled.connect(self.lme_setting_1.setChecked)
         self.home_2.toggled.connect(self.home_1.setChecked)
         self.home_1.toggled.connect(self.home_2.setChecked)
+        self.sys_setting_1.toggled.connect(self.sys_setting_2.setChecked)
+        self.sys_setting_2.toggled.connect(self.sys_setting_1.setChecked)
+        self.camera_filter_1.toggled.connect(self.camera_filter_2.setChecked)
+        self.camera_filter_2.toggled.connect(self.camera_filter_1.setChecked)
 
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1876,25 +2387,28 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.profile_img2.setText("")
         self.home_2.setText("")
-        self.setting_2.setText("")
-        self.setting_4.setText("")
-        self.camera_setting_2.setText("")
+        self.lme_setting_2.setText("")
+        self.sys_setting_1.setText("")
         self.restart_program_2.setText("")
         self.shutdown_2.setText("")
         self.profile_img1.setText("")
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"DETECTOR", None))
         self.home_1.setText(QCoreApplication.translate("MainWindow", u"  \u0e2b\u0e19\u0e49\u0e32\u0e2b\u0e25\u0e31\u0e01", None))
-        self.setting_1.setText(QCoreApplication.translate("MainWindow", u" \u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32", None))
-        self.setting_3.setText(QCoreApplication.translate("MainWindow", u" \u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32", None))
-        self.camera_setting_1.setText(QCoreApplication.translate("MainWindow", u" \u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e25\u0e49\u0e2d\u0e07", None))
+        self.lme_setting_1.setText(QCoreApplication.translate("MainWindow", u" \u0e41\u0e21\u0e48\u0e41\u0e1a\u0e1a", None))
+        self.sys_setting_2.setText(QCoreApplication.translate("MainWindow", u" \u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32", None))
         self.restart_program_1.setText(QCoreApplication.translate("MainWindow", u"  \u0e23\u0e35\u0e2a\u0e15\u0e32\u0e23\u0e4c\u0e17", None))
         self.shutdown_1.setText(QCoreApplication.translate("MainWindow", u"  \u0e1b\u0e34\u0e14\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07", None))
         self.menu.setText("")
         self.title.setText(QCoreApplication.translate("MainWindow", u"\u0e23\u0e30\u0e1a\u0e1a\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e01\u0e32\u0e23\u0e1e\u0e34\u0e21\u0e1e\u0e4c", None))
         self.time_bar.setText(QCoreApplication.translate("MainWindow", u"HH:MM:SS", None))
         self.date_bar.setText(QCoreApplication.translate("MainWindow", u"DD/MM/YYYY", None))
+        self.process_img.setText("")
+        self.process_label_line_1.setText(QCoreApplication.translate("MainWindow", u"PRINTING  INSPECTION SYSTEM", None))
+        self.process_label_line_2.setText(QCoreApplication.translate("MainWindow", u"Created by Nattapon pondonko", None))
+        self.process_label_line_3.setText(QCoreApplication.translate("MainWindow", u"Engineering Department", None))
+        self.process_label_line_4.setText("")
         self.detection_status.setText(QCoreApplication.translate("MainWindow", u"\u0e01\u0e14\u0e1b\u0e38\u0e48\u0e21 START \u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e23\u0e34\u0e48\u0e21\u0e17\u0e33\u0e07\u0e32\u0e19", None))
-        self.webcam_monitor.setText("")
+        self.detection_monitor.setText("")
         self.lot_label_2.setText("")
         self.count_ok.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.lot_label_6.setText("")
@@ -1905,64 +2419,83 @@ class Ui_MainWindow(object):
         self.detection_view.setText("")
         self.detection_alert.setText(QCoreApplication.translate("MainWindow", u"Wait", None))
         self.lot_detected.setText(QCoreApplication.translate("MainWindow", u"XXXXXX", None))
-        self.exp_label.setText(QCoreApplication.translate("MainWindow", u"EXP.", None))
-        self.lot_label.setText(QCoreApplication.translate("MainWindow", u"LOT.", None))
-        self.mfg_label.setText(QCoreApplication.translate("MainWindow", u"MFG.", None))
+        self.label_29.setText(QCoreApplication.translate("MainWindow", u"EXP.", None))
+        self.label_27.setText(QCoreApplication.translate("MainWindow", u"LOT.", None))
+        self.label_28.setText(QCoreApplication.translate("MainWindow", u"MFG.", None))
         self.mfg_detected.setText(QCoreApplication.translate("MainWindow", u"XXXXXX", None))
         self.exp_detected.setText(QCoreApplication.translate("MainWindow", u"XXXXXX", None))
         self.capture_test.setText(QCoreApplication.translate("MainWindow", u"\u0e17\u0e14\u0e2a\u0e2d\u0e1a", None))
         self.start.setText(QCoreApplication.translate("MainWindow", u"START", None))
-        self.process_img.setText("")
-        self.process_label_line_1.setText(QCoreApplication.translate("MainWindow", u"PRINTING  INSPECTION SYSTEM", None))
-        self.process_label_line_2.setText(QCoreApplication.translate("MainWindow", u"Created by Nattapon pondonko", None))
-        self.process_label_line_3.setText(QCoreApplication.translate("MainWindow", u"Engineering Department", None))
-        self.process_label_line_4.setText("")
-        self.keyboard_title.setText(QCoreApplication.translate("MainWindow", u"\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32 LOT, MFG, EXP", None))
-        self.val_input.setText(QCoreApplication.translate("MainWindow", u"XXXX", None))
-        self.key_7.setText(QCoreApplication.translate("MainWindow", u"7", None))
-        self.key_0.setText(QCoreApplication.translate("MainWindow", u"0", None))
-        self.key_2.setText(QCoreApplication.translate("MainWindow", u"2", None))
-        self.key_5.setText(QCoreApplication.translate("MainWindow", u"5", None))
-        self.key_4.setText(QCoreApplication.translate("MainWindow", u"4", None))
-        self.key_3.setText(QCoreApplication.translate("MainWindow", u"3", None))
-        self.key_9.setText(QCoreApplication.translate("MainWindow", u"9", None))
-        self.key_1.setText(QCoreApplication.translate("MainWindow", u"1", None))
-        self.key_8.setText(QCoreApplication.translate("MainWindow", u"8", None))
-        self.key_backspace.setText("")
-        self.key_backslash.setText(QCoreApplication.translate("MainWindow", u"/", None))
-        self.key_6.setText(QCoreApplication.translate("MainWindow", u"6", None))
-        self.numberTablets_img.setText("")
-        self.key_enter.setText(QCoreApplication.translate("MainWindow", u"  \u0e22\u0e37\u0e19\u0e22\u0e31\u0e19", None))
-        self.key_cancel.setText(QCoreApplication.translate("MainWindow", u"  \u0e22\u0e01\u0e40\u0e25\u0e34\u0e01", None))
         self.setting_title.setText(QCoreApplication.translate("MainWindow", u"\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32 LOT, MFG, EXP", None))
-        self.webcam_setting_monitor.setText("")
+        self.lme_settings_monitor.setText("")
         self.webcam_setting_view.setText("")
-        self.lot_set_label.setText(QCoreApplication.translate("MainWindow", u"LOT.", None))
+        self.label_24.setText(QCoreApplication.translate("MainWindow", u"LOT.", None))
         self.lot_set.setText("")
         self.lot_set.setPlaceholderText(QCoreApplication.translate("MainWindow", u"XXXXXX", None))
-        self.mfg_set_label.setText(QCoreApplication.translate("MainWindow", u"MFG.", None))
+        self.label_25.setText(QCoreApplication.translate("MainWindow", u"MFG.", None))
         self.mfg_set.setText("")
         self.mfg_set.setPlaceholderText(QCoreApplication.translate("MainWindow", u"XXXXXX", None))
-        self.exp_set_label.setText(QCoreApplication.translate("MainWindow", u"EXP.", None))
+        self.label_26.setText(QCoreApplication.translate("MainWindow", u"EXP.", None))
         self.exp_set.setText("")
         self.exp_set.setPlaceholderText(QCoreApplication.translate("MainWindow", u"XXXXXX", None))
         self.save_images_detection.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e20\u0e32\u0e1e\u0e17\u0e35\u0e48\u0e15\u0e23\u0e27\u0e08\u0e08\u0e31\u0e1a", None))
         self.capture_set.setText(QCoreApplication.translate("MainWindow", u" \u0e16\u0e48\u0e32\u0e22\u0e20\u0e32\u0e1e", None))
         self.save_set.setText(QCoreApplication.translate("MainWindow", u" \u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01", None))
-        self.camera_setting_title.setText(QCoreApplication.translate("MainWindow", u"\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e25\u0e49\u0e2d\u0e07", None))
-        self.camera_setting_monitor.setText("")
-        self.cameraBrightnessLabel_3.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e27\u0e25\u0e32\u0e0a\u0e31\u0e15\u0e40\u0e15\u0e2d\u0e23\u0e4c", None))
+        self.camera_settings_monitor.setText("")
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e27\u0e25\u0e32\u0e0a\u0e31\u0e15\u0e40\u0e15\u0e2d\u0e23\u0e4c", None))
         self.exposureTime.setText(QCoreApplication.translate("MainWindow", u"100000", None))
-        self.cameraBrightnessLabel_4.setText(QCoreApplication.translate("MainWindow", u"us", None))
-        self.cameraBrightnessLabel_5.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e19\u0e48\u0e27\u0e07\u0e40\u0e27\u0e25\u0e32\u0e01\u0e48\u0e2d\u0e19\u0e16\u0e48\u0e32\u0e22\u0e20\u0e32\u0e1e", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"us", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e19\u0e48\u0e27\u0e07\u0e40\u0e27\u0e25\u0e32\u0e01\u0e48\u0e2d\u0e19\u0e16\u0e48\u0e32\u0e22\u0e20\u0e32\u0e1e", None))
         self.delayShutter.setText(QCoreApplication.translate("MainWindow", u"500", None))
-        self.cameraBrightnessLabel_6.setText(QCoreApplication.translate("MainWindow", u"ms", None))
-        self.cameraBrightnessLabel.setText(QCoreApplication.translate("MainWindow", u"\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e27\u0e48\u0e32\u0e07", None))
-        self.cameraContrastLabel.setText(QCoreApplication.translate("MainWindow", u"Contrast", None))
-        self.cameraSaturationLabel.setText(QCoreApplication.translate("MainWindow", u"\u0e04\u0e27\u0e32\u0e21\u0e2d\u0e34\u0e48\u0e21\u0e2a\u0e35", None))
-        self.cameraAnalogueGainLabel.setText(QCoreApplication.translate("MainWindow", u"Gain", None))
-        self.cameraSharpnessLabel.setText(QCoreApplication.translate("MainWindow", u"\u0e04\u0e27\u0e32\u0e21\u0e04\u0e21", None))
-        self.cameraFilter.setText(QCoreApplication.translate("MainWindow", u"\u0e14\u0e39\u0e41\u0e1a\u0e1a filter \u0e01\u0e48\u0e2d\u0e19 detect", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"ms", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e27\u0e48\u0e32\u0e07", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"Contrast", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"\u0e04\u0e27\u0e32\u0e21\u0e2d\u0e34\u0e48\u0e21\u0e2a\u0e35", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Gain", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"\u0e04\u0e27\u0e32\u0e21\u0e04\u0e21", None))
+        self.camera_filter_1.setText(QCoreApplication.translate("MainWindow", u"\u0e14\u0e39\u0e41\u0e1a\u0e1a filter \u0e01\u0e48\u0e2d\u0e19 detect", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.camera_settings_tab), QCoreApplication.translate("MainWindow", u"\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e25\u0e49\u0e2d\u0e07", None))
+        self.sys_settings_monitor.setText("")
+        self.label_16.setText(QCoreApplication.translate("MainWindow", u"\u0e08\u0e33\u0e19\u0e27\u0e19\u0e2a\u0e15\u0e34\u0e4a\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e01\u0e48\u0e2d\u0e19\u0e15\u0e23\u0e27\u0e08\u0e08\u0e31\u0e1a", None))
+        self.numberStickerBeforeDetection.setText(QCoreApplication.translate("MainWindow", u"3", None))
+        self.label_17.setText(QCoreApplication.translate("MainWindow", u"\u0e41\u0e1c\u0e48\u0e19", None))
+        self.label_14.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e19\u0e48\u0e27\u0e07\u0e40\u0e27\u0e25\u0e32\u0e01\u0e48\u0e2d\u0e19\u0e23\u0e35\u0e40\u0e08\u0e04", None))
+        self.delayBeforeReject.setText(QCoreApplication.translate("MainWindow", u"200", None))
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"ms", None))
+        self.label_18.setText(QCoreApplication.translate("MainWindow", u"\u0e23\u0e30\u0e22\u0e30\u0e40\u0e27\u0e25\u0e32\u0e23\u0e35\u0e40\u0e08\u0e04", None))
+        self.rejectionPeriod.setText(QCoreApplication.translate("MainWindow", u"1000", None))
+        self.label_19.setText(QCoreApplication.translate("MainWindow", u"ms", None))
+        self.label_30.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e1f\u0e23\u0e21\u0e40\u0e23\u0e17", None))
+        self.frameRate.setText(QCoreApplication.translate("MainWindow", u"25", None))
+        self.label_33.setText(QCoreApplication.translate("MainWindow", u"fps", None))
+        self.label_22.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e21\u0e38\u0e19\u0e20\u0e32\u0e1e\u0e01\u0e48\u0e2d\u0e19\u0e15\u0e23\u0e27\u0e08\u0e08\u0e31\u0e1a", None))
+        self.rotateImage.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.label_23.setText(QCoreApplication.translate("MainWindow", u"\u0e2d\u0e07\u0e28\u0e32", None))
+        self.label_20.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e1b\u0e2d\u0e23\u0e4c\u0e40\u0e0b\u0e47\u0e19\u0e15\u0e4c\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a", None))
+        self.detectionPercentage.setText(QCoreApplication.translate("MainWindow", u"10", None))
+        self.label_21.setText(QCoreApplication.translate("MainWindow", u"%", None))
+        self.camera_filter_2.setText(QCoreApplication.translate("MainWindow", u"\u0e14\u0e39\u0e41\u0e1a\u0e1a filter \u0e01\u0e48\u0e2d\u0e19 detect", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.sys_settings_tab), QCoreApplication.translate("MainWindow", u"\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e23\u0e30\u0e1a\u0e1a", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e19 \u0e17\u0e23\u0e34\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c \u0e01\u0e25\u0e49\u0e2d\u0e07", None))
+        self.cameraTriggerSignal.setText("")
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e19 \u0e17\u0e23\u0e34\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c \u0e23\u0e35\u0e40\u0e08\u0e04", None))
+        self.rejectTriggerSignal.setText("")
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"\u0e23\u0e35\u0e40\u0e08\u0e04", None))
+        self.testReject.setText(QCoreApplication.translate("MainWindow", u"\u0e17\u0e14\u0e2a\u0e2d\u0e1a", None))
+        self.label_35.setText(QCoreApplication.translate("MainWindow", u"\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e23\u0e30\u0e1a\u0e1a", None))
+        self.cpu_usage.setText(QCoreApplication.translate("MainWindow", u"CPU: 10.6% @ 1700Mhz", None))
+        self.ram_usage.setText(QCoreApplication.translate("MainWindow", u"RAM: 1045.25/16218MB", None))
+        self.disk_usage.setText(QCoreApplication.translate("MainWindow", u"DISK: 9.25/58GB", None))
+        self.cpu_temp.setText(QCoreApplication.translate("MainWindow", u"TEMP: 43.5C", None))
+        self.label_39.setText(QCoreApplication.translate("MainWindow", u"\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e01\u0e32\u0e23\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21\u0e15\u0e48\u0e2d", None))
+        self.eth0.setText(QCoreApplication.translate("MainWindow", u"eth0: 192.168.175.138", None))
+        self.eth1.setText(QCoreApplication.translate("MainWindow", u"eth1: N/A", None))
+        self.wlan0.setText(QCoreApplication.translate("MainWindow", u"wlan0: 192.168.175.138", None))
+        self.label_43.setText("")
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.io_test), QCoreApplication.translate("MainWindow", u"\u0e2e\u0e32\u0e23\u0e4c\u0e14\u0e41\u0e27\u0e23\u0e4c", None))
+        self.label_32.setText("")
+        self.label_31.setText("")
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.credit_tab), QCoreApplication.translate("MainWindow", u"Credit", None))
         self.shutdown_title.setText(QCoreApplication.translate("MainWindow", u"\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e01\u0e32\u0e23\u0e1b\u0e34\u0e14\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07", None))
         self.shutdown_warning_label.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e25\u0e31\u0e07\u0e08\u0e32\u0e01\u0e01\u0e14\u0e1b\u0e38\u0e48\u0e21 \u0e22\u0e37\u0e19\u0e22\u0e31\u0e19 \u0e43\u0e2b\u0e49\u0e23\u0e2d\u0e1b\u0e23\u0e30\u0e21\u0e32\u0e13 1 \u0e19\u0e32\u0e17\u0e35\u0e01\u0e48\u0e2d\u0e19\u0e16\u0e2d\u0e14\u0e1b\u0e25\u0e31\u0e4a\u0e01", None))
         self.confirm_shutdown.setText(QCoreApplication.translate("MainWindow", u"  \u0e22\u0e37\u0e19\u0e22\u0e31\u0e19", None))

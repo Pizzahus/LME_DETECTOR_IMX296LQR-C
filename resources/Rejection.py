@@ -25,10 +25,11 @@ class RejectionWorker(QThread):
     """
     rejected_signal = Signal(str)  # ส่ง tag ของงานที่ reject ไป GUI
 
-    def __init__(self, sensorPin: int, rejectPin: int, startReject: int=0, inputPullUp: bool=True, rejectDelay: float=0.5, rejectActiveHigh: bool=True):
+    def __init__(self, sensor: Button, rejector: OutputDevice, startReject: int=0, rejectDelay: int=100, rejectionPeriod: int=100):
         super().__init__()
         self.running = True
         self.rejectDelay = rejectDelay  # เวลาหน่วงก่อน reject
+        self.rejectionPeriod = rejectionPeriod  # ระยะเวลา reject
 
         # Queue งาน
         self.task_queue = queue.Queue()
@@ -38,11 +39,11 @@ class RejectionWorker(QThread):
             self.put_task(f"start reject {i}", "NG")
 
         # Sensor
-        self.sensor = Button(sensorPin, pull_up=inputPullUp, bounce_time=0.01)
+        self.sensor = sensor
         self.sensor.when_pressed = self._sensor_triggered
 
         # Reject pin
-        self.rejector = OutputDevice(rejectPin, active_high=rejectActiveHigh, initial_value=False)
+        self.rejector = rejector
 
     def put_task(self, tag: str, status: str):
         """เพิ่มงาน OK/NG เข้า queue"""
@@ -59,8 +60,8 @@ class RejectionWorker(QThread):
         print(f"Sensor triggered → {item.tag} [{item.status}]")
 
         if item.status == "NG":
-            print(f"NG detected: {item.tag} → wait {self.rejectDelay}s before reject")
-            time.sleep(self.rejectDelay)
+            print(f"NG detected: {item.tag} → wait {self.rejectDelay}ms before reject")
+            time.sleep(self.rejectDelay * 0.001)
             self._reject(item)
 
         self.task_queue.task_done()
@@ -69,7 +70,7 @@ class RejectionWorker(QThread):
         """สั่ง reject pin สำหรับงาน NG"""
         print(f">>> REJECT: {item.tag}")
         self.rejector.on()
-        time.sleep(0.1)  # ระยะเวลาเปิด reject
+        time.sleep(self.rejectionPeriod * 0.001)  # ระยะเวลาเปิด reject
         self.rejector.off()
         self.rejected_signal.emit(item.tag)
 

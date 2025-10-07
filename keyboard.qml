@@ -33,7 +33,7 @@ Rectangle {
         }
 
         // 👇 ป้องกันไม่ให้ MouseArea ขโมย event จาก child (เช่น TextField)
-        onPressed: {
+        onPressed: (mouse) => {
             mouse.accepted = true
         }
     }
@@ -88,10 +88,10 @@ Rectangle {
         }
     }
 
-    function hideKeyboard() {
-        activeField = null
-        overlayInput.text = ""
-        root.opacity = 0
-        root.enabled = false
-    }
+    // function hideKeyboard() {
+    //     activeField = null
+    //     overlayInput.text = ""
+    //     root.opacity = 0
+    //     root.enabled = false
+    // }
 }

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>600</height>
+    <height>609</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -94,6 +94,9 @@ QPushButton:checked {
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="topMargin">
+          <number>20</number>
+         </property>
          <item>
           <widget class="QPushButton" name="home_2">
            <property name="enabled">
@@ -145,7 +148,7 @@ QPushButton:checked {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="setting_2">
+          <widget class="QPushButton" name="lme_setting_2">
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -171,7 +174,7 @@ QPushButton:checked {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="setting_4">
+          <widget class="QPushButton" name="sys_setting_1">
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -181,32 +184,6 @@ QPushButton:checked {
            <property name="icon">
             <iconset resource="resource.qrc">
              <normaloff>:/assets/icon/settings.png</normaloff>:/assets/icon/settings.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="camera_setting_2">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/assets/icon/camera.png</normaloff>:/assets/icon/camera.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -311,6 +288,14 @@ QPushButton:checked {
       <property name="enabled">
        <bool>true</bool>
       </property>
+      <property name="font">
+       <font>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LayoutDirection::LeftToRight</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">QWidget {
 	background-color: rgb(0, 150, 255);
@@ -336,6 +321,12 @@ QPushButton:checked {
 }</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_13">
+       <property name="leftMargin">
+        <number>8</number>
+       </property>
+       <property name="topMargin">
+        <number>9</number>
+       </property>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <property name="topMargin">
@@ -390,6 +381,9 @@ QPushButton:checked {
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="topMargin">
+          <number>20</number>
+         </property>
          <item>
           <widget class="QPushButton" name="home_1">
            <property name="font">
@@ -418,13 +412,16 @@ QPushButton:checked {
            <property name="checkable">
             <bool>true</bool>
            </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
            <property name="autoExclusive">
             <bool>true</bool>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="setting_1">
+          <widget class="QPushButton" name="lme_setting_1">
            <property name="font">
             <font>
              <family>Kanit</family>
@@ -435,7 +432,7 @@ QPushButton:checked {
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
-            <string> ตั้งค่า</string>
+            <string> แม่แบบ</string>
            </property>
            <property name="icon">
             <iconset resource="resource.qrc">
@@ -456,7 +453,7 @@ QPushButton:checked {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="setting_3">
+          <widget class="QPushButton" name="sys_setting_2">
            <property name="font">
             <font>
              <family>Kanit</family>
@@ -472,38 +469,6 @@ QPushButton:checked {
            <property name="icon">
             <iconset resource="resource.qrc">
              <normaloff>:/assets/icon/settings.png</normaloff>:/assets/icon/settings.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="camera_setting_1">
-           <property name="font">
-            <font>
-             <family>Kanit</family>
-             <pointsize>-1</pointsize>
-            </font>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string> ตั้งค่ากล้อง</string>
-           </property>
-           <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/assets/icon/camera.png</normaloff>:/assets/icon/camera.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -852,11 +817,338 @@ border-radius: 8px;</string>
 
 QGroupBox {
 	border: none;
-}</string>
+}
+
+QTabWidget::pane {
+    border: none;
+}
+
+QTabBar::tab {
+	background: #E3F2FD;
+	color: #1565C0;
+	font-size: 16px;
+	width: 150px;
+	height: 40px;
+}
+
+QTabBar::tab:selected {
+    background: #42A5F5;
+    color: white;
+    font-weight: bold;
+}
+
+QTabBar::tab:hover {
+    background-color: #90CAF9;
+    color: #0D47A1;
+}
+
+QTabWidget::tab-bar {
+    alignment: left;
+}
+</string>
          </property>
          <property name="currentIndex">
-          <number>4</number>
+          <number>0</number>
          </property>
+         <widget class="QWidget" name="process_page">
+          <layout class="QHBoxLayout" name="horizontalLayout_61">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QFrame" name="process_main_frame">
+             <property name="styleSheet">
+              <string notr="true">border: none;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_33">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="process_frame">
+                <property name="frameShape">
+                 <enum>QFrame::Shape::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_32">
+                 <item>
+                  <widget class="QFrame" name="process_img_frame">
+                   <property name="frameShape">
+                    <enum>QFrame::Shape::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Shadow::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_62">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>81</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <spacer name="horizontalSpacer_2">
+                      <property name="orientation">
+                       <enum>Qt::Orientation::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>164</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="process_img">
+                      <property name="minimumSize">
+                       <size>
+                        <width>350</width>
+                        <height>250</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>350</width>
+                        <height>250</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="pixmap">
+                       <pixmap resource="resource.qrc">:/assets/gif/connecting.gif</pixmap>
+                      </property>
+                      <property name="scaledContents">
+                       <bool>true</bool>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_3">
+                      <property name="orientation">
+                       <enum>Qt::Orientation::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>163</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="process_label_line_1">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Kanit</family>
+                     <pointsize>27</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(128, 128, 128);</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::Shape::NoFrame</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Shadow::Plain</enum>
+                   </property>
+                   <property name="lineWidth">
+                    <number>1</number>
+                   </property>
+                   <property name="text">
+                    <string>PRINTING  INSPECTION SYSTEM</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="process_label_line_2">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Kanit</family>
+                     <pointsize>20</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(128, 128, 128);</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::Shape::NoFrame</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Shadow::Plain</enum>
+                   </property>
+                   <property name="lineWidth">
+                    <number>1</number>
+                   </property>
+                   <property name="text">
+                    <string>Created by Nattapon pondonko</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="process_label_line_3">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Kanit</family>
+                     <pointsize>20</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(128, 128, 128);</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::Shape::NoFrame</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Shadow::Plain</enum>
+                   </property>
+                   <property name="lineWidth">
+                    <number>1</number>
+                   </property>
+                   <property name="text">
+                    <string>Engineering Department</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="process_label_line_4">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Kanit</family>
+                     <pointsize>14</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(128, 128, 128);</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::Shape::NoFrame</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Shadow::Plain</enum>
+                   </property>
+                   <property name="lineWidth">
+                    <number>1</number>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
          <widget class="QWidget" name="detection_page">
           <layout class="QVBoxLayout" name="verticalLayout_14" stretch="0,0">
            <property name="spacing">
@@ -956,7 +1248,7 @@ border-radius: 15px;</string>
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QLabel" name="webcam_monitor">
+                  <widget class="QLabel" name="detection_monitor">
                    <property name="minimumSize">
                     <size>
                      <width>250</width>
@@ -1454,7 +1746,7 @@ margin-top: 10px;</string>
                      </widget>
                     </item>
                     <item row="2" column="0">
-                     <widget class="QLabel" name="exp_label">
+                     <widget class="QLabel" name="label_29">
                       <property name="maximumSize">
                        <size>
                         <width>85</width>
@@ -1480,7 +1772,7 @@ margin-top: 10px;</string>
                      </widget>
                     </item>
                     <item row="0" column="0">
-                     <widget class="QLabel" name="lot_label">
+                     <widget class="QLabel" name="label_27">
                       <property name="maximumSize">
                        <size>
                         <width>85</width>
@@ -1506,7 +1798,7 @@ margin-top: 10px;</string>
                      </widget>
                     </item>
                     <item row="1" column="0">
-                     <widget class="QLabel" name="mfg_label">
+                     <widget class="QLabel" name="label_28">
                       <property name="maximumSize">
                        <size>
                         <width>85</width>
@@ -1717,1082 +2009,6 @@ QPushButton:checked {
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="process_page">
-          <layout class="QHBoxLayout" name="horizontalLayout_61">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QFrame" name="process_main_frame">
-             <property name="styleSheet">
-              <string notr="true">border: none;</string>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_33">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QFrame" name="process_frame">
-                <property name="frameShape">
-                 <enum>QFrame::Shape::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_32">
-                 <item>
-                  <widget class="QFrame" name="process_img_frame">
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_62">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>81</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <item>
-                     <spacer name="horizontalSpacer_2">
-                      <property name="orientation">
-                       <enum>Qt::Orientation::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>164</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="process_img">
-                      <property name="minimumSize">
-                       <size>
-                        <width>350</width>
-                        <height>250</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>350</width>
-                        <height>250</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="pixmap">
-                       <pixmap resource="resource.qrc">:/assets/gif/connecting.gif</pixmap>
-                      </property>
-                      <property name="scaledContents">
-                       <bool>true</bool>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <spacer name="horizontalSpacer_3">
-                      <property name="orientation">
-                       <enum>Qt::Orientation::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>163</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="process_label_line_1">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Kanit</family>
-                     <pointsize>27</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: rgb(128, 128, 128);</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::NoFrame</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Plain</enum>
-                   </property>
-                   <property name="lineWidth">
-                    <number>1</number>
-                   </property>
-                   <property name="text">
-                    <string>PRINTING  INSPECTION SYSTEM</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="process_label_line_2">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Kanit</family>
-                     <pointsize>20</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: rgb(128, 128, 128);</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::NoFrame</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Plain</enum>
-                   </property>
-                   <property name="lineWidth">
-                    <number>1</number>
-                   </property>
-                   <property name="text">
-                    <string>Created by Nattapon pondonko</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="process_label_line_3">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Kanit</family>
-                     <pointsize>20</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: rgb(128, 128, 128);</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::NoFrame</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Plain</enum>
-                   </property>
-                   <property name="lineWidth">
-                    <number>1</number>
-                   </property>
-                   <property name="text">
-                    <string>Engineering Department</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="process_label_line_4">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Kanit</family>
-                     <pointsize>14</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: rgb(128, 128, 128);</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::NoFrame</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Plain</enum>
-                   </property>
-                   <property name="lineWidth">
-                    <number>1</number>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="keyboard">
-          <layout class="QVBoxLayout" name="verticalLayout_34">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QWidget" name="widget_2" native="true">
-             <layout class="QVBoxLayout" name="verticalLayout_35">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QFrame" name="frame_4">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>300</height>
-                 </size>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::Shape::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_3">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QGroupBox" name="keyboard_title_groupBox">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>70</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>80</height>
-                    </size>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_60">
-                    <property name="leftMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <item>
-                     <widget class="QLabel" name="keyboard_title">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>50</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>65</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>30</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color: rgb(52, 157, 77);
-color: rgb(255, 255, 255);
-border-radius: 15px;</string>
-                      </property>
-                      <property name="text">
-                       <string>ตั้งค่า LOT, MFG, EXP</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_9">
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Raised</enum>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_38">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>20</number>
-                    </property>
-                    <item>
-                     <widget class="QLabel" name="val_input">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>80</pointsize>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">color: rgb(100, 100, 100);
-border: none;</string>
-                      </property>
-                      <property name="text">
-                       <string>XXXX</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_5">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>270</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>270</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true"/>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_63">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <item>
-                     <widget class="QFrame" name="frame_6">
-                      <property name="palette">
-                       <palette>
-                        <active>
-                         <colorrole role="WindowText">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="Button">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="Text">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="ButtonText">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="Base">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="Window">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="PlaceholderText">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="128">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                        </active>
-                        <inactive>
-                         <colorrole role="WindowText">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="Button">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="Text">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="ButtonText">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="Base">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="Window">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="PlaceholderText">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="128">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                        </inactive>
-                        <disabled>
-                         <colorrole role="WindowText">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="Button">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="Text">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="ButtonText">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="Base">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="Window">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="255">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                         <colorrole role="PlaceholderText">
-                          <brush brushstyle="SolidPattern">
-                           <color alpha="128">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                           </color>
-                          </brush>
-                         </colorrole>
-                        </disabled>
-                       </palette>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QPushButton {
-	width: 90px;
-	height: 70px;
-	background-color: rgb(50, 50, 50);
-	color: rgb(255, 255, 255);
-	border-radius: 10px;
-}
-
-QPushButton:pressed {
-    font-size: 40px;
-	background-color: rgb(100, 100, 100);
-}</string>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Shadow::Plain</enum>
-                      </property>
-                      <property name="lineWidth">
-                       <number>3</number>
-                      </property>
-                      <layout class="QGridLayout" name="gridLayout">
-                       <property name="spacing">
-                        <number>10</number>
-                       </property>
-                       <item row="2" column="0">
-                        <widget class="QPushButton" name="key_7">
-                         <property name="font">
-                          <font>
-                           <family>Kanit</family>
-                           <pointsize>30</pointsize>
-                           <fontweight>Medium</fontweight>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>7</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="3" column="1">
-                        <widget class="QPushButton" name="key_0">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>0</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>150</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Kanit</family>
-                           <pointsize>30</pointsize>
-                           <fontweight>Medium</fontweight>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>0</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="0" column="1">
-                        <widget class="QPushButton" name="key_2">
-                         <property name="font">
-                          <font>
-                           <family>Kanit</family>
-                           <pointsize>30</pointsize>
-                           <fontweight>Medium</fontweight>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>2</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="1" column="1">
-                        <widget class="QPushButton" name="key_5">
-                         <property name="font">
-                          <font>
-                           <family>Kanit</family>
-                           <pointsize>30</pointsize>
-                           <fontweight>Medium</fontweight>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>5</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="1" column="0">
-                        <widget class="QPushButton" name="key_4">
-                         <property name="font">
-                          <font>
-                           <family>Kanit</family>
-                           <pointsize>30</pointsize>
-                           <fontweight>Medium</fontweight>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>4</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="0" column="2">
-                        <widget class="QPushButton" name="key_3">
-                         <property name="font">
-                          <font>
-                           <family>Kanit</family>
-                           <pointsize>30</pointsize>
-                           <fontweight>Medium</fontweight>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>3</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="2" column="2">
-                        <widget class="QPushButton" name="key_9">
-                         <property name="font">
-                          <font>
-                           <family>Kanit</family>
-                           <pointsize>30</pointsize>
-                           <fontweight>Medium</fontweight>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>9</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="0" column="0">
-                        <widget class="QPushButton" name="key_1">
-                         <property name="font">
-                          <font>
-                           <family>Kanit</family>
-                           <pointsize>30</pointsize>
-                           <fontweight>Medium</fontweight>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>1</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="2" column="1">
-                        <widget class="QPushButton" name="key_8">
-                         <property name="font">
-                          <font>
-                           <family>Kanit</family>
-                           <pointsize>30</pointsize>
-                           <fontweight>Medium</fontweight>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>8</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="3" column="2">
-                        <widget class="QPushButton" name="key_backspace">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>0</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>150</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>30</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string/>
-                         </property>
-                         <property name="icon">
-                          <iconset resource="resource.qrc">
-                           <normaloff>:/assets/keyboard/backspace.png</normaloff>:/assets/keyboard/backspace.png</iconset>
-                         </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>40</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="3" column="0">
-                        <widget class="QPushButton" name="key_backslash">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>0</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>150</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Kanit</family>
-                           <pointsize>30</pointsize>
-                           <fontweight>Medium</fontweight>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>/</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="1" column="2">
-                        <widget class="QPushButton" name="key_6">
-                         <property name="font">
-                          <font>
-                           <family>Kanit</family>
-                           <pointsize>30</pointsize>
-                           <fontweight>Medium</fontweight>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>6</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="frame_8">
-                      <property name="styleSheet">
-                       <string notr="true">QPushButton {
-	background-color: rgb(50, 50, 50);
-	border-radius: 10px;
-}
-QPushButton:pressed {
-	background-color: rgb(100, 100, 100);
-}</string>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::Shape::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Shadow::Raised</enum>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_36">
-                       <property name="spacing">
-                        <number>9</number>
-                       </property>
-                       <property name="leftMargin">
-                        <number>5</number>
-                       </property>
-                       <property name="topMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>8</number>
-                       </property>
-                       <item>
-                        <widget class="QLabel" name="numberTablets_img">
-                         <property name="text">
-                          <string/>
-                         </property>
-                         <property name="pixmap">
-                          <pixmap resource="resource.qrc">:/assets/icon/characteristics.png</pixmap>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignmentFlag::AlignCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="key_enter">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>55</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Kanit</family>
-                           <pointsize>30</pointsize>
-                           <italic>false</italic>
-                           <fontweight>Medium</fontweight>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true"/>
-                         </property>
-                         <property name="text">
-                          <string>  ยืนยัน</string>
-                         </property>
-                         <property name="icon">
-                          <iconset resource="resource.qrc">
-                           <normaloff>:/assets/keyboard/enter.png</normaloff>:/assets/keyboard/enter.png</iconset>
-                         </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>40</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="key_cancel">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>55</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Kanit</family>
-                           <pointsize>30</pointsize>
-                           <italic>false</italic>
-                           <fontweight>Medium</fontweight>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>  ยกเลิก</string>
-                         </property>
-                         <property name="icon">
-                          <iconset resource="resource.qrc">
-                           <normaloff>:/assets/keyboard/cancel.png</normaloff>:/assets/keyboard/cancel.png</iconset>
-                         </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>40</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </widget>
          <widget class="QWidget" name="lme_settings_page">
           <layout class="QVBoxLayout" name="verticalLayout_11">
            <property name="spacing">
@@ -2911,7 +2127,7 @@ border-radius: 15px;</string>
                   <number>10</number>
                  </property>
                  <item>
-                  <widget class="QLabel" name="webcam_setting_monitor">
+                  <widget class="QLabel" name="lme_settings_monitor">
                    <property name="minimumSize">
                     <size>
                      <width>250</width>
@@ -3032,7 +2248,7 @@ border-radius: 15px;</string>
                         <number>5</number>
                        </property>
                        <item row="0" column="0">
-                        <widget class="QLabel" name="lot_set_label">
+                        <widget class="QLabel" name="label_24">
                          <property name="maximumSize">
                           <size>
                            <width>85</width>
@@ -3088,7 +2304,7 @@ text-align: center;</string>
                         </widget>
                        </item>
                        <item row="1" column="0">
-                        <widget class="QLabel" name="mfg_set_label">
+                        <widget class="QLabel" name="label_25">
                          <property name="minimumSize">
                           <size>
                            <width>50</width>
@@ -3150,7 +2366,7 @@ text-align: center;</string>
                         </widget>
                        </item>
                        <item row="2" column="0">
-                        <widget class="QLabel" name="exp_set_label">
+                        <widget class="QLabel" name="label_26">
                          <property name="maximumSize">
                           <size>
                            <width>85</width>
@@ -3385,92 +2601,102 @@ QPushButton:pressed {
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="camera_setting_page">
-          <layout class="QVBoxLayout" name="verticalLayout_9">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
+         <widget class="QWidget" name="settings_page">
+          <layout class="QHBoxLayout" name="horizontalLayout_24">
            <item>
-            <widget class="QFrame" name="frame">
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
+            <widget class="QTabWidget" name="tabWidget">
+             <property name="font">
+              <font>
+               <pointsize>14</pointsize>
+               <kerning>true</kerning>
+              </font>
              </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+             <property name="styleSheet">
+              <string notr="true"/>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_12">
-              <item>
-               <widget class="QLabel" name="camera_setting_title">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>Kanit</family>
-                  <pointsize>25</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(52, 157, 77);
-border-radius: 15px;</string>
-                </property>
-                <property name="text">
-                 <string>ตั้งค่ากล้อง</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QFrame" name="frame_2">
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
+             <property name="tabShape">
+              <enum>QTabWidget::TabShape::Triangular</enum>
              </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+             <property name="currentIndex">
+              <number>0</number>
              </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_9">
-              <item>
-               <widget class="QLabel" name="camera_setting_monitor">
-                <property name="minimumSize">
-                 <size>
-                  <width>250</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QLabel {
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="elideMode">
+              <enum>Qt::TextElideMode::ElideLeft</enum>
+             </property>
+             <property name="usesScrollButtons">
+              <bool>true</bool>
+             </property>
+             <property name="documentMode">
+              <bool>false</bool>
+             </property>
+             <property name="tabsClosable">
+              <bool>false</bool>
+             </property>
+             <property name="movable">
+              <bool>false</bool>
+             </property>
+             <property name="tabBarAutoHide">
+              <bool>false</bool>
+             </property>
+             <widget class="QWidget" name="camera_settings_tab">
+              <attribute name="icon">
+               <iconset>
+                <activeon>:/assets/icon/camera.png</activeon>
+               </iconset>
+              </attribute>
+              <attribute name="title">
+               <string>ตั้งค่ากล้อง</string>
+              </attribute>
+              <layout class="QVBoxLayout" name="verticalLayout_24">
+               <item>
+                <widget class="QFrame" name="frame_15">
+                 <property name="styleSheet">
+                  <string notr="true">border: none</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_37">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="camera_settings_monitor">
+                    <property name="minimumSize">
+                     <size>
+                      <width>250</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QLabel {
 	border: solid;
 	border-width: 2px;
 	border-color: rgb(111, 105, 37);
@@ -3478,327 +2704,504 @@ border-radius: 15px;</string>
 	background-color: rgb(0, 0, 0);
 }
 </string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="resource.qrc">:/assets/icon/picture_default.png</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="camera_setting_widget" native="true">
-                <property name="minimumSize">
-                 <size>
-                  <width>300</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>350</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QWidget {
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="pixmap">
+                     <pixmap resource="resource.qrc">:/assets/icon/picture_default.png</pixmap>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="camera_setting_widget_2" native="true">
+                    <property name="minimumSize">
+                     <size>
+                      <width>350</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>450</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QWidget {
 	background-color: rgb(220, 220, 220);
 	border-radius: 15px;
 }
 
 QLabel {
 	color: #868686
-}</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_10">
-                 <property name="spacing">
-                  <number>8</number>
-                 </property>
-                 <item>
-                  <widget class="QWidget" name="brightnessWidget_2" native="true">
-                   <layout class="QHBoxLayout" name="horizontalLayout_8">
-                    <item>
-                     <widget class="QLabel" name="cameraBrightnessLabel_3">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>เวลาชัตเตอร์</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="exposureTime">
-                      <property name="font">
-                       <font>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color: white;
+}
+
+QSlider::groove:horizontal {
+    border: none;
+    height: 12px;
+    background: #A4D3FF;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background: #2979FF;
+    border: 2px solid #1565C0; /* ขอบน้ำเงินเข้ม */
+    width: 16px;
+    height: 16px;
+    margin: -4px 0;
+    border-radius: 10px;
+}
+
+QSlider::handle:horizontal:hover {
+    background: #5393FF; /* สีอ่อนขึ้นเมื่อ hover */
+    border: 2px solid #1E88E5;
+}
+
+
+QSlider::sub-page:horizontal {
+    background: #77AAFF;
+    border-radius: 4px;
+}
+
+QSlider::add-page:horizontal {
+    background: #BDDFFF;
+    border-radius: 4px;
+}
+
+
+</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_22">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QWidget" name="brightnessWidget_16" native="true">
+                       <layout class="QHBoxLayout" name="horizontalLayout_39">
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="label_2">
+                          <property name="font">
+                           <font>
+                            <family>Kanit</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>เวลาชัตเตอร์</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_5">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="exposureTime">
+                          <property name="maximumSize">
+                           <size>
+                            <width>100</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: white;
 color: #868686;
 border-radius: 8px;
 text-align: center;</string>
-                      </property>
-                      <property name="inputMethodHints">
-                       <set>Qt::InputMethodHint::ImhDigitsOnly</set>
-                      </property>
-                      <property name="text">
-                       <string>100000</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                      <property name="clearButtonEnabled">
-                       <bool>false</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="cameraBrightnessLabel_4">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>us</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="brightnessWidget_3" native="true">
-                   <layout class="QHBoxLayout" name="horizontalLayout_10">
-                    <item>
-                     <widget class="QLabel" name="cameraBrightnessLabel_5">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>หน่วงเวลาก่อนถ่ายภาพ</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="delayShutter">
-                      <property name="font">
-                       <font>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color: white;
+                          </property>
+                          <property name="inputMethodHints">
+                           <set>Qt::InputMethodHint::ImhDigitsOnly</set>
+                          </property>
+                          <property name="text">
+                           <string>100000</string>
+                          </property>
+                          <property name="maxLength">
+                           <number>100000</number>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignmentFlag::AlignCenter</set>
+                          </property>
+                          <property name="clearButtonEnabled">
+                           <bool>false</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_5">
+                          <property name="font">
+                           <font>
+                            <family>Kanit</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>us</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QWidget" name="brightnessWidget_17" native="true">
+                       <layout class="QHBoxLayout" name="horizontalLayout_41">
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="label_7">
+                          <property name="font">
+                           <font>
+                            <family>Kanit</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>หน่วงเวลาก่อนถ่ายภาพ</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_6">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="delayShutter">
+                          <property name="maximumSize">
+                           <size>
+                            <width>100</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: white;
 color: #868686;
 border-radius: 8px;
 text-align: center;</string>
-                      </property>
-                      <property name="inputMethodHints">
-                       <set>Qt::InputMethodHint::ImhDigitsOnly</set>
-                      </property>
-                      <property name="text">
-                       <string>500</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                      <property name="clearButtonEnabled">
-                       <bool>false</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="cameraBrightnessLabel_6">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>ms</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="brightnessWidget" native="true">
-                   <layout class="QHBoxLayout" name="horizontalLayout_33">
-                    <item>
-                     <widget class="QLabel" name="cameraBrightnessLabel">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>ความสว่าง</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QSlider" name="cameraBrightness">
-                      <property name="maximum">
-                       <number>255</number>
-                      </property>
-                      <property name="orientation">
-                       <enum>Qt::Orientation::Horizontal</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="contrastWidget" native="true">
-                   <layout class="QHBoxLayout" name="horizontalLayout_34">
-                    <item>
-                     <widget class="QLabel" name="cameraContrastLabel">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>Contrast</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QSlider" name="cameraContrast">
-                      <property name="maximum">
-                       <number>255</number>
-                      </property>
-                      <property name="orientation">
-                       <enum>Qt::Orientation::Horizontal</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="saturationWidget" native="true">
-                   <layout class="QHBoxLayout" name="horizontalLayout_38">
-                    <item>
-                     <widget class="QLabel" name="cameraSaturationLabel">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>ความอิ่มสี</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QSlider" name="cameraSaturation">
-                      <property name="maximum">
-                       <number>255</number>
-                      </property>
-                      <property name="orientation">
-                       <enum>Qt::Orientation::Horizontal</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="analogueGainWidget" native="true">
-                   <layout class="QHBoxLayout" name="horizontalLayout_35">
-                    <item>
-                     <widget class="QLabel" name="cameraAnalogueGainLabel">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>Gain</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QSlider" name="cameraAnalogueGain">
-                      <property name="maximum">
-                       <number>255</number>
-                      </property>
-                      <property name="orientation">
-                       <enum>Qt::Orientation::Horizontal</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="SharpnessWidget" native="true">
-                   <layout class="QHBoxLayout" name="horizontalLayout_40">
-                    <item>
-                     <widget class="QLabel" name="cameraSharpnessLabel">
-                      <property name="font">
-                       <font>
-                        <family>Kanit</family>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>ความคม</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QSlider" name="cameraSharpness">
-                      <property name="maximum">
-                       <number>255</number>
-                      </property>
-                      <property name="orientation">
-                       <enum>Qt::Orientation::Horizontal</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="cameraFilter">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>45</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Kanit</family>
-                     <pointsize>16</pointsize>
-                     <italic>false</italic>
-                     <fontweight>Medium</fontweight>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                          </property>
+                          <property name="inputMethodHints">
+                           <set>Qt::InputMethodHint::ImhDigitsOnly</set>
+                          </property>
+                          <property name="text">
+                           <string>500</string>
+                          </property>
+                          <property name="maxLength">
+                           <number>1000</number>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignmentFlag::AlignCenter</set>
+                          </property>
+                          <property name="clearButtonEnabled">
+                           <bool>false</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_8">
+                          <property name="font">
+                           <font>
+                            <family>Kanit</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>ms</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QWidget" name="brightnessWidget_18" native="true">
+                       <layout class="QHBoxLayout" name="horizontalLayout_42">
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="label_9">
+                          <property name="font">
+                           <font>
+                            <family>Kanit</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>ความสว่าง</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QSlider" name="cameraBrightness">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="sizeIncrement">
+                           <size>
+                            <width>0</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="baseSize">
+                           <size>
+                            <width>50</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <kerning>true</kerning>
+                           </font>
+                          </property>
+                          <property name="acceptDrops">
+                           <bool>false</bool>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="maximum">
+                           <number>255</number>
+                          </property>
+                          <property name="value">
+                           <number>0</number>
+                          </property>
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Horizontal</enum>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QWidget" name="contrastWidget_2" native="true">
+                       <layout class="QHBoxLayout" name="horizontalLayout_43">
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="label_10">
+                          <property name="font">
+                           <font>
+                            <family>Kanit</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Contrast</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QSlider" name="cameraContrast">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="maximum">
+                           <number>255</number>
+                          </property>
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Horizontal</enum>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QWidget" name="saturationWidget_2" native="true">
+                       <layout class="QHBoxLayout" name="horizontalLayout_44">
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="label_11">
+                          <property name="font">
+                           <font>
+                            <family>Kanit</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>ความอิ่มสี</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QSlider" name="cameraSaturation">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="maximum">
+                           <number>255</number>
+                          </property>
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Horizontal</enum>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QWidget" name="analogueGainWidget_2" native="true">
+                       <layout class="QHBoxLayout" name="horizontalLayout_45">
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="label_12">
+                          <property name="font">
+                           <font>
+                            <family>Kanit</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Gain</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QSlider" name="cameraAnalogueGain">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="maximum">
+                           <number>255</number>
+                          </property>
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Horizontal</enum>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QWidget" name="SharpnessWidget_2" native="true">
+                       <layout class="QHBoxLayout" name="horizontalLayout_46">
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="label_13">
+                          <property name="font">
+                           <font>
+                            <family>Kanit</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>ความคม</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QSlider" name="cameraSharpness">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="maximum">
+                           <number>255</number>
+                          </property>
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Horizontal</enum>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="camera_filter_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Kanit</family>
+                         <pointsize>16</pointsize>
+                         <italic>false</italic>
+                         <fontweight>Medium</fontweight>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton {
 	background-color: rgb(120, 120, 120);
 	color: white;
 	text-align: center;
@@ -3810,29 +3213,1474 @@ QPushButton:checked {
 	background-color: rgb(60, 60, 60);
 	color: white;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>ดูแบบ filter ก่อน detect</string>
-                   </property>
-                   <property name="icon">
-                    <iconset resource="resource.qrc">
-                     <normaloff>:/assets/icon/effect.png</normaloff>:/assets/icon/effect.png</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>30</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="checkable">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
+                       </property>
+                       <property name="text">
+                        <string>ดูแบบ filter ก่อน detect</string>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="resource.qrc">
+                         <normaloff>:/assets/icon/effect.png</normaloff>:/assets/icon/effect.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>30</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="sys_settings_tab">
+              <attribute name="icon">
+               <iconset>
+                <activeon>:/assets/icon/settings.png</activeon>
+               </iconset>
+              </attribute>
+              <attribute name="title">
+               <string>ตั้งค่าระบบ</string>
+              </attribute>
+              <layout class="QHBoxLayout" name="horizontalLayout_27">
+               <item>
+                <widget class="QFrame" name="frame_16">
+                 <property name="styleSheet">
+                  <string notr="true">border: none</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_59">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="sys_settings_monitor">
+                    <property name="minimumSize">
+                     <size>
+                      <width>250</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QLabel {
+	border: solid;
+	border-width: 2px;
+	border-color: rgb(111, 105, 37);
+	border-radius: 15px;
+	background-color: rgb(0, 0, 0);
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="pixmap">
+                     <pixmap resource="resource.qrc">:/assets/icon/picture_default.png</pixmap>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="camera_setting_widget_4" native="true">
+                    <property name="minimumSize">
+                     <size>
+                      <width>350</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>450</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QWidget {
+	background-color: rgb(220, 220, 220);
+	border-radius: 15px;
+}
+
+QLabel {
+	color: #868686
+}
+
+QSlider::groove:horizontal {
+    border: none;
+    height: 12px;
+    background: #A4D3FF;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background: #2979FF;
+    border: 2px solid #1565C0; /* ขอบน้ำเงินเข้ม */
+    width: 16px;
+    height: 16px;
+    margin: -4px 0;
+    border-radius: 10px;
+}
+
+QSlider::handle:horizontal:hover {
+    background: #5393FF; /* สีอ่อนขึ้นเมื่อ hover */
+    border: 2px solid #1E88E5;
+}
+
+
+QSlider::sub-page:horizontal {
+    background: #77AAFF;
+    border-radius: 4px;
+}
+
+QSlider::add-page:horizontal {
+    background: #BDDFFF;
+    border-radius: 4px;
+}
+
+
+</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_10">
+                     <item>
+                      <widget class="QFrame" name="frame_14">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_9">
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item>
+                         <widget class="QWidget" name="brightnessWidget_23" native="true">
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>80</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_55">
+                           <item>
+                            <widget class="QLabel" name="label_16">
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>จำนวนสติ๊กเกอร์ก่อนตรวจจับ</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="horizontalSpacer_17">
+                             <property name="orientation">
+                              <enum>Qt::Orientation::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>40</width>
+                               <height>20</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QLineEdit" name="numberStickerBeforeDetection">
+                             <property name="maximumSize">
+                              <size>
+                               <width>60</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: white;
+color: #868686;
+border-radius: 6px;
+border: 1px solid #808080;
+text-align: center;</string>
+                             </property>
+                             <property name="inputMethodHints">
+                              <set>Qt::InputMethodHint::ImhDigitsOnly</set>
+                             </property>
+                             <property name="text">
+                              <string>3</string>
+                             </property>
+                             <property name="maxLength">
+                              <number>10</number>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignmentFlag::AlignCenter</set>
+                             </property>
+                             <property name="clearButtonEnabled">
+                              <bool>false</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_17">
+                             <property name="minimumSize">
+                              <size>
+                               <width>50</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>50</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>แผ่น</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QWidget" name="brightnessWidget_22" native="true">
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>80</height>
+                           </size>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_36">
+                           <item>
+                            <widget class="QLabel" name="label_14">
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>หน่วงเวลาก่อนรีเจค</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="horizontalSpacer_16">
+                             <property name="orientation">
+                              <enum>Qt::Orientation::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>40</width>
+                               <height>20</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QLineEdit" name="delayBeforeReject">
+                             <property name="maximumSize">
+                              <size>
+                               <width>60</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: white;
+color: #868686;
+border-radius: 6px;
+border: 1px solid #808080;
+text-align: center;</string>
+                             </property>
+                             <property name="inputMethodHints">
+                              <set>Qt::InputMethodHint::ImhDigitsOnly</set>
+                             </property>
+                             <property name="text">
+                              <string>200</string>
+                             </property>
+                             <property name="maxLength">
+                              <number>5000</number>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignmentFlag::AlignCenter</set>
+                             </property>
+                             <property name="clearButtonEnabled">
+                              <bool>false</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_15">
+                             <property name="minimumSize">
+                              <size>
+                               <width>50</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>50</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>ms</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QWidget" name="brightnessWidget_24" native="true">
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>80</height>
+                           </size>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_56">
+                           <item>
+                            <widget class="QLabel" name="label_18">
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>ระยะเวลารีเจค</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="horizontalSpacer_18">
+                             <property name="orientation">
+                              <enum>Qt::Orientation::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>40</width>
+                               <height>20</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QLineEdit" name="rejectionPeriod">
+                             <property name="maximumSize">
+                              <size>
+                               <width>60</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: white;
+color: #868686;
+border-radius: 6px;
+border: 1px solid #808080;
+text-align: center;</string>
+                             </property>
+                             <property name="inputMethodHints">
+                              <set>Qt::InputMethodHint::ImhDigitsOnly</set>
+                             </property>
+                             <property name="text">
+                              <string>1000</string>
+                             </property>
+                             <property name="maxLength">
+                              <number>1000</number>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignmentFlag::AlignCenter</set>
+                             </property>
+                             <property name="clearButtonEnabled">
+                              <bool>false</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_19">
+                             <property name="minimumSize">
+                              <size>
+                               <width>50</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>50</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>ms</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QWidget" name="brightnessWidget_27" native="true">
+                          <layout class="QHBoxLayout" name="horizontalLayout_60">
+                           <item>
+                            <widget class="QLabel" name="label_30">
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>เฟรมเรท</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="horizontalSpacer_21">
+                             <property name="orientation">
+                              <enum>Qt::Orientation::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>40</width>
+                               <height>20</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QLineEdit" name="frameRate">
+                             <property name="maximumSize">
+                              <size>
+                               <width>60</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: white;
+color: #868686;
+border-radius: 6px;
+border: 1px solid #808080;
+text-align: center;</string>
+                             </property>
+                             <property name="inputMethodHints">
+                              <set>Qt::InputMethodHint::ImhDigitsOnly</set>
+                             </property>
+                             <property name="text">
+                              <string>25</string>
+                             </property>
+                             <property name="maxLength">
+                              <number>100</number>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignmentFlag::AlignCenter</set>
+                             </property>
+                             <property name="clearButtonEnabled">
+                              <bool>false</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_33">
+                             <property name="minimumSize">
+                              <size>
+                               <width>50</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>50</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>fps</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QWidget" name="brightnessWidget_25" native="true">
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>80</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_57">
+                           <item>
+                            <widget class="QLabel" name="label_22">
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>หมุนภาพก่อนตรวจจับ</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="horizontalSpacer_19">
+                             <property name="orientation">
+                              <enum>Qt::Orientation::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>40</width>
+                               <height>20</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QLineEdit" name="rotateImage">
+                             <property name="maximumSize">
+                              <size>
+                               <width>60</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: white;
+color: #868686;
+border-radius: 6px;
+border: 1px solid #808080;
+text-align: center;</string>
+                             </property>
+                             <property name="inputMethodHints">
+                              <set>Qt::InputMethodHint::ImhDigitsOnly</set>
+                             </property>
+                             <property name="text">
+                              <string>0</string>
+                             </property>
+                             <property name="maxLength">
+                              <number>380</number>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignmentFlag::AlignCenter</set>
+                             </property>
+                             <property name="clearButtonEnabled">
+                              <bool>false</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_23">
+                             <property name="minimumSize">
+                              <size>
+                               <width>50</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>50</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>องศา</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QWidget" name="brightnessWidget_26" native="true">
+                          <layout class="QHBoxLayout" name="horizontalLayout_58">
+                           <item>
+                            <widget class="QLabel" name="label_20">
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>เปอร์เซ็นต์การตรวจสอบ</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="horizontalSpacer_20">
+                             <property name="orientation">
+                              <enum>Qt::Orientation::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>40</width>
+                               <height>20</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QLineEdit" name="detectionPercentage">
+                             <property name="maximumSize">
+                              <size>
+                               <width>60</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: white;
+color: #868686;
+border-radius: 6px;
+border: 1px solid #808080;
+text-align: center;</string>
+                             </property>
+                             <property name="inputMethodHints">
+                              <set>Qt::InputMethodHint::ImhDigitsOnly</set>
+                             </property>
+                             <property name="text">
+                              <string>10</string>
+                             </property>
+                             <property name="maxLength">
+                              <number>100</number>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignmentFlag::AlignCenter</set>
+                             </property>
+                             <property name="clearButtonEnabled">
+                              <bool>false</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_21">
+                             <property name="minimumSize">
+                              <size>
+                               <width>50</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>50</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>%</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="camera_filter_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Kanit</family>
+                         <pointsize>16</pointsize>
+                         <italic>false</italic>
+                         <fontweight>Medium</fontweight>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton {
+	background-color: rgb(120, 120, 120);
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+}
+
+QPushButton:checked {
+	background-color: rgb(60, 60, 60);
+	color: white;
+}</string>
+                       </property>
+                       <property name="text">
+                        <string>ดูแบบ filter ก่อน detect</string>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="resource.qrc">
+                         <normaloff>:/assets/icon/effect.png</normaloff>:/assets/icon/effect.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>30</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="io_test">
+              <attribute name="icon">
+               <iconset>
+                <activeon>:/assets/icon/characteristics.png</activeon>
+               </iconset>
+              </attribute>
+              <attribute name="title">
+               <string>ฮาร์ดแวร์</string>
+              </attribute>
+              <layout class="QVBoxLayout" name="verticalLayout_28">
+               <property name="spacing">
+                <number>15</number>
+               </property>
+               <item>
+                <widget class="QFrame" name="frame_18">
+                 <property name="styleSheet">
+                  <string notr="true">border: none</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_10">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QWidget" name="widget_12" native="true">
+                    <property name="layoutDirection">
+                     <enum>Qt::LayoutDirection::LeftToRight</enum>
+                    </property>
+                    <property name="autoFillBackground">
+                     <bool>false</bool>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: #E8E8E8;
+border-radius: 12px;</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_21">
+                     <item>
+                      <widget class="QLabel" name="label">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: #868686;</string>
+                       </property>
+                       <property name="text">
+                        <string>สัญญาน ทริกเกอร์ กล้อง</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_12">
+                       <property name="styleSheet">
+                        <string notr="true">QLabel {
+	border: none;
+	border-radius:  45px;
+}</string>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_28">
+                        <item>
+                         <widget class="QLabel" name="cameraTriggerSignal">
+                          <property name="minimumSize">
+                           <size>
+                            <width>90</width>
+                            <height>90</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>90</width>
+                            <height>90</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: red;</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignmentFlag::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="widget_13" native="true">
+                    <property name="layoutDirection">
+                     <enum>Qt::LayoutDirection::LeftToRight</enum>
+                    </property>
+                    <property name="autoFillBackground">
+                     <bool>false</bool>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: #E8E8E8;
+border-radius: 12px;</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_26">
+                     <item>
+                      <widget class="QLabel" name="label_4">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: #868686;</string>
+                       </property>
+                       <property name="text">
+                        <string>สัญญาน ทริกเกอร์ รีเจค</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_13">
+                       <property name="styleSheet">
+                        <string notr="true">QLabel {
+	border: none;
+	border-radius:  45px;
+}</string>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_29">
+                        <item>
+                         <widget class="QLabel" name="rejectTriggerSignal">
+                          <property name="minimumSize">
+                           <size>
+                            <width>90</width>
+                            <height>90</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>90</width>
+                            <height>90</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: red;
+</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignmentFlag::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="widget_14" native="true">
+                    <property name="layoutDirection">
+                     <enum>Qt::LayoutDirection::LeftToRight</enum>
+                    </property>
+                    <property name="autoFillBackground">
+                     <bool>false</bool>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: #E8E8E8;
+border-radius: 12px;</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_27">
+                     <item>
+                      <widget class="QLabel" name="label_6">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: #868686;</string>
+                       </property>
+                       <property name="text">
+                        <string>รีเจค</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_17">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_30">
+                        <item>
+                         <widget class="QPushButton" name="testReject">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>90</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Kanit</family>
+                            <pointsize>16</pointsize>
+                            <italic>false</italic>
+                            <fontweight>Medium</fontweight>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton {
+	background-color: rgb(120, 120, 120);
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+}
+
+QPushButton:checked {
+	background-color: rgb(60, 60, 60);
+	color: white;
+}</string>
+                          </property>
+                          <property name="text">
+                           <string>ทดสอบ</string>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="resource.qrc">
+                            <normaloff>:/assets/icon/effect.png</normaloff>:/assets/icon/effect.png</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>30</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="checkable">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frame_3">
+                 <property name="styleSheet">
+                  <string notr="true">color: #808080;
+border: none;</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_11">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QFrame" name="frame_4">
+                    <property name="styleSheet">
+                     <string notr="true">QFrame {
+	border: 1px solid #808080;
+	border-radius: 10px;
+}
+
+QLabel {
+ border: none;
+}</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_12">
+                     <item>
+                      <widget class="QLabel" name="label_35">
+                       <property name="font">
+                        <font>
+                         <pointsize>16</pointsize>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: #808080;
+border-radius: 12px;
+color: white;
+padding: 8px;</string>
+                       </property>
+                       <property name="text">
+                        <string>ข้อมูลระบบ</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="cpu_usage">
+                       <property name="font">
+                        <font>
+                         <pointsize>14</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>CPU: 10.6% @ 1700Mhz</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="ram_usage">
+                       <property name="font">
+                        <font>
+                         <pointsize>14</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>RAM: 1045.25/16218MB</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="disk_usage">
+                       <property name="font">
+                        <font>
+                         <pointsize>14</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>DISK: 9.25/58GB</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="cpu_temp">
+                       <property name="font">
+                        <font>
+                         <pointsize>14</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>TEMP: 43.5C</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="frame_5">
+                    <property name="styleSheet">
+                     <string notr="true">QFrame {
+	border: 1px solid #808080;
+	border-radius: 10px;
+}
+
+QLabel {
+ border: none;
+}</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_16">
+                     <item>
+                      <widget class="QLabel" name="label_39">
+                       <property name="font">
+                        <font>
+                         <pointsize>16</pointsize>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: #808080;
+border-radius: 12px;
+color: white;
+padding: 8px;</string>
+                       </property>
+                       <property name="text">
+                        <string>ข้อมูลการเชื่อมต่อ</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="eth0">
+                       <property name="font">
+                        <font>
+                         <pointsize>14</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>eth0: 192.168.175.138</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="eth1">
+                       <property name="font">
+                        <font>
+                         <pointsize>14</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>eth1: N/A</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="wlan0">
+                       <property name="font">
+                        <font>
+                         <pointsize>14</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>wlan0: 192.168.175.138</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_43">
+                       <property name="font">
+                        <font>
+                         <pointsize>14</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="credit_tab">
+              <property name="styleSheet">
+               <string notr="true">QFrame {
+ 	border: none;
+}</string>
+              </property>
+              <attribute name="icon">
+               <iconset resource="resource.qrc">
+                <normaloff>:/assets/icon/info.png</normaloff>:/assets/icon/info.png</iconset>
+              </attribute>
+              <attribute name="title">
+               <string>Credit</string>
+              </attribute>
+              <layout class="QVBoxLayout" name="verticalLayout_3">
+               <item>
+                <widget class="QFrame" name="frame">
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_8">
+                  <property name="topMargin">
+                   <number>26</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="label_32">
+                    <property name="maximumSize">
+                     <size>
+                      <width>400</width>
+                      <height>200</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="pixmap">
+                     <pixmap resource="resource.qrc">:/assets/images/Tesseract_OCR_logo_(Google).png</pixmap>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frame_2">
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_9">
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="label_31">
+                    <property name="maximumSize">
+                     <size>
+                      <width>230</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="pixmap">
+                     <pixmap resource="resource.qrc">:/assets/images/flaticon.png</pixmap>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
             </widget>
            </item>
           </layout>
@@ -4115,46 +4963,14 @@ border-radius: 15px;</string>
    </hints>
   </connection>
   <connection>
-   <sender>camera_setting_2</sender>
+   <sender>lme_setting_1</sender>
    <signal>toggled(bool)</signal>
-   <receiver>camera_setting_1</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>92</x>
-     <y>300</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>297</x>
-     <y>300</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>camera_setting_1</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>camera_setting_2</receiver>
+   <receiver>lme_setting_2</receiver>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>297</x>
-     <y>300</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>92</x>
-     <y>300</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>setting_1</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>setting_2</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>297</x>
-     <y>235</y>
+     <y>231</y>
     </hint>
     <hint type="destinationlabel">
      <x>60</x>
@@ -4163,18 +4979,18 @@ border-radius: 15px;</string>
    </hints>
   </connection>
   <connection>
-   <sender>setting_2</sender>
+   <sender>lme_setting_2</sender>
    <signal>toggled(bool)</signal>
-   <receiver>setting_1</receiver>
+   <receiver>lme_setting_1</receiver>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>92</x>
-     <y>235</y>
+     <y>231</y>
     </hint>
     <hint type="destinationlabel">
      <x>297</x>
-     <y>235</y>
+     <y>231</y>
     </hint>
    </hints>
   </connection>
@@ -4190,7 +5006,7 @@ border-radius: 15px;</string>
     </hint>
     <hint type="destinationlabel">
      <x>297</x>
-     <y>170</y>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -4202,11 +5018,75 @@ border-radius: 15px;</string>
    <hints>
     <hint type="sourcelabel">
      <x>297</x>
-     <y>170</y>
+     <y>165</y>
     </hint>
     <hint type="destinationlabel">
      <x>49</x>
      <y>143</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sys_setting_1</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sys_setting_2</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>74</x>
+     <y>297</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>297</x>
+     <y>297</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sys_setting_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sys_setting_1</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>297</x>
+     <y>297</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>74</x>
+     <y>297</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>camera_filter_1</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>camera_filter_2</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>812</x>
+     <y>541</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>812</x>
+     <y>541</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>camera_filter_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>camera_filter_1</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>812</x>
+     <y>541</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>812</x>
+     <y>541</y>
     </hint>
    </hints>
   </connection>

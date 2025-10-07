@@ -7,6 +7,7 @@ class ShowDateTime:
     """แสดงวันที่, เวลา"""
 
     def __init__(self, date_bar: QLabel, time_bar: QLabel):
+        super().__init__()
         self.date_bar = date_bar
         self.time_bar = time_bar
 
