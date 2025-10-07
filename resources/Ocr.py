@@ -9,7 +9,7 @@ pytesseract.pytesseract.tesseract_cmd = r"/usr/bin/tesseract"
 
 # ===== Worker OCR (Queue-based) =====
 class OcrWorker(QThread):
-    finished = Signal(np.ndarray, np.ndarray, str, float)  # ถ้า import numpy as np แล้ว
+    finished = Signal(np.ndarray, np.ndarray, np.ndarray, str, float)  # ถ้า import numpy as np แล้ว
 
     def __init__(self, task_queue, angle=0, confidence=0):
         super().__init__()
@@ -27,6 +27,8 @@ class OcrWorker(QThread):
         """
         start = time.perf_counter()
 
+        original_image = image.copy()  # เก็บภาพต้นฉบับไว้ก่อนแก้ไข
+
         # หมุนภาพถ้ามีการระบุ angle
         if self.angle != 0:
             (h, w) = image.shape[:2]
@@ -36,7 +38,6 @@ class OcrWorker(QThread):
 
         # แปลงเป็น grayscale และทำ preprocessing
         preprocessed_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        # preprocessed_image = cv2.GaussianBlur(preprocessed_image, (5, 5), 0)
         preprocessed_image = cv2.threshold(preprocessed_image, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
 
         # ใช้ Pytesseract อ่านข้อความ OCR พร้อมตำแหน่ง
@@ -51,29 +52,21 @@ class OcrWorker(QThread):
         for i in range(len(data["text"])):
             text = data["text"][i]
             confidence = int(data["conf"][i])
-            # print("confidence: ", text, confidence)
-            
-            # ใช้เงื่อนไขกรองเดียวกันทั้งการวาดกรอบและการเก็บผลลัพธ์
-            if confidence > 30 and text.strip():
+            if confidence > self.confidence and text.strip():
                 filtered_results.append(text)
                 x, y, w, h = data["left"][i], data["top"][i], data["width"][i], data["height"][i]
                 char_width = w / len(text)
                 for j, char in enumerate(text):
                     char_x = int(x + j * char_width)
                     char_w = int(char_width)
-                    
-                    # วาดกรอบรอบตัวอักษร
                     cv2.rectangle(image, (char_x, y), (char_x + char_w, y + h), self.rectColor, 1)
-                    
-                    # วาดตัวอักษร (optional)
                     cv2.putText(image, char, (char_x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.6, self.rectColor, 1)
 
-        # รวมข้อความที่กรองแล้วเป็น string เดียว
         recognized_text = " ".join(filtered_results)
         processed_image = image
         processing_time = time.perf_counter() - start
 
-        return (processed_image, preprocessed_image, recognized_text, processing_time)
+        return (original_image, processed_image, preprocessed_image, recognized_text, processing_time)
 
     def run(self):
         while self.running:
@@ -82,8 +75,8 @@ class OcrWorker(QThread):
             except queue.Empty:
                 continue
 
-            processed_image, preprocessed_image, recognized_text, processing_time = self.detect_and_recognize_text(frame)
-            self.finished.emit(processed_image, preprocessed_image, recognized_text, processing_time)
+            original_image, processed_image, preprocessed_image, recognized_text, processing_time = self.detect_and_recognize_text(frame)
+            self.finished.emit(original_image, processed_image, preprocessed_image, recognized_text, processing_time)
             self.task_queue.task_done()
 
     def stop(self):

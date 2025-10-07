@@ -848,7 +848,7 @@ QTabWidget::tab-bar {
 </string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="process_page">
           <layout class="QHBoxLayout" name="horizontalLayout_61">
@@ -4597,7 +4597,12 @@ padding: 8px;</string>
              <widget class="QWidget" name="credit_tab">
               <property name="styleSheet">
                <string notr="true">QFrame {
- 	border: none;
+ 	border:  2px solid #808080;
+	border-radius: 18px;
+}
+
+QLabel {
+ border: none;
 }</string>
               </property>
               <attribute name="icon">
@@ -4607,8 +4612,11 @@ padding: 8px;</string>
               <attribute name="title">
                <string>Credit</string>
               </attribute>
-              <layout class="QVBoxLayout" name="verticalLayout_3">
-               <item>
+              <layout class="QGridLayout" name="gridLayout">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <item row="0" column="0" colspan="2">
                 <widget class="QFrame" name="frame">
                  <property name="frameShape">
                   <enum>QFrame::Shape::StyledPanel</enum>
@@ -4620,11 +4628,14 @@ padding: 8px;</string>
                   <property name="topMargin">
                    <number>26</number>
                   </property>
+                  <property name="bottomMargin">
+                   <number>21</number>
+                  </property>
                   <item>
                    <widget class="QLabel" name="label_32">
                     <property name="maximumSize">
                      <size>
-                      <width>400</width>
+                      <width>350</width>
                       <height>200</height>
                      </size>
                     </property>
@@ -4642,7 +4653,7 @@ padding: 8px;</string>
                  </layout>
                 </widget>
                </item>
-               <item>
+               <item row="1" column="0">
                 <widget class="QFrame" name="frame_2">
                  <property name="frameShape">
                   <enum>QFrame::Shape::StyledPanel</enum>
@@ -4673,6 +4684,40 @@ padding: 8px;</string>
                     </property>
                     <property name="scaledContents">
                      <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QFrame" name="frame_6">
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_13">
+                  <item>
+                   <widget class="QLabel" name="label_34">
+                    <property name="maximumSize">
+                     <size>
+                      <width>175</width>
+                      <height>175</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="pixmap">
+                     <pixmap resource="resource.qrc">:/assets/images/qt-logo-png_seeklogo-340086.png</pixmap>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>true</bool>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignmentFlag::AlignCenter</set>
                     </property>
                    </widget>
                   </item>

@@ -7,21 +7,21 @@ template:
   mfg: 06/09/25
   exp: 06/09/27
 system:
-  delayShutter: 100
-  delayBeforeReject: 1000
+  delayShutter: 20
+  delayBeforeReject: 500
   rejectionPeriod: 100
   numberStickerBeforeDetection: 4
   rotateImage: 90
-  detectionPercentage: 20
+  detectionPercentage: 5
   saveImage: false
 hardware:
   camera:
-    ExposureTime: 30000
+    ExposureTime: 10000
     AnalogueGain: 1.68
-    Brightness: -0.22
+    Brightness: 0.32
     Contrast: 2.3000000000000003
     Saturation: 1.0
-    Sharpness: 9.0
+    Sharpness: 4.03
     FrameRate: 25
   gpio:
     LED0: 20
@@ -34,10 +34,10 @@ hardware:
     L0: 12
     L1: 23
   rectangle:
-    x1: 520
-    x2: 789
-    y1: 257
-    y2: 654
+    x1: 551
+    x2: 867
+    y1: 248
+    y2: 573
 counters:
   ok: 0
   ng: 0

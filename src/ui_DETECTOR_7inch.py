@@ -2191,27 +2191,33 @@ class Ui_MainWindow(object):
         self.credit_tab = QWidget()
         self.credit_tab.setObjectName(u"credit_tab")
         self.credit_tab.setStyleSheet(u"QFrame {\n"
-" 	border: none;\n"
+" 	border:  2px solid #808080;\n"
+"	border-radius: 18px;\n"
+"}\n"
+"\n"
+"QLabel {\n"
+" border: none;\n"
 "}")
-        self.verticalLayout_3 = QVBoxLayout(self.credit_tab)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.gridLayout = QGridLayout(self.credit_tab)
+        self.gridLayout.setSpacing(10)
+        self.gridLayout.setObjectName(u"gridLayout")
         self.frame = QFrame(self.credit_tab)
         self.frame.setObjectName(u"frame")
         self.frame.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_8 = QHBoxLayout(self.frame)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.horizontalLayout_8.setContentsMargins(-1, 26, -1, -1)
+        self.horizontalLayout_8.setContentsMargins(-1, 26, -1, 21)
         self.label_32 = QLabel(self.frame)
         self.label_32.setObjectName(u"label_32")
-        self.label_32.setMaximumSize(QSize(400, 200))
+        self.label_32.setMaximumSize(QSize(350, 200))
         self.label_32.setPixmap(QPixmap(u":/assets/images/Tesseract_OCR_logo_(Google).png"))
         self.label_32.setScaledContents(True)
 
         self.horizontalLayout_8.addWidget(self.label_32)
 
 
-        self.verticalLayout_3.addWidget(self.frame)
+        self.gridLayout.addWidget(self.frame, 0, 0, 1, 2)
 
         self.frame_2 = QFrame(self.credit_tab)
         self.frame_2.setObjectName(u"frame_2")
@@ -2229,7 +2235,25 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.addWidget(self.label_31)
 
 
-        self.verticalLayout_3.addWidget(self.frame_2)
+        self.gridLayout.addWidget(self.frame_2, 1, 0, 1, 1)
+
+        self.frame_6 = QFrame(self.credit_tab)
+        self.frame_6.setObjectName(u"frame_6")
+        self.frame_6.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_6.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_13 = QHBoxLayout(self.frame_6)
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.label_34 = QLabel(self.frame_6)
+        self.label_34.setObjectName(u"label_34")
+        self.label_34.setMaximumSize(QSize(175, 175))
+        self.label_34.setPixmap(QPixmap(u":/assets/images/qt-logo-png_seeklogo-340086.png"))
+        self.label_34.setScaledContents(True)
+        self.label_34.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.horizontalLayout_13.addWidget(self.label_34)
+
+
+        self.gridLayout.addWidget(self.frame_6, 1, 1, 1, 1)
 
         icon15 = QIcon()
         icon15.addFile(u":/assets/icon/info.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -2376,7 +2400,7 @@ class Ui_MainWindow(object):
         self.camera_filter_1.toggled.connect(self.camera_filter_2.setChecked)
         self.camera_filter_2.toggled.connect(self.camera_filter_1.setChecked)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
         self.tabWidget.setCurrentIndex(0)
 
 
@@ -2495,6 +2519,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.io_test), QCoreApplication.translate("MainWindow", u"\u0e2e\u0e32\u0e23\u0e4c\u0e14\u0e41\u0e27\u0e23\u0e4c", None))
         self.label_32.setText("")
         self.label_31.setText("")
+        self.label_34.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.credit_tab), QCoreApplication.translate("MainWindow", u"Credit", None))
         self.shutdown_title.setText(QCoreApplication.translate("MainWindow", u"\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e01\u0e32\u0e23\u0e1b\u0e34\u0e14\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07", None))
         self.shutdown_warning_label.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e25\u0e31\u0e07\u0e08\u0e32\u0e01\u0e01\u0e14\u0e1b\u0e38\u0e48\u0e21 \u0e22\u0e37\u0e19\u0e22\u0e31\u0e19 \u0e43\u0e2b\u0e49\u0e23\u0e2d\u0e1b\u0e23\u0e30\u0e21\u0e32\u0e13 1 \u0e19\u0e32\u0e17\u0e35\u0e01\u0e48\u0e2d\u0e19\u0e16\u0e2d\u0e14\u0e1b\u0e25\u0e31\u0e4a\u0e01", None))

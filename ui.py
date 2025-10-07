@@ -32,12 +32,11 @@ from resources.Ocr import OcrWorker
 from resources.QPixmapUtil import QPixmapUtil
 from resources.Rejection import RejectionWorker
 from resources.SysInfo import SystemMonitor
+from resources.ImageSaverWorker import ImageSaverWorker
 # from resources.Animation import AnimatedWidgetHelper
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.dirname(BASE_DIR)
-SAVE_IMAGES_DIR = os.path.join(BASE_DIR, "captured_images")  # โฟล์เดอร์สำหรับบันทึกภาพ
-os.makedirs(SAVE_IMAGES_DIR, exist_ok=True)
 GIF_FILE = os.path.join(BASE_DIR, "gui", "assets", "gif", "connecting.gif")
 
 #  Keyboard 
@@ -109,6 +108,9 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.monitor = self.detection_monitor # หน้าจอแสดง frame
         self.camera = CameraView(monitor=self.monitor, camera=picam2, rectangle=_rectangle, flashLightPin=pins.L0)
         self.camera.start()
+
+        # ===== ImageSaverWorker =====
+        self.image_saver = ImageSaverWorker()
 
         # ===== Queue OCR V1 =====
         self.task_queue = queue.Queue()
@@ -212,6 +214,10 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
         sys_cf = self.systemSettings
         cam_cf = self.cameraSettings
+        self.save_images_detection.setChecked(sys_cf.saveImage)
+        if sys_cf.saveImage:
+            self.image_saver.start()
+
         self.capturedSensorDelay = sys_cf.delayShutter
         self.exposureTime.setText(f"{cam_cf.ExposureTime}")
         self.delayShutter.setText(f"{sys_cf.delayShutter}")
@@ -432,6 +438,8 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.capture_set.clicked.connect(self._capTemplateLme)
         self.save_set.clicked.connect(self.setTemplateLme)
 
+        self.save_images_detection.toggled.connect(self._onSaveImageDetection)
+
         self.shutdown_1.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.shutdown_page))
         self.shutdown_2.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.shutdown_page))
 
@@ -441,6 +449,16 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.cancel_shutdown.clicked.connect(lambda: self.shutdownHandler(False))
         self.confirm_shutdown.clicked.connect(lambda: self.shutdownHandler(True))
         self.count_reset.clicked.connect(self._countReset)
+
+    # ===== บันทึกรูปภาพที่ตรวจจับ ===== 
+    def _onSaveImageDetection(self):
+        isSaverImage = self.save_images_detection.isChecked()
+        self.saveConfigValue("system", "saveImage", isSaverImage)
+
+        if isSaverImage:
+            self.image_saver.start()
+        else:
+            self.image_saver.stop()
 
     # ===== ทดสอบ sensor (QTimer) ===== 
     def checkSensorState(self):
@@ -536,7 +554,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
         frame = self.camera.captured()
         self.cropped_frame = frame[Y1-MARGIN:Y2-MARGIN, X1-MARGIN:X2-MARGIN]
-        processed_image, preprocessed_image, text, processing_time = self.ocr_worker.detect_and_recognize_text(self.cropped_frame)
+        original_image, processed_image, preprocessed_image, text, processing_time = self.ocr_worker.detect_and_recognize_text(self.cropped_frame)
         print("(Camera detected a message)=> ")
         print(f"Processing in: {processing_time:.4f}s")
         q_img = QPixmapUtil.from_cvimg(processed_image)
@@ -590,7 +608,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
         frame = self.camera.captured()
         self.cropped_frame = frame[Y1-MARGIN:Y2-MARGIN, X1-MARGIN:X2-MARGIN]
-        processed_image, preprocessed_image, text, processing_time = self.ocr_worker.detect_and_recognize_text(self.cropped_frame)
+        original_image, processed_image, preprocessed_image, text, processing_time = self.ocr_worker.detect_and_recognize_text(self.cropped_frame)
         print("(Camera detected a message)=> ")
         print(f"Processing in: {processing_time:.4f}s")
         q_img = QPixmapUtil.from_cvimg(processed_image)
@@ -639,8 +657,11 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
         try:
             # หา Lot No. → ตัวเลข 5 หลัก
-            lot_match = re.search(r"\s*\|?\s*(\d{5})", text)
+            length_lot = len(self.lot)
+            pattern = rf"\b(\d{{{5}}})\b"  # ค้นหาตัวเลขจำนวน length_lot ที่เป็นคำเต็ม
+            lot_match = re.search(pattern, text)
             lot_no = lot_match.group(1) if lot_match else None
+
 
             # หา MFG / EXP → รูปแบบ dd/mm/yy
             dates = re.findall(r"\d{2}/\d{2}/\d{2}", text)
@@ -670,7 +691,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
     # ===== ผลลัพธ์การตรวจสอบ =====
     @Slot(np.ndarray, np.ndarray, str, float)
-    def detection_ocr_result(self, processed_image, preprocessed_image, text, processing_time):
+    def detection_ocr_result(self, original_image, processed_image, preprocessed_image, text, processing_time):
         q_img = QPixmapUtil.from_cvimg(processed_image)
         self.detection_view.setPixmap(q_img)
 
@@ -681,7 +702,10 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
             lmf_label: list[QLabel] = [self.lot_detected, self.mfg_detected, self.exp_detected]
             statusCheck = self._parse_lme(text, lmf_label)
             self._update_ui_detection(statusCheck)
-            
+
+            if self.save_images_detection.isChecked():
+                self.image_saver.put(original_image, statusCheck, self.lot)
+
         except Exception as err:
             pass
 
@@ -753,6 +777,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
     def closeEvent(self, event):
         self.buzzer.off()
         self.rejector.off()
+        self.image_saver.stop()
         self.sensorTimer.stop()
         self.camera.close()
         self.showDateTime.stop()
