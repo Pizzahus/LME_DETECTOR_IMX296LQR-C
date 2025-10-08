@@ -27,12 +27,14 @@ class TemplateLME:
 
 @dataclass
 class SystemSettings:
+    ocrEngine: str
     delayShutter: int
     delayBeforeReject: int
     rejectionPeriod: int
     numberStickerBeforeDetection: int
     rotateImage: int
     detectionPercentage: int
+    detectionResizeImage: int
     saveImage: bool
 
 @dataclass
@@ -107,12 +109,14 @@ class ConfigManager:
     def get_system_settings(self) -> SystemSettings:
         data = self.config.get('system', {})
         return SystemSettings(
+            ocrEngine=data.get('ocrEngine', "tesseract"),
             delayShutter=data.get('delayShutter', 0),
             delayBeforeReject=data.get('delayBeforeReject', 0),
             rejectionPeriod=data.get('rejectionPeriod', 0),
             numberStickerBeforeDetection=data.get('numberStickerBeforeDetection', 0),
             rotateImage=data.get('rotateImage', 0),
             detectionPercentage=data.get('detectionPercentage', 0),
+            detectionResizeImage=data.get('detectionResizeImage', 0),
             saveImage=data.get('saveImage', False),
         )
     

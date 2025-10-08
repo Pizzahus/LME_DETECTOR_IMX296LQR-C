@@ -142,7 +142,9 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         # ===== สร้างและตั้งค่า Virtual Keyboard =====
         self.initalVirtualKeyboard()
 
+        # ===== โหลดและอัพเดท ui การตั้งค่าต่างๆ =====
         self.configurations()
+
         # Override QTabBar
         tabBar = self.tabWidget.tabBar()
         tabBar.setStyle(FlatTabStyle())
@@ -214,6 +216,10 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
         sys_cf = self.systemSettings
         cam_cf = self.cameraSettings
+
+        self.ocr_worker.set_engine(sys_cf.ocrEngine)
+        self.ocr_engine.setCurrentText(sys_cf.ocrEngine)
+
         self.save_images_detection.setChecked(sys_cf.saveImage)
         if sys_cf.saveImage:
             self.image_saver.start()
@@ -222,6 +228,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.exposureTime.setText(f"{cam_cf.ExposureTime}")
         self.delayShutter.setText(f"{sys_cf.delayShutter}")
         self.frameRate.setText(f"{cam_cf.FrameRate}")
+        self.detection_resize_percent.setText(f"{sys_cf.detectionResizeImage}")
         self.cameraBrightness.setValue(cam_cf.Brightness * 100)
         self.cameraContrast.setValue(cam_cf.Contrast * 100)
         self.cameraSaturation.setValue(cam_cf.Saturation * 100)
@@ -258,6 +265,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         # ตั้งค่า OCR
         self.ocr_worker.angle = sys_cf.rotateImage
         self.ocr_worker.confidence = sys_cf.detectionPercentage
+        self.ocr_worker.resize_percent = sys_cf.detectionResizeImage
 
     # ===== อัพเดทข้อมูลการตั้งค่าเรียวไทม์ =====
     def updateConfigurations(self, key, value):
@@ -275,6 +283,8 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
             self.ocr_worker.angle = int(value)
         elif key == "detectionPercentage":
             self.ocr_worker.confidence = int(value)
+        elif key == "detectionResizeImage":
+            self.ocr_worker.resize_percent = int(value)
 
     # ===== ตั้งค่ากล้อง =====
     def connectSliderToCamera(self, slider: QSlider, control_name: str, scale: float = 1.0):
@@ -316,6 +326,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
             (self.rejectionPeriod, "system", "rejectionPeriod"),
             (self.numberStickerBeforeDetection, "system", "numberStickerBeforeDetection"),
             (self.rotateImage, "system", "rotateImage"),
+            (self.detection_resize_percent, "system", "detectionResizeImage"),
             (self.detectionPercentage, "system", "detectionPercentage"),
             (self.exposureTime, "hardware.camera", "ExposureTime"),
             (self.frameRate, "hardware.camera", "FrameRate"),
@@ -432,6 +443,9 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.camera_filter_2.clicked.connect(self.toggleFilter)
         self.testReject.clicked.connect(self._testReject)
 
+        # OCR Engine
+        self.ocr_engine.currentTextChanged.connect(self.setOcrEngine)
+
         # ทดสอบการตรวจจับ
         self.capture_test.clicked.connect(self._test_detection)
 
@@ -451,6 +465,11 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.cancel_shutdown.clicked.connect(lambda: self.shutdownHandler(False))
         self.confirm_shutdown.clicked.connect(lambda: self.shutdownHandler(True))
         self.count_reset.clicked.connect(self._countReset)
+
+    # ===== เลือก Engine ในการตรวจ ===== 
+    def setOcrEngine(self, engine):
+        self.ocr_worker.set_engine(engine)
+        self.saveConfigValue('system', 'ocrEngine', engine)
 
     # ===== บันทึกรูปภาพที่ตรวจจับ ===== 
     def _onSaveImageDetection(self):

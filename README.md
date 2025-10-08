@@ -1,8 +1,5 @@
 # LME_DETECTOR_IMX296LQR-C
 
-## ตัวอย่างการใช้งาน
-- [ชมวิดีโอตัวอย่าง](https://youtu.be/TP1eUsSMoBs?si=pW1v3e3p2M26bULp)
-
 ---
 
 ## 🚀 วิธีการรีโมทผ่าน SSH
@@ -36,14 +33,14 @@ pyside6-rcc gui/resource.qrc -o src/resource_rc.py
 
 ## 🏗️ การติดตั้ง Environment
 
-### Windows
+### 💻 Windows
 ```bash
 cd polipharm
 python -m venv detection_venv
 detection_venv\Scripts\activate
 ```
 
-### Linux
+### 💻 Linux
 ```bash
 cd polipharm
 # หรือใช้ venv พร้อม system-site-packages
@@ -52,7 +49,7 @@ source detection_venv/bin/activate
 pip3 install gpiozero
 ```
 
-### ติดตั้งฟอนต์ Kanit (สำหรับ Linux)
+### ⚙️ ติดตั้งฟอนต์ Kanit (สำหรับ Linux)
 ```bash
 # แตกไฟล์ .zip ฟอนต์จาก .assets/fonts/kanit.zip
 cd fonts
@@ -68,23 +65,35 @@ xset fp rehash
 
 ## 📦 การติดตั้ง Libraries ที่จำเป็น
 
-### ติดตั้ง PySide6
+### ⚙️ ติดตั้ง PySide6 และ Libraries เพิ่มเติม
 ```bash
 pip install pyside6
+pip install picamera2
 pip install pytesseract
+pip install easyocr
 pip install comtypes
 pip install requests
 pip install pyserial
 pip install numpy
 pip install opencv-python
-# pip install opencv-contrib-python
-```
-
-## 📦 การติดตั้ง Libraries เพิ่มเติม
-```bash
 pip install pywifi
 pip install gpiozero
-pip install ultralytics
+```
+
+### 📷 ตั้งค่า Picamera2
+- เปิดไฟล์ด้วยคำสั่ง
+```bash
+sudo nano /boot/firmware/config.txt
+```
+
+- เลื่อนลงไปท้ายไฟล์ แล้วเพิ่มบรรทัดนี้
+```bash
+dtoverlay=imx296,cam0
+```
+
+- ทดสอบกล้อง
+```bash
+libcamera-hello -t 0
 ```
 
 ## 📦 การตั้งค่า black formatter
@@ -122,6 +131,10 @@ pip install black
 ## Raspberry pi 5 pinout
 
 ![Raspberry Pi 5 Pinout](assets/raspberry_pi_5_pinout.png)
+
+## Raspberry pi CM5 pinout
+
+![Raspberry Pi CM5 Pinout](assets/unnamed.png)
 
 ---
 

@@ -1,6 +1,7 @@
 <RCC>
   <qresource>
     <file>assets/images/qt-logo-png_seeklogo-340086.png</file>
+    <file>assets/images/logo_EasyOCR-3386444.png</file>
     <file>assets/icon/info.png</file>
     <file>assets/images/flaticon.png</file>
     <file>assets/images/Tesseract_OCR_logo_(Google).png</file>

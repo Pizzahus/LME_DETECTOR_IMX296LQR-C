@@ -7,21 +7,23 @@ template:
   mfg: 19/09/25
   exp: 19/09/28
 system:
-  delayShutter: 20
+  ocrEngine: tesseract
+  delayShutter: 50
   delayBeforeReject: 500
   rejectionPeriod: 100
   numberStickerBeforeDetection: 4
   rotateImage: 0
   detectionPercentage: 0
+  detectionResizeImage: 70
   saveImage: false
 hardware:
   camera:
-    ExposureTime: 27000
-    AnalogueGain: 2.93
-    Brightness: -0.3
-    Contrast: 1.0
-    Saturation: 2.6
-    Sharpness: 8.0
+    ExposureTime: 70000
+    AnalogueGain: 3.04
+    Brightness: -0.47000000000000003
+    Contrast: 1.67
+    Saturation: 2.66
+    Sharpness: 4.08
     FrameRate: 25
   gpio:
     LED0: 20
@@ -34,10 +36,10 @@ hardware:
     L0: 12
     L1: 23
   rectangle:
-    x1: 260
-    x2: 748
-    y1: 174
-    y2: 517
+    x1: 300
+    x2: 816
+    y1: 198
+    y2: 493
 counters:
   ok: 0
   ng: 0

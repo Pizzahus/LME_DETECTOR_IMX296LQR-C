@@ -15,11 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFormLayout, QFrame, QGridLayout,
-    QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QSizePolicy, QSlider,
-    QSpacerItem, QStackedWidget, QTabWidget, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QFormLayout, QFrame,
+    QGridLayout, QGroupBox, QHBoxLayout, QLabel,
+    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
+    QSlider, QSpacerItem, QStackedWidget, QTabWidget,
+    QVBoxLayout, QWidget)
 import src.resource_rc as resource_rc
 
 class Ui_MainWindow(object):
@@ -1254,11 +1254,19 @@ class Ui_MainWindow(object):
         self.frame_15.setStyleSheet(u"border: none")
         self.frame_15.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_15.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_37 = QHBoxLayout(self.frame_15)
-        self.horizontalLayout_37.setSpacing(10)
-        self.horizontalLayout_37.setObjectName(u"horizontalLayout_37")
-        self.horizontalLayout_37.setContentsMargins(0, 0, 0, 0)
-        self.camera_settings_monitor = QLabel(self.frame_15)
+        self.horizontalLayout_26 = QHBoxLayout(self.frame_15)
+        self.horizontalLayout_26.setSpacing(10)
+        self.horizontalLayout_26.setObjectName(u"horizontalLayout_26")
+        self.horizontalLayout_26.setContentsMargins(0, 0, 0, 0)
+        self.frame_26 = QFrame(self.frame_15)
+        self.frame_26.setObjectName(u"frame_26")
+        self.frame_26.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_26.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_10 = QVBoxLayout(self.frame_26)
+        self.verticalLayout_10.setSpacing(6)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.camera_settings_monitor = QLabel(self.frame_26)
         self.camera_settings_monitor.setObjectName(u"camera_settings_monitor")
         self.camera_settings_monitor.setMinimumSize(QSize(250, 0))
         self.camera_settings_monitor.setMaximumSize(QSize(16777215, 16777215))
@@ -1273,12 +1281,47 @@ class Ui_MainWindow(object):
         self.camera_settings_monitor.setPixmap(QPixmap(u":/assets/icon/picture_default.png"))
         self.camera_settings_monitor.setScaledContents(True)
 
-        self.horizontalLayout_37.addWidget(self.camera_settings_monitor)
+        self.verticalLayout_10.addWidget(self.camera_settings_monitor)
+
+        self.camera_filter_1 = QPushButton(self.frame_26)
+        self.camera_filter_1.setObjectName(u"camera_filter_1")
+        self.camera_filter_1.setMinimumSize(QSize(0, 45))
+        font23 = QFont()
+        font23.setFamilies([u"Kanit"])
+        font23.setPointSize(16)
+        font23.setWeight(QFont.Medium)
+        font23.setItalic(False)
+        self.camera_filter_1.setFont(font23)
+        self.camera_filter_1.setStyleSheet(u"QPushButton {\n"
+"	background-color: rgb(120, 120, 120);\n"
+"	color: white;\n"
+"	text-align: center;\n"
+"	border: none;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton:checked {\n"
+"	background-color: rgb(60, 60, 60);\n"
+"	color: white;\n"
+"}")
+        icon12 = QIcon()
+        icon12.addFile(u":/assets/icon/effect.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.camera_filter_1.setIcon(icon12)
+        self.camera_filter_1.setIconSize(QSize(30, 30))
+        self.camera_filter_1.setCheckable(True)
+
+        self.verticalLayout_10.addWidget(self.camera_filter_1)
+
+
+        self.horizontalLayout_26.addWidget(self.frame_26)
 
         self.camera_setting_widget_2 = QWidget(self.frame_15)
         self.camera_setting_widget_2.setObjectName(u"camera_setting_widget_2")
-        self.camera_setting_widget_2.setMinimumSize(QSize(350, 0))
-        self.camera_setting_widget_2.setMaximumSize(QSize(450, 16777215))
+        self.camera_setting_widget_2.setMinimumSize(QSize(380, 0))
+        self.camera_setting_widget_2.setMaximumSize(QSize(400, 16777215))
+        font24 = QFont()
+        font24.setPointSize(13)
+        self.camera_setting_widget_2.setFont(font24)
         self.camera_setting_widget_2.setStyleSheet(u"QWidget {\n"
 "	background-color: rgb(220, 220, 220);\n"
 "	border-radius: 15px;\n"
@@ -1329,23 +1372,42 @@ class Ui_MainWindow(object):
         self.brightnessWidget_16.setObjectName(u"brightnessWidget_16")
         self.horizontalLayout_39 = QHBoxLayout(self.brightnessWidget_16)
         self.horizontalLayout_39.setObjectName(u"horizontalLayout_39")
-        self.horizontalLayout_39.setContentsMargins(-1, 0, -1, 0)
-        self.label_2 = QLabel(self.brightnessWidget_16)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setFont(font12)
+        self.frame_24 = QFrame(self.brightnessWidget_16)
+        self.frame_24.setObjectName(u"frame_24")
+        self.frame_24.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_24.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_36 = QVBoxLayout(self.frame_24)
+        self.verticalLayout_36.setSpacing(0)
+        self.verticalLayout_36.setObjectName(u"verticalLayout_36")
+        self.verticalLayout_36.setContentsMargins(0, 0, 0, 0)
+        self.label_74 = QLabel(self.frame_24)
+        self.label_74.setObjectName(u"label_74")
+        self.label_74.setFont(font12)
 
-        self.horizontalLayout_39.addWidget(self.label_2)
+        self.verticalLayout_36.addWidget(self.label_74)
 
-        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.label_75 = QLabel(self.frame_24)
+        self.label_75.setObjectName(u"label_75")
+        font25 = QFont()
+        font25.setFamilies([u"Kanit"])
+        font25.setPointSize(10)
+        self.label_75.setFont(font25)
+
+        self.verticalLayout_36.addWidget(self.label_75)
+
+
+        self.horizontalLayout_39.addWidget(self.frame_24)
+
+        self.horizontalSpacer_5 = QSpacerItem(77, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_39.addItem(self.horizontalSpacer_5)
 
         self.exposureTime = QLineEdit(self.brightnessWidget_16)
         self.exposureTime.setObjectName(u"exposureTime")
         self.exposureTime.setMaximumSize(QSize(100, 16777215))
-        font23 = QFont()
-        font23.setPointSize(14)
-        self.exposureTime.setFont(font23)
+        font26 = QFont()
+        font26.setPointSize(14)
+        self.exposureTime.setFont(font26)
         self.exposureTime.setStyleSheet(u"background-color: white;\n"
 "color: #868686;\n"
 "border-radius: 8px;\n"
@@ -1370,12 +1432,28 @@ class Ui_MainWindow(object):
         self.brightnessWidget_17.setObjectName(u"brightnessWidget_17")
         self.horizontalLayout_41 = QHBoxLayout(self.brightnessWidget_17)
         self.horizontalLayout_41.setObjectName(u"horizontalLayout_41")
-        self.horizontalLayout_41.setContentsMargins(-1, 0, -1, 0)
-        self.label_7 = QLabel(self.brightnessWidget_17)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setFont(font12)
+        self.frame_25 = QFrame(self.brightnessWidget_17)
+        self.frame_25.setObjectName(u"frame_25")
+        self.frame_25.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_25.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_38 = QVBoxLayout(self.frame_25)
+        self.verticalLayout_38.setSpacing(0)
+        self.verticalLayout_38.setObjectName(u"verticalLayout_38")
+        self.verticalLayout_38.setContentsMargins(0, 0, 0, 0)
+        self.label_76 = QLabel(self.frame_25)
+        self.label_76.setObjectName(u"label_76")
+        self.label_76.setFont(font12)
 
-        self.horizontalLayout_41.addWidget(self.label_7)
+        self.verticalLayout_38.addWidget(self.label_76)
+
+        self.label_77 = QLabel(self.frame_25)
+        self.label_77.setObjectName(u"label_77")
+        self.label_77.setFont(font25)
+
+        self.verticalLayout_38.addWidget(self.label_77)
+
+
+        self.horizontalLayout_41.addWidget(self.frame_25)
 
         self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
@@ -1384,7 +1462,7 @@ class Ui_MainWindow(object):
         self.delayShutter = QLineEdit(self.brightnessWidget_17)
         self.delayShutter.setObjectName(u"delayShutter")
         self.delayShutter.setMaximumSize(QSize(100, 16777215))
-        self.delayShutter.setFont(font23)
+        self.delayShutter.setFont(font26)
         self.delayShutter.setStyleSheet(u"background-color: white;\n"
 "color: #868686;\n"
 "border-radius: 8px;\n"
@@ -1521,37 +1599,8 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_22.addWidget(self.SharpnessWidget_2)
 
-        self.camera_filter_1 = QPushButton(self.camera_setting_widget_2)
-        self.camera_filter_1.setObjectName(u"camera_filter_1")
-        self.camera_filter_1.setMinimumSize(QSize(0, 45))
-        font24 = QFont()
-        font24.setFamilies([u"Kanit"])
-        font24.setPointSize(16)
-        font24.setWeight(QFont.Medium)
-        font24.setItalic(False)
-        self.camera_filter_1.setFont(font24)
-        self.camera_filter_1.setStyleSheet(u"QPushButton {\n"
-"	background-color: rgb(120, 120, 120);\n"
-"	color: white;\n"
-"	text-align: center;\n"
-"	border: none;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QPushButton:checked {\n"
-"	background-color: rgb(60, 60, 60);\n"
-"	color: white;\n"
-"}")
-        icon12 = QIcon()
-        icon12.addFile(u":/assets/icon/effect.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.camera_filter_1.setIcon(icon12)
-        self.camera_filter_1.setIconSize(QSize(30, 30))
-        self.camera_filter_1.setCheckable(True)
 
-        self.verticalLayout_22.addWidget(self.camera_filter_1)
-
-
-        self.horizontalLayout_37.addWidget(self.camera_setting_widget_2)
+        self.horizontalLayout_26.addWidget(self.camera_setting_widget_2)
 
 
         self.verticalLayout_24.addWidget(self.frame_15)
@@ -1568,11 +1617,18 @@ class Ui_MainWindow(object):
         self.frame_16.setStyleSheet(u"border: none")
         self.frame_16.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_16.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_59 = QHBoxLayout(self.frame_16)
-        self.horizontalLayout_59.setSpacing(10)
-        self.horizontalLayout_59.setObjectName(u"horizontalLayout_59")
-        self.horizontalLayout_59.setContentsMargins(0, 0, 0, 0)
-        self.sys_settings_monitor = QLabel(self.frame_16)
+        self.horizontalLayout_32 = QHBoxLayout(self.frame_16)
+        self.horizontalLayout_32.setSpacing(10)
+        self.horizontalLayout_32.setObjectName(u"horizontalLayout_32")
+        self.horizontalLayout_32.setContentsMargins(0, 0, 0, 0)
+        self.frame_9 = QFrame(self.frame_16)
+        self.frame_9.setObjectName(u"frame_9")
+        self.frame_9.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_9.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_18 = QVBoxLayout(self.frame_9)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
+        self.sys_settings_monitor = QLabel(self.frame_9)
         self.sys_settings_monitor.setObjectName(u"sys_settings_monitor")
         self.sys_settings_monitor.setMinimumSize(QSize(250, 0))
         self.sys_settings_monitor.setMaximumSize(QSize(16777215, 16777215))
@@ -1587,12 +1643,37 @@ class Ui_MainWindow(object):
         self.sys_settings_monitor.setPixmap(QPixmap(u":/assets/icon/picture_default.png"))
         self.sys_settings_monitor.setScaledContents(True)
 
-        self.horizontalLayout_59.addWidget(self.sys_settings_monitor)
+        self.verticalLayout_18.addWidget(self.sys_settings_monitor)
+
+        self.camera_filter_2 = QPushButton(self.frame_9)
+        self.camera_filter_2.setObjectName(u"camera_filter_2")
+        self.camera_filter_2.setMinimumSize(QSize(0, 45))
+        self.camera_filter_2.setFont(font23)
+        self.camera_filter_2.setStyleSheet(u"QPushButton {\n"
+"	background-color: rgb(120, 120, 120);\n"
+"	color: white;\n"
+"	text-align: center;\n"
+"	border: none;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton:checked {\n"
+"	background-color: rgb(60, 60, 60);\n"
+"	color: white;\n"
+"}")
+        self.camera_filter_2.setIcon(icon12)
+        self.camera_filter_2.setIconSize(QSize(30, 30))
+        self.camera_filter_2.setCheckable(True)
+
+        self.verticalLayout_18.addWidget(self.camera_filter_2)
+
+
+        self.horizontalLayout_32.addWidget(self.frame_9)
 
         self.camera_setting_widget_4 = QWidget(self.frame_16)
         self.camera_setting_widget_4.setObjectName(u"camera_setting_widget_4")
-        self.camera_setting_widget_4.setMinimumSize(QSize(350, 0))
-        self.camera_setting_widget_4.setMaximumSize(QSize(450, 16777215))
+        self.camera_setting_widget_4.setMinimumSize(QSize(380, 0))
+        self.camera_setting_widget_4.setMaximumSize(QSize(400, 16777215))
         self.camera_setting_widget_4.setStyleSheet(u"QWidget {\n"
 "	background-color: rgb(220, 220, 220);\n"
 "	border-radius: 15px;\n"
@@ -1636,35 +1717,48 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "")
-        self.verticalLayout_10 = QVBoxLayout(self.camera_setting_widget_4)
-        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
-        self.frame_14 = QFrame(self.camera_setting_widget_4)
-        self.frame_14.setObjectName(u"frame_14")
-        self.frame_14.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_14.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_9 = QVBoxLayout(self.frame_14)
+        self.verticalLayout_9 = QVBoxLayout(self.camera_setting_widget_4)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.brightnessWidget_23 = QWidget(self.frame_14)
+        self.verticalLayout_9.setContentsMargins(15, -1, 9, -1)
+        self.brightnessWidget_23 = QWidget(self.camera_setting_widget_4)
         self.brightnessWidget_23.setObjectName(u"brightnessWidget_23")
         self.brightnessWidget_23.setMaximumSize(QSize(16777215, 80))
         self.brightnessWidget_23.setStyleSheet(u"")
-        self.horizontalLayout_55 = QHBoxLayout(self.brightnessWidget_23)
-        self.horizontalLayout_55.setObjectName(u"horizontalLayout_55")
-        self.label_16 = QLabel(self.brightnessWidget_23)
-        self.label_16.setObjectName(u"label_16")
-        self.label_16.setFont(font12)
+        self.horizontalLayout_48 = QHBoxLayout(self.brightnessWidget_23)
+        self.horizontalLayout_48.setSpacing(5)
+        self.horizontalLayout_48.setObjectName(u"horizontalLayout_48")
+        self.horizontalLayout_48.setContentsMargins(0, 0, 0, 0)
+        self.frame_22 = QFrame(self.brightnessWidget_23)
+        self.frame_22.setObjectName(u"frame_22")
+        self.frame_22.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_22.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_34 = QVBoxLayout(self.frame_22)
+        self.verticalLayout_34.setSpacing(0)
+        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
+        self.verticalLayout_34.setContentsMargins(0, 0, 0, 0)
+        self.label_72 = QLabel(self.frame_22)
+        self.label_72.setObjectName(u"label_72")
+        self.label_72.setFont(font12)
 
-        self.horizontalLayout_55.addWidget(self.label_16)
+        self.verticalLayout_34.addWidget(self.label_72)
 
-        self.horizontalSpacer_17 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.label_73 = QLabel(self.frame_22)
+        self.label_73.setObjectName(u"label_73")
+        self.label_73.setFont(font25)
 
-        self.horizontalLayout_55.addItem(self.horizontalSpacer_17)
+        self.verticalLayout_34.addWidget(self.label_73)
+
+
+        self.horizontalLayout_48.addWidget(self.frame_22)
+
+        self.horizontalSpacer_29 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_48.addItem(self.horizontalSpacer_29)
 
         self.numberStickerBeforeDetection = QLineEdit(self.brightnessWidget_23)
         self.numberStickerBeforeDetection.setObjectName(u"numberStickerBeforeDetection")
         self.numberStickerBeforeDetection.setMaximumSize(QSize(60, 16777215))
-        self.numberStickerBeforeDetection.setFont(font23)
+        self.numberStickerBeforeDetection.setFont(font26)
         self.numberStickerBeforeDetection.setStyleSheet(u"background-color: white;\n"
 "color: #868686;\n"
 "border-radius: 6px;\n"
@@ -1675,38 +1769,57 @@ class Ui_MainWindow(object):
         self.numberStickerBeforeDetection.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.numberStickerBeforeDetection.setClearButtonEnabled(False)
 
-        self.horizontalLayout_55.addWidget(self.numberStickerBeforeDetection)
+        self.horizontalLayout_48.addWidget(self.numberStickerBeforeDetection)
 
-        self.label_17 = QLabel(self.brightnessWidget_23)
-        self.label_17.setObjectName(u"label_17")
-        self.label_17.setMinimumSize(QSize(50, 0))
-        self.label_17.setMaximumSize(QSize(50, 16777215))
-        self.label_17.setFont(font12)
+        self.label_57 = QLabel(self.brightnessWidget_23)
+        self.label_57.setObjectName(u"label_57")
+        self.label_57.setMinimumSize(QSize(50, 0))
+        self.label_57.setMaximumSize(QSize(50, 16777215))
+        self.label_57.setFont(font12)
 
-        self.horizontalLayout_55.addWidget(self.label_17)
+        self.horizontalLayout_48.addWidget(self.label_57)
 
 
         self.verticalLayout_9.addWidget(self.brightnessWidget_23)
 
-        self.brightnessWidget_22 = QWidget(self.frame_14)
+        self.brightnessWidget_22 = QWidget(self.camera_setting_widget_4)
         self.brightnessWidget_22.setObjectName(u"brightnessWidget_22")
         self.brightnessWidget_22.setMaximumSize(QSize(16777215, 80))
-        self.horizontalLayout_36 = QHBoxLayout(self.brightnessWidget_22)
-        self.horizontalLayout_36.setObjectName(u"horizontalLayout_36")
-        self.label_14 = QLabel(self.brightnessWidget_22)
-        self.label_14.setObjectName(u"label_14")
-        self.label_14.setFont(font12)
+        self.horizontalLayout_38 = QHBoxLayout(self.brightnessWidget_22)
+        self.horizontalLayout_38.setSpacing(5)
+        self.horizontalLayout_38.setObjectName(u"horizontalLayout_38")
+        self.horizontalLayout_38.setContentsMargins(0, 0, 0, 0)
+        self.frame_21 = QFrame(self.brightnessWidget_22)
+        self.frame_21.setObjectName(u"frame_21")
+        self.frame_21.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_21.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_30 = QVBoxLayout(self.frame_21)
+        self.verticalLayout_30.setSpacing(0)
+        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
+        self.verticalLayout_30.setContentsMargins(0, 0, 0, 0)
+        self.label_68 = QLabel(self.frame_21)
+        self.label_68.setObjectName(u"label_68")
+        self.label_68.setFont(font12)
 
-        self.horizontalLayout_36.addWidget(self.label_14)
+        self.verticalLayout_30.addWidget(self.label_68)
 
-        self.horizontalSpacer_16 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.label_69 = QLabel(self.frame_21)
+        self.label_69.setObjectName(u"label_69")
+        self.label_69.setFont(font25)
 
-        self.horizontalLayout_36.addItem(self.horizontalSpacer_16)
+        self.verticalLayout_30.addWidget(self.label_69)
+
+
+        self.horizontalLayout_38.addWidget(self.frame_21)
+
+        self.horizontalSpacer_26 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_38.addItem(self.horizontalSpacer_26)
 
         self.delayBeforeReject = QLineEdit(self.brightnessWidget_22)
         self.delayBeforeReject.setObjectName(u"delayBeforeReject")
         self.delayBeforeReject.setMaximumSize(QSize(60, 16777215))
-        self.delayBeforeReject.setFont(font23)
+        self.delayBeforeReject.setFont(font26)
         self.delayBeforeReject.setStyleSheet(u"background-color: white;\n"
 "color: #868686;\n"
 "border-radius: 6px;\n"
@@ -1717,38 +1830,57 @@ class Ui_MainWindow(object):
         self.delayBeforeReject.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.delayBeforeReject.setClearButtonEnabled(False)
 
-        self.horizontalLayout_36.addWidget(self.delayBeforeReject)
+        self.horizontalLayout_38.addWidget(self.delayBeforeReject)
 
-        self.label_15 = QLabel(self.brightnessWidget_22)
-        self.label_15.setObjectName(u"label_15")
-        self.label_15.setMinimumSize(QSize(50, 0))
-        self.label_15.setMaximumSize(QSize(50, 16777215))
-        self.label_15.setFont(font12)
+        self.label_51 = QLabel(self.brightnessWidget_22)
+        self.label_51.setObjectName(u"label_51")
+        self.label_51.setMinimumSize(QSize(50, 0))
+        self.label_51.setMaximumSize(QSize(50, 16777215))
+        self.label_51.setFont(font12)
 
-        self.horizontalLayout_36.addWidget(self.label_15)
+        self.horizontalLayout_38.addWidget(self.label_51)
 
 
         self.verticalLayout_9.addWidget(self.brightnessWidget_22)
 
-        self.brightnessWidget_24 = QWidget(self.frame_14)
+        self.brightnessWidget_24 = QWidget(self.camera_setting_widget_4)
         self.brightnessWidget_24.setObjectName(u"brightnessWidget_24")
         self.brightnessWidget_24.setMaximumSize(QSize(16777215, 80))
-        self.horizontalLayout_56 = QHBoxLayout(self.brightnessWidget_24)
-        self.horizontalLayout_56.setObjectName(u"horizontalLayout_56")
-        self.label_18 = QLabel(self.brightnessWidget_24)
-        self.label_18.setObjectName(u"label_18")
-        self.label_18.setFont(font12)
+        self.horizontalLayout_47 = QHBoxLayout(self.brightnessWidget_24)
+        self.horizontalLayout_47.setSpacing(5)
+        self.horizontalLayout_47.setObjectName(u"horizontalLayout_47")
+        self.horizontalLayout_47.setContentsMargins(0, 0, 0, 0)
+        self.frame_20 = QFrame(self.brightnessWidget_24)
+        self.frame_20.setObjectName(u"frame_20")
+        self.frame_20.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_20.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_29 = QVBoxLayout(self.frame_20)
+        self.verticalLayout_29.setSpacing(0)
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
+        self.verticalLayout_29.setContentsMargins(0, 0, 0, 0)
+        self.label_66 = QLabel(self.frame_20)
+        self.label_66.setObjectName(u"label_66")
+        self.label_66.setFont(font12)
 
-        self.horizontalLayout_56.addWidget(self.label_18)
+        self.verticalLayout_29.addWidget(self.label_66)
 
-        self.horizontalSpacer_18 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.label_67 = QLabel(self.frame_20)
+        self.label_67.setObjectName(u"label_67")
+        self.label_67.setFont(font25)
 
-        self.horizontalLayout_56.addItem(self.horizontalSpacer_18)
+        self.verticalLayout_29.addWidget(self.label_67)
+
+
+        self.horizontalLayout_47.addWidget(self.frame_20)
+
+        self.horizontalSpacer_27 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_47.addItem(self.horizontalSpacer_27)
 
         self.rejectionPeriod = QLineEdit(self.brightnessWidget_24)
         self.rejectionPeriod.setObjectName(u"rejectionPeriod")
         self.rejectionPeriod.setMaximumSize(QSize(60, 16777215))
-        self.rejectionPeriod.setFont(font23)
+        self.rejectionPeriod.setFont(font26)
         self.rejectionPeriod.setStyleSheet(u"background-color: white;\n"
 "color: #868686;\n"
 "border-radius: 6px;\n"
@@ -1759,37 +1891,56 @@ class Ui_MainWindow(object):
         self.rejectionPeriod.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.rejectionPeriod.setClearButtonEnabled(False)
 
-        self.horizontalLayout_56.addWidget(self.rejectionPeriod)
+        self.horizontalLayout_47.addWidget(self.rejectionPeriod)
 
-        self.label_19 = QLabel(self.brightnessWidget_24)
-        self.label_19.setObjectName(u"label_19")
-        self.label_19.setMinimumSize(QSize(50, 0))
-        self.label_19.setMaximumSize(QSize(50, 16777215))
-        self.label_19.setFont(font12)
+        self.label_53 = QLabel(self.brightnessWidget_24)
+        self.label_53.setObjectName(u"label_53")
+        self.label_53.setMinimumSize(QSize(50, 0))
+        self.label_53.setMaximumSize(QSize(50, 16777215))
+        self.label_53.setFont(font12)
 
-        self.horizontalLayout_56.addWidget(self.label_19)
+        self.horizontalLayout_47.addWidget(self.label_53)
 
 
         self.verticalLayout_9.addWidget(self.brightnessWidget_24)
 
-        self.brightnessWidget_27 = QWidget(self.frame_14)
+        self.brightnessWidget_27 = QWidget(self.camera_setting_widget_4)
         self.brightnessWidget_27.setObjectName(u"brightnessWidget_27")
-        self.horizontalLayout_60 = QHBoxLayout(self.brightnessWidget_27)
-        self.horizontalLayout_60.setObjectName(u"horizontalLayout_60")
-        self.label_30 = QLabel(self.brightnessWidget_27)
-        self.label_30.setObjectName(u"label_30")
-        self.label_30.setFont(font12)
+        self.horizontalLayout_40 = QHBoxLayout(self.brightnessWidget_27)
+        self.horizontalLayout_40.setSpacing(5)
+        self.horizontalLayout_40.setObjectName(u"horizontalLayout_40")
+        self.horizontalLayout_40.setContentsMargins(0, 0, 0, 0)
+        self.frame_19 = QFrame(self.brightnessWidget_27)
+        self.frame_19.setObjectName(u"frame_19")
+        self.frame_19.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_19.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_25 = QVBoxLayout(self.frame_19)
+        self.verticalLayout_25.setSpacing(0)
+        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+        self.verticalLayout_25.setContentsMargins(0, 0, 0, 0)
+        self.label_64 = QLabel(self.frame_19)
+        self.label_64.setObjectName(u"label_64")
+        self.label_64.setFont(font12)
 
-        self.horizontalLayout_60.addWidget(self.label_30)
+        self.verticalLayout_25.addWidget(self.label_64)
 
-        self.horizontalSpacer_21 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.label_65 = QLabel(self.frame_19)
+        self.label_65.setObjectName(u"label_65")
+        self.label_65.setFont(font25)
 
-        self.horizontalLayout_60.addItem(self.horizontalSpacer_21)
+        self.verticalLayout_25.addWidget(self.label_65)
+
+
+        self.horizontalLayout_40.addWidget(self.frame_19)
+
+        self.horizontalSpacer_25 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_40.addItem(self.horizontalSpacer_25)
 
         self.frameRate = QLineEdit(self.brightnessWidget_27)
         self.frameRate.setObjectName(u"frameRate")
         self.frameRate.setMaximumSize(QSize(60, 16777215))
-        self.frameRate.setFont(font23)
+        self.frameRate.setFont(font26)
         self.frameRate.setStyleSheet(u"background-color: white;\n"
 "color: #868686;\n"
 "border-radius: 6px;\n"
@@ -1800,39 +1951,58 @@ class Ui_MainWindow(object):
         self.frameRate.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.frameRate.setClearButtonEnabled(False)
 
-        self.horizontalLayout_60.addWidget(self.frameRate)
+        self.horizontalLayout_40.addWidget(self.frameRate)
 
-        self.label_33 = QLabel(self.brightnessWidget_27)
-        self.label_33.setObjectName(u"label_33")
-        self.label_33.setMinimumSize(QSize(50, 0))
-        self.label_33.setMaximumSize(QSize(50, 16777215))
-        self.label_33.setFont(font12)
+        self.label_49 = QLabel(self.brightnessWidget_27)
+        self.label_49.setObjectName(u"label_49")
+        self.label_49.setMinimumSize(QSize(50, 0))
+        self.label_49.setMaximumSize(QSize(50, 16777215))
+        self.label_49.setFont(font12)
 
-        self.horizontalLayout_60.addWidget(self.label_33)
+        self.horizontalLayout_40.addWidget(self.label_49)
 
 
         self.verticalLayout_9.addWidget(self.brightnessWidget_27)
 
-        self.brightnessWidget_25 = QWidget(self.frame_14)
+        self.brightnessWidget_25 = QWidget(self.camera_setting_widget_4)
         self.brightnessWidget_25.setObjectName(u"brightnessWidget_25")
         self.brightnessWidget_25.setMaximumSize(QSize(16777215, 80))
         self.brightnessWidget_25.setStyleSheet(u"")
-        self.horizontalLayout_57 = QHBoxLayout(self.brightnessWidget_25)
-        self.horizontalLayout_57.setObjectName(u"horizontalLayout_57")
-        self.label_22 = QLabel(self.brightnessWidget_25)
-        self.label_22.setObjectName(u"label_22")
-        self.label_22.setFont(font12)
+        self.horizontalLayout_34 = QHBoxLayout(self.brightnessWidget_25)
+        self.horizontalLayout_34.setSpacing(5)
+        self.horizontalLayout_34.setObjectName(u"horizontalLayout_34")
+        self.horizontalLayout_34.setContentsMargins(0, 0, 0, 0)
+        self.frame_14 = QFrame(self.brightnessWidget_25)
+        self.frame_14.setObjectName(u"frame_14")
+        self.frame_14.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_14.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_23 = QVBoxLayout(self.frame_14)
+        self.verticalLayout_23.setSpacing(0)
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.verticalLayout_23.setContentsMargins(0, 0, 0, 0)
+        self.label_62 = QLabel(self.frame_14)
+        self.label_62.setObjectName(u"label_62")
+        self.label_62.setFont(font12)
 
-        self.horizontalLayout_57.addWidget(self.label_22)
+        self.verticalLayout_23.addWidget(self.label_62)
 
-        self.horizontalSpacer_19 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.label_63 = QLabel(self.frame_14)
+        self.label_63.setObjectName(u"label_63")
+        self.label_63.setFont(font25)
 
-        self.horizontalLayout_57.addItem(self.horizontalSpacer_19)
+        self.verticalLayout_23.addWidget(self.label_63)
+
+
+        self.horizontalLayout_34.addWidget(self.frame_14)
+
+        self.horizontalSpacer_30 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_34.addItem(self.horizontalSpacer_30)
 
         self.rotateImage = QLineEdit(self.brightnessWidget_25)
         self.rotateImage.setObjectName(u"rotateImage")
         self.rotateImage.setMaximumSize(QSize(60, 16777215))
-        self.rotateImage.setFont(font23)
+        self.rotateImage.setFont(font26)
         self.rotateImage.setStyleSheet(u"background-color: white;\n"
 "color: #868686;\n"
 "border-radius: 6px;\n"
@@ -1843,37 +2013,56 @@ class Ui_MainWindow(object):
         self.rotateImage.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.rotateImage.setClearButtonEnabled(False)
 
-        self.horizontalLayout_57.addWidget(self.rotateImage)
+        self.horizontalLayout_34.addWidget(self.rotateImage)
 
-        self.label_23 = QLabel(self.brightnessWidget_25)
-        self.label_23.setObjectName(u"label_23")
-        self.label_23.setMinimumSize(QSize(50, 0))
-        self.label_23.setMaximumSize(QSize(50, 16777215))
-        self.label_23.setFont(font12)
+        self.label_59 = QLabel(self.brightnessWidget_25)
+        self.label_59.setObjectName(u"label_59")
+        self.label_59.setMinimumSize(QSize(50, 0))
+        self.label_59.setMaximumSize(QSize(50, 16777215))
+        self.label_59.setFont(font12)
 
-        self.horizontalLayout_57.addWidget(self.label_23)
+        self.horizontalLayout_34.addWidget(self.label_59)
 
 
         self.verticalLayout_9.addWidget(self.brightnessWidget_25)
 
-        self.brightnessWidget_26 = QWidget(self.frame_14)
+        self.brightnessWidget_26 = QWidget(self.camera_setting_widget_4)
         self.brightnessWidget_26.setObjectName(u"brightnessWidget_26")
-        self.horizontalLayout_58 = QHBoxLayout(self.brightnessWidget_26)
-        self.horizontalLayout_58.setObjectName(u"horizontalLayout_58")
-        self.label_20 = QLabel(self.brightnessWidget_26)
-        self.label_20.setObjectName(u"label_20")
-        self.label_20.setFont(font12)
+        self.horizontalLayout_35 = QHBoxLayout(self.brightnessWidget_26)
+        self.horizontalLayout_35.setSpacing(5)
+        self.horizontalLayout_35.setObjectName(u"horizontalLayout_35")
+        self.horizontalLayout_35.setContentsMargins(0, 0, 0, 0)
+        self.frame_11 = QFrame(self.brightnessWidget_26)
+        self.frame_11.setObjectName(u"frame_11")
+        self.frame_11.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_11.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_20 = QVBoxLayout(self.frame_11)
+        self.verticalLayout_20.setSpacing(0)
+        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
+        self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
+        self.label_60 = QLabel(self.frame_11)
+        self.label_60.setObjectName(u"label_60")
+        self.label_60.setFont(font12)
 
-        self.horizontalLayout_58.addWidget(self.label_20)
+        self.verticalLayout_20.addWidget(self.label_60)
 
-        self.horizontalSpacer_20 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.label_61 = QLabel(self.frame_11)
+        self.label_61.setObjectName(u"label_61")
+        self.label_61.setFont(font25)
 
-        self.horizontalLayout_58.addItem(self.horizontalSpacer_20)
+        self.verticalLayout_20.addWidget(self.label_61)
+
+
+        self.horizontalLayout_35.addWidget(self.frame_11)
+
+        self.horizontalSpacer_28 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_35.addItem(self.horizontalSpacer_28)
 
         self.detectionPercentage = QLineEdit(self.brightnessWidget_26)
         self.detectionPercentage.setObjectName(u"detectionPercentage")
         self.detectionPercentage.setMaximumSize(QSize(60, 16777215))
-        self.detectionPercentage.setFont(font23)
+        self.detectionPercentage.setFont(font26)
         self.detectionPercentage.setStyleSheet(u"background-color: white;\n"
 "color: #868686;\n"
 "border-radius: 6px;\n"
@@ -1884,46 +2073,137 @@ class Ui_MainWindow(object):
         self.detectionPercentage.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.detectionPercentage.setClearButtonEnabled(False)
 
-        self.horizontalLayout_58.addWidget(self.detectionPercentage)
+        self.horizontalLayout_35.addWidget(self.detectionPercentage)
 
-        self.label_21 = QLabel(self.brightnessWidget_26)
-        self.label_21.setObjectName(u"label_21")
-        self.label_21.setMinimumSize(QSize(50, 0))
-        self.label_21.setMaximumSize(QSize(50, 16777215))
-        self.label_21.setFont(font12)
+        self.label_55 = QLabel(self.brightnessWidget_26)
+        self.label_55.setObjectName(u"label_55")
+        self.label_55.setMinimumSize(QSize(50, 0))
+        self.label_55.setMaximumSize(QSize(50, 16777215))
+        self.label_55.setFont(font12)
 
-        self.horizontalLayout_58.addWidget(self.label_21)
+        self.horizontalLayout_35.addWidget(self.label_55)
 
 
         self.verticalLayout_9.addWidget(self.brightnessWidget_26)
 
+        self.brightnessWidget_28 = QWidget(self.camera_setting_widget_4)
+        self.brightnessWidget_28.setObjectName(u"brightnessWidget_28")
+        self.horizontalLayout_33 = QHBoxLayout(self.brightnessWidget_28)
+        self.horizontalLayout_33.setSpacing(5)
+        self.horizontalLayout_33.setObjectName(u"horizontalLayout_33")
+        self.horizontalLayout_33.setContentsMargins(0, 0, 0, 0)
+        self.frame_10 = QFrame(self.brightnessWidget_28)
+        self.frame_10.setObjectName(u"frame_10")
+        self.frame_10.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_10.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_19 = QVBoxLayout(self.frame_10)
+        self.verticalLayout_19.setSpacing(0)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.verticalLayout_19.setContentsMargins(0, 0, 0, 0)
+        self.label_48 = QLabel(self.frame_10)
+        self.label_48.setObjectName(u"label_48")
+        self.label_48.setFont(font12)
 
-        self.verticalLayout_10.addWidget(self.frame_14)
+        self.verticalLayout_19.addWidget(self.label_48)
 
-        self.camera_filter_2 = QPushButton(self.camera_setting_widget_4)
-        self.camera_filter_2.setObjectName(u"camera_filter_2")
-        self.camera_filter_2.setMinimumSize(QSize(0, 45))
-        self.camera_filter_2.setFont(font24)
-        self.camera_filter_2.setStyleSheet(u"QPushButton {\n"
-"	background-color: rgb(120, 120, 120);\n"
-"	color: white;\n"
-"	text-align: center;\n"
-"	border: none;\n"
-"	border-radius: 10px;\n"
+        self.label_47 = QLabel(self.frame_10)
+        self.label_47.setObjectName(u"label_47")
+        self.label_47.setFont(font25)
+
+        self.verticalLayout_19.addWidget(self.label_47)
+
+
+        self.horizontalLayout_33.addWidget(self.frame_10)
+
+        self.horizontalSpacer_24 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_33.addItem(self.horizontalSpacer_24)
+
+        self.detection_resize_percent = QLineEdit(self.brightnessWidget_28)
+        self.detection_resize_percent.setObjectName(u"detection_resize_percent")
+        self.detection_resize_percent.setMaximumSize(QSize(60, 16777215))
+        self.detection_resize_percent.setFont(font26)
+        self.detection_resize_percent.setStyleSheet(u"background-color: white;\n"
+"color: #868686;\n"
+"border-radius: 6px;\n"
+"border: 1px solid #808080;\n"
+"text-align: center;")
+        self.detection_resize_percent.setInputMethodHints(Qt.InputMethodHint.ImhDigitsOnly)
+        self.detection_resize_percent.setMaxLength(100)
+        self.detection_resize_percent.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.detection_resize_percent.setClearButtonEnabled(False)
+
+        self.horizontalLayout_33.addWidget(self.detection_resize_percent)
+
+        self.label_46 = QLabel(self.brightnessWidget_28)
+        self.label_46.setObjectName(u"label_46")
+        self.label_46.setMinimumSize(QSize(50, 0))
+        self.label_46.setMaximumSize(QSize(50, 16777215))
+        self.label_46.setFont(font12)
+
+        self.horizontalLayout_33.addWidget(self.label_46)
+
+
+        self.verticalLayout_9.addWidget(self.brightnessWidget_28)
+
+        self.frame_8 = QFrame(self.camera_setting_widget_4)
+        self.frame_8.setObjectName(u"frame_8")
+        self.frame_8.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_8.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_25 = QHBoxLayout(self.frame_8)
+        self.horizontalLayout_25.setSpacing(5)
+        self.horizontalLayout_25.setObjectName(u"horizontalLayout_25")
+        self.horizontalLayout_25.setContentsMargins(0, 0, 9, 0)
+        self.frame_23 = QFrame(self.frame_8)
+        self.frame_23.setObjectName(u"frame_23")
+        self.frame_23.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_23.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_35 = QVBoxLayout(self.frame_23)
+        self.verticalLayout_35.setSpacing(0)
+        self.verticalLayout_35.setObjectName(u"verticalLayout_35")
+        self.verticalLayout_35.setContentsMargins(0, 0, 0, 0)
+        self.label_50 = QLabel(self.frame_23)
+        self.label_50.setObjectName(u"label_50")
+        self.label_50.setFont(font12)
+
+        self.verticalLayout_35.addWidget(self.label_50)
+
+        self.label_52 = QLabel(self.frame_23)
+        self.label_52.setObjectName(u"label_52")
+        self.label_52.setFont(font25)
+
+        self.verticalLayout_35.addWidget(self.label_52)
+
+
+        self.horizontalLayout_25.addWidget(self.frame_23)
+
+        self.ocr_engine = QComboBox(self.frame_8)
+        self.ocr_engine.addItem("")
+        self.ocr_engine.addItem("")
+        self.ocr_engine.setObjectName(u"ocr_engine")
+        font27 = QFont()
+        self.ocr_engine.setFont(font27)
+        self.ocr_engine.setStyleSheet(u"QComboBox {\n"
+"    background-color: #f0f0f0;\n"
+"    border: 1px solid #cccccc;\n"
+"    border-radius: 8px;\n"
+"    padding: 6px 12px;\n"
+"    font-size: 16px;\n"
+"    color: #333333;\n"
 "}\n"
 "\n"
-"QPushButton:checked {\n"
-"	background-color: rgb(60, 60, 60);\n"
-"	color: white;\n"
-"}")
-        self.camera_filter_2.setIcon(icon12)
-        self.camera_filter_2.setIconSize(QSize(30, 30))
-        self.camera_filter_2.setCheckable(True)
+"QComboBox::drop-down {\n"
+"    width: 28px;\n"
+"}\n"
+"")
 
-        self.verticalLayout_10.addWidget(self.camera_filter_2)
+        self.horizontalLayout_25.addWidget(self.ocr_engine)
 
 
-        self.horizontalLayout_59.addWidget(self.camera_setting_widget_4)
+        self.verticalLayout_9.addWidget(self.frame_8)
+
+
+        self.horizontalLayout_32.addWidget(self.camera_setting_widget_4)
 
 
         self.horizontalLayout_27.addWidget(self.frame_16)
@@ -1957,10 +2237,10 @@ class Ui_MainWindow(object):
         self.label.setObjectName(u"label")
         self.label.setMinimumSize(QSize(0, 30))
         self.label.setMaximumSize(QSize(16777215, 30))
-        font25 = QFont()
-        font25.setPointSize(15)
-        font25.setBold(True)
-        self.label.setFont(font25)
+        font28 = QFont()
+        font28.setPointSize(15)
+        font28.setBold(True)
+        self.label.setFont(font28)
         self.label.setStyleSheet(u"color: #868686;")
         self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -2003,7 +2283,7 @@ class Ui_MainWindow(object):
         self.label_4.setObjectName(u"label_4")
         self.label_4.setMinimumSize(QSize(0, 30))
         self.label_4.setMaximumSize(QSize(16777215, 30))
-        self.label_4.setFont(font25)
+        self.label_4.setFont(font28)
         self.label_4.setStyleSheet(u"color: #868686;")
         self.label_4.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -2047,7 +2327,7 @@ class Ui_MainWindow(object):
         self.label_6.setObjectName(u"label_6")
         self.label_6.setMinimumSize(QSize(0, 30))
         self.label_6.setMaximumSize(QSize(16777215, 30))
-        self.label_6.setFont(font25)
+        self.label_6.setFont(font28)
         self.label_6.setStyleSheet(u"color: #868686;")
         self.label_6.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -2062,7 +2342,7 @@ class Ui_MainWindow(object):
         self.testReject = QPushButton(self.frame_17)
         self.testReject.setObjectName(u"testReject")
         self.testReject.setMinimumSize(QSize(0, 90))
-        self.testReject.setFont(font24)
+        self.testReject.setFont(font23)
         self.testReject.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgb(120, 120, 120);\n"
 "	color: white;\n"
@@ -2116,10 +2396,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
         self.label_35 = QLabel(self.frame_4)
         self.label_35.setObjectName(u"label_35")
-        font26 = QFont()
-        font26.setPointSize(16)
-        font26.setBold(True)
-        self.label_35.setFont(font26)
+        font29 = QFont()
+        font29.setPointSize(16)
+        font29.setBold(True)
+        self.label_35.setFont(font29)
         self.label_35.setStyleSheet(u"background-color: #808080;\n"
 "border-radius: 12px;\n"
 "color: white;\n"
@@ -2130,25 +2410,25 @@ class Ui_MainWindow(object):
 
         self.cpu_usage = QLabel(self.frame_4)
         self.cpu_usage.setObjectName(u"cpu_usage")
-        self.cpu_usage.setFont(font23)
+        self.cpu_usage.setFont(font26)
 
         self.verticalLayout_12.addWidget(self.cpu_usage)
 
         self.ram_usage = QLabel(self.frame_4)
         self.ram_usage.setObjectName(u"ram_usage")
-        self.ram_usage.setFont(font23)
+        self.ram_usage.setFont(font26)
 
         self.verticalLayout_12.addWidget(self.ram_usage)
 
         self.disk_usage = QLabel(self.frame_4)
         self.disk_usage.setObjectName(u"disk_usage")
-        self.disk_usage.setFont(font23)
+        self.disk_usage.setFont(font26)
 
         self.verticalLayout_12.addWidget(self.disk_usage)
 
         self.cpu_temp = QLabel(self.frame_4)
         self.cpu_temp.setObjectName(u"cpu_temp")
-        self.cpu_temp.setFont(font23)
+        self.cpu_temp.setFont(font26)
 
         self.verticalLayout_12.addWidget(self.cpu_temp)
 
@@ -2171,7 +2451,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.label_39 = QLabel(self.frame_5)
         self.label_39.setObjectName(u"label_39")
-        self.label_39.setFont(font26)
+        self.label_39.setFont(font29)
         self.label_39.setStyleSheet(u"background-color: #808080;\n"
 "border-radius: 12px;\n"
 "color: white;\n"
@@ -2182,25 +2462,25 @@ class Ui_MainWindow(object):
 
         self.eth0 = QLabel(self.frame_5)
         self.eth0.setObjectName(u"eth0")
-        self.eth0.setFont(font23)
+        self.eth0.setFont(font26)
 
         self.verticalLayout_16.addWidget(self.eth0)
 
         self.eth1 = QLabel(self.frame_5)
         self.eth1.setObjectName(u"eth1")
-        self.eth1.setFont(font23)
+        self.eth1.setFont(font26)
 
         self.verticalLayout_16.addWidget(self.eth1)
 
         self.wlan0 = QLabel(self.frame_5)
         self.wlan0.setObjectName(u"wlan0")
-        self.wlan0.setFont(font23)
+        self.wlan0.setFont(font26)
 
         self.verticalLayout_16.addWidget(self.wlan0)
 
         self.label_43 = QLabel(self.frame_5)
         self.label_43.setObjectName(u"label_43")
-        self.label_43.setFont(font23)
+        self.label_43.setFont(font26)
 
         self.verticalLayout_16.addWidget(self.label_43)
 
@@ -2216,35 +2496,69 @@ class Ui_MainWindow(object):
         self.credit_tab = QWidget()
         self.credit_tab.setObjectName(u"credit_tab")
         self.credit_tab.setStyleSheet(u"QFrame {\n"
-" 	border:  2px solid #808080;\n"
+" 	border:  1px solid #808080;\n"
 "	border-radius: 18px;\n"
 "}\n"
 "\n"
 "QLabel {\n"
 " border: none;\n"
 "}")
-        self.gridLayout = QGridLayout(self.credit_tab)
-        self.gridLayout.setSpacing(10)
-        self.gridLayout.setObjectName(u"gridLayout")
-        self.frame = QFrame(self.credit_tab)
+        self.verticalLayout_17 = QVBoxLayout(self.credit_tab)
+        self.verticalLayout_17.setSpacing(10)
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
+        self.verticalLayout_17.setContentsMargins(-1, 10, -1, -1)
+        self.widget_2 = QWidget(self.credit_tab)
+        self.widget_2.setObjectName(u"widget_2")
+        self.horizontalLayout_17 = QHBoxLayout(self.widget_2)
+        self.horizontalLayout_17.setSpacing(10)
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
+        self.horizontalLayout_17.setContentsMargins(0, 0, 0, 0)
+        self.frame = QFrame(self.widget_2)
         self.frame.setObjectName(u"frame")
         self.frame.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_8 = QHBoxLayout(self.frame)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.horizontalLayout_8.setContentsMargins(-1, 26, -1, 21)
+        self.horizontalLayout_8.setContentsMargins(9, 9, 9, 9)
         self.label_32 = QLabel(self.frame)
         self.label_32.setObjectName(u"label_32")
-        self.label_32.setMaximumSize(QSize(350, 200))
+        self.label_32.setMaximumSize(QSize(350, 150))
         self.label_32.setPixmap(QPixmap(u":/assets/images/Tesseract_OCR_logo_(Google).png"))
         self.label_32.setScaledContents(True)
 
         self.horizontalLayout_8.addWidget(self.label_32)
 
 
-        self.gridLayout.addWidget(self.frame, 0, 0, 1, 2)
+        self.horizontalLayout_17.addWidget(self.frame)
 
-        self.frame_2 = QFrame(self.credit_tab)
+        self.frame_7 = QFrame(self.widget_2)
+        self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_7.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_16 = QHBoxLayout(self.frame_7)
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
+        self.horizontalLayout_16.setContentsMargins(0, 0, 20, 0)
+        self.label_36 = QLabel(self.frame_7)
+        self.label_36.setObjectName(u"label_36")
+        self.label_36.setMaximumSize(QSize(350, 200))
+        self.label_36.setPixmap(QPixmap(u":/assets/images/logo_EasyOCR-3386444.png"))
+        self.label_36.setScaledContents(True)
+
+        self.horizontalLayout_16.addWidget(self.label_36)
+
+
+        self.horizontalLayout_17.addWidget(self.frame_7)
+
+
+        self.verticalLayout_17.addWidget(self.widget_2)
+
+        self.widget_15 = QWidget(self.credit_tab)
+        self.widget_15.setObjectName(u"widget_15")
+        self.horizontalLayout_23 = QHBoxLayout(self.widget_15)
+        self.horizontalLayout_23.setSpacing(10)
+        self.horizontalLayout_23.setObjectName(u"horizontalLayout_23")
+        self.horizontalLayout_23.setContentsMargins(0, 0, 0, 0)
+        self.frame_2 = QFrame(self.widget_15)
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
@@ -2260,9 +2574,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.addWidget(self.label_31)
 
 
-        self.gridLayout.addWidget(self.frame_2, 1, 0, 1, 1)
+        self.horizontalLayout_23.addWidget(self.frame_2)
 
-        self.frame_6 = QFrame(self.credit_tab)
+        self.frame_6 = QFrame(self.widget_15)
         self.frame_6.setObjectName(u"frame_6")
         self.frame_6.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_6.setFrameShadow(QFrame.Shadow.Raised)
@@ -2278,7 +2592,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13.addWidget(self.label_34)
 
 
-        self.gridLayout.addWidget(self.frame_6, 1, 1, 1, 1)
+        self.horizontalLayout_23.addWidget(self.frame_6)
+
+
+        self.verticalLayout_17.addWidget(self.widget_15)
 
         icon16 = QIcon()
         icon16.addFile(u":/assets/icon/info.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -2294,10 +2611,10 @@ class Ui_MainWindow(object):
         self.shutdown_title = QLabel(self.shutdown_page)
         self.shutdown_title.setObjectName(u"shutdown_title")
         self.shutdown_title.setMaximumSize(QSize(16777215, 65))
-        font27 = QFont()
-        font27.setFamilies([u"Kanit"])
-        font27.setPointSize(30)
-        self.shutdown_title.setFont(font27)
+        font30 = QFont()
+        font30.setFamilies([u"Kanit"])
+        font30.setPointSize(30)
+        self.shutdown_title.setFont(font30)
         self.shutdown_title.setStyleSheet(u"background-color: rgb(52, 157, 77);\n"
 "border-radius: 15px;")
         self.shutdown_title.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -2322,12 +2639,12 @@ class Ui_MainWindow(object):
         self.shutdown_warning_label = QLabel(self.widget_17)
         self.shutdown_warning_label.setObjectName(u"shutdown_warning_label")
         self.shutdown_warning_label.setMaximumSize(QSize(16777215, 16777215))
-        font28 = QFont()
-        font28.setFamilies([u"Kanit"])
-        font28.setPointSize(22)
-        font28.setBold(True)
-        font28.setStrikeOut(False)
-        self.shutdown_warning_label.setFont(font28)
+        font31 = QFont()
+        font31.setFamilies([u"Kanit"])
+        font31.setPointSize(22)
+        font31.setBold(True)
+        font31.setStrikeOut(False)
+        self.shutdown_warning_label.setFont(font31)
         self.shutdown_warning_label.setStyleSheet(u"color: rgb(91, 91, 91);")
         self.shutdown_warning_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.shutdown_warning_label.setWordWrap(True)
@@ -2347,12 +2664,12 @@ class Ui_MainWindow(object):
         self.confirm_shutdown = QPushButton(self.widget_18)
         self.confirm_shutdown.setObjectName(u"confirm_shutdown")
         self.confirm_shutdown.setMinimumSize(QSize(0, 52))
-        font29 = QFont()
-        font29.setFamilies([u"Kanit"])
-        font29.setPointSize(30)
-        font29.setWeight(QFont.Medium)
-        font29.setItalic(False)
-        self.confirm_shutdown.setFont(font29)
+        font32 = QFont()
+        font32.setFamilies([u"Kanit"])
+        font32.setPointSize(30)
+        font32.setWeight(QFont.Medium)
+        font32.setItalic(False)
+        self.confirm_shutdown.setFont(font32)
         self.confirm_shutdown.setStyleSheet(u"")
         icon17 = QIcon()
         icon17.addFile(u":/assets/keyboard/enter.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -2364,7 +2681,7 @@ class Ui_MainWindow(object):
         self.cancel_shutdown = QPushButton(self.widget_18)
         self.cancel_shutdown.setObjectName(u"cancel_shutdown")
         self.cancel_shutdown.setMinimumSize(QSize(0, 52))
-        self.cancel_shutdown.setFont(font29)
+        self.cancel_shutdown.setFont(font32)
         icon18 = QIcon()
         icon18.addFile(u":/assets/keyboard/cancel.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.cancel_shutdown.setIcon(icon18)
@@ -2425,7 +2742,7 @@ class Ui_MainWindow(object):
         self.camera_filter_1.toggled.connect(self.camera_filter_2.setChecked)
         self.camera_filter_2.toggled.connect(self.camera_filter_1.setChecked)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
         self.tabWidget.setCurrentIndex(0)
 
 
@@ -2493,10 +2810,13 @@ class Ui_MainWindow(object):
         self.capture_set.setText(QCoreApplication.translate("MainWindow", u" \u0e16\u0e48\u0e32\u0e22\u0e20\u0e32\u0e1e", None))
         self.save_set.setText(QCoreApplication.translate("MainWindow", u" \u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01", None))
         self.camera_settings_monitor.setText("")
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e27\u0e25\u0e32\u0e0a\u0e31\u0e15\u0e40\u0e15\u0e2d\u0e23\u0e4c", None))
+        self.camera_filter_1.setText(QCoreApplication.translate("MainWindow", u"\u0e14\u0e39\u0e41\u0e1a\u0e1a filter \u0e01\u0e48\u0e2d\u0e19 detect", None))
+        self.label_74.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e27\u0e25\u0e32\u0e0a\u0e31\u0e15\u0e40\u0e15\u0e2d\u0e23\u0e4c", None))
+        self.label_75.setText(QCoreApplication.translate("MainWindow", u"\u0e23\u0e30\u0e22\u0e30\u0e40\u0e27\u0e25\u0e32\u0e40\u0e1b\u0e34\u0e14\u0e0a\u0e31\u0e15\u0e40\u0e15\u0e2d\u0e23\u0e4c", None))
         self.exposureTime.setText(QCoreApplication.translate("MainWindow", u"100000", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"us", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e19\u0e48\u0e27\u0e07\u0e40\u0e27\u0e25\u0e32\u0e01\u0e48\u0e2d\u0e19\u0e16\u0e48\u0e32\u0e22\u0e20\u0e32\u0e1e", None))
+        self.label_76.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e19\u0e48\u0e27\u0e07\u0e40\u0e27\u0e25\u0e32\u0e01\u0e48\u0e2d\u0e19\u0e16\u0e48\u0e32\u0e22\u0e20\u0e32\u0e1e", None))
+        self.label_77.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e19\u0e48\u0e27\u0e07\u0e40\u0e27\u0e25\u0e32\u0e43\u0e2b\u0e49\u0e20\u0e32\u0e1e\u0e19\u0e34\u0e48\u0e07\u0e01\u0e48\u0e2d\u0e19\u0e16\u0e48\u0e32\u0e22", None))
         self.delayShutter.setText(QCoreApplication.translate("MainWindow", u"500", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"ms", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e27\u0e48\u0e32\u0e07", None))
@@ -2504,28 +2824,42 @@ class Ui_MainWindow(object):
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"\u0e04\u0e27\u0e32\u0e21\u0e2d\u0e34\u0e48\u0e21\u0e2a\u0e35", None))
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"Gain", None))
         self.label_13.setText(QCoreApplication.translate("MainWindow", u"\u0e04\u0e27\u0e32\u0e21\u0e04\u0e21", None))
-        self.camera_filter_1.setText(QCoreApplication.translate("MainWindow", u"\u0e14\u0e39\u0e41\u0e1a\u0e1a filter \u0e01\u0e48\u0e2d\u0e19 detect", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.camera_settings_tab), QCoreApplication.translate("MainWindow", u"\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e25\u0e49\u0e2d\u0e07", None))
         self.sys_settings_monitor.setText("")
-        self.label_16.setText(QCoreApplication.translate("MainWindow", u"\u0e08\u0e33\u0e19\u0e27\u0e19\u0e2a\u0e15\u0e34\u0e4a\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e01\u0e48\u0e2d\u0e19\u0e15\u0e23\u0e27\u0e08\u0e08\u0e31\u0e1a", None))
+        self.camera_filter_2.setText(QCoreApplication.translate("MainWindow", u" filter \u0e01\u0e48\u0e2d\u0e19 detect", None))
+        self.label_72.setText(QCoreApplication.translate("MainWindow", u"\u0e08\u0e33\u0e19\u0e27\u0e19\u0e2a\u0e15\u0e34\u0e4a\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c", None))
+        self.label_73.setText(QCoreApplication.translate("MainWindow", u"\u0e08\u0e33\u0e19\u0e27\u0e19\u0e2a\u0e15\u0e34\u0e4a\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e01\u0e48\u0e2d\u0e19\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a", None))
         self.numberStickerBeforeDetection.setText(QCoreApplication.translate("MainWindow", u"3", None))
-        self.label_17.setText(QCoreApplication.translate("MainWindow", u"\u0e41\u0e1c\u0e48\u0e19", None))
-        self.label_14.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e19\u0e48\u0e27\u0e07\u0e40\u0e27\u0e25\u0e32\u0e01\u0e48\u0e2d\u0e19\u0e23\u0e35\u0e40\u0e08\u0e04", None))
+        self.label_57.setText(QCoreApplication.translate("MainWindow", u"\u0e41\u0e1c\u0e48\u0e19", None))
+        self.label_68.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e19\u0e48\u0e27\u0e07\u0e40\u0e27\u0e25\u0e32\u0e01\u0e48\u0e2d\u0e19\u0e23\u0e35\u0e40\u0e08\u0e04", None))
+        self.label_69.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e19\u0e48\u0e27\u0e07\u0e40\u0e27\u0e25\u0e32\u0e01\u0e48\u0e2d\u0e19\u0e40\u0e1b\u0e34\u0e14\u0e01\u0e23\u0e30\u0e1a\u0e2d\u0e01\u0e25\u0e21", None))
         self.delayBeforeReject.setText(QCoreApplication.translate("MainWindow", u"200", None))
-        self.label_15.setText(QCoreApplication.translate("MainWindow", u"ms", None))
-        self.label_18.setText(QCoreApplication.translate("MainWindow", u"\u0e23\u0e30\u0e22\u0e30\u0e40\u0e27\u0e25\u0e32\u0e23\u0e35\u0e40\u0e08\u0e04", None))
+        self.label_51.setText(QCoreApplication.translate("MainWindow", u"ms", None))
+        self.label_66.setText(QCoreApplication.translate("MainWindow", u"\u0e23\u0e30\u0e22\u0e30\u0e40\u0e27\u0e25\u0e32\u0e23\u0e35\u0e40\u0e08\u0e04", None))
+        self.label_67.setText(QCoreApplication.translate("MainWindow", u"\u0e23\u0e30\u0e22\u0e30\u0e40\u0e27\u0e25\u0e32\u0e40\u0e1b\u0e34\u0e14\u0e01\u0e23\u0e30\u0e1a\u0e2d\u0e01\u0e25\u0e21", None))
         self.rejectionPeriod.setText(QCoreApplication.translate("MainWindow", u"1000", None))
-        self.label_19.setText(QCoreApplication.translate("MainWindow", u"ms", None))
-        self.label_30.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e1f\u0e23\u0e21\u0e40\u0e23\u0e17", None))
+        self.label_53.setText(QCoreApplication.translate("MainWindow", u"ms", None))
+        self.label_64.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e1f\u0e23\u0e21\u0e40\u0e23\u0e17", None))
+        self.label_65.setText(QCoreApplication.translate("MainWindow", u"\u0e2d\u0e31\u0e15\u0e23\u0e32\u0e40\u0e1f\u0e21\u0e40\u0e23\u0e17", None))
         self.frameRate.setText(QCoreApplication.translate("MainWindow", u"25", None))
-        self.label_33.setText(QCoreApplication.translate("MainWindow", u"fps", None))
-        self.label_22.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e21\u0e38\u0e19\u0e20\u0e32\u0e1e\u0e01\u0e48\u0e2d\u0e19\u0e15\u0e23\u0e27\u0e08\u0e08\u0e31\u0e1a", None))
+        self.label_49.setText(QCoreApplication.translate("MainWindow", u"fps", None))
+        self.label_62.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e21\u0e38\u0e19\u0e20\u0e32\u0e1e", None))
+        self.label_63.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e21\u0e38\u0e19\u0e20\u0e32\u0e1e\u0e01\u0e48\u0e2d\u0e19\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a", None))
         self.rotateImage.setText(QCoreApplication.translate("MainWindow", u"0", None))
-        self.label_23.setText(QCoreApplication.translate("MainWindow", u"\u0e2d\u0e07\u0e28\u0e32", None))
-        self.label_20.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e1b\u0e2d\u0e23\u0e4c\u0e40\u0e0b\u0e47\u0e19\u0e15\u0e4c\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a", None))
+        self.label_59.setText(QCoreApplication.translate("MainWindow", u"\u0e2d\u0e07\u0e28\u0e32", None))
+        self.label_60.setText(QCoreApplication.translate("MainWindow", u"\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a", None))
+        self.label_61.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e1b\u0e2d\u0e23\u0e4c\u0e40\u0e0b\u0e47\u0e19\u0e15\u0e4c\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a", None))
         self.detectionPercentage.setText(QCoreApplication.translate("MainWindow", u"10", None))
-        self.label_21.setText(QCoreApplication.translate("MainWindow", u"%", None))
-        self.camera_filter_2.setText(QCoreApplication.translate("MainWindow", u"\u0e14\u0e39\u0e41\u0e1a\u0e1a filter \u0e01\u0e48\u0e2d\u0e19 detect", None))
+        self.label_55.setText(QCoreApplication.translate("MainWindow", u"%", None))
+        self.label_48.setText(QCoreApplication.translate("MainWindow", u"\u0e1b\u0e23\u0e31\u0e1a\u0e40\u0e2a\u0e01\u0e25", None))
+        self.label_47.setText(QCoreApplication.translate("MainWindow", u"\u0e1b\u0e23\u0e31\u0e1a\u0e40\u0e2a\u0e01\u0e25\u0e20\u0e32\u0e1e\u0e01\u0e48\u0e2d\u0e19\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a", None))
+        self.detection_resize_percent.setText(QCoreApplication.translate("MainWindow", u"10", None))
+        self.label_46.setText(QCoreApplication.translate("MainWindow", u"%", None))
+        self.label_50.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a", None))
+        self.label_52.setText(QCoreApplication.translate("MainWindow", u"[easyocr \u0e0a\u0e49\u0e32,\u0e41\u0e21\u0e48\u0e19\u0e22\u0e33], [tesseract \u0e40\u0e23\u0e47\u0e27]", None))
+        self.ocr_engine.setItemText(0, QCoreApplication.translate("MainWindow", u"easyocr", None))
+        self.ocr_engine.setItemText(1, QCoreApplication.translate("MainWindow", u"tesseract", None))
+
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.sys_settings_tab), QCoreApplication.translate("MainWindow", u"\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e23\u0e30\u0e1a\u0e1a", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e19 \u0e17\u0e23\u0e34\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c \u0e01\u0e25\u0e49\u0e2d\u0e07", None))
         self.cameraTriggerSignal.setText("")
@@ -2545,6 +2879,7 @@ class Ui_MainWindow(object):
         self.label_43.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.io_test), QCoreApplication.translate("MainWindow", u"\u0e2e\u0e32\u0e23\u0e4c\u0e14\u0e41\u0e27\u0e23\u0e4c", None))
         self.label_32.setText("")
+        self.label_36.setText("")
         self.label_31.setText("")
         self.label_34.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.credit_tab), QCoreApplication.translate("MainWindow", u"Credit", None))
