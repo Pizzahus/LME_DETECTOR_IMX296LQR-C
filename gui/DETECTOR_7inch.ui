@@ -59,7 +59,7 @@ QPushButton:checked {
 	font-weight: bold;
 }</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_15">
+      <layout class="QVBoxLayout" name="verticalLayout_13">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <property name="topMargin">
@@ -215,7 +215,38 @@ QPushButton:checked {
         </spacer>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_40">
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QPushButton" name="exit_program_2">
+           <property name="font">
+            <font>
+             <family>Kanit</family>
+             <pointsize>-1</pointsize>
+             <strikeout>false</strikeout>
+             <kerning>true</kerning>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/assets/icon/exit.png</normaloff>:/assets/icon/exit.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="shortcut">
+            <string notr="true">Ctrl+S</string>
+           </property>
+          </widget>
+         </item>
          <item>
           <widget class="QPushButton" name="restart_program_2">
            <property name="font">
@@ -320,13 +351,7 @@ QPushButton:checked {
 	font-weight: bold;
 }</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_13">
-       <property name="leftMargin">
-        <number>8</number>
-       </property>
-       <property name="topMargin">
-        <number>9</number>
-       </property>
+      <layout class="QVBoxLayout" name="verticalLayout_15">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <property name="topMargin">
@@ -432,7 +457,7 @@ QPushButton:checked {
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
-            <string> แม่แบบ</string>
+            <string>  แม่แบบ</string>
            </property>
            <property name="icon">
             <iconset resource="resource.qrc">
@@ -464,7 +489,7 @@ QPushButton:checked {
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
-            <string> ตั้งค่า</string>
+            <string>  ตั้งค่า</string>
            </property>
            <property name="icon">
             <iconset resource="resource.qrc">
@@ -500,7 +525,38 @@ QPushButton:checked {
         </spacer>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QPushButton" name="exit_program_1">
+           <property name="font">
+            <font>
+             <family>Kanit</family>
+             <pointsize>-1</pointsize>
+             <strikeout>false</strikeout>
+             <kerning>true</kerning>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>  ปิดโปรแกรม</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/assets/icon/exit.png</normaloff>:/assets/icon/exit.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="shortcut">
+            <string notr="true">Ctrl+S</string>
+           </property>
+          </widget>
+         </item>
          <item>
           <widget class="QPushButton" name="restart_program_1">
            <property name="font">
@@ -848,7 +904,7 @@ QTabWidget::tab-bar {
 </string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="process_page">
           <layout class="QHBoxLayout" name="horizontalLayout_61">

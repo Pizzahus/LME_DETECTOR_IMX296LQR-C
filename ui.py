@@ -5,6 +5,7 @@ import re
 from picamera2 import Picamera2
 import queue
 import numpy as np
+import cv2
 
 from src.ui_DETECTOR_7inch import Ui_MainWindow
 from PySide6.QtWidgets import (
@@ -95,7 +96,6 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
         # =====  rectangle ===== 
         _rectangle = self.config.get_rectangle()
-        self.rectangle_margin = 5
         self.rectangle = Rectangle(self.lme_settings_monitor)
         self.rectangle.set_rectangle_from_image_coords(_rectangle)
         self.rectangle.show()  # ต้องเรียก show() เพื่อแสดงวิดเจ็ต
@@ -444,6 +444,8 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.shutdown_2.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.shutdown_page))
 
         self.start.clicked.connect(self.startDetection)
+        self.exit_program_1.clicked.connect(self.exitProgram)
+        self.exit_program_2.clicked.connect(self.exitProgram)
         self.restart_program_1.clicked.connect(self.restart)
         self.restart_program_2.clicked.connect(self.restart)
         self.cancel_shutdown.clicked.connect(lambda: self.shutdownHandler(False))
@@ -550,10 +552,9 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         Y1 = self.camera.rectangle.Y1
         X2 = self.camera.rectangle.X2
         Y2 = self.camera.rectangle.Y2
-        MARGIN = self.rectangle_margin
 
-        frame = self.camera.captured()
-        self.cropped_frame = frame[Y1-MARGIN:Y2-MARGIN, X1-MARGIN:X2-MARGIN]
+        frame = self.camera.captured(showRect=False)
+        self.cropped_frame = frame[Y1:Y2, X1:X2]
         original_image, processed_image, preprocessed_image, text, processing_time = self.ocr_worker.detect_and_recognize_text(self.cropped_frame)
         print("(Camera detected a message)=> ")
         print(f"Processing in: {processing_time:.4f}s")
@@ -604,10 +605,9 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         Y1 = self.camera.rectangle.Y1
         X2 = self.camera.rectangle.X2
         Y2 = self.camera.rectangle.Y2
-        MARGIN = self.rectangle_margin
 
-        frame = self.camera.captured()
-        self.cropped_frame = frame[Y1-MARGIN:Y2-MARGIN, X1-MARGIN:X2-MARGIN]
+        frame = self.camera.captured(showRect=False)
+        self.cropped_frame = frame[Y1:Y2, X1:X2]
         original_image, processed_image, preprocessed_image, text, processing_time = self.ocr_worker.detect_and_recognize_text(self.cropped_frame)
         print("(Camera detected a message)=> ")
         print(f"Processing in: {processing_time:.4f}s")
@@ -618,7 +618,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         statusCheck = self._parse_lme(text, lmf_label)
         self._update_ui_detection(statusCheck, isTesting=True)
 
-    # ===== ตรวจจับการพิมพ์ ===== 
+    # ===== 1.เริ่มตรวจจับการพิมพ์ ===== 
     def _detection(self, triggered=True):
         isRunning = self.start.isChecked()
         if triggered and isRunning:
@@ -629,11 +629,11 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
                 Qt.QueuedConnection
             )
 
-    @Slot()
+    @Slot() # ===== 2.หน่วงเวลาตรวจจับการพิมพ์ ===== 
     def _delayed_detection(self):
         QTimer.singleShot(int(self.capturedSensorDelay), self._perform_detection)
 
-
+    # ===== 3.ตรวจจับการพิมพ์ ===== 
     def _perform_detection(self):
         # self.buzzer.blink(0.1, 0.1, 1, True)  # ถ้าต้องการให้ทำงานหลัง delay
 
@@ -641,15 +641,16 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         Y1 = self.camera.rectangle.Y1
         X2 = self.camera.rectangle.X2
         Y2 = self.camera.rectangle.Y2
-        MARGIN = self.rectangle_margin
 
-        frame = self.camera.captured()
-        q_img = QPixmapUtil.from_cvimg(frame)
-        self.monitor.setPixmap(q_img)
+        frame = self.camera.captured(showRect=False)
 
-        self.cropped_frame = frame[Y1-MARGIN:Y2-MARGIN, X1-MARGIN:X2-MARGIN]
+        self.cropped_frame = frame[Y1:Y2, X1:X2]
         self.task_queue.put(self.cropped_frame)  # version 1 แบบ Queue + QThread
         # self.ocr.run_ocr(self.cropped_frame)  # version 2 แบบ ThreadPoolExecutor
+
+        cv2.rectangle(frame, (X1, Y1), (X2, Y2), (255, 0, 0), 2)
+        q_img = QPixmapUtil.from_cvimg(frame)
+        self.monitor.setPixmap(q_img)
 
     # ===== ตรวจสอบความถูกต้อง Lot / MFG / EXP =====
     def _parse_lme(self, text: str, lmf_label: list[QLabel]):
@@ -754,10 +755,19 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.count_ng.setText(str(self.countNG))
         self.count_total.setText(str(self.countTotal))
         self.config.reset_counters()
+
+        # รีสตาร์ทโปรแกรม
+    
+    # ปิดโปรแกรม
+    def exitProgram(self):
+        """ปิดโปรแกรม"""
+        self.close()  # cleanup ก่อนรีสตาร์ท
         
     # รีสตาร์ทโปรแกรม
     def restart(self):
         """รีสตาร์ทโปรแกรม"""
+        self.close()  # cleanup ก่อนรีสตาร์ท
+
         QApplication.quit() # ปิดโปรแกรมเก่า
         # เปิดโปรแกรมใหม่เป็น process ใหม่
         python = sys.executable

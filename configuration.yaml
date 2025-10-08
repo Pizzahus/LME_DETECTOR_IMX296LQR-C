@@ -3,25 +3,25 @@ sofware:
   version: 1.0
   debug: false
 template:
-  lot: '51621'
-  mfg: 06/09/25
-  exp: 06/09/27
+  lot: '51251'
+  mfg: 19/09/25
+  exp: 19/09/28
 system:
   delayShutter: 20
   delayBeforeReject: 500
   rejectionPeriod: 100
   numberStickerBeforeDetection: 4
-  rotateImage: 90
-  detectionPercentage: 5
+  rotateImage: 0
+  detectionPercentage: 0
   saveImage: false
 hardware:
   camera:
-    ExposureTime: 10000
-    AnalogueGain: 1.68
-    Brightness: 0.32
-    Contrast: 2.3000000000000003
-    Saturation: 1.0
-    Sharpness: 4.03
+    ExposureTime: 27000
+    AnalogueGain: 2.93
+    Brightness: -0.3
+    Contrast: 1.0
+    Saturation: 2.6
+    Sharpness: 8.0
     FrameRate: 25
   gpio:
     LED0: 20
@@ -34,10 +34,10 @@ hardware:
     L0: 12
     L1: 23
   rectangle:
-    x1: 551
-    x2: 867
-    y1: 248
-    y2: 573
+    x1: 260
+    x2: 748
+    y1: 174
+    y2: 517
 counters:
   ok: 0
   ng: 0

@@ -59,8 +59,8 @@ class Ui_MainWindow(object):
 "	color: rgb(0, 150, 255);\n"
 "	font-weight: bold;\n"
 "}")
-        self.verticalLayout_15 = QVBoxLayout(self.hide_sidebar)
-        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.verticalLayout_13 = QVBoxLayout(self.hide_sidebar)
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(-1, 0, -1, -1)
@@ -74,7 +74,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.profile_img2)
 
 
-        self.verticalLayout_15.addLayout(self.horizontalLayout_3)
+        self.verticalLayout_13.addLayout(self.horizontalLayout_3)
 
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -127,48 +127,62 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.sys_setting_1)
 
 
-        self.verticalLayout_15.addLayout(self.verticalLayout_2)
+        self.verticalLayout_13.addLayout(self.verticalLayout_2)
 
         self.verticalSpacer = QSpacerItem(20, 297, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.verticalLayout_15.addItem(self.verticalSpacer)
+        self.verticalLayout_13.addItem(self.verticalSpacer)
 
-        self.verticalLayout_40 = QVBoxLayout()
-        self.verticalLayout_40.setObjectName(u"verticalLayout_40")
-        self.restart_program_2 = QPushButton(self.hide_sidebar)
-        self.restart_program_2.setObjectName(u"restart_program_2")
+        self.verticalLayout_4 = QVBoxLayout()
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.exit_program_2 = QPushButton(self.hide_sidebar)
+        self.exit_program_2.setObjectName(u"exit_program_2")
         font1 = QFont()
         font1.setFamilies([u"Kanit"])
         font1.setStrikeOut(False)
         font1.setKerning(True)
+        self.exit_program_2.setFont(font1)
+        self.exit_program_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        icon3 = QIcon()
+        icon3.addFile(u":/assets/icon/exit.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.exit_program_2.setIcon(icon3)
+        self.exit_program_2.setIconSize(QSize(40, 40))
+#if QT_CONFIG(shortcut)
+        self.exit_program_2.setShortcut(u"Ctrl+S")
+#endif // QT_CONFIG(shortcut)
+
+        self.verticalLayout_4.addWidget(self.exit_program_2)
+
+        self.restart_program_2 = QPushButton(self.hide_sidebar)
+        self.restart_program_2.setObjectName(u"restart_program_2")
         self.restart_program_2.setFont(font1)
         self.restart_program_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        icon3 = QIcon()
-        icon3.addFile(u":/assets/icon/restart.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.restart_program_2.setIcon(icon3)
+        icon4 = QIcon()
+        icon4.addFile(u":/assets/icon/restart.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.restart_program_2.setIcon(icon4)
         self.restart_program_2.setIconSize(QSize(40, 40))
 #if QT_CONFIG(shortcut)
         self.restart_program_2.setShortcut(u"Ctrl+S")
 #endif // QT_CONFIG(shortcut)
 
-        self.verticalLayout_40.addWidget(self.restart_program_2)
+        self.verticalLayout_4.addWidget(self.restart_program_2)
 
         self.shutdown_2 = QPushButton(self.hide_sidebar)
         self.shutdown_2.setObjectName(u"shutdown_2")
         self.shutdown_2.setFont(font1)
         self.shutdown_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        icon4 = QIcon()
-        icon4.addFile(u":/assets/icon/shutdown1.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.shutdown_2.setIcon(icon4)
+        icon5 = QIcon()
+        icon5.addFile(u":/assets/icon/shutdown1.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.shutdown_2.setIcon(icon5)
         self.shutdown_2.setIconSize(QSize(40, 40))
 #if QT_CONFIG(shortcut)
         self.shutdown_2.setShortcut(u"Ctrl+S")
 #endif // QT_CONFIG(shortcut)
 
-        self.verticalLayout_40.addWidget(self.shutdown_2)
+        self.verticalLayout_4.addWidget(self.shutdown_2)
 
 
-        self.verticalLayout_15.addLayout(self.verticalLayout_40)
+        self.verticalLayout_13.addLayout(self.verticalLayout_4)
 
 
         self.horizontalLayout_12.addWidget(self.hide_sidebar)
@@ -202,9 +216,8 @@ class Ui_MainWindow(object):
 "	color: rgb(0, 150, 255);\n"
 "	font-weight: bold;\n"
 "}")
-        self.verticalLayout_13 = QVBoxLayout(self.show_sidebar)
-        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.verticalLayout_13.setContentsMargins(8, 9, -1, -1)
+        self.verticalLayout_15 = QVBoxLayout(self.show_sidebar)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.horizontalLayout_2.setContentsMargins(-1, 0, 0, -1)
@@ -229,7 +242,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.label_3)
 
 
-        self.verticalLayout_13.addLayout(self.horizontalLayout_2)
+        self.verticalLayout_15.addLayout(self.horizontalLayout_2)
 
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -274,40 +287,52 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.sys_setting_2)
 
 
-        self.verticalLayout_13.addLayout(self.verticalLayout)
+        self.verticalLayout_15.addLayout(self.verticalLayout)
 
         self.verticalSpacer_2 = QSpacerItem(20, 297, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.verticalLayout_13.addItem(self.verticalSpacer_2)
+        self.verticalLayout_15.addItem(self.verticalSpacer_2)
 
-        self.verticalLayout_4 = QVBoxLayout()
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_3 = QVBoxLayout()
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.exit_program_1 = QPushButton(self.show_sidebar)
+        self.exit_program_1.setObjectName(u"exit_program_1")
+        self.exit_program_1.setFont(font1)
+        self.exit_program_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.exit_program_1.setIcon(icon3)
+        self.exit_program_1.setIconSize(QSize(40, 40))
+#if QT_CONFIG(shortcut)
+        self.exit_program_1.setShortcut(u"Ctrl+S")
+#endif // QT_CONFIG(shortcut)
+
+        self.verticalLayout_3.addWidget(self.exit_program_1)
+
         self.restart_program_1 = QPushButton(self.show_sidebar)
         self.restart_program_1.setObjectName(u"restart_program_1")
         self.restart_program_1.setFont(font1)
         self.restart_program_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.restart_program_1.setIcon(icon3)
+        self.restart_program_1.setIcon(icon4)
         self.restart_program_1.setIconSize(QSize(40, 40))
 #if QT_CONFIG(shortcut)
         self.restart_program_1.setShortcut(u"Ctrl+S")
 #endif // QT_CONFIG(shortcut)
 
-        self.verticalLayout_4.addWidget(self.restart_program_1)
+        self.verticalLayout_3.addWidget(self.restart_program_1)
 
         self.shutdown_1 = QPushButton(self.show_sidebar)
         self.shutdown_1.setObjectName(u"shutdown_1")
         self.shutdown_1.setFont(font1)
         self.shutdown_1.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.shutdown_1.setIcon(icon4)
+        self.shutdown_1.setIcon(icon5)
         self.shutdown_1.setIconSize(QSize(40, 40))
 #if QT_CONFIG(shortcut)
         self.shutdown_1.setShortcut(u"Ctrl+S")
 #endif // QT_CONFIG(shortcut)
 
-        self.verticalLayout_4.addWidget(self.shutdown_1)
+        self.verticalLayout_3.addWidget(self.shutdown_1)
 
 
-        self.verticalLayout_13.addLayout(self.verticalLayout_4)
+        self.verticalLayout_15.addLayout(self.verticalLayout_3)
 
 
         self.horizontalLayout_12.addWidget(self.show_sidebar)
@@ -342,10 +367,10 @@ class Ui_MainWindow(object):
         font6.setPointSize(9)
         self.menu.setFont(font6)
         self.menu.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        icon5 = QIcon()
-        icon5.addFile(u":/assets/icon/menu.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        icon5.addFile(u":/assets/icon/menu_open.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
-        self.menu.setIcon(icon5)
+        icon6 = QIcon()
+        icon6.addFile(u":/assets/icon/menu.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon6.addFile(u":/assets/icon/menu_open.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
+        self.menu.setIcon(icon6)
         self.menu.setIconSize(QSize(50, 50))
         self.menu.setCheckable(True)
         self.menu.setChecked(False)
@@ -753,9 +778,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background-color: rgb(100, 100, 100);\n"
 "}")
-        icon6 = QIcon()
-        icon6.addFile(u":/assets/icon/reset.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.count_reset.setIcon(icon6)
+        icon7 = QIcon()
+        icon7.addFile(u":/assets/icon/reset.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.count_reset.setIcon(icon7)
         self.count_reset.setIconSize(QSize(30, 30))
 
         self.horizontalLayout_21.addWidget(self.count_reset)
@@ -897,9 +922,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background-color: rgb(100, 100, 100);\n"
 "}")
-        icon7 = QIcon()
-        icon7.addFile(u":/assets/icon/camera.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.capture_test.setIcon(icon7)
+        icon8 = QIcon()
+        icon8.addFile(u":/assets/icon/camera.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.capture_test.setIcon(icon8)
         self.capture_test.setIconSize(QSize(30, 30))
 
         self.horizontalLayout_7.addWidget(self.capture_test)
@@ -927,9 +952,9 @@ class Ui_MainWindow(object):
 "	background-color: rgb(200, 0, 0);\n"
 "	color: white;\n"
 "}")
-        icon8 = QIcon()
-        icon8.addFile(u":/assets/keyboard/record.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.start.setIcon(icon8)
+        icon9 = QIcon()
+        icon9.addFile(u":/assets/keyboard/record.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.start.setIcon(icon9)
         self.start.setIconSize(QSize(25, 25))
         self.start.setCheckable(True)
         self.start.setChecked(False)
@@ -1140,9 +1165,9 @@ class Ui_MainWindow(object):
 "QPushButton:checked {\n"
 "	background-color: rgb(50, 50, 50);\n"
 "}")
-        icon9 = QIcon()
-        icon9.addFile(u":/assets/icon/save-images.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.save_images_detection.setIcon(icon9)
+        icon10 = QIcon()
+        icon10.addFile(u":/assets/icon/save-images.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.save_images_detection.setIcon(icon10)
         self.save_images_detection.setIconSize(QSize(35, 35))
         self.save_images_detection.setCheckable(True)
 
@@ -1170,7 +1195,7 @@ class Ui_MainWindow(object):
         self.capture_set.setMaximumSize(QSize(16777215, 45))
         self.capture_set.setFont(font19)
         self.capture_set.setStyleSheet(u"")
-        self.capture_set.setIcon(icon7)
+        self.capture_set.setIcon(icon8)
         self.capture_set.setIconSize(QSize(40, 40))
 
         self.horizontalLayout_5.addWidget(self.capture_set)
@@ -1181,9 +1206,9 @@ class Ui_MainWindow(object):
         self.save_set.setMaximumSize(QSize(16777215, 45))
         self.save_set.setFont(font19)
         self.save_set.setStyleSheet(u"")
-        icon10 = QIcon()
-        icon10.addFile(u":/assets/icon/save.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.save_set.setIcon(icon10)
+        icon11 = QIcon()
+        icon11.addFile(u":/assets/icon/save.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.save_set.setIcon(icon11)
         self.save_set.setIconSize(QSize(30, 30))
 
         self.horizontalLayout_5.addWidget(self.save_set)
@@ -1517,9 +1542,9 @@ class Ui_MainWindow(object):
 "	background-color: rgb(60, 60, 60);\n"
 "	color: white;\n"
 "}")
-        icon11 = QIcon()
-        icon11.addFile(u":/assets/icon/effect.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.camera_filter_1.setIcon(icon11)
+        icon12 = QIcon()
+        icon12.addFile(u":/assets/icon/effect.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.camera_filter_1.setIcon(icon12)
         self.camera_filter_1.setIconSize(QSize(30, 30))
         self.camera_filter_1.setCheckable(True)
 
@@ -1531,9 +1556,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_24.addWidget(self.frame_15)
 
-        icon12 = QIcon()
-        icon12.addFile(u":/assets/icon/camera.png", QSize(), QIcon.Mode.Active, QIcon.State.On)
-        self.tabWidget.addTab(self.camera_settings_tab, icon12, "")
+        icon13 = QIcon()
+        icon13.addFile(u":/assets/icon/camera.png", QSize(), QIcon.Mode.Active, QIcon.State.On)
+        self.tabWidget.addTab(self.camera_settings_tab, icon13, "")
         self.sys_settings_tab = QWidget()
         self.sys_settings_tab.setObjectName(u"sys_settings_tab")
         self.horizontalLayout_27 = QHBoxLayout(self.sys_settings_tab)
@@ -1891,7 +1916,7 @@ class Ui_MainWindow(object):
 "	background-color: rgb(60, 60, 60);\n"
 "	color: white;\n"
 "}")
-        self.camera_filter_2.setIcon(icon11)
+        self.camera_filter_2.setIcon(icon12)
         self.camera_filter_2.setIconSize(QSize(30, 30))
         self.camera_filter_2.setCheckable(True)
 
@@ -1903,9 +1928,9 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_27.addWidget(self.frame_16)
 
-        icon13 = QIcon()
-        icon13.addFile(u":/assets/icon/settings.png", QSize(), QIcon.Mode.Active, QIcon.State.On)
-        self.tabWidget.addTab(self.sys_settings_tab, icon13, "")
+        icon14 = QIcon()
+        icon14.addFile(u":/assets/icon/settings.png", QSize(), QIcon.Mode.Active, QIcon.State.On)
+        self.tabWidget.addTab(self.sys_settings_tab, icon14, "")
         self.io_test = QWidget()
         self.io_test.setObjectName(u"io_test")
         self.verticalLayout_28 = QVBoxLayout(self.io_test)
@@ -2050,7 +2075,7 @@ class Ui_MainWindow(object):
 "	background-color: rgb(60, 60, 60);\n"
 "	color: white;\n"
 "}")
-        self.testReject.setIcon(icon11)
+        self.testReject.setIcon(icon12)
         self.testReject.setIconSize(QSize(30, 30))
         self.testReject.setCheckable(True)
 
@@ -2185,9 +2210,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_28.addWidget(self.frame_3)
 
-        icon14 = QIcon()
-        icon14.addFile(u":/assets/icon/characteristics.png", QSize(), QIcon.Mode.Active, QIcon.State.On)
-        self.tabWidget.addTab(self.io_test, icon14, "")
+        icon15 = QIcon()
+        icon15.addFile(u":/assets/icon/characteristics.png", QSize(), QIcon.Mode.Active, QIcon.State.On)
+        self.tabWidget.addTab(self.io_test, icon15, "")
         self.credit_tab = QWidget()
         self.credit_tab.setObjectName(u"credit_tab")
         self.credit_tab.setStyleSheet(u"QFrame {\n"
@@ -2255,9 +2280,9 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.frame_6, 1, 1, 1, 1)
 
-        icon15 = QIcon()
-        icon15.addFile(u":/assets/icon/info.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.tabWidget.addTab(self.credit_tab, icon15, "")
+        icon16 = QIcon()
+        icon16.addFile(u":/assets/icon/info.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.tabWidget.addTab(self.credit_tab, icon16, "")
 
         self.horizontalLayout_24.addWidget(self.tabWidget)
 
@@ -2329,9 +2354,9 @@ class Ui_MainWindow(object):
         font29.setItalic(False)
         self.confirm_shutdown.setFont(font29)
         self.confirm_shutdown.setStyleSheet(u"")
-        icon16 = QIcon()
-        icon16.addFile(u":/assets/keyboard/enter.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.confirm_shutdown.setIcon(icon16)
+        icon17 = QIcon()
+        icon17.addFile(u":/assets/keyboard/enter.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.confirm_shutdown.setIcon(icon17)
         self.confirm_shutdown.setIconSize(QSize(50, 50))
 
         self.horizontalLayout_92.addWidget(self.confirm_shutdown)
@@ -2340,9 +2365,9 @@ class Ui_MainWindow(object):
         self.cancel_shutdown.setObjectName(u"cancel_shutdown")
         self.cancel_shutdown.setMinimumSize(QSize(0, 52))
         self.cancel_shutdown.setFont(font29)
-        icon17 = QIcon()
-        icon17.addFile(u":/assets/keyboard/cancel.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.cancel_shutdown.setIcon(icon17)
+        icon18 = QIcon()
+        icon18.addFile(u":/assets/keyboard/cancel.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.cancel_shutdown.setIcon(icon18)
         self.cancel_shutdown.setIconSize(QSize(50, 50))
 
         self.horizontalLayout_92.addWidget(self.cancel_shutdown)
@@ -2400,7 +2425,7 @@ class Ui_MainWindow(object):
         self.camera_filter_1.toggled.connect(self.camera_filter_2.setChecked)
         self.camera_filter_2.toggled.connect(self.camera_filter_1.setChecked)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
 
 
@@ -2413,13 +2438,15 @@ class Ui_MainWindow(object):
         self.home_2.setText("")
         self.lme_setting_2.setText("")
         self.sys_setting_1.setText("")
+        self.exit_program_2.setText("")
         self.restart_program_2.setText("")
         self.shutdown_2.setText("")
         self.profile_img1.setText("")
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"DETECTOR", None))
         self.home_1.setText(QCoreApplication.translate("MainWindow", u"  \u0e2b\u0e19\u0e49\u0e32\u0e2b\u0e25\u0e31\u0e01", None))
-        self.lme_setting_1.setText(QCoreApplication.translate("MainWindow", u" \u0e41\u0e21\u0e48\u0e41\u0e1a\u0e1a", None))
-        self.sys_setting_2.setText(QCoreApplication.translate("MainWindow", u" \u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32", None))
+        self.lme_setting_1.setText(QCoreApplication.translate("MainWindow", u"  \u0e41\u0e21\u0e48\u0e41\u0e1a\u0e1a", None))
+        self.sys_setting_2.setText(QCoreApplication.translate("MainWindow", u"  \u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32", None))
+        self.exit_program_1.setText(QCoreApplication.translate("MainWindow", u"  \u0e1b\u0e34\u0e14\u0e42\u0e1b\u0e23\u0e41\u0e01\u0e23\u0e21", None))
         self.restart_program_1.setText(QCoreApplication.translate("MainWindow", u"  \u0e23\u0e35\u0e2a\u0e15\u0e32\u0e23\u0e4c\u0e17", None))
         self.shutdown_1.setText(QCoreApplication.translate("MainWindow", u"  \u0e1b\u0e34\u0e14\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07", None))
         self.menu.setText("")

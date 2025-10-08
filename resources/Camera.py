@@ -6,6 +6,7 @@ from PySide6.QtCore import QThread
 from PySide6.QtWidgets import QLabel
 from resources.ConfigManager import RectangleSettings
 from resources.QPixmapUtil import QPixmapUtil
+from resources.FramePreprocessor import FramePreprocessor
 
 
 class CameraView(QThread):
@@ -17,6 +18,8 @@ class CameraView(QThread):
         self.isLiveView = True
         self.isShowRect = False
         self.filtered = False
+
+        self.preprocessor = FramePreprocessor()
 
         config = self.camera.create_still_configuration(
             main={"size": (1024, 768)},
@@ -93,11 +96,11 @@ class CameraView(QThread):
         self.isLiveView = value
 
     # ---------- จับภาพ ----------
-    def captured(self):
+    def captured(self, showRect: bool = True):
         X1, Y1, X2, Y2 = self.rectangle.X1, self.rectangle.Y1, self.rectangle.X2, self.rectangle.Y2
         frame = self.camera.capture_array()
 
-        if self.isShowRect:
+        if self.isShowRect and showRect:
             cv2.rectangle(frame, (X1, Y1), (X2, Y2), (255, 0, 0), 2)
 
         frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
@@ -113,9 +116,8 @@ class CameraView(QThread):
                     frame = self.captured()
                     # แปลงเป็น grayscale และทำ preprocessing
                     if self.filtered:
-                        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-                        # frame = cv2.GaussianBlur(frame, (5, 5), 0)
-                        frame = cv2.threshold(frame, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
+                        frame = self.preprocessor.process(frame)
+
 
                     q_img = QPixmapUtil.from_cvimg(frame)
                     self.monitor.setPixmap(q_img)
