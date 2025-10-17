@@ -45,6 +45,9 @@ os.environ["QT_IM_MODULE"] = "qtvirtualkeyboard"
 os.environ["QT_QPA_PLATFORM"] = "xcb"
 qml_path = os.path.join(os.path.dirname(__file__), "keyboard.qml")
 
+# กำหนด path ไปยังโฟลเดอร์ tessdata
+tessseract_model_path = "/usr/share/tesseract-ocr/5/tessdata"
+
 # Override QTabBar
 class FlatTabStyle(QProxyStyle):
     def drawControl(self, element, option, painter, widget=None):
@@ -67,6 +70,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.currentPage = self.process_page
         self.stackedWidget.setCurrentWidget(self.currentPage)
         self._addEventListener()
+        self._getTesseractModel()
 
         # อ่านข้อมูลการตั้งค่าจากไฟล์ yml
         self.config = ConfigManager()
@@ -77,6 +81,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         # ===== ข้อมูลการตั้งค่า pins input, output =====
         self.systemSettings = self.config.get_system_settings() 
         self.cameraSettings = self.config.get_camera_settings() 
+        self.preprocessSteps = self.config.get_preprocessing_steps() 
 
         # =====  lot,mfg,exp template ===== 
         template = self.config.get_template()
@@ -156,6 +161,39 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.sysMonitorTimer = QTimer()
         self.sysMonitorTimer.timeout.connect(self.systemMonitor)
 
+    # ===== สร้างรายการโมเดล tesseract =====
+    def _getTesseractModel(self):
+        # ตรวจสอบว่าโฟลเดอร์มีอยู่จริง
+        if os.path.exists(tessseract_model_path):
+            # ดึงรายการไฟล์ทั้งหมดในโฟลเดอร์
+            files = os.listdir(tessseract_model_path)
+            
+            # กรองเฉพาะไฟล์ .traineddata
+            model_files = [f for f in files if f.endswith('.traineddata')]
+            
+            # ลบส่วนขื่อ .traineddata ออกเพื่อให้ได้ชื่อโมเดล
+            models = [os.path.splitext(f)[0] for f in model_files]
+            
+            # เรียงลำดับชื่อโมเดล
+            models.sort()
+            
+            # ล้างรายการเดิมใน ComboBox (ถ้ามี)
+            self.tesseract_model.clear()
+            
+            # เพิ่มรายการโมเดลลงใน ComboBox
+            print("Tesseract model lists: ")
+            for i, model_name in enumerate(models):
+                self.tesseract_model.addItem(model_name)
+                print(model_name)
+                # หากต้องการแสดงชื่อที่แปลแล้ว สามารถใช้ QCoreApplication.translate
+                # self.tesseract_model.setItemText(i, QCoreApplication.translate("MainWindow", model_name, None))
+                
+            # ตั้งค่าโมเดลแรกเป็นค่าเริ่มต้น (optional)
+            if models:
+                self.tesseract_model.setCurrentIndex(0)
+        else:
+            print("Tessdata path not found!")
+
     # ===== system mointor =====
     def systemMonitor(self):
         info = self.sysMonitor.get_all_info()
@@ -216,9 +254,20 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
 
         sys_cf = self.systemSettings
         cam_cf = self.cameraSettings
+        pre_img_cf = self.preprocessSteps
 
+        # ตั้งค่า model
         self.ocr_worker.set_engine(sys_cf.ocrEngine)
         self.ocr_engine.setCurrentText(sys_cf.ocrEngine)
+        self.ocr_worker.set_tesseract_model(sys_cf.tesseractModel)
+        self.tesseract_model.setCurrentText(sys_cf.tesseractModel)
+
+        # ตั้งค่า preprocessing steps
+        self.adaptive_threshold.setChecked(pre_img_cf.useAdaptiveThreshold)
+        self.morphonlogical_openning.setChecked(pre_img_cf.useMorphologicalOpen)
+        self.otsu_threshold.setChecked(pre_img_cf.useOtsuThreshold)
+        self.clahe_contrast.setChecked(pre_img_cf.useClahe)
+        self.sharpening.setChecked(pre_img_cf.useSharpen)
 
         self.save_images_detection.setChecked(sys_cf.saveImage)
         if sys_cf.saveImage:
@@ -443,8 +492,16 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.camera_filter_2.clicked.connect(self.toggleFilter)
         self.testReject.clicked.connect(self._testReject)
 
-        # OCR Engine
+        # OCR Engine & Tesseract model
         self.ocr_engine.currentTextChanged.connect(self.setOcrEngine)
+        self.tesseract_model.currentTextChanged.connect(self.setTesseractModel)
+
+        # Preprocessing steps
+        self.adaptive_threshold.toggled.connect(self._setPreprocessingSteps)
+        self.morphonlogical_openning.toggled.connect(self._setPreprocessingSteps)
+        self.otsu_threshold.toggled.connect(self._setPreprocessingSteps)
+        self.clahe_contrast.toggled.connect(self._setPreprocessingSteps)
+        self.sharpening.toggled.connect(self._setPreprocessingSteps)
 
         # ทดสอบการตรวจจับ
         self.capture_test.clicked.connect(self._test_detection)
@@ -467,9 +524,14 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.count_reset.clicked.connect(self._countReset)
 
     # ===== เลือก Engine ในการตรวจ ===== 
-    def setOcrEngine(self, engine):
-        self.ocr_worker.set_engine(engine)
-        self.saveConfigValue('system', 'ocrEngine', engine)
+    def setOcrEngine(self, engine_name):
+        self.ocr_worker.set_engine(engine_name)
+        self.saveConfigValue('system', 'ocrEngine', engine_name)
+
+    # ===== เลือก tesseract model ===== 
+    def setTesseractModel(self, model_name):
+        self.ocr_worker.set_tesseract_model(model_name)
+        self.saveConfigValue('system', 'tesseractModel', model_name)
 
     # ===== บันทึกรูปภาพที่ตรวจจับ ===== 
     def _onSaveImageDetection(self):
@@ -480,6 +542,22 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
             self.image_saver.start()
         else:
             self.image_saver.stop()
+
+    # ตั้งค่า preprocessing steps
+    def _setPreprocessingSteps(self, option):
+        sender = self.sender()
+        obj_name = sender.objectName()
+        self.camera.preprocessor.update_preprocessing_steps({obj_name: option})
+        if obj_name == "adaptive_threshold":
+            self.saveConfigValue("preprocessor_settings", "useAdaptiveThreshold", option)
+        elif obj_name == "morphonlogical_openning":
+            self.saveConfigValue("preprocessor_settings", "useClahe", option)
+        elif obj_name == "otsu_threshold":
+            self.saveConfigValue("preprocessor_settings", "useMorphologicalOpen", option)
+        elif obj_name == "clahe_contrast":
+            self.saveConfigValue("preprocessor_settings", "useOtsuThreshold", option)
+        elif obj_name == "sharpening":
+            self.saveConfigValue("preprocessor_settings", "useSharpen", option)
 
     # ===== ทดสอบ sensor (QTimer) ===== 
     def checkSensorState(self):

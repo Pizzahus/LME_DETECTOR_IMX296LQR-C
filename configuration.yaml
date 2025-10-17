@@ -8,23 +8,30 @@ template:
   exp: 19/09/28
 system:
   ocrEngine: tesseract
+  tesseractModel: label
   delayShutter: 50
   delayBeforeReject: 500
   rejectionPeriod: 100
   numberStickerBeforeDetection: 4
   rotateImage: 0
   detectionPercentage: 0
-  detectionResizeImage: 70
+  detectionResizeImage: 100
   saveImage: false
+preprocessor_settings:
+  useAdaptiveThreshold: false
+  useClahe: true
+  useMorphologicalOpen: true
+  useOtsuThreshold: true
+  useSharpen: true
 hardware:
   camera:
-    ExposureTime: 70000
-    AnalogueGain: 3.04
-    Brightness: -0.47000000000000003
-    Contrast: 1.67
-    Saturation: 2.66
-    Sharpness: 4.08
-    FrameRate: 25
+    ExposureTime: 100000
+    AnalogueGain: 5.78
+    Brightness: -0.23
+    Contrast: 2.06
+    Saturation: 1.0
+    Sharpness: 1.0
+    FrameRate: 60
   gpio:
     LED0: 20
     LED1: 21
@@ -36,10 +43,10 @@ hardware:
     L0: 12
     L1: 23
   rectangle:
-    x1: 300
-    x2: 816
-    y1: 198
-    y2: 493
+    x1: 315
+    x2: 634
+    y1: 231
+    y2: 445
 counters:
   ok: 0
   ng: 0

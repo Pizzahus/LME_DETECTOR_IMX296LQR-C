@@ -18,6 +18,13 @@ class RectangleSettings:
     X2: int
     Y2: int
 
+@dataclass
+class PreprocessingSteps:
+    useAdaptiveThreshold: bool
+    useClahe: bool
+    useMorphologicalOpen: bool
+    useOtsuThreshold: bool
+    useSharpen: bool
 
 @dataclass
 class TemplateLME:
@@ -28,6 +35,7 @@ class TemplateLME:
 @dataclass
 class SystemSettings:
     ocrEngine: str
+    tesseractModel: str
     delayShutter: int
     delayBeforeReject: int
     rejectionPeriod: int
@@ -110,6 +118,7 @@ class ConfigManager:
         data = self.config.get('system', {})
         return SystemSettings(
             ocrEngine=data.get('ocrEngine', "tesseract"),
+            tesseractModel=data.get('tesseractModel', "eng"),
             delayShutter=data.get('delayShutter', 0),
             delayBeforeReject=data.get('delayBeforeReject', 0),
             rejectionPeriod=data.get('rejectionPeriod', 0),
@@ -118,6 +127,16 @@ class ConfigManager:
             detectionPercentage=data.get('detectionPercentage', 0),
             detectionResizeImage=data.get('detectionResizeImage', 0),
             saveImage=data.get('saveImage', False),
+        )
+    
+    def get_preprocessing_steps(self) -> PreprocessingSteps:
+        data = self.config.get('preprocessor_settings', {})
+        return PreprocessingSteps(
+            useAdaptiveThreshold=data.get('useAdaptiveThreshold', True),
+            useClahe=data.get('useClahe', True),
+            useMorphologicalOpen=data.get('useMorphologicalOpen', True),
+            useOtsuThreshold=data.get('useOtsuThreshold', True),
+            useSharpen=data.get('useSharpen', True),
         )
     
     # อ่านข้อมูลการตั้งค่ากล้อง

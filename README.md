@@ -48,26 +48,10 @@ xset fp rehash
 
 ## 🏗️ การติดตั้ง Environment
 
-### 💻 สำหรับ Windows
-```bash
-cd LME_DETECTOR_IMX296LQR-C
-python -m venv detection_venv
-detection_venv\Scripts\activate
-pip install --upgrade pip
-```
-
 ### 💻 Linux
 ```bash
 cd LME_DETECTOR_IMX296LQR-C
-# หรือใช้ venv พร้อม system-site-packages
-python3 -m venv --system-site-packages detection_venv
-source detection_venv/bin/activate
-pip install --upgrade pip
-```
-
-## 📦 การติดตั้ง Libraries ที่จำเป็น
-```bash
-pip install -r requirements.txt
+./install.sh
 ```
 
 ### 📷 ตั้งค่า Picamera2
@@ -84,6 +68,12 @@ dtoverlay=imx296,cam0
 - ทดสอบกล้อง
 ```bash
 rpicam-hello -t 0
+```
+
+- ทดสอบโปรแกรม
+```bash
+source detection_venv/bin/activate
+python3 main.py
 ```
 
 ## 📦 การตั้งค่า black formatter

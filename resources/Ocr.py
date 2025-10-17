@@ -26,6 +26,7 @@ class OcrWorker(QThread):
             self.set_engine(engine)
             self.reader = easyocr.Reader(['en'], gpu=False)
             self.resize_percent = resize_percent
+            self.tesseract_model = 'eng'
 
     def resize_image(self, image, scale_percent=50):
         width = int(image.shape[1] * scale_percent / 100)
@@ -33,6 +34,11 @@ class OcrWorker(QThread):
         dim = (width, height)
         resized = cv2.resize(image, dim, interpolation=cv2.INTER_AREA)
         return resized
+
+    def set_tesseract_model(self, model_name):
+        if model_name == self.tesseract_model:
+            return  # ไม่ต้องเปลี่ยนถ้าเหมือนเดิม
+        self.tesseract_model = model_name
 
     # เลือก Engine ในการอ่านข้อความ
     def set_engine(self, engine_name):
@@ -86,7 +92,7 @@ class OcrWorker(QThread):
                 r"--oem 1 --psm 6 "
                 r"-c tessedit_char_whitelist=0123456789/ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             )
-            data = self.pytesseract.image_to_data(preprocessed_image, lang="eng_best", output_type=self.pytesseract.Output.DICT)
+            data = self.pytesseract.image_to_data(preprocessed_image, lang=self.tesseract_model, config=config, output_type=self.pytesseract.Output.DICT)
             for i in range(len(data["text"])):
                 text = data["text"][i]
                 confidence = int(data["conf"][i])

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
+    <width>1029</width>
     <height>609</height>
    </rect>
   </property>
@@ -5734,10 +5734,7 @@ QComboBox::drop-down {
               <attribute name="title">
                <string>ฮาร์ดแวร์</string>
               </attribute>
-              <layout class="QVBoxLayout" name="verticalLayout_28">
-               <property name="spacing">
-                <number>15</number>
-               </property>
+              <layout class="QVBoxLayout" name="verticalLayout_46">
                <item>
                 <widget class="QFrame" name="frame_18">
                  <property name="styleSheet">
@@ -5750,21 +5747,6 @@ QComboBox::drop-down {
                   <enum>QFrame::Shadow::Raised</enum>
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_10">
-                  <property name="spacing">
-                   <number>10</number>
-                  </property>
-                  <property name="leftMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>0</number>
-                  </property>
                   <item>
                    <widget class="QWidget" name="widget_12" native="true">
                     <property name="layoutDirection">
@@ -5802,7 +5784,7 @@ border-radius: 12px;</string>
                         <string notr="true">color: #868686;</string>
                        </property>
                        <property name="text">
-                        <string>สัญญาน ทริกเกอร์ กล้อง</string>
+                        <string>ทริกเกอร์ กล้อง</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -5892,7 +5874,7 @@ border-radius: 12px;</string>
                         <string notr="true">color: #868686;</string>
                        </property>
                        <property name="text">
-                        <string>สัญญาน ทริกเกอร์ รีเจค</string>
+                        <string>ทริกเกอร์ รีเจค</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -5959,6 +5941,12 @@ border-radius: 12px;</string>
 border-radius: 12px;</string>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_27">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
                      <item>
                       <widget class="QLabel" name="label_6">
                        <property name="minimumSize">
@@ -5983,7 +5971,7 @@ border-radius: 12px;</string>
                         <string notr="true">color: #868686;</string>
                        </property>
                        <property name="text">
-                        <string>ทดสอบรีเจค</string>
+                        <string>Reject</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -6001,6 +5989,216 @@ border-radius: 12px;</string>
                        <layout class="QHBoxLayout" name="horizontalLayout_30">
                         <item>
                          <widget class="QPushButton" name="testReject">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Kanit</family>
+                            <pointsize>16</pointsize>
+                            <italic>false</italic>
+                            <fontweight>Medium</fontweight>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border: none;
+</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset>
+                            <activeoff>:/assets/icon/switch-off.png</activeoff>
+                            <activeon>:/assets/icon/switch-on.png</activeon>
+                           </iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>120</width>
+                            <height>120</height>
+                           </size>
+                          </property>
+                          <property name="checkable">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="widget_16" native="true">
+                    <property name="layoutDirection">
+                     <enum>Qt::LayoutDirection::LeftToRight</enum>
+                    </property>
+                    <property name="autoFillBackground">
+                     <bool>false</bool>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: #E8E8E8;
+border-radius: 12px;</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_28">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="label_14">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: #868686;</string>
+                       </property>
+                       <property name="text">
+                        <string>Output1</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_42">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_53">
+                        <item>
+                         <widget class="QPushButton" name="testOutput">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Kanit</family>
+                            <pointsize>16</pointsize>
+                            <italic>false</italic>
+                            <fontweight>Medium</fontweight>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border: none;
+</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset>
+                            <activeoff>:/assets/icon/switch-off.png</activeoff>
+                            <activeon>:/assets/icon/switch-on.png</activeon>
+                           </iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>120</width>
+                            <height>120</height>
+                           </size>
+                          </property>
+                          <property name="checkable">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="widget_19" native="true">
+                    <property name="layoutDirection">
+                     <enum>Qt::LayoutDirection::LeftToRight</enum>
+                    </property>
+                    <property name="autoFillBackground">
+                     <bool>false</bool>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: #E8E8E8;
+border-radius: 12px;</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_47">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="label_15">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: #868686;</string>
+                       </property>
+                       <property name="text">
+                        <string>Output2</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_43">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_54">
+                        <item>
+                         <widget class="QPushButton" name="testOutput_2">
                           <property name="minimumSize">
                            <size>
                             <width>0</width>
