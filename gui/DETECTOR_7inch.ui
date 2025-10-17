@@ -955,7 +955,7 @@ QTabWidget::tab-bar {
                 <property name="frameShadow">
                  <enum>QFrame::Shadow::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_32">
+                <layout class="QVBoxLayout" name="verticalLayout_31">
                  <item>
                   <widget class="QFrame" name="process_img_frame">
                    <property name="frameShape">
@@ -1055,6 +1055,7 @@ QTabWidget::tab-bar {
                     <font>
                      <family>Kanit</family>
                      <pointsize>27</pointsize>
+                     <bold>true</bold>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -1078,63 +1079,24 @@ QTabWidget::tab-bar {
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="process_label_line_2">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Kanit</family>
-                     <pointsize>20</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: rgb(128, 128, 128);</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::NoFrame</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Plain</enum>
-                   </property>
-                   <property name="lineWidth">
-                    <number>1</number>
-                   </property>
-                   <property name="text">
-                    <string>Created by Nattapon pondonko</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
                   <widget class="QLabel" name="process_label_line_3">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
-                     <height>35</height>
+                     <height>40</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>35</height>
+                     <height>50</height>
                     </size>
                    </property>
                    <property name="font">
                     <font>
                      <family>Kanit</family>
-                     <pointsize>20</pointsize>
+                     <pointsize>24</pointsize>
+                     <bold>false</bold>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -1158,7 +1120,7 @@ QTabWidget::tab-bar {
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="process_label_line_4">
+                  <widget class="QLabel" name="process_label_line_2">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
@@ -1168,13 +1130,13 @@ QTabWidget::tab-bar {
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>30</height>
+                     <height>35</height>
                     </size>
                    </property>
                    <property name="font">
                     <font>
                      <family>Kanit</family>
-                     <pointsize>14</pointsize>
+                     <pointsize>16</pointsize>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -1190,7 +1152,47 @@ QTabWidget::tab-bar {
                     <number>1</number>
                    </property>
                    <property name="text">
-                    <string/>
+                    <string>Software developed by Nattapon Pondonko</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="process_label_line_5">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Kanit</family>
+                     <pointsize>16</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(128, 128, 128);</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::Shape::NoFrame</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Shadow::Plain</enum>
+                   </property>
+                   <property name="lineWidth">
+                    <number>1</number>
+                   </property>
+                   <property name="text">
+                    <string>Hardware designed by Rachen Mormueang</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -2668,13 +2670,15 @@ QPushButton:pressed {
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true">QLabel {
+    color: #808080;
+}</string>
              </property>
              <property name="tabShape">
               <enum>QTabWidget::TabShape::Triangular</enum>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>2</number>
              </property>
              <property name="iconSize">
               <size>
@@ -4760,7 +4764,8 @@ text-align: center;</string>
                          <widget class="QComboBox" name="ocr_engine">
                           <property name="font">
                            <font>
-                            <pointsize>-1</pointsize>
+                            <pointsize>16</pointsize>
+                            <bold>true</bold>
                            </font>
                           </property>
                           <property name="styleSheet">
@@ -4769,7 +4774,6 @@ text-align: center;</string>
     border: 1px solid #cccccc;
     border-radius: 8px;
     padding: 6px 12px;
-    font-size: 16px;
     color: #333333;
 }
 
@@ -4786,6 +4790,926 @@ QComboBox::drop-down {
                           <item>
                            <property name="text">
                             <string>tesseract</string>
+                           </property>
+                          </item>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="preprocessor_settings">
+              <attribute name="icon">
+               <iconset>
+                <activeon>:/assets/icon/settings.png</activeon>
+               </iconset>
+              </attribute>
+              <attribute name="title">
+               <string>เพิ่มเติม</string>
+              </attribute>
+              <layout class="QVBoxLayout" name="verticalLayout_32">
+               <item>
+                <widget class="QFrame" name="frame_27">
+                 <property name="styleSheet">
+                  <string notr="true">border: none</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_52">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QFrame" name="frame_29">
+                    <property name="maximumSize">
+                     <size>
+                      <width>600</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: rgb(220, 220, 220);
+border-radius: 10px;
+color: #808080;</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_39">
+                     <property name="spacing">
+                      <number>5</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>20</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>10</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>20</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>10</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="label_18">
+                       <property name="font">
+                        <font>
+                         <pointsize>27</pointsize>
+                         <bold>true</bold>
+                         <underline>true</underline>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string>Preprocessing Steps</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                       <property name="margin">
+                        <number>0</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_34">
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_31">
+                        <property name="spacing">
+                         <number>0</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>5</number>
+                        </property>
+                        <item>
+                         <widget class="QFrame" name="frame_36">
+                          <property name="frameShape">
+                           <enum>QFrame::Shape::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Shadow::Raised</enum>
+                          </property>
+                          <layout class="QVBoxLayout" name="verticalLayout_40">
+                           <property name="spacing">
+                            <number>3</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_2">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>Adaptive Threshold</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_78">
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>เปิด/ปิด การแยกวัตถุจากพื้นหลัง (ใช้ได้ดีกับภาพที่แสงไม่สม่ำเสมอ)</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="adaptive_threshold">
+                          <property name="maximumSize">
+                           <size>
+                            <width>90</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border: none;</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset>
+                            <activeoff>:/assets/icon/switch-off.png</activeoff>
+                            <activeon>:/assets/icon/switch-on.png</activeon>
+                           </iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>80</width>
+                            <height>80</height>
+                           </size>
+                          </property>
+                          <property name="checkable">
+                           <bool>true</bool>
+                          </property>
+                          <property name="checked">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoRepeat">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoExclusive">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoRepeatDelay">
+                           <number>300</number>
+                          </property>
+                          <property name="autoRepeatInterval">
+                           <number>100</number>
+                          </property>
+                          <property name="autoDefault">
+                           <bool>false</bool>
+                          </property>
+                          <property name="default">
+                           <bool>false</bool>
+                          </property>
+                          <property name="flat">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_35">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_36">
+                        <property name="spacing">
+                         <number>0</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>5</number>
+                        </property>
+                        <item>
+                         <widget class="QFrame" name="frame_37">
+                          <property name="frameShape">
+                           <enum>QFrame::Shape::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Shadow::Raised</enum>
+                          </property>
+                          <layout class="QVBoxLayout" name="verticalLayout_41">
+                           <property name="spacing">
+                            <number>3</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_19">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>Morphological Opening</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_79">
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>เปิด/ปิด การทำความสะอาดภาพ (ลบจุดรบกวนเล็กๆ โดยไม่ทำลายวัตถุหลัก)</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="morphonlogical_openning">
+                          <property name="maximumSize">
+                           <size>
+                            <width>90</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border: none;</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset>
+                            <activeoff>:/assets/icon/switch-off.png</activeoff>
+                            <activeon>:/assets/icon/switch-on.png</activeon>
+                           </iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>80</width>
+                            <height>80</height>
+                           </size>
+                          </property>
+                          <property name="checkable">
+                           <bool>true</bool>
+                          </property>
+                          <property name="checked">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoRepeat">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoExclusive">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoRepeatDelay">
+                           <number>300</number>
+                          </property>
+                          <property name="autoRepeatInterval">
+                           <number>100</number>
+                          </property>
+                          <property name="autoDefault">
+                           <bool>false</bool>
+                          </property>
+                          <property name="default">
+                           <bool>false</bool>
+                          </property>
+                          <property name="flat">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_30">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_37">
+                        <property name="spacing">
+                         <number>0</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>5</number>
+                        </property>
+                        <item>
+                         <widget class="QFrame" name="frame_38">
+                          <property name="frameShape">
+                           <enum>QFrame::Shape::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Shadow::Raised</enum>
+                          </property>
+                          <layout class="QVBoxLayout" name="verticalLayout_42">
+                           <property name="spacing">
+                            <number>3</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_20">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>Otsu Threshold</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_80">
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>เปิด/ปิด แยกวัตถุจากพื้นหลัง (หาค่าขีดแบ่งอัตโนมัติสำหรับภาพที่คอนทราสต์ชัดเจน)</string>
+                             </property>
+                             <property name="wordWrap">
+                              <bool>false</bool>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="otsu_threshold">
+                          <property name="maximumSize">
+                           <size>
+                            <width>90</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border: none;</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset>
+                            <activeoff>:/assets/icon/switch-off.png</activeoff>
+                            <activeon>:/assets/icon/switch-on.png</activeon>
+                           </iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>80</width>
+                            <height>80</height>
+                           </size>
+                          </property>
+                          <property name="checkable">
+                           <bool>true</bool>
+                          </property>
+                          <property name="checked">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoRepeat">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoExclusive">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoRepeatDelay">
+                           <number>300</number>
+                          </property>
+                          <property name="autoRepeatInterval">
+                           <number>100</number>
+                          </property>
+                          <property name="autoDefault">
+                           <bool>false</bool>
+                          </property>
+                          <property name="default">
+                           <bool>false</bool>
+                          </property>
+                          <property name="flat">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_31">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_49">
+                        <property name="spacing">
+                         <number>0</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>5</number>
+                        </property>
+                        <item>
+                         <widget class="QFrame" name="frame_39">
+                          <property name="frameShape">
+                           <enum>QFrame::Shape::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Shadow::Raised</enum>
+                          </property>
+                          <layout class="QVBoxLayout" name="verticalLayout_43">
+                           <property name="spacing">
+                            <number>3</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_21">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>CLAHE Contrast Enhancement</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_81">
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>เปิด/ปิด เพิ่มความคมชัดทั้งภาพ (เพิ่มรายละเอียดโดยควบคุมไม่ให้เกิด noise มาก)</string>
+                             </property>
+                             <property name="wordWrap">
+                              <bool>false</bool>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="clahe_contrast">
+                          <property name="maximumSize">
+                           <size>
+                            <width>90</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border: none;</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset>
+                            <activeoff>:/assets/icon/switch-off.png</activeoff>
+                            <activeon>:/assets/icon/switch-on.png</activeon>
+                           </iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>80</width>
+                            <height>80</height>
+                           </size>
+                          </property>
+                          <property name="checkable">
+                           <bool>true</bool>
+                          </property>
+                          <property name="checked">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoRepeat">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoExclusive">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoRepeatDelay">
+                           <number>300</number>
+                          </property>
+                          <property name="autoRepeatInterval">
+                           <number>100</number>
+                          </property>
+                          <property name="autoDefault">
+                           <bool>false</bool>
+                          </property>
+                          <property name="default">
+                           <bool>false</bool>
+                          </property>
+                          <property name="flat">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_32">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_50">
+                        <property name="spacing">
+                         <number>0</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>5</number>
+                        </property>
+                        <item>
+                         <widget class="QFrame" name="frame_40">
+                          <property name="frameShape">
+                           <enum>QFrame::Shape::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Shadow::Raised</enum>
+                          </property>
+                          <layout class="QVBoxLayout" name="verticalLayout_44">
+                           <property name="spacing">
+                            <number>3</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_22">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>Sharpening</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_82">
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>เปิด/ปิด เน้นขอบและรายละเอียด (ทำให้ภาพดูคมชัด ช่วยในการมองเห็น)</string>
+                             </property>
+                             <property name="wordWrap">
+                              <bool>false</bool>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="sharpening">
+                          <property name="maximumSize">
+                           <size>
+                            <width>90</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border: none;</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset>
+                            <activeoff>:/assets/icon/switch-off.png</activeoff>
+                            <activeon>:/assets/icon/switch-on.png</activeon>
+                           </iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>80</width>
+                            <height>80</height>
+                           </size>
+                          </property>
+                          <property name="checkable">
+                           <bool>true</bool>
+                          </property>
+                          <property name="checked">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoRepeat">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoExclusive">
+                           <bool>false</bool>
+                          </property>
+                          <property name="autoRepeatDelay">
+                           <number>300</number>
+                          </property>
+                          <property name="autoRepeatInterval">
+                           <number>100</number>
+                          </property>
+                          <property name="autoDefault">
+                           <bool>false</bool>
+                          </property>
+                          <property name="default">
+                           <bool>false</bool>
+                          </property>
+                          <property name="flat">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_33">
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_51">
+                        <property name="spacing">
+                         <number>0</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>5</number>
+                        </property>
+                        <item>
+                         <widget class="QFrame" name="frame_41">
+                          <property name="frameShape">
+                           <enum>QFrame::Shape::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Shadow::Raised</enum>
+                          </property>
+                          <layout class="QVBoxLayout" name="verticalLayout_45">
+                           <property name="spacing">
+                            <number>3</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_7">
+                             <property name="font">
+                              <font>
+                               <pointsize>14</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>Tesseract Model</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_83">
+                             <property name="font">
+                              <font>
+                               <family>Kanit</family>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="text">
+                              <string>เลือกโมเดลในการตรวจสอบ</string>
+                             </property>
+                             <property name="wordWrap">
+                              <bool>false</bool>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QComboBox" name="tesseract_model">
+                          <property name="maximumSize">
+                           <size>
+                            <width>200</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>16</pointsize>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QComboBox {
+    background-color: #f0f0f0;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    padding: 6px 12px;
+    color: #333333;
+}
+
+QComboBox::drop-down {
+    width: 28px;
+}
+</string>
+                          </property>
+                          <item>
+                           <property name="text">
+                            <string>Label</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>Label_fast</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>eng_best</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>eng</string>
                            </property>
                           </item>
                          </widget>
@@ -5059,7 +5983,7 @@ border-radius: 12px;</string>
                         <string notr="true">color: #868686;</string>
                        </property>
                        <property name="text">
-                        <string>รีเจค</string>
+                        <string>ทดสอบรีเจค</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -5080,7 +6004,7 @@ border-radius: 12px;</string>
                           <property name="minimumSize">
                            <size>
                             <width>0</width>
-                            <height>90</height>
+                            <height>0</height>
                            </size>
                           </property>
                           <property name="font">
@@ -5092,30 +6016,22 @@ border-radius: 12px;</string>
                            </font>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QPushButton {
-	background-color: rgb(120, 120, 120);
-	color: white;
-	text-align: center;
-	border: none;
-	border-radius: 10px;
-}
-
-QPushButton:checked {
-	background-color: rgb(60, 60, 60);
-	color: white;
-}</string>
+                           <string notr="true">border: none;
+</string>
                           </property>
                           <property name="text">
-                           <string>ทดสอบ</string>
+                           <string/>
                           </property>
                           <property name="icon">
-                           <iconset resource="resource.qrc">
-                            <normaloff>:/assets/icon/effect.png</normaloff>:/assets/icon/effect.png</iconset>
+                           <iconset>
+                            <activeoff>:/assets/icon/switch-off.png</activeoff>
+                            <activeon>:/assets/icon/switch-on.png</activeon>
+                           </iconset>
                           </property>
                           <property name="iconSize">
                            <size>
-                            <width>30</width>
-                            <height>30</height>
+                            <width>120</width>
+                            <height>120</height>
                            </size>
                           </property>
                           <property name="checkable">

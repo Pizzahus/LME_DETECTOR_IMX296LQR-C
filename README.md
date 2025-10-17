@@ -28,26 +28,7 @@ pyside6-rcc gui/resource.qrc -o src/resource_rc.py
 
 # ⚠️ ควรแปลงไฟล์ ui_DETECTOR_7inch.py ให้เป็น UTF-8 ก่อนใช้งาน
 ```
-
 ---
-
-## 🏗️ การติดตั้ง Environment
-
-### 💻 Windows
-```bash
-cd polipharm
-python -m venv detection_venv
-detection_venv\Scripts\activate
-```
-
-### 💻 Linux
-```bash
-cd polipharm
-# หรือใช้ venv พร้อม system-site-packages
-python3 -m venv --system-site-packages detection_venv
-source detection_venv/bin/activate
-pip3 install gpiozero
-```
 
 ### ⚙️ ติดตั้งฟอนต์ Kanit (สำหรับ Linux)
 ```bash
@@ -63,21 +44,30 @@ xset fp rehash
 ```
 > 📝 **หมายเหตุ:** สำหรับ Windows ให้ติดตั้งฟอนต์โดยดับเบิลคลิกไฟล์ .ttf
 
-## 📦 การติดตั้ง Libraries ที่จำเป็น
+---
 
-### ⚙️ ติดตั้ง PySide6 และ Libraries เพิ่มเติม
+## 🏗️ การติดตั้ง Environment
+
+### 💻 สำหรับ Windows
 ```bash
-pip install pyside6
-pip install picamera2
-pip install pytesseract
-pip install easyocr
-pip install comtypes
-pip install requests
-pip install pyserial
-pip install numpy
-pip install opencv-python
-pip install pywifi
-pip install gpiozero
+cd LME_DETECTOR_IMX296LQR-C
+python -m venv detection_venv
+detection_venv\Scripts\activate
+pip install --upgrade pip
+```
+
+### 💻 Linux
+```bash
+cd LME_DETECTOR_IMX296LQR-C
+# หรือใช้ venv พร้อม system-site-packages
+python3 -m venv --system-site-packages detection_venv
+source detection_venv/bin/activate
+pip install --upgrade pip
+```
+
+## 📦 การติดตั้ง Libraries ที่จำเป็น
+```bash
+pip install -r requirements.txt
 ```
 
 ### 📷 ตั้งค่า Picamera2
@@ -93,7 +83,7 @@ dtoverlay=imx296,cam0
 
 - ทดสอบกล้อง
 ```bash
-libcamera-hello -t 0
+rpicam-hello -t 0
 ```
 
 ## 📦 การตั้งค่า black formatter

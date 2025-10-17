@@ -1,0 +1,11 @@
+pyside6
+picamera2
+pytesseract
+easyocr
+comtypes
+requests
+pyserial
+numpy
+opencv-python
+pywifi
+gpiozero
