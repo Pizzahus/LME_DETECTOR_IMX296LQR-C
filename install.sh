@@ -9,6 +9,9 @@ DESKTOP_FILE_SRC="$PROJECT_DIR/sys/LME_Detector.desktop"
 DESKTOP_DIR="$USER_HOME/Desktop"
 AUTOSTART_DIR="$USER_HOME/.config/autostart"
 
+GITHUB_EMAIL="pizzahus5678@gmail.com"
+GITHUB_USERNAME="Pizzahus"
+
 echo "======================================"
 echo "🚀 เริ่มติดตั้งระบบสำหรับ LME_DETECTOR_IMX296LQR-C"
 echo "======================================"
@@ -25,6 +28,10 @@ else
 fi
 
 # --- 2️⃣ อัปเดตและติดตั้งเครื่องมือพื้นฐาน ---
+git config --global user.email "$GITHUB_EMAIL"
+git config --global user.name "$GITHUB_USERNAME"
+git config --list
+
 echo "📦 Updating system and installing base packages..."
 sudo apt update -y
 sudo apt upgrade -y
