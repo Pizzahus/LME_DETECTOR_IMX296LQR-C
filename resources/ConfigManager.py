@@ -55,18 +55,27 @@ class CameraSettings:
     Sharpness: int
     FrameRate: int
 
+# ====== IRIV Edge CM5 ======
 @dataclass
 class GPIOSettings:
-    DI0: int
-    BUZZER: int
-    LED0: int
-    LED1: int
-    DI1: int
-    DO0: int
-    DO1: int
-    L0: int
-    L1: int
+    TriggeredCamera: int
+    TriggeredReject: int
+    RejectOutput: int
+    Output1: int
+    Output2: int
 
+# ====== IRIV EdgeAI CM5 ======
+# @dataclass
+# class GPIOSettings:
+#     DI0: int
+#     BUZZER: int
+#     LED0: int
+#     LED1: int
+#     DI1: int
+#     DO0: int
+#     DO1: int
+#     L0: int
+#     L1: int
 
 class ConfigManager:
     def __init__(self, config_path: str = 'configuration.yaml'):
@@ -153,19 +162,31 @@ class ConfigManager:
         )
 
     # อ่านข้อมูลการตั้งค่า pins input, output
+    # ====== IRIV Edge CM5 ======
     def get_gpio_settings(self) -> GPIOSettings:
         data = self.config.get('hardware', {}).get('gpio', {})
         return GPIOSettings(
-            LED0=data.get('LED0', 0),
-            LED1=data.get('LED1', 0),
-            BUZZER=data.get('BUZZER', 0),
-            DI0=data.get('DI0', 0),
-            DI1=data.get('DI1', 0),
-            DO0=data.get('DO0', 0),
-            DO1=data.get('DO1', 0),
-            L0=data.get('L0', 0),
-            L1=data.get('L1', 0),
+            TriggeredCamera=data.get('TriggeredCamera', 0),
+            TriggeredReject=data.get('TriggeredReject', 0),
+            RejectOutput=data.get('RejectOutput', 0),
+            Output1=data.get('Output1', 0),
+            Output2=data.get('Output2', 0),
         )
+    
+    # ====== IRIV EdgeAI CM5 ======
+    # def get_gpio_settings(self) -> GPIOSettings:
+    #     data = self.config.get('hardware', {}).get('gpio', {})
+    #     return GPIOSettings(
+    #         LED0=data.get('LED0', 0),
+    #         LED1=data.get('LED1', 0),
+    #         BUZZER=data.get('BUZZER', 0),
+    #         DI0=data.get('DI0', 0),
+    #         DI1=data.get('DI1', 0),
+    #         DO0=data.get('DO0', 0),
+    #         DO1=data.get('DO1', 0),
+    #         L0=data.get('L0', 0),
+    #         L1=data.get('L1', 0),
+    #     )
 
     # อัพเดทข้อมูลจำนวนชิ้นงาน
     def update_counter(self, ok: int = 0, ng: int = 0) -> None:

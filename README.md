@@ -26,14 +26,14 @@ pyside6-uic gui/DETECTOR_10inch.ui > src/ui_DETECTOR_10inch.py
 # สร้าง resource_rc.py จาก resource.qrc
 pyside6-rcc gui/resource.qrc -o src/resource_rc.py
 
-# ⚠️ ควรแปลงไฟล์ ui_DETECTOR_7inch.py ให้เป็น UTF-8 ก่อนใช้งาน
 ```
+> ⚠️ ควรแปลงไฟล์ ui_DETECTOR_7inch.py ให้เป็น UTF-8 ก่อนใช้งาน
 ---
 
 ### ⚙️ ติดตั้งฟอนต์ Kanit (สำหรับ Linux)
 ```bash
 # แตกไฟล์ .zip ฟอนต์จาก .assets/fonts/kanit.zip
-cd fonts
+cd LME_DETECTOR_IMX296LQR-C/gui/assets/fronts
 sudo mkdir /usr/share/fonts/kanit
 sudo mv *.ttf /usr/share/fonts/kanit
 cd /usr/share/fonts/kanit
@@ -45,14 +45,6 @@ xset fp rehash
 > 📝 **หมายเหตุ:** สำหรับ Windows ให้ติดตั้งฟอนต์โดยดับเบิลคลิกไฟล์ .ttf
 
 ---
-
-## 🏗️ การติดตั้ง Environment
-
-### 💻 Linux
-```bash
-cd LME_DETECTOR_IMX296LQR-C
-./install.sh
-```
 
 ### 📷 ตั้งค่า Picamera2
 - เปิดไฟล์ด้วยคำสั่ง
@@ -69,9 +61,16 @@ dtoverlay=imx296,cam0
 ```bash
 rpicam-hello -t 0
 ```
+## 🏗️ การติดตั้ง Environment
 
+### 💻 Linux
+```bash
+cd LME_DETECTOR_IMX296LQR-C
+./install.sh
+```
 - ทดสอบโปรแกรม
 ```bash
+cd LME_DETECTOR_IMX296LQR-C
 source detection_venv/bin/activate
 python3 main.py
 ```

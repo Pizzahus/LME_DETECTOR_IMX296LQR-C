@@ -88,9 +88,10 @@ class OcrWorker(QThread):
                             cv2.putText(image, char, (char_x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.6, self.rectColor, 1)
 
         elif self.engine == "tesseract":
+            # r"-c tessedit_char_whitelist=0123456789/ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             config = (
                 r"--oem 1 --psm 6 "
-                r"-c tessedit_char_whitelist=0123456789/ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                r"-c tessedit_char_whitelist=0123456789"
             )
             data = self.pytesseract.image_to_data(preprocessed_image, lang=self.tesseract_model, config=config, output_type=self.pytesseract.Output.DICT)
             for i in range(len(data["text"])):

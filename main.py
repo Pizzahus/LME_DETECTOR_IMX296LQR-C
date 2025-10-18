@@ -7,6 +7,8 @@ from ui import LMEDetect
 
 ##################################### ตั้งค่า ######################################
 SCREEN_NUMBER = 0
+SCREEN_WIDTH = 1024
+SCREEN_HEIGHT = 600
 
 # #  Keyboard
 # os.environ["QT_IM_MODULE"] = "qtvirtualkeyboard"
@@ -23,8 +25,8 @@ def main():
         sys.exit(1)
     second_screen = screens[SCREEN_NUMBER]
 
-    window = LMEDetect()
-    window.resize(1024, 600)
+    window = LMEDetect(SCREEN_WIDTH, SCREEN_HEIGHT)
+    window.resize(SCREEN_WIDTH, SCREEN_HEIGHT)
     window.setWindowTitle("ระบบตรวจสอบการพิมพ์")
     window.setWindowFlags(
         Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint

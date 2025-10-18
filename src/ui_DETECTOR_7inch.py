@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'DETECTOR_7inch.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.0
+## Created by: Qt User Interface Compiler version 6.10.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -1081,7 +1081,7 @@ class Ui_MainWindow(object):
         self.label_24.setStyleSheet(u"color: rgb(61, 61, 61);")
         self.label_24.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label_24)
+        self.formLayout.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_24)
 
         self.lot_set = QLineEdit(self.widget_7)
         self.lot_set.setObjectName(u"lot_set")
@@ -1096,7 +1096,7 @@ class Ui_MainWindow(object):
         self.lot_set.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.lot_set.setClearButtonEnabled(False)
 
-        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.lot_set)
+        self.formLayout.setWidget(0, QFormLayout.ItemRole.FieldRole, self.lot_set)
 
         self.label_25 = QLabel(self.widget_7)
         self.label_25.setObjectName(u"label_25")
@@ -1106,7 +1106,7 @@ class Ui_MainWindow(object):
         self.label_25.setStyleSheet(u"color: rgb(61, 61, 61);")
         self.label_25.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label_25)
+        self.formLayout.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_25)
 
         self.mfg_set = QLineEdit(self.widget_7)
         self.mfg_set.setObjectName(u"mfg_set")
@@ -1119,7 +1119,7 @@ class Ui_MainWindow(object):
         self.mfg_set.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.mfg_set.setClearButtonEnabled(False)
 
-        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.mfg_set)
+        self.formLayout.setWidget(1, QFormLayout.ItemRole.FieldRole, self.mfg_set)
 
         self.label_26 = QLabel(self.widget_7)
         self.label_26.setObjectName(u"label_26")
@@ -1128,7 +1128,7 @@ class Ui_MainWindow(object):
         self.label_26.setStyleSheet(u"color: rgb(61, 61, 61);")
         self.label_26.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.label_26)
+        self.formLayout.setWidget(2, QFormLayout.ItemRole.LabelRole, self.label_26)
 
         self.exp_set = QLineEdit(self.widget_7)
         self.exp_set.setObjectName(u"exp_set")
@@ -1141,7 +1141,7 @@ class Ui_MainWindow(object):
         self.exp_set.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.exp_set.setClearButtonEnabled(False)
 
-        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.exp_set)
+        self.formLayout.setWidget(2, QFormLayout.ItemRole.FieldRole, self.exp_set)
 
 
         self.verticalLayout_8.addWidget(self.widget_7)
@@ -2754,17 +2754,17 @@ class Ui_MainWindow(object):
         self.frame_42.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_53 = QHBoxLayout(self.frame_42)
         self.horizontalLayout_53.setObjectName(u"horizontalLayout_53")
-        self.testOutput = QPushButton(self.frame_42)
-        self.testOutput.setObjectName(u"testOutput")
-        self.testOutput.setMinimumSize(QSize(0, 0))
-        self.testOutput.setFont(font23)
-        self.testOutput.setStyleSheet(u"border: none;\n"
+        self.testOutput_1 = QPushButton(self.frame_42)
+        self.testOutput_1.setObjectName(u"testOutput_1")
+        self.testOutput_1.setMinimumSize(QSize(0, 0))
+        self.testOutput_1.setFont(font23)
+        self.testOutput_1.setStyleSheet(u"border: none;\n"
 "")
-        self.testOutput.setIcon(icon15)
-        self.testOutput.setIconSize(QSize(120, 120))
-        self.testOutput.setCheckable(True)
+        self.testOutput_1.setIcon(icon15)
+        self.testOutput_1.setIconSize(QSize(120, 120))
+        self.testOutput_1.setCheckable(True)
 
-        self.horizontalLayout_53.addWidget(self.testOutput)
+        self.horizontalLayout_53.addWidget(self.testOutput_1)
 
 
         self.verticalLayout_28.addWidget(self.frame_42)
@@ -3188,7 +3188,7 @@ class Ui_MainWindow(object):
         self.camera_filter_2.toggled.connect(self.camera_filter_1.setChecked)
 
         self.stackedWidget.setCurrentIndex(3)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(3)
         self.adaptive_threshold.setDefault(False)
         self.morphonlogical_openning.setDefault(False)
         self.otsu_threshold.setDefault(False)
@@ -3342,7 +3342,7 @@ class Ui_MainWindow(object):
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Reject", None))
         self.testReject.setText("")
         self.label_14.setText(QCoreApplication.translate("MainWindow", u"Output1", None))
-        self.testOutput.setText("")
+        self.testOutput_1.setText("")
         self.label_15.setText(QCoreApplication.translate("MainWindow", u"Output2", None))
         self.testOutput_2.setText("")
         self.label_35.setText(QCoreApplication.translate("MainWindow", u"\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e23\u0e30\u0e1a\u0e1a", None))

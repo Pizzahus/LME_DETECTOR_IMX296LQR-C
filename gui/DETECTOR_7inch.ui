@@ -2678,7 +2678,7 @@ QPushButton:pressed {
               <enum>QTabWidget::TabShape::Triangular</enum>
              </property>
              <property name="currentIndex">
-              <number>2</number>
+              <number>3</number>
              </property>
              <property name="iconSize">
               <size>
@@ -6093,7 +6093,7 @@ border-radius: 12px;</string>
                        </property>
                        <layout class="QHBoxLayout" name="horizontalLayout_53">
                         <item>
-                         <widget class="QPushButton" name="testOutput">
+                         <widget class="QPushButton" name="testOutput_1">
                           <property name="minimumSize">
                            <size>
                             <width>0</width>

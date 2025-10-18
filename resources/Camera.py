@@ -10,7 +10,7 @@ from resources.FramePreprocessor import FramePreprocessor
 
 
 class CameraView(QThread):
-    def __init__(self, monitor: QLabel, camera: Picamera2, rectangle: RectangleSettings, flashLightPin: int):
+    def __init__(self, monitor: QLabel, camera: Picamera2, rectangle: RectangleSettings):
         super().__init__()
         self.camera = camera
         self.rectangle = rectangle

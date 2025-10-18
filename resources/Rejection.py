@@ -1,6 +1,6 @@
 import time
 import queue
-from gpiozero import Button, OutputDevice
+from gpiozero import Button, LED
 from PySide6.QtCore import QThread, Signal
 
 
@@ -25,7 +25,7 @@ class RejectionWorker(QThread):
     """
     rejected_signal = Signal(str)  # ส่ง tag ของงานที่ reject ไป GUI
 
-    def __init__(self, sensor: Button, rejector: OutputDevice, startReject: int=0, rejectDelay: int=100, rejectionPeriod: int=100):
+    def __init__(self, sensor: Button, rejector: LED, startReject: int=0, rejectDelay: int=100, rejectionPeriod: int=100):
         super().__init__()
         self.running = True
         self.rejectDelay = rejectDelay  # เวลาหน่วงก่อน reject

@@ -25,28 +25,24 @@ preprocessor_settings:
   useSharpen: true
 hardware:
   camera:
-    ExposureTime: 100000
-    AnalogueGain: 5.78
-    Brightness: -0.23
+    ExposureTime: 800
+    AnalogueGain: 4.39
+    Brightness: 0.51
     Contrast: 2.06
     Saturation: 1.0
     Sharpness: 1.0
-    FrameRate: 60
+    FrameRate: 25
   gpio:
-    LED0: 20
-    LED1: 21
-    BUZZER: 19
-    DI0: 22
-    DI1: 27
-    DO0: 23
-    DO1: 24
-    L0: 12
-    L1: 23
+    TriggeredCamera: 25
+    TriggeredReject: 26
+    RejectOutput: 24
+    Output1: 23
+    Output2: 22
   rectangle:
     x1: 315
-    x2: 634
-    y1: 231
-    y2: 445
+    x2: 690
+    y1: 291
+    y2: 524
 counters:
   ok: 0
   ng: 0

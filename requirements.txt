@@ -1,5 +1,6 @@
 pyside6
 picamera2
+netifaces
 pytesseract
 easyocr
 comtypes

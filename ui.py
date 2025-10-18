@@ -22,7 +22,7 @@ from time import sleep
 
 from PySide6.QtQuickWidgets import QQuickWidget
 from PySide6.QtWidgets import QProxyStyle, QSlider, QTabBar
-from gpiozero import Button, LED, OutputDevice
+from gpiozero import Button, LED
 
 from resources.ConfigManager import ConfigManager
 from resources.Rectangle import Rectangle
@@ -56,9 +56,11 @@ class FlatTabStyle(QProxyStyle):
         super().drawControl(element, option, painter, widget)
 
 class LMEDetect(QMainWindow, Ui_MainWindow):
-    def __init__(self):
+    def __init__(self, scr_width: int, scr_height: int):
         super().__init__()
         self.setupUi(self)
+        self.scr_width = scr_width
+        self.scr_height = scr_height
         process_gif = QMovie(GIF_FILE)
         self.process_img.setMovie(process_gif)
         process_gif.start()
@@ -69,7 +71,6 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.show_sidebar.setHidden(True)
         self.currentPage = self.process_page
         self.stackedWidget.setCurrentWidget(self.currentPage)
-        self._addEventListener()
         self._getTesseractModel()
 
         # อ่านข้อมูลการตั้งค่าจากไฟล์ yml
@@ -97,7 +98,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.count_ok.setText(f"{self.countOK:,}")
         self.count_ng.setText(f"{self.countNG:,}")
         self.count_total.setText(f"{(self.countTotal):,}")
-        self.buzzer = LED(pins.BUZZER)
+        self.buzzer = LED(pins.Output2)
 
         # =====  rectangle ===== 
         _rectangle = self.config.get_rectangle()
@@ -111,7 +112,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.cropped_frame = None
         picam2 = Picamera2()
         self.monitor = self.detection_monitor # หน้าจอแสดง frame
-        self.camera = CameraView(monitor=self.monitor, camera=picam2, rectangle=_rectangle, flashLightPin=pins.L0)
+        self.camera = CameraView(monitor=self.monitor, camera=picam2, rectangle=_rectangle)
         self.camera.start()
 
         # ===== ImageSaverWorker =====
@@ -128,18 +129,24 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         # self.ocr.finished.connect(self.detection_ocr_result)
 
         # ===== Sensor =====
-        self.capturedSensor = Button(pin=pins.DI0, pull_up=False, bounce_time=0.02)
+        self.capturedSensor = Button(pin=pins.TriggeredCamera, pull_up=False, bounce_time=0.02)
         self.capturedSensorDelay = 0
         self.capturedSensor.when_pressed = self._detection
         self.sensorTimer = QTimer()
         self.sensorTimer.timeout.connect(self.checkSensorState)
 
+        # ===== OUTPUT 1 =====
+        self.output1 = LED(pins.Output1)
+
         # ===== Rejection =====
-        self.rejectSensor = Button(pins.DI1, pull_up=False, bounce_time=0.01)
-        self.rejector = OutputDevice(pins.DO0, active_high=True, initial_value=False)
+        self.rejectSensor = Button(pins.TriggeredReject, pull_up=False, bounce_time=0.1)
+        self.rejector = LED(pins.RejectOutput, active_high=True, initial_value=False)
         self.rejection = RejectionWorker(sensor=self.rejectSensor, rejector=self.rejector, startReject=3, rejectDelay=0.5)
         self.rejection.rejected_signal.connect(lambda tag: print(f"GUI: {tag} ถูก reject!"))
         self.rejection.start()
+
+        # ===== สร้าง events สำหรับ ui ===== 
+        self._addEventListener()
 
         # ===== Alert ===== 
         self.detectionAlert = Alert(self.detection_alert)
@@ -268,6 +275,14 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.otsu_threshold.setChecked(pre_img_cf.useOtsuThreshold)
         self.clahe_contrast.setChecked(pre_img_cf.useClahe)
         self.sharpening.setChecked(pre_img_cf.useSharpen)
+        preprocessing_configs = {
+            "adaptive_threshold": pre_img_cf.useAdaptiveThreshold,
+            "morphonlogical_openning": pre_img_cf.useMorphologicalOpen,
+            "otsu_threshold": pre_img_cf.useOtsuThreshold,
+            "clahe_contrast": pre_img_cf.useClahe,
+            "sharpening": pre_img_cf.useSharpen,
+        }
+        self.camera.preprocessor.update_preprocessing_steps(preprocessing_configs)
 
         self.save_images_detection.setChecked(sys_cf.saveImage)
         if sys_cf.saveImage:
@@ -361,7 +376,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.kb_overlay.setClearColor(Qt.transparent)
         self.kb_overlay.setAttribute(Qt.WA_TranslucentBackground)
         self.kb_overlay.setAttribute(Qt.WA_AlwaysStackOnTop)
-        self.kb_overlay.setGeometry(0, 0, 1024, 600)
+        self.kb_overlay.setGeometry(0, 0, self.scr_width, self.scr_height)
         self.kb_overlay.hide()
         self.root_obj = self.kb_overlay.rootObject()
 
@@ -490,7 +505,9 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
         self.tabWidget.currentChanged.connect(self.onTabChanged)
         self.camera_filter_1.clicked.connect(self.toggleFilter)
         self.camera_filter_2.clicked.connect(self.toggleFilter)
-        self.testReject.clicked.connect(self._testReject)
+        self.testReject.clicked.connect(lambda checked: self._testOutput(self.rejector, checked))
+        self.testOutput_1.clicked.connect(lambda checked: self._testOutput(self.output1, checked))
+        self.testOutput_2.clicked.connect(lambda checked: self._testOutput(self.buzzer, checked))
 
         # OCR Engine & Tesseract model
         self.ocr_engine.currentTextChanged.connect(self.setOcrEngine)
@@ -563,12 +580,10 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
     def checkSensorState(self):
         capturedSensortriggered = self.capturedSensor.is_pressed
         rejectSensortriggered = self.rejectSensor.is_pressed
-        current_index = self.tabWidget.currentIndex()
-        if current_index == 2:
-            capturedSensorColor = "green" if capturedSensortriggered else "red"
-            rejectSensorColor = "green" if rejectSensortriggered else "red"
-            self.cameraTriggerSignal.setStyleSheet(f"background-color: {capturedSensorColor};")
-            self.rejectTriggerSignal.setStyleSheet(f"background-color: {rejectSensorColor};")
+        capturedSensorColor = "green" if capturedSensortriggered else "red"
+        rejectSensorColor = "green" if rejectSensortriggered else "red"
+        self.cameraTriggerSignal.setStyleSheet(f"background-color: {capturedSensorColor};")
+        self.rejectTriggerSignal.setStyleSheet(f"background-color: {rejectSensorColor};")
 
     # ===== เปลี่ยนหน้าต่างแสดงผล ===== 
     def _switchToPage(self, page: QWidget, monitor: QLabel = None):
@@ -612,7 +627,7 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
             self.sensorTimer.stop() 
             self.sysMonitorTimer.stop() 
             self.camera.monitor = self.sys_settings_monitor
-        elif tabIndex == 2:
+        elif tabIndex == 3:
             self.sensorTimer.start(50)  # ตรวจทุก 50 ms
             self.sysMonitorTimer.start(2000)  # ตรวจทุก 50 ms
 
@@ -835,13 +850,12 @@ class LMEDetect(QMainWindow, Ui_MainWindow):
             self.detection_alert.setStyleSheet(f"{initial_style} background-color: rgb(255, 17, 17);")
             self.buzzer.blink(0.1, 0.1, 5, True)
 
-    # ===== ทดสอบ Reject =====
-    def _testReject(self):
-        isActive = self.testReject.isChecked()
-        if isActive: 
-            self.rejector.on()
+    # ===== ทดสอบ Output =====
+    def _testOutput(self, output: LED, isActive: bool):
+        if isActive:
+            output.on()
         else:
-            self.rejector.off()
+            output.off()
 
     # รีเซ็ต counter
     def _countReset(self):
